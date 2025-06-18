@@ -566,6 +566,8 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script>
     // Theme toggle functionality
     const toggleBtn = document.getElementById('theme-toggle');
@@ -602,14 +604,49 @@
     let choices;
     let totalProjects = 0;
 
-    // Fetch and display repositories
+    // ---- 1. Immediately initialize Choices.js with dummy option ----
+    // Add a dummy hidden option so Choices renders styled
+    const dummyOption = document.createElement('option');
+    dummyOption.value = '';
+    dummyOption.textContent = '';
+    dummyOption.disabled = true;
+    dummyOption.selected = true;
+    dummyOption.hidden = true;
+    filter.appendChild(dummyOption);
+
+    choices = new Choices(filter, {
+      removeItemButton: true,
+      shouldSort: false,
+      placeholder: true,
+      placeholderValue: 'Filter by languages...',
+      searchEnabled: true,
+      searchPlaceholderValue: 'Search languages...',
+      itemSelectText: '',
+      classNames: {
+        containerOuter: 'choices',
+        containerInner: 'choices__inner',
+        input: 'choices__input',
+        inputCloned: 'choices__input--cloned',
+        list: 'choices__list',
+        listItems: 'choices__list--multiple',
+        listSingle: 'choices__list--single',
+        listDropdown: 'choices__list--dropdown',
+        item: 'choices__item',
+        itemSelectable: 'choices__item--selectable',
+        itemDisabled: 'choices__item--disabled',
+        itemChoice: 'choices__item--choice',
+        placeholder: 'choices__placeholder',
+        group: 'choices__group',
+        groupHeading: 'choices__heading',
+        button: 'choices__button'
+      }
+    });
+
+    // ---- 2. Fetch and display repositories ----
     async function fetchRepos() {
       try {
-        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
-
-        if (!res.ok) {
-          throw new Error(`GitHub API error: ${res.status}`);
-        }
+        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
+        if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
 
         const repos = await res.json();
 
@@ -627,8 +664,6 @@
 
           const card = document.createElement("div");
           card.className = "project-card";
-
-          // Set AOS attributes for animation
           card.setAttribute("data-aos", "fade-up");
           card.setAttribute("data-aos-delay", Math.min(projectIndex * 50, 1000));
 
@@ -669,7 +704,6 @@
           languages.forEach(lang => languageSet.add(lang));
           projectIndex++;
 
-
           // Fetch commit count using pagination trick
           fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`)
             .then(res => {
@@ -692,12 +726,10 @@
         totalProjects = allCards.length;
         populateFilter();
 
-        // Initialize AOS after a short delay
         setTimeout(() => {
           AOS.init({duration: 600, once: true, offset: 50});
         }, 100);
 
-        // Show initial count
         updateResultsCounter(totalProjects);
 
       } catch (error) {
@@ -706,10 +738,12 @@
       }
     }
 
-    // Populate language filter
+    // ---- 3. Populate language filter after fetch ----
     function populateFilter() {
-      const sortedLanguages = [...languageSet].sort();
+      // Remove all options (including dummy)
+      while (filter.firstChild) filter.removeChild(filter.firstChild);
 
+      const sortedLanguages = [...languageSet].sort();
       sortedLanguages.forEach(lang => {
         const opt = document.createElement("option");
         opt.value = lang;
@@ -717,6 +751,8 @@
         filter.appendChild(opt);
       });
 
+      // Re-init Choices with real languages
+      if (choices) choices.destroy();
       choices = new Choices(filter, {
         removeItemButton: true,
         shouldSort: false,
@@ -766,7 +802,6 @@
     function updateChoicesHeight() {
       const choicesInner = document.querySelector('.choices__inner');
       const selectedItems = document.querySelectorAll('.choices__list--multiple .choices__item');
-
       if (selectedItems.length > 0) {
         choicesInner.classList.add('has-items');
       } else {
@@ -779,7 +814,6 @@
       const selectedItems = document.querySelectorAll('.choices__list--multiple .choices__item');
       const placeholder = document.querySelector('.choices__placeholder');
       const input = document.querySelector('.choices__input');
-
       if (selectedItems.length > 0) {
         if (placeholder) placeholder.classList.add('hidden');
         if (input) input.placeholder = '';
@@ -797,9 +831,7 @@
 
       // Remove any existing no-results message
       const existingMessage = container.querySelector('.no-results');
-      if (existingMessage) {
-        existingMessage.remove();
-      }
+      if (existingMessage) existingMessage.remove();
 
       allCards.forEach((card, index) => {
         const langs = card.dataset.lang.split(',');
