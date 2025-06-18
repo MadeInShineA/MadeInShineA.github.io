@@ -1,9 +1,865 @@
 <!DOCTYPE html>
-<html leng="eng">
-    <head>
-        <title>My Site!</title>
-    </head>
-    <body>
-        <h1>this is my GitHub Pages website!</h1>
-    </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MadeInShineA – Portfolio</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+  <style>
+    :root {
+      --bg: #1a1a2e;
+      --fg: #e0e0e0;
+      --accent: #4a90e2;
+      --glass: rgba(255, 255, 255, 0.05);
+      --blur: blur(10px);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    body.light {
+      --bg: #f5f5f5;
+      --fg: #222;
+      --glass: rgba(0, 0, 0, 0.05);
+    }
+
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 9999;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      background: var(--glass);
+      color: var(--fg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.05);
+      border-color: var(--accent);
+    }
+
+    header {
+      padding: 3rem 2rem 1rem;
+      text-align: center;
+    }
+
+    /* Controls row - improved layout */
+    #controls {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+
+    /* Choices dropdown (languages) - fixed width and overflow issues */
+    .choices {
+      flex: 1;
+      min-width: 280px;
+      max-width: 400px;
+      z-index: 1001;
+    }
+
+    .choices__inner {
+      background: var(--glass) !important;
+      backdrop-filter: var(--blur) !important;
+      border-radius: 1.2rem !important;
+      border: 2px solid rgba(255, 255, 255, 0.22) !important;
+      color: var(--fg) !important;
+      padding: 0 1.2rem !important;
+      min-height: 52px !important;
+      height: 52px !important;
+      font-size: 1rem !important;
+      display: flex !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+      transition: border-color 0.3s, box-shadow 0.3s, height 0.3s ease !important;
+      overflow: hidden !important;
+    }
+
+    .choices__inner.has-items {
+      height: auto !important;
+      min-height: 52px !important;
+      max-height: 120px !important;
+      overflow-y: auto !important;
+      padding: 0.4rem 1.2rem !important;
+    }
+
+    .choices.is-open .choices__inner {
+      border-color: var(--accent) !important;
+      box-shadow: 0 4px 30px rgba(74, 144, 226, 0.2) !important;
+    }
+
+    /* Selected language tags - styled like project card categories */
+    .choices__list--multiple .choices__item {
+      background: rgba(74, 144, 226, 0.15) !important;
+      border: 1px solid rgba(74, 144, 226, 0.3) !important;
+      border-radius: 999px !important;
+      padding: 0.3rem 0.7rem !important;
+      margin: 0.2rem 0.3rem 0.2rem 0 !important;
+      font-size: 0.75rem !important;
+      color: var(--accent) !important;
+      font-weight: 600 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      max-width: none !important;
+      white-space: nowrap !important;
+      box-shadow: none !important;
+      transition: all 0.3s ease !important;
+      position: relative !important;
+      overflow: hidden !important;
+      letter-spacing: 0.02em !important;
+      text-transform: uppercase !important;
+    }
+
+    .choices__list--multiple .choices__item::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      background: var(--accent) !important;
+      opacity: 0 !important;
+      transition: opacity 0.3s !important;
+      z-index: -1 !important;
+    }
+
+    .choices__list--multiple .choices__item:hover {
+      color: #fff !important;
+      border-color: var(--accent) !important;
+      transform: scale(1.05) !important;
+    }
+
+    .choices__list--multiple .choices__item:hover::before {
+      opacity: 1 !important;
+    }
+
+    /* Remove button styling - red on hover */
+    .choices__list--multiple .choices__item .choices__button {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: var(--accent) !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      margin-left: 0.4rem !important;
+      padding: 0 !important;
+      width: 16px !important;
+      height: 16px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+      transition: all 0.3s ease !important;
+      backdrop-filter: blur(4px) !important;
+      z-index: 1 !important;
+    }
+
+    .choices__list--multiple .choices__item .choices__button:hover {
+      background: #ef4444 !important;
+      border-color: #dc2626 !important;
+      color: white !important;
+      transform: scale(1.1) !important;
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4) !important;
+    }
+
+    .choices__list--multiple .choices__item:hover .choices__button {
+      background: #ef4444 !important;
+      border-color: #dc2626 !important;
+      color: white !important;
+      transform: scale(1.1) !important;
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4) !important;
+    }
+
+    /* Input field within choices */
+    .choices__input {
+      color: var(--fg) !important;
+      background: none !important;
+      padding: 0.2rem 0 !important;
+      margin: 0.2rem 0 !important;
+      font-size: 1rem !important;
+      border: none !important;
+      box-shadow: none !important;
+      min-width: 120px !important;
+      flex: 1 !important;
+    }
+
+    .choices__placeholder {
+      opacity: 0.7 !important;
+      color: var(--fg) !important;
+      font-size: 1rem !important;
+      margin: 0.5rem 0 !important;
+      transition: opacity 0.3s ease !important;
+    }
+
+    .choices__placeholder.hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* Dropdown list styling */
+    .choices__list--dropdown,
+    .choices__list[aria-expanded] {
+      z-index: 2000 !important;
+      background: var(--bg) !important;
+      backdrop-filter: var(--blur) !important;
+      border-radius: 1rem !important;
+      border: 2px solid var(--accent) !important;
+      color: var(--fg) !important;
+      font-size: 1rem !important;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3) !important;
+      margin-top: 0.5rem !important;
+      max-height: 200px !important;
+      overflow-y: auto !important;
+    }
+
+    .choices__item--selectable {
+      padding: 0.8rem 1.2rem !important;
+      transition: background 0.2s !important;
+      color: var(--fg) !important;
+      white-space: nowrap !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .choices__item--selectable:last-child {
+      border-bottom: none !important;
+    }
+
+    .choices__item--selectable:hover,
+    .choices__item--selectable.is-highlighted {
+      background: rgba(74, 144, 226, 0.15) !important;
+      color: var(--fg) !important;
+    }
+
+    /* Search input */
+    #search {
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      border: 2px solid rgba(255, 255, 255, 0.22);
+      border-radius: 1.2rem;
+      padding: 0 1.2rem;
+      color: inherit;
+      font-size: 1rem;
+      flex: 1;
+      min-width: 200px;
+      max-width: 300px;
+      outline: none;
+      height: 52px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+
+    #search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 4px 30px rgba(74, 144, 226, 0.2);
+    }
+
+    #search::placeholder {
+      color: var(--fg);
+      opacity: 0.7;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      #controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        max-width: none;
+        padding: 0 1rem;
+      }
+
+      .choices,
+      #search {
+        min-width: 0;
+        max-width: none;
+        width: 100%;
+      }
+
+      .choices__list--dropdown {
+        left: 1rem !important;
+        right: 1rem !important;
+        width: calc(100vw - 2rem) !important;
+        max-width: none !important;
+      }
+
+      header {
+        padding: 2rem 1rem 1rem;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .choices__list--multiple .choices__item {
+        font-size: 0.8rem !important;
+        padding: 0.3rem 0.6rem !important;
+      }
+
+      .choices__inner {
+        padding: 0.6rem 1rem !important;
+        min-height: 48px !important;
+      }
+
+      #search {
+        height: 48px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Project cards styling - FIXED: Ensure proper visibility */
+    .projects {
+      display: grid;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      position: relative;
+      z-index: 1;
+      min-height: 400px;
+      /* Ensure container has minimum height */
+    }
+
+    .project-card {
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+      opacity: 1;
+      /* Ensure full opacity by default */
+      transform: none;
+      /* Reset transform to ensure visibility */
+    }
+
+    /* FIXED: Remove AOS dependency for filtered items */
+    .project-card.filtered-visible {
+      display: block !important;
+      opacity: 1 !important;
+      transform: none !important;
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+
+    .project-card.filtered-hidden {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      border-color: rgba(74, 144, 226, 0.3);
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .carousel img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .project-content p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      line-height: 1.5;
+      margin: 0.5rem 0;
+    }
+
+    .project-content .description {
+      min-height: 60px;
+      max-height: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    .project-metrics {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .project-metrics span {
+      display: flex;
+      align-items: center;
+      gap: 0.2em;
+    }
+
+
+    .category {
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: rgba(74, 144, 226, 0.15);
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: inline-block;
+      margin: 0 0.3rem 0.8rem 0;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(74, 144, 226, 0.3);
+    }
+
+    .project-card:hover .category {
+      background: var(--accent);
+      color: #fff;
+      transform: scale(1.05);
+      border-color: var(--accent);
+    }
+
+    /* Loading animation */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.1rem;
+      opacity: 0.7;
+    }
+
+    .loading::after {
+      content: "...";
+      animation: dots 1.5s infinite;
+    }
+
+    @keyframes dots {
+
+      0%,
+      20% {
+        content: ".";
+      }
+
+      40% {
+        content: "..";
+      }
+
+      60% {
+        content: "...";
+      }
+
+      80%,
+      100% {
+        content: "";
+      }
+    }
+
+    /* No results message styling */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.1rem;
+      opacity: 0.7;
+      background: var(--glass);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Filter results counter */
+    .results-counter {
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      padding: 0.5rem;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--glass);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6ba3f5;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="theme-toggle">🌓 Toggle Theme</button>
+  <header>
+    <h1>👋 Hey there!</h1>
+    <p>I'm <strong>MadeInShineA</strong>, a Super Smash Bros. Melee player & CS student from Switzerland.</p>
+    <div id="controls">
+
+      <select id="filter" multiple></select>
+      <input id="search" placeholder="Search projects..." autocomplete="off" />
+    </div>
+    <div id="results-counter" class="results-counter" style="display: none;"></div>
+  </header>
+  <section id="projects" class="projects">
+    <div class="loading">Loading projects</div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script>
+    // Theme toggle functionality
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Load saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light');
+      }
+    });
+
+    // Portfolio data and configuration
+    const username = "MadeInShineA";
+    const container = document.getElementById("projects");
+    const filter = document.getElementById("filter");
+    const searchInput = document.getElementById("search");
+    const resultsCounter = document.getElementById("results-counter");
+    const languageSet = new Set();
+    const hiddenRepos = ["MadeInShineA/MadeInShineA"];
+    const manualLanguages = {
+      "smash-map": ["Vue", "PHP", "Laravel"],
+      "melee-resources": ["HTML", "CSS", "JavaScript"],
+      "forest-fire-simulation": ["Scala", "Rust", "Bevy"],
+      "rust-boy": ["Rust"],
+      "manim-animations": ["Python"],
+      "spelling-checker": ["Python"],
+      "SICP-scala-exercises": ["Scala"]
+    };
+    let allCards = [];
+    let choices;
+    let totalProjects = 0;
+
+    // Fetch and display repositories
+    async function fetchRepos() {
+      try {
+        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
+
+        if (!res.ok) {
+          throw new Error(`GitHub API error: ${res.status}`);
+        }
+
+        const repos = await res.json();
+
+        // Clear loading message
+        container.innerHTML = '';
+
+        if (repos.length === 0) {
+          container.innerHTML = '<div class="loading">No repositories found</div>';
+          return;
+        }
+
+        let projectIndex = 0;
+        repos.forEach((repo) => {
+          if (hiddenRepos.includes(repo.full_name)) return;
+
+          const card = document.createElement("div");
+          card.className = "project-card";
+
+          // Set AOS attributes for animation
+          card.setAttribute("data-aos", "fade-up");
+          card.setAttribute("data-aos-delay", Math.min(projectIndex * 50, 1000));
+
+          const languages = manualLanguages[repo.name] || (repo.language ? [repo.language] : ["Other"]);
+          card.dataset.lang = languages.join(',').toLowerCase();
+          card.dataset.name = (repo.name || '').toLowerCase();
+          card.dataset.desc = (repo.description || '').toLowerCase();
+          card.onclick = () => window.open(repo.html_url, '_blank');
+
+          const imageName = repo.name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
+          const imageUrl = `screenshots/${imageName}`;
+          const fallbackImage = `https://opengraph.githubassets.com/1/${username}/${repo.name}`;
+          const langTags = languages.map(lang => `<span class="category">${lang}</span>`).join(" ");
+
+          const stars = repo.stargazers_count || 0;
+          const lastUpdated = new Date(repo.updated_at).toLocaleDateString();
+
+          const description = repo.description || "No description provided.";
+
+          card.innerHTML = `
+          <div class="carousel">
+            <img src="${imageUrl}" alt="${repo.name}" onerror="this.onerror=null;this.src='${fallbackImage}'" loading="lazy">
+          </div>
+          <div class="project-content">
+            ${langTags}
+            <h3>${repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h3>
+            <p class="description">${description}</p>
+            <div class="project-metrics" id="metrics-${repo.name}">
+              <span>⭐ ${stars}</span>
+              <span>📝 Commits: <span class="commits-loading">...</span></span>
+              <span>⏱ Updated ${lastUpdated}</span>
+            </div>
+          </div>
+        `;
+
+          container.appendChild(card);
+          allCards.push(card);
+          languages.forEach(lang => languageSet.add(lang));
+          projectIndex++;
+
+
+          // Fetch commit count using pagination trick
+          fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`)
+            .then(res => {
+              if (!res.ok) throw new Error();
+              const link = res.headers.get('link');
+              if (link) {
+                const match = link.match(/&page=(\d+)>; rel="last"/);
+                if (match) return match[1];
+              }
+              return 1;
+            })
+            .then(commits => {
+              card.querySelector('.commits-loading').textContent = commits;
+            })
+            .catch(() => {
+              card.querySelector('.commits-loading').textContent = "—";
+            });
+        });
+
+        totalProjects = allCards.length;
+        populateFilter();
+
+        // Initialize AOS after a short delay
+        setTimeout(() => {
+          AOS.init({duration: 600, once: true, offset: 50});
+        }, 100);
+
+        // Show initial count
+        updateResultsCounter(totalProjects);
+
+      } catch (error) {
+        console.error('Error fetching repositories:', error);
+        container.innerHTML = '<div class="loading">Failed to load repositories. Please try again later.</div>';
+      }
+    }
+
+    // Populate language filter
+    function populateFilter() {
+      const sortedLanguages = [...languageSet].sort();
+
+      sortedLanguages.forEach(lang => {
+        const opt = document.createElement("option");
+        opt.value = lang;
+        opt.textContent = lang;
+        filter.appendChild(opt);
+      });
+
+      choices = new Choices(filter, {
+        removeItemButton: true,
+        shouldSort: false,
+        placeholder: true,
+        placeholderValue: 'Filter by languages...',
+        searchEnabled: true,
+        searchPlaceholderValue: 'Search languages...',
+        itemSelectText: '',
+        classNames: {
+          containerOuter: 'choices',
+          containerInner: 'choices__inner',
+          input: 'choices__input',
+          inputCloned: 'choices__input--cloned',
+          list: 'choices__list',
+          listItems: 'choices__list--multiple',
+          listSingle: 'choices__list--single',
+          listDropdown: 'choices__list--dropdown',
+          item: 'choices__item',
+          itemSelectable: 'choices__item--selectable',
+          itemDisabled: 'choices__item--disabled',
+          itemChoice: 'choices__item--choice',
+          placeholder: 'choices__placeholder',
+          group: 'choices__group',
+          groupHeading: 'choices__heading',
+          button: 'choices__button'
+        }
+      });
+
+      // Add dynamic height management and placeholder control
+      choices.passedElement.element.addEventListener('choice', () => {
+        updateChoicesHeight();
+        updatePlaceholderVisibility();
+      });
+
+      choices.passedElement.element.addEventListener('removeItem', () => {
+        setTimeout(() => {
+          updateChoicesHeight();
+          updatePlaceholderVisibility();
+        }, 10);
+      });
+
+      filter.addEventListener('change', debounce(applyFilters, 150));
+      searchInput.addEventListener('input', debounce(applyFilters, 300));
+    }
+
+    // Update choices container height based on content
+    function updateChoicesHeight() {
+      const choicesInner = document.querySelector('.choices__inner');
+      const selectedItems = document.querySelectorAll('.choices__list--multiple .choices__item');
+
+      if (selectedItems.length > 0) {
+        choicesInner.classList.add('has-items');
+      } else {
+        choicesInner.classList.remove('has-items');
+      }
+    }
+
+    // Hide/show placeholder based on selected items
+    function updatePlaceholderVisibility() {
+      const selectedItems = document.querySelectorAll('.choices__list--multiple .choices__item');
+      const placeholder = document.querySelector('.choices__placeholder');
+      const input = document.querySelector('.choices__input');
+
+      if (selectedItems.length > 0) {
+        if (placeholder) placeholder.classList.add('hidden');
+        if (input) input.placeholder = '';
+      } else {
+        if (placeholder) placeholder.classList.remove('hidden');
+        if (input) input.placeholder = 'Filter by languages...';
+      }
+    }
+
+    function applyFilters() {
+      const selected = choices.getValue(true);
+      const keyword = searchInput.value.toLowerCase().trim();
+
+      let visibleCount = 0;
+
+      // Remove any existing no-results message
+      const existingMessage = container.querySelector('.no-results');
+      if (existingMessage) {
+        existingMessage.remove();
+      }
+
+      allCards.forEach((card, index) => {
+        const langs = card.dataset.lang.split(',');
+        const matchLang = selected.length === 0 || selected.some(sel => langs.includes(sel.toLowerCase()));
+        const matchSearch = !keyword || (
+          card.dataset.name.includes(keyword) ||
+          card.dataset.desc.includes(keyword) ||
+          langs.some(lang => lang.includes(keyword))
+        );
+
+        const shouldShow = matchLang && matchSearch;
+
+        if (shouldShow) {
+          card.classList.remove('filtered-hidden');
+          card.classList.add('filtered-visible');
+          card.style.animationDelay = `${index * 50}ms`;
+          visibleCount++;
+        } else {
+          card.classList.remove('filtered-visible');
+          card.classList.add('filtered-hidden');
+        }
+      });
+
+      updateResultsCounter(visibleCount);
+
+      if (visibleCount === 0) {
+        const message = document.createElement('div');
+        message.className = 'no-results';
+        message.innerHTML = `
+        <h3>No projects found</h3>
+        <p>Try adjusting your filters or search terms</p>
+      `;
+        container.appendChild(message);
+      }
+    }
+
+    function updateResultsCounter(count) {
+      if (count === totalProjects) {
+        resultsCounter.style.display = 'none';
+      } else {
+        resultsCounter.style.display = 'block';
+        resultsCounter.textContent = `Showing ${count} of ${totalProjects} projects`;
+      }
+    }
+
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Initialize the portfolio
+    fetchRepos();
+  </script>
+</body>
+
 </html>
