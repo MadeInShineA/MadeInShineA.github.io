@@ -639,7 +639,7 @@
           card.onclick = () => window.open(repo.html_url, '_blank');
 
           const imageName = repo.name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
-          const imageUrl = `screenshots/${imageName}`;
+          const imageUrl = `src/${imageName}`;
           const fallbackImage = `https://opengraph.githubassets.com/1/${username}/${repo.name}`;
           const langTags = languages.map(lang => `<span class="category">${lang}</span>`).join(" ");
 
