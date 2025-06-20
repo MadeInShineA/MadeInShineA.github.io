@@ -1,1 +1,624 @@
-[{"description":"Code and images used by my github.io website","languages":[{"size":39195,"node":{"name":"HTML"}}],"name":"MadeInShineA.github.io","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2025-06-20T15:44:35Z","url":"https://github.com/MadeInShineA/MadeInShineA.github.io"},{"description":"","languages":[],"name":"MadeInShineA","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-06-20T13:43:44Z","url":"https://github.com/MadeInShineA/MadeInShineA"},{"description":"A scalable, cross-language, probabilistic wildfire simulation engine for research, visualization, and experimentation.","languages":[{"size":23747,"node":{"name":"Scala"}},{"size":58201,"node":{"name":"Rust"}},{"size":276,"node":{"name":"Shell"}},{"size":7499,"node":{"name":"Python"}}],"name":"forest-fire-simulation","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":17,"updatedAt":"2025-06-20T10:59:32Z","url":"https://github.com/MadeInShineA/forest-fire-simulation"},{"description":"","languages":[{"size":93026,"node":{"name":"Python"}},{"size":2287,"node":{"name":"Shell"}}],"name":"werewolves","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-06-13T19:48:22Z","url":"https://github.com/MadeInShineA/werewolves"},{"description":"This repository contains different manim animation files","languages":[{"size":39722,"node":{"name":"Python"}}],"name":"manim-animations","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2025-05-04T14:55:25Z","url":"https://github.com/MadeInShineA/manim-animations"},{"description":"This repository contains the code of the hot dog website (dioxus tutorial application)","languages":[{"size":2461,"node":{"name":"CSS"}},{"size":4338,"node":{"name":"Rust"}}],"name":"hot-dog","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-04-15T09:01:04Z","url":"https://github.com/MadeInShineA/hot-dog"},{"description":"","languages":[{"size":17946,"node":{"name":"Lua"}}],"name":"nvim-config","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-04-10T08:43:35Z","url":"https://github.com/MadeInShineA/nvim-config"},{"description":"An updated version of UnclePunch's TrainingMode with new features and bugfixes. PRs welcome!","languages":[{"size":1309709,"node":{"name":"C"}},{"size":843797,"node":{"name":"Assembly"}},{"size":3423,"node":{"name":"Makefile"}},{"size":6012,"node":{"name":"Batchfile"}},{"size":953,"node":{"name":"Shell"}}],"name":"TrainingMode-CommunityEdition","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-03-30T18:45:13Z","url":"https://github.com/MadeInShineA/TrainingMode-CommunityEdition"},{"description":"This repository contains the code of a Game Boy emulator written in Rust","languages":[{"size":14511,"node":{"name":"Rust"}}],"name":"rust-boy","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":2,"updatedAt":"2025-03-26T22:40:14Z","url":"https://github.com/MadeInShineA/rust-boy"},{"description":"A place for developers interested in smash.gg's API","languages":[{"size":15116,"node":{"name":"JavaScript"}},{"size":2622,"node":{"name":"CSS"}},{"size":148,"node":{"name":"Dockerfile"}},{"size":14830,"node":{"name":"SCSS"}},{"size":4936,"node":{"name":"Mustache"}}],"name":"developer-portal","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:46Z","url":"https://github.com/MadeInShineA/developer-portal"},{"description":"","languages":[{"size":36813,"node":{"name":"GDScript"}}],"name":"goose-defender","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-03-16T12:55:12Z","url":"https://github.com/MadeInShineA/goose-defender"},{"description":"This repository contains a small python spelling checker made in the 206.3 - Formal & natural languages class","languages":[{"size":6813,"node":{"name":"Python"}}],"name":"spelling-checker","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-03-12T14:49:15Z","url":"https://github.com/MadeInShineA/spelling-checker"},{"description":"This repository contains the code for the exercises of the book called Structure and Interpretation of Computer Programs (SICP)  made in Scala","languages":[{"size":4376,"node":{"name":"Scala"}}],"name":"SICP-scala-exercises","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-02-24T14:26:30Z","url":"https://github.com/MadeInShineA/SICP-scala-exercises"},{"description":"","languages":[{"size":60,"node":{"name":"CSS"}},{"size":223,"node":{"name":"HTML"}},{"size":48935,"node":{"name":"JavaScript"}},{"size":95473,"node":{"name":"Vue"}},{"size":3305,"node":{"name":"Python"}}],"name":"avalgard","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2025-02-02T13:17:10Z","url":"https://github.com/MadeInShineA/avalgard"},{"description":"","languages":[],"name":"RDB_tools","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-01-15T15:36:36Z","url":"https://github.com/MadeInShineA/RDB_tools"},{"description":"","languages":[{"size":88284,"node":{"name":"Python"}},{"size":2885,"node":{"name":"Rust"}}],"name":"ISChess","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2025-01-06T21:54:34Z","url":"https://github.com/MadeInShineA/ISChess"},{"description":"All the crochet amigurumi patterns designed by me. Usually relate to programming.","languages":[],"name":"crochet_design","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-12-27T09:37:41Z","url":"https://github.com/MadeInShineA/crochet_design"},{"description":"This repository contains the different  examples from the book \"Rust By Example\"","languages":[{"size":5776,"node":{"name":"Rust"}}],"name":"rust-by-example","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-12-23T11:20:07Z","url":"https://github.com/MadeInShineA/rust-by-example"},{"description":"This repository contains a small database made for a project during the course 201.3 BD relationnelles","languages":[],"name":"maltiverse","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-12-22T20:32:07Z","url":"https://github.com/MadeInShineA/maltiverse"},{"description":"This repository contains the different code examples from the book \"The Rust Programming Language\"","languages":[{"size":884,"node":{"name":"Rust"}}],"name":"the-rust-programming-language","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-12-14T11:36:31Z","url":"https://github.com/MadeInShineA/the-rust-programming-language"},{"description":"This repository contains the files of the Smash Map website, formerly known as Melee Map","languages":[{"size":328051,"node":{"name":"PHP"}},{"size":55336,"node":{"name":"JavaScript"}},{"size":2955,"node":{"name":"Blade"}},{"size":137440,"node":{"name":"Vue"}},{"size":719727,"node":{"name":"CSS"}},{"size":2004,"node":{"name":"HTML"}}],"name":"smash-map","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":11,"updatedAt":"2025-05-08T09:47:19Z","url":"https://github.com/MadeInShineA/smash-map"},{"description":"Sudoku validator lab for the OS course of ISC-BA3 ","languages":[{"size":10555,"node":{"name":"C"}}],"name":"os-sudoku-validator","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-11-05T15:01:26Z","url":"https://github.com/MadeInShineA/os-sudoku-validator"},{"description":"This is a KDE Plasma widget for displaying a daily Kanji with several information","languages":[{"size":12203,"node":{"name":"QML"}}],"name":"daily-kanji-plasma-widget","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-10-31T11:13:03Z","url":"https://github.com/MadeInShineA/daily-kanji-plasma-widget"},{"description":"Scheduler lab for the OS course of ISC-BA3","languages":[{"size":8644,"node":{"name":"Python"}},{"size":14993,"node":{"name":"C"}}],"name":"os-scheduler","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-10-22T16:06:33Z","url":"https://github.com/MadeInShineA/os-scheduler"},{"description":"","languages":[{"size":3855,"node":{"name":"Scala"}}],"name":"excal-cli","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-07-29T21:18:35Z","url":"https://github.com/MadeInShineA/excal-cli"},{"description":"","languages":[{"size":39487,"node":{"name":"Scala"}}],"name":"crash-royale-gdx2d","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":0,"updatedAt":"2024-06-13T20:26:22Z","url":"https://github.com/MadeInShineA/crash-royale-gdx2d"},{"description":"","languages":[{"size":41629,"node":{"name":"Python"}}],"name":"cry-sec-chat","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:35Z","url":"https://github.com/MadeInShineA/cry-sec-chat"},{"description":"","languages":[{"size":17227,"node":{"name":"Scala"}}],"name":"101_Lists_lab","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:36Z","url":"https://github.com/MadeInShineA/101_Lists_lab"},{"description":"A Scala grid game using the FunGraphics library ","languages":[{"size":5976,"node":{"name":"Scala"}}],"name":"hes-prog-imp-project-1","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:37Z","url":"https://github.com/MadeInShineA/hes-prog-imp-project-1"},{"description":"A Scala game of life made with the FunGraphics library","languages":[{"size":6726,"node":{"name":"Scala"}}],"name":"fg-game-of-life","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2023-12-14T08:36:28Z","url":"https://github.com/MadeInShineA/fg-game-of-life"},{"description":"Tron game made with Scala and the FunGraphic library","languages":[{"size":4091,"node":{"name":"Scala"}}],"name":"scala-fg-tron","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:38Z","url":"https://github.com/MadeInShineA/scala-fg-tron"},{"description":"This is a Scala programm meant to convert Byte to Tetris pieces using the FunGraphics library from HES-SO","languages":[{"size":7190,"node":{"name":"Scala"}},{"size":31309,"node":{"name":"Java"}}],"name":"byte-to-tetris-pieces","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:39Z","url":"https://github.com/MadeInShineA/byte-to-tetris-pieces"},{"description":"A typst template for reports in the ISC @ HEI curricula","languages":[{"size":358,"node":{"name":"Shell"}},{"size":4616,"node":{"name":"TeX"}},{"size":12395,"node":{"name":"Typst"}}],"name":"ISC-report","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:40Z","url":"https://github.com/MadeInShineA/ISC-report"},{"description":"","languages":[{"size":2082,"node":{"name":"Scala"}}],"name":"advent-of-code-2023","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:41Z","url":"https://github.com/MadeInShineA/advent-of-code-2023"},{"description":"","languages":[{"size":9405,"node":{"name":"Python"}}],"name":"telegram-bots","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":2,"updatedAt":"2024-05-06T07:15:21Z","url":"https://github.com/MadeInShineA/telegram-bots"},{"description":"This repository contains different neural networks made exclusively with numpy and h5py","languages":[{"size":14707,"node":{"name":"Python"}}],"name":"scratch-neural-networks","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:14:51Z","url":"https://github.com/MadeInShineA/scratch-neural-networks"},{"description":"Translate json files with deepl API","languages":[{"size":11578,"node":{"name":"Python"}}],"name":"json-deepl-translate","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:43Z","url":"https://github.com/MadeInShineA/json-deepl-translate"},{"description":"Python application to recognize hand written digits in real time!","languages":[{"size":4891,"node":{"name":"Python"}},{"size":17785,"node":{"name":"PureBasic"}}],"name":"digits-recognition","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:14:33Z","url":"https://github.com/MadeInShineA/digits-recognition"},{"description":"A simple download handler that will move the new files or all files inside the download_folder in the correct folders according to their extension","languages":[{"size":4444,"node":{"name":"Python"}}],"name":"download_handler","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:44Z","url":"https://github.com/MadeInShineA/download_handler"},{"description":"","languages":[{"size":4099,"node":{"name":"Python"}}],"name":"AI-and-ML-for-coders","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:45Z","url":"https://github.com/MadeInShineA/AI-and-ML-for-coders"},{"description":"An application to get weather forcast for an inputed city  For the application to work, you have to copy-paste your GoogleMaps Geocoding API inside the gm_key.txt file  you can get one there https://console.cloud.google.com/apis/library/geocoding-backend.googleapis.com","languages":[{"size":11075,"node":{"name":"Python"}}],"name":"weather_application","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:47Z","url":"https://github.com/MadeInShineA/weather_application"},{"description":"This is a small Rock Paper Scissors Game against a randomized CPU","languages":[{"size":9647,"node":{"name":"Python"}}],"name":"Rock_Paper_Scissors","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":1,"updatedAt":"2024-05-06T07:15:48Z","url":"https://github.com/MadeInShineA/Rock_Paper_Scissors"},{"description":"","languages":[{"size":7094,"node":{"name":"Python"}}],"name":"movie_app","owner":{"id":"U_kgDOBnmWzQ","login":"MadeInShineA"},"stargazerCount":2,"updatedAt":"2024-05-06T07:15:49Z","url":"https://github.com/MadeInShineA/movie_app"}]
+[
+  {
+    "description": "Code and images used by my github.io website",
+    "languages": [
+      "HTML"
+    ],
+    "name": "MadeInShineA.github.io",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2025-06-20T15:47:31Z",
+    "url": "https://github.com/MadeInShineA/MadeInShineA.github.io"
+  },
+  {
+    "description": "",
+    "languages": [],
+    "name": "MadeInShineA",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-06-20T13:43:44Z",
+    "url": "https://github.com/MadeInShineA/MadeInShineA"
+  },
+  {
+    "description": "A scalable, cross-language, probabilistic wildfire simulation engine for research, visualization, and experimentation.",
+    "languages": [
+      "Scala",
+      "Rust",
+      "Shell",
+      "Python"
+    ],
+    "name": "forest-fire-simulation",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 17,
+    "updatedAt": "2025-06-20T10:59:32Z",
+    "url": "https://github.com/MadeInShineA/forest-fire-simulation"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Python",
+      "Shell"
+    ],
+    "name": "werewolves",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-06-13T19:48:22Z",
+    "url": "https://github.com/MadeInShineA/werewolves"
+  },
+  {
+    "description": "This repository contains different manim animation files",
+    "languages": [
+      "Python"
+    ],
+    "name": "manim-animations",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2025-05-04T14:55:25Z",
+    "url": "https://github.com/MadeInShineA/manim-animations"
+  },
+  {
+    "description": "This repository contains the code of the hot dog website (dioxus tutorial application)",
+    "languages": [
+      "CSS",
+      "Rust"
+    ],
+    "name": "hot-dog",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-04-15T09:01:04Z",
+    "url": "https://github.com/MadeInShineA/hot-dog"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Lua"
+    ],
+    "name": "nvim-config",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-04-10T08:43:35Z",
+    "url": "https://github.com/MadeInShineA/nvim-config"
+  },
+  {
+    "description": "An updated version of UnclePunch's TrainingMode with new features and bugfixes. PRs welcome!",
+    "languages": [
+      "C",
+      "Assembly",
+      "Makefile",
+      "Batchfile",
+      "Shell"
+    ],
+    "name": "TrainingMode-CommunityEdition",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-03-30T18:45:13Z",
+    "url": "https://github.com/MadeInShineA/TrainingMode-CommunityEdition"
+  },
+  {
+    "description": "This repository contains the code of a Game Boy emulator written in Rust",
+    "languages": [
+      "Rust"
+    ],
+    "name": "rust-boy",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 2,
+    "updatedAt": "2025-03-26T22:40:14Z",
+    "url": "https://github.com/MadeInShineA/rust-boy"
+  },
+  {
+    "description": "A place for developers interested in smash.gg's API",
+    "languages": [
+      "JavaScript",
+      "CSS",
+      "Dockerfile",
+      "SCSS",
+      "Mustache"
+    ],
+    "name": "developer-portal",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:46Z",
+    "url": "https://github.com/MadeInShineA/developer-portal"
+  },
+  {
+    "description": "",
+    "languages": [
+      "GDScript"
+    ],
+    "name": "goose-defender",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-03-16T12:55:12Z",
+    "url": "https://github.com/MadeInShineA/goose-defender"
+  },
+  {
+    "description": "This repository contains a small python spelling checker made in the 206.3 - Formal & natural languages class",
+    "languages": [
+      "Python"
+    ],
+    "name": "spelling-checker",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-03-12T14:49:15Z",
+    "url": "https://github.com/MadeInShineA/spelling-checker"
+  },
+  {
+    "description": "This repository contains the code for the exercises of the book called Structure and Interpretation of Computer Programs (SICP)  made in Scala",
+    "languages": [
+      "Scala"
+    ],
+    "name": "SICP-scala-exercises",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-02-24T14:26:30Z",
+    "url": "https://github.com/MadeInShineA/SICP-scala-exercises"
+  },
+  {
+    "description": "",
+    "languages": [
+      "CSS",
+      "HTML",
+      "JavaScript",
+      "Vue",
+      "Python"
+    ],
+    "name": "avalgard",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2025-02-02T13:17:10Z",
+    "url": "https://github.com/MadeInShineA/avalgard"
+  },
+  {
+    "description": "",
+    "languages": [],
+    "name": "RDB_tools",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-01-15T15:36:36Z",
+    "url": "https://github.com/MadeInShineA/RDB_tools"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Python",
+      "Rust"
+    ],
+    "name": "ISChess",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2025-01-06T21:54:34Z",
+    "url": "https://github.com/MadeInShineA/ISChess"
+  },
+  {
+    "description": "All the crochet amigurumi patterns designed by me. Usually relate to programming.",
+    "languages": [],
+    "name": "crochet_design",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-12-27T09:37:41Z",
+    "url": "https://github.com/MadeInShineA/crochet_design"
+  },
+  {
+    "description": "This repository contains the different  examples from the book \"Rust By Example\"",
+    "languages": [
+      "Rust"
+    ],
+    "name": "rust-by-example",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-12-23T11:20:07Z",
+    "url": "https://github.com/MadeInShineA/rust-by-example"
+  },
+  {
+    "description": "This repository contains a small database made for a project during the course 201.3 BD relationnelles",
+    "languages": [],
+    "name": "maltiverse",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-12-22T20:32:07Z",
+    "url": "https://github.com/MadeInShineA/maltiverse"
+  },
+  {
+    "description": "This repository contains the different code examples from the book \"The Rust Programming Language\"",
+    "languages": [
+      "Rust"
+    ],
+    "name": "the-rust-programming-language",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-12-14T11:36:31Z",
+    "url": "https://github.com/MadeInShineA/the-rust-programming-language"
+  },
+  {
+    "description": "This repository contains the files of the Smash Map website, formerly known as Melee Map",
+    "languages": [
+      "PHP",
+      "JavaScript",
+      "Blade",
+      "Vue",
+      "CSS",
+      "HTML"
+    ],
+    "name": "smash-map",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 11,
+    "updatedAt": "2025-05-08T09:47:19Z",
+    "url": "https://github.com/MadeInShineA/smash-map"
+  },
+  {
+    "description": "Sudoku validator lab for the OS course of ISC-BA3 ",
+    "languages": [
+      "C"
+    ],
+    "name": "os-sudoku-validator",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-11-05T15:01:26Z",
+    "url": "https://github.com/MadeInShineA/os-sudoku-validator"
+  },
+  {
+    "description": "This is a KDE Plasma widget for displaying a daily Kanji with several information",
+    "languages": [
+      "QML"
+    ],
+    "name": "daily-kanji-plasma-widget",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-10-31T11:13:03Z",
+    "url": "https://github.com/MadeInShineA/daily-kanji-plasma-widget"
+  },
+  {
+    "description": "Scheduler lab for the OS course of ISC-BA3",
+    "languages": [
+      "Python",
+      "C"
+    ],
+    "name": "os-scheduler",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-10-22T16:06:33Z",
+    "url": "https://github.com/MadeInShineA/os-scheduler"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Scala"
+    ],
+    "name": "excal-cli",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-07-29T21:18:35Z",
+    "url": "https://github.com/MadeInShineA/excal-cli"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Scala"
+    ],
+    "name": "crash-royale-gdx2d",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 0,
+    "updatedAt": "2024-06-13T20:26:22Z",
+    "url": "https://github.com/MadeInShineA/crash-royale-gdx2d"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Python"
+    ],
+    "name": "cry-sec-chat",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:35Z",
+    "url": "https://github.com/MadeInShineA/cry-sec-chat"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Scala"
+    ],
+    "name": "101_Lists_lab",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:36Z",
+    "url": "https://github.com/MadeInShineA/101_Lists_lab"
+  },
+  {
+    "description": "A Scala grid game using the FunGraphics library ",
+    "languages": [
+      "Scala"
+    ],
+    "name": "hes-prog-imp-project-1",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:37Z",
+    "url": "https://github.com/MadeInShineA/hes-prog-imp-project-1"
+  },
+  {
+    "description": "A Scala game of life made with the FunGraphics library",
+    "languages": [
+      "Scala"
+    ],
+    "name": "fg-game-of-life",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2023-12-14T08:36:28Z",
+    "url": "https://github.com/MadeInShineA/fg-game-of-life"
+  },
+  {
+    "description": "Tron game made with Scala and the FunGraphic library",
+    "languages": [
+      "Scala"
+    ],
+    "name": "scala-fg-tron",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:38Z",
+    "url": "https://github.com/MadeInShineA/scala-fg-tron"
+  },
+  {
+    "description": "This is a Scala programm meant to convert Byte to Tetris pieces using the FunGraphics library from HES-SO",
+    "languages": [
+      "Scala",
+      "Java"
+    ],
+    "name": "byte-to-tetris-pieces",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:39Z",
+    "url": "https://github.com/MadeInShineA/byte-to-tetris-pieces"
+  },
+  {
+    "description": "A typst template for reports in the ISC @ HEI curricula",
+    "languages": [
+      "Shell",
+      "TeX",
+      "Typst"
+    ],
+    "name": "ISC-report",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:40Z",
+    "url": "https://github.com/MadeInShineA/ISC-report"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Scala"
+    ],
+    "name": "advent-of-code-2023",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:41Z",
+    "url": "https://github.com/MadeInShineA/advent-of-code-2023"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Python"
+    ],
+    "name": "telegram-bots",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 2,
+    "updatedAt": "2024-05-06T07:15:21Z",
+    "url": "https://github.com/MadeInShineA/telegram-bots"
+  },
+  {
+    "description": "This repository contains different neural networks made exclusively with numpy and h5py",
+    "languages": [
+      "Python"
+    ],
+    "name": "scratch-neural-networks",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:14:51Z",
+    "url": "https://github.com/MadeInShineA/scratch-neural-networks"
+  },
+  {
+    "description": "Translate json files with deepl API",
+    "languages": [
+      "Python"
+    ],
+    "name": "json-deepl-translate",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:43Z",
+    "url": "https://github.com/MadeInShineA/json-deepl-translate"
+  },
+  {
+    "description": "Python application to recognize hand written digits in real time!",
+    "languages": [
+      "Python",
+      "PureBasic"
+    ],
+    "name": "digits-recognition",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:14:33Z",
+    "url": "https://github.com/MadeInShineA/digits-recognition"
+  },
+  {
+    "description": "A simple download handler that will move the new files or all files inside the download_folder in the correct folders according to their extension",
+    "languages": [
+      "Python"
+    ],
+    "name": "download_handler",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:44Z",
+    "url": "https://github.com/MadeInShineA/download_handler"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Python"
+    ],
+    "name": "AI-and-ML-for-coders",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:45Z",
+    "url": "https://github.com/MadeInShineA/AI-and-ML-for-coders"
+  },
+  {
+    "description": "An application to get weather forcast for an inputed city  For the application to work, you have to copy-paste your GoogleMaps Geocoding API inside the gm_key.txt file  you can get one there https://console.cloud.google.com/apis/library/geocoding-backend.googleapis.com",
+    "languages": [
+      "Python"
+    ],
+    "name": "weather_application",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:47Z",
+    "url": "https://github.com/MadeInShineA/weather_application"
+  },
+  {
+    "description": "This is a small Rock Paper Scissors Game against a randomized CPU",
+    "languages": [
+      "Python"
+    ],
+    "name": "Rock_Paper_Scissors",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 1,
+    "updatedAt": "2024-05-06T07:15:48Z",
+    "url": "https://github.com/MadeInShineA/Rock_Paper_Scissors"
+  },
+  {
+    "description": "",
+    "languages": [
+      "Python"
+    ],
+    "name": "movie_app",
+    "owner": {
+      "id": "U_kgDOBnmWzQ",
+      "login": "MadeInShineA"
+    },
+    "stargazerCount": 2,
+    "updatedAt": "2024-05-06T07:15:49Z",
+    "url": "https://github.com/MadeInShineA/movie_app"
+  }
+]
