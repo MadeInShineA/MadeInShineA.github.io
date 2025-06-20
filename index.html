@@ -1,4 +1,4 @@
-<!DOCTYPE htma>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1016,7 +1016,7 @@
     async function fetchRepos() {
       try {
         const res = await fetch('/repos.json');
-        if (!res.ok) throw new Error(res.status);
+        if (!res.ok) throw new Error(`Failed to load repos.json: ${res.status}`);
         const repos = await res.json();
 
         container.innerHTML = '';
@@ -1025,25 +1025,16 @@
 
         for (const repo of repos) {
           const fullName = `${repo.owner.login}/${repo.name}`;
-
-          // skip hidden
           if (hiddenRepos.includes(fullName)) continue;
 
-          // determine languages: override or API
-          let langs;
-          if (projectLanguages[fullName]) {
-            langs = projectLanguages[fullName];
-          } else {
-            const langsData = await fetch(repo.languages_url)
-              .then(r => r.json())
-              .catch(() => ({}));
-            langs = Object.keys(langsData).length
-              ? Object.keys(langsData)
-              : ['Other'];
-          }
+          // Use the inlined languages array (fallback to 'Other')
+          const langs = Array.isArray(repo.languages) && repo.languages.length
+            ? repo.languages
+            : ['Other'];
 
           // apply allowedLanguages filter
-          if (allowedLanguages.length > 0 &&
+          if (
+            allowedLanguages.length > 0 &&
             !langs.some(l => allowedLanguages.includes(l))
           ) continue;
 
@@ -1065,25 +1056,25 @@
           const lastUpdate = new Date(repo.updated_at).toLocaleDateString();
 
           card.innerHTML = `
-          <div class="carousel">
-            <img
-              src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
-              alt="${repo.name}"
-              loading="lazy"
-              onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'"
-            />
+        <div class="carousel">
+          <img
+            src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
+            alt="${repo.name}"
+            loading="lazy"
+            onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'"
+          />
+        </div>
+        <div class="project-content">
+          ${tags}
+          <h3>${repo.name}</h3>
+          <p class="description">${repo.description || 'No description provided.'}</p>
+          <div class="project-metrics">
+            <span>⭐ ${repo.stargazers_count}</span>
+            <span>📝 Commits: <span class="commits-loading">...</span></span>
+            <span>⏱ Updated ${lastUpdate}</span>
           </div>
-          <div class="project-content">
-            ${tags}
-            <h3>${repo.name}</h3>
-            <p class="description">${repo.description || 'No description provided.'}</p>
-            <div class="project-metrics">
-              <span>⭐ ${repo.stargazers_count}</span>
-              <span>📝 Commits: <span class="commits-loading">...</span></span>
-              <span>⏱ Updated ${lastUpdate}</span>
-            </div>
-          </div>
-        `;
+        </div>
+      `;
 
           card.onclick = () => window.open(repo.html_url, '_blank');
 
@@ -1096,7 +1087,7 @@
             .then(r => {
               const link = r.headers.get('link');
               const m = link && link.match(/&page=(\d+)>; rel="last"/);
-              return m ? parseInt(m[1]) : 1;
+              return m ? parseInt(m[1], 10) : 1;
             })
             .then(count => {
               card.querySelector('.commits-loading').textContent = count;
