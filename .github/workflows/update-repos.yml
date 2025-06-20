@@ -22,43 +22,45 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
-          gh api graphql -f owner="MadeInShineA" -f perPage=100 -f firstLangs=10 -f query='
-          query($owner: String!, $perPage: Int!, $firstLangs: Int!) {
-            user(login: $owner) {
-              repositories(first: $perPage, orderBy: {field: UPDATED_AT, direction: DESC}) {
-                nodes {
-                  name
-                  description
-                  url
-                  stargazerCount
-                  updatedAt
-                  defaultBranchRef {
-                    target {
-                      ... on Commit {
-                        history {
-                          totalCount
+          gh api graphql \
+            -f query='
+            query($owner: String!, $perPage: Int!, $firstLangs: Int!) {
+              user(login: $owner) {
+                repositories(first: $perPage, orderBy: {field: UPDATED_AT, direction: DESC}) {
+                  nodes {
+                    name
+                    description
+                    url
+                    stargazerCount
+                    updatedAt
+                    defaultBranchRef {
+                      target {
+                        ... on Commit {
+                          history {
+                            totalCount
+                          }
                         }
                       }
                     }
-                  }
-                  languages(first: $firstLangs) {
-                    nodes { name }
+                    languages(first: $firstLangs) {
+                      nodes { name }
+                    }
                   }
                 }
               }
-            }
-          }' \
-          --jq '.data.user.repositories.nodes
-            | map({
-                owner: { login: "MadeInShineA" },
-                name,
-                description,
-                url,
-                stargazerCount,
-                updatedAt,
-                commits: .defaultBranchRef.target.history.totalCount,
-                languages: [.languages.nodes[].name]
-              })' \
+            }' \
+            -f variables='{"owner":"MadeInShineA","perPage":100,"firstLangs":10}' \
+            --jq '.data.user.repositories.nodes
+              | map({
+                  owner: { login: "MadeInShineA" },
+                  name,
+                  description,
+                  url,
+                  stargazerCount,
+                  updatedAt,
+                  commits: .defaultBranchRef.target.history.totalCount,
+                  languages: [.languages.nodes[].name]
+                })' \
           > repos.json
 
       - name: Commit updated repos.json
