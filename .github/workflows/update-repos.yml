@@ -1,0 +1,36 @@
+
+name: Fetch GitHub Repos for Pages
+
+on:
+  # re-run on every push to main (or your publishing branch)…
+  push:
+    branches: [ main ]
+  # …and also on a schedule (e.g. hourly)
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Fetch repos JSON
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
+        run: |
+          curl -s \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            "https://api.github.com/users/MadeInShineA/repos?per_page=100&sort=updated" \
+            > repos.json
+
+      - name: Commit repos.json
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github-actions
+          author_email: actions@github.com
+          message: "chore: update repos.json"
+          add: repos.json
