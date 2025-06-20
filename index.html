@@ -293,6 +293,14 @@
       z-index: 1;
     }
 
+    #controls>.dropdown-center,
+    #controls>#search {
+      flex: 1;
+      min-width: 200px;
+      max-width: 400px;
+      text-align: left;
+    }
+
 
     /* 1) Let each dropdown sit in its own stacking context */
     .dropdown-center {
@@ -317,6 +325,11 @@
       margin: 0;
       padding: 0;
       z-index: -100;
+    }
+
+    .choices--single .choices__inner .choices__placeholder {
+      color: var(--fg-muted) !important;
+      opacity: 0.68 !important;
     }
 
     #search {
