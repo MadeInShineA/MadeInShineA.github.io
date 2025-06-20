@@ -27,23 +27,39 @@ jobs:
             > repos-raw.json
 
       - name: Validate JSON
-        run: jq . repos-raw.json > /dev/null
+        run: |
+          jq . repos-raw.json > /dev/null
 
       - name: Inline languages into repos.json
         env:
           GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
-          # Read each repo in compact form, fetch its languages, emit compact JSON array with -c
+          # Start the array
+          echo '[' > repos.json
+
+          first=true
+          # For each repo object (compact JSON)
           while IFS= read -r repo; do
-            url=$(jq -r '.languages_url' <<< "$repo")
+            # fetch that repo's languages breakdown
             raw=$(curl -s \
               -H "Authorization: token $GITHUB_TOKEN" \
-              "$url")
-            # -c gives you ["C","JavaScript",...] on one line
+              "$(jq -r '.languages_url' <<<"$repo")")
+            # compact array of language names
             langs=$(jq -c 'keys' <<< "$raw")
-            echo "$repo" | jq --argjson languages "$langs" '. + { languages }'
-          done < <(jq -c '.[]' repos-raw.json) \
-            > repos.json
+            # comma-prefix all but the first element
+            if [ "$first" = true ]; then
+              first=false
+            else
+              echo ',' >> repos.json
+            fi
+            # merge in and append
+            echo "$repo" \
+              | jq --argjson languages "$langs" '. + { languages }' \
+              >> repos.json
+          done < <(jq -c '.[]' repos-raw.json)
+
+          # Close the array
+          echo ']' >> repos.json
 
       - name: Commit updated repos.json
         uses: EndBug/add-and-commit@v9
