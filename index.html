@@ -1017,7 +1017,7 @@
       try {
         const res = await fetch('/repos.json');
         if (!res.ok) throw new Error(`Failed to load repos.json: ${res.status}`);
-        const repos = await res.json();  // array of repo objects
+        const repos = await res.json();
 
         container.innerHTML = '';
         allCards = [];
@@ -1027,17 +1027,15 @@
           const fullName = `${repo.owner.login}/${repo.name}`;
           if (hiddenRepos.includes(fullName)) continue;
 
-          // map the GH-CLI languages array into a simple string list
           const langs = Array.isArray(repo.languages) && repo.languages.length
             ? repo.languages.map(l => l.name)
-            : (repo.language ? [repo.language] : ['Other']);
+            : ['Other'];
 
           if (
             allowedLanguages.length > 0 &&
             !langs.some(l => allowedLanguages.includes(l))
           ) continue;
 
-          // build your card…
           const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('data-aos', 'fade-up');
@@ -1071,13 +1069,13 @@
         </div>
       `;
 
-          card.onclick = () => window.open(repo.htmlUrl, '_blank');
+          card.onclick = () => window.open(repo.url, '_blank');
 
           container.appendChild(card);
           allCards.push(card);
           langs.forEach(l => languageSet.add(l));
 
-          // fetch commit count (unchanged) …
+          // fetch commit count
           fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=1`)
             .then(r => {
               const link = r.headers.get('link');

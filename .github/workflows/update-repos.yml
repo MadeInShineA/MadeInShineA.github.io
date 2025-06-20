@@ -5,7 +5,6 @@ on:
   push:
     branches: [ main ]
   schedule:
-    # every hour
     - cron: '0 * * * *'
 
 jobs:
@@ -20,12 +19,11 @@ jobs:
 
       - name: Fetch repos with languages via GH CLI
         env:
-          # allow gh to authenticate
           GH_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
           gh repo list MadeInShineA \
             --limit 100 \
-            --json owner,name,description,htmlUrl,stargazerCount,updatedAt,languages \
+            --json owner,name,description,url,stargazerCount,updatedAt,languages \
             > repos.json
 
       - name: Commit updated repos.json
