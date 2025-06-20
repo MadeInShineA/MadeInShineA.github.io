@@ -251,42 +251,6 @@
       position: relative;
     }
 
-    header h1::before {
-      content: "👋";
-      font-size: 2.3rem;
-      margin-right: 0.33rem;
-      display: inline-block;
-      vertical-align: middle;
-      filter: drop-shadow(0 0 10px var(--accent2));
-      animation: wave 1.8s infinite;
-    }
-
-    @keyframes wave {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      10% {
-        transform: rotate(16deg);
-      }
-
-      18% {
-        transform: rotate(-8deg);
-      }
-
-      24% {
-        transform: rotate(16deg);
-      }
-
-      30% {
-        transform: rotate(-4deg);
-      }
-
-      40%,
-      100% {
-        transform: rotate(0deg);
-      }
-    }
 
     header h1::after {
       content: '';
@@ -958,7 +922,7 @@
     // Specify exactly which languages each project should show:
     // Keys are "owner/name"
     const projectLanguages = {
-      'MadeInShineA/smash-map': ['Vue.js', 'PHP', 'Laravel'],
+      'MadeInShineA/smash-map': ['Vue', 'PHP', 'Laravel'],
       'MadeInShineA/rust-boy': ['Rust'],
       'MadeInShineA/spelling-checker': ['Python'],
       'MadeInShineA/forest-fire-simulation': ['Scala', 'Rust', 'Bevy'],
