@@ -935,9 +935,9 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script>
+    // ─── YEAR & THEME TOGGLE ────────────────────────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme toggle
     const toggleBtn = document.getElementById('theme-toggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
@@ -949,19 +949,43 @@
       }
     });
 
-    // Data & state
+    // ─── CONFIG ────────────────────────────────────────────────────────────────
+    // Specify exactly which languages each project should show:
+    // Keys are "owner/name"
+    const projectLanguages = {
+      'MadeInShineA/smash-map': ['Vue.js', 'PHP', 'Laravel'],
+      'MadeInShineA/rust-boy': ['Rust'],
+      'MadeInShineA/spelling-checker': ['Python'],
+      'MadeInShineA/forest-fire-simulation': ['Scala', 'Rust', 'Bevy'],
+      // add more overrides here…
+    };
+    // List of repos you always want to hide, by "owner/name"
+    const hiddenRepos = [
+      "MadeInShineA/movie_app"
+      // e.g. 'MadeInShineA/some-repo-to-hide'
+    ];
+    // If non-empty, only show repos whose languages intersect this list
+    const allowedLanguages = [
+      // e.g. 'JavaScript','Python','Rust'
+    ];
+    // ─────────────────────────────────────────────────────────────────────────────
+
+    // ─── STATE & ELEMENTS ──────────────────────────────────────────────────────
     const container = document.getElementById('projects');
     const filterEl = document.getElementById('filter');
     const sortEl = document.getElementById('sort');
     const searchEl = document.getElementById('search');
     const resultsCounter = document.getElementById('results-counter');
-    const languageSet = new Set();
-    let allCards = [], totalProjects = 0;
 
-    // Initialize Choices.js for filter
+    let allCards = [];
+    let totalProjects = 0;
+    const languageSet = new Set();
+
+    // ─── INIT FILTER MULTI‐SELECT ───────────────────────────────────────────────
     const dummyOption = new Option('', '', false, false);
     dummyOption.hidden = dummyOption.disabled = true;
     filterEl.add(dummyOption.cloneNode(true));
+
     const filterChoices = new Choices(filterEl, {
       removeItemButton: true,
       shouldSort: false,
@@ -972,7 +996,7 @@
       itemSelectText: ''
     });
 
-    // Populate sort dropdown
+    // ─── INIT SORT DROPDOWN ─────────────────────────────────────────────────────
     const sortOptions = [
       {value: 'updated', label: 'Updated (Newest)'},
       {value: 'stars', label: 'Stars (High → Low)'},
@@ -988,45 +1012,73 @@
     });
     sortEl.addEventListener('change', sortAndRender);
 
-    // Fetch & render repos from static JSON
+    // ─── FETCH & RENDER REPOSITORIES ────────────────────────────────────────────
     async function fetchRepos() {
       try {
         const res = await fetch('/repos.json');
         if (!res.ok) throw new Error(res.status);
         const repos = await res.json();
+
         container.innerHTML = '';
+        allCards = [];
+        languageSet.clear();
 
-        repos.forEach(repo => {
-          if (repo.full_name === `${repo.owner.login}/${repo.owner.login}`) return;
+        for (const repo of repos) {
+          const fullName = `${repo.owner.login}/${repo.name}`;
 
+          // skip self-repo
+          if (repo.full_name === fullName) continue;
+          // skip hidden
+          if (hiddenRepos.includes(fullName)) continue;
+
+          // determine languages: override or API
+          let langs;
+          if (projectLanguages[fullName]) {
+            langs = projectLanguages[fullName];
+          } else {
+            const langsData = await fetch(repo.languages_url)
+              .then(r => r.json())
+              .catch(() => ({}));
+            langs = Object.keys(langsData).length
+              ? Object.keys(langsData)
+              : ['Other'];
+          }
+
+          // apply allowedLanguages filter
+          if (allowedLanguages.length > 0 &&
+            !langs.some(l => allowedLanguages.includes(l))
+          ) continue;
+
+          // build card
           const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('data-aos', 'fade-up');
           card.dataset.name = repo.name.toLowerCase();
           card.dataset.stars = repo.stargazers_count;
           card.dataset.updated = new Date(repo.updated_at).getTime();
-
-          const langs = repo.language ? [repo.language] : ['Other'];
+          card.dataset.desc = (repo.description || '').toLowerCase();
           card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
-          const desc = repo.description || 'No description provided.';
-          card.dataset.desc = desc.toLowerCase();
+          // language badges
+          const tags = langs
+            .map(l => `<span class="category">${l}</span>`)
+            .join('');
 
-          card.onclick = () => window.open(repo.html_url, '_blank');
-
-          const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
           const lastUpdate = new Date(repo.updated_at).toLocaleDateString();
 
           card.innerHTML = `
           <div class="carousel">
-            <img src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
-                 alt="${repo.name}" loading="lazy"
-                 onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'" />
+            <img
+              src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
+              alt="${repo.name}"
+              loading="lazy"
+              onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'"
+            />
           </div>
           <div class="project-content">
             ${tags}
             <h3>${repo.name}</h3>
-            <p class="description">${desc}</p>
+            <p class="description">${repo.description || 'No description provided.'}</p>
             <div class="project-metrics">
               <span>⭐ ${repo.stargazers_count}</span>
               <span>📝 Commits: <span class="commits-loading">...</span></span>
@@ -1034,6 +1086,9 @@
             </div>
           </div>
         `;
+
+          card.onclick = () => window.open(repo.html_url, '_blank');
+
           container.appendChild(card);
           allCards.push(card);
           langs.forEach(l => languageSet.add(l));
@@ -1051,11 +1106,10 @@
             .catch(() => {
               card.querySelector('.commits-loading').textContent = '—';
             });
-        });
+        }
 
         totalProjects = allCards.length;
         populateFilter();
-
         AOS.init({duration: 600, once: true});
         sortAndRender();
 
@@ -1065,6 +1119,7 @@
       }
     }
 
+    // ─── FILTER / SEARCH SETUP ─────────────────────────────────────────────────
     function populateFilter() {
       filterChoices.clearStore();
       [...languageSet].sort().forEach(lang => {
@@ -1074,6 +1129,7 @@
       searchEl.addEventListener('input', debounce(applyFilters, 300));
     }
 
+    // ─── SORT & RE-RENDER ───────────────────────────────────────────────────────
     function sortAndRender() {
       const crit = sortEl.value;
       allCards.sort((a, b) => {
@@ -1088,8 +1144,9 @@
       AOS.refresh();
     }
 
+    // ─── APPLY FILTERS & SEARCH ────────────────────────────────────────────────
     function applyFilters() {
-      const sel = filterChoices.getValue(true);
+      const selectedLangs = filterChoices.getValue(true);
       const kw = searchEl.value.toLowerCase().trim();
       let count = 0;
 
@@ -1097,9 +1154,9 @@
 
       allCards.forEach(card => {
         const langs = card.dataset.lang.split(',');
-        const okLang = !sel.length || sel.some(s => langs.includes(s.toLowerCase()));
-        const okText =
-          !kw ||
+        const okLang = !selectedLangs.length ||
+          selectedLangs.some(s => langs.includes(s.toLowerCase()));
+        const okText = !kw ||
           card.dataset.name.includes(kw) ||
           card.dataset.desc.includes(kw) ||
           langs.some(l => l.includes(kw));
@@ -1129,6 +1186,7 @@
       }
     }
 
+    // ─── DEBOUNCE UTILITY ───────────────────────────────────────────────────────
     function debounce(fn, delay) {
       let t;
       return (...args) => {
@@ -1137,6 +1195,7 @@
       };
     }
 
+    // ─── INITIAL FETCH ─────────────────────────────────────────────────────────
     fetchRepos();
   </script>
 </body>
