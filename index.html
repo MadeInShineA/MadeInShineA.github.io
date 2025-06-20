@@ -330,28 +330,25 @@
     }
 
 
-    /* make each wrapper a stacking context */
+    /* ensure each wrapper is a stacking context */
     .dropdown-center {
       position: relative;
     }
 
-    /* when a Choices instance is open, pull its wrapper above siblings */
-    .dropdown-center:focus-within {
-      z-index: 10;
-    }
-
-    /* ensure the open dropdown list itself floats above its wrapper */
+    /* whenever THIS dropdown is open, pull it above its siblings */
     .dropdown-center .choices.is-open {
       position: relative;
-      /* now z-index takes effect */
-      z-index: 20;
+      /* allow z-index to apply */
+      z-index: 1000;
+      /* higher than the other wrapper */
     }
 
-    .dropdown-center .choices__list--dropdown {
+    /* make sure the popup list itself floats above its wrapper */
+    .dropdown-center .choices.is-open .choices__list--dropdown {
       position: absolute;
       top: 100%;
       left: 0;
-      z-index: 30;
+      z-index: 1001;
     }
 
     #filter,
