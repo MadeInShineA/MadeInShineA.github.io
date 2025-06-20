@@ -1026,8 +1026,6 @@
         for (const repo of repos) {
           const fullName = `${repo.owner.login}/${repo.name}`;
 
-          // skip self-repo
-          if (repo.full_name === fullName) continue;
           // skip hidden
           if (hiddenRepos.includes(fullName)) continue;
 
