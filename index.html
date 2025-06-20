@@ -1025,17 +1025,29 @@
 
         for (const repo of repos) {
           const fullName = `${repo.owner.login}/${repo.name}`;
+
+          // skip hidden repos
           if (hiddenRepos.includes(fullName)) continue;
 
-          const langs = Array.isArray(repo.languages) && repo.languages.length
-            ? repo.languages.map(l => l.name)
-            : ['Other'];
+          // determine languages: use override if present, otherwise use the inlined array
+          let langs;
+          if (projectLanguages[fullName]) {
+            langs = projectLanguages[fullName];
+          } else if (Array.isArray(repo.languages) && repo.languages.length) {
+            langs = repo.languages;
+          } else {
+            langs = ['Other'];
+          }
 
+          // apply allowedLanguages filter (if any)
           if (
             allowedLanguages.length > 0 &&
             !langs.some(l => allowedLanguages.includes(l))
-          ) continue;
+          ) {
+            continue;
+          }
 
+          // build the card element
           const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('data-aos', 'fade-up');
@@ -1045,7 +1057,9 @@
           card.dataset.desc = (repo.description || '').toLowerCase();
           card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
+          // language badges
           const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
+
           const lastUpdate = new Date(repo.updatedAt).toLocaleDateString();
 
           card.innerHTML = `
@@ -1069,13 +1083,15 @@
         </div>
       `;
 
+          // open GitHub page on click
           card.onclick = () => window.open(repo.url, '_blank');
 
+          // add to DOM and tracking arrays
           container.appendChild(card);
           allCards.push(card);
           langs.forEach(l => languageSet.add(l));
 
-          // fetch commit count
+          // fetch commit count asynchronously
           fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=1`)
             .then(r => {
               const link = r.headers.get('link');
@@ -1090,6 +1106,7 @@
             });
         }
 
+        // finalize
         totalProjects = allCards.length;
         populateFilter();
         AOS.init({duration: 600, once: true});
