@@ -929,7 +929,7 @@
 
     // if our flag is set, block page pans
     document.body.addEventListener('touchmove', e => {
-      if (inScrollArea) e.preventDefault();
+      if (inScrollArea) e.stopPropagation();
     }, {passive: false});
 
 
