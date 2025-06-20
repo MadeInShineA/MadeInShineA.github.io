@@ -71,6 +71,13 @@
       padding: 0 1rem;
     }
 
+    /* Wrapper for dropdown to allow centering on mobile */
+    .dropdown-center {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
     /* Choices dropdown (languages) - fixed width and overflow issues */
     .choices {
       flex: 1;
@@ -234,6 +241,7 @@
       overflow-y: auto !important;
     }
 
+    /* Remove calc(100vw - 2rem) width & adjust for mobile with .dropdown-center wrapper */
     .choices__item--selectable {
       padding: 0.8rem 1.2rem !important;
       transition: background 0.2s !important;
@@ -284,24 +292,47 @@
     @media (max-width: 768px) {
       #controls {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         gap: 1rem;
-        max-width: none;
-        padding: 0 1rem;
-      }
-
-      .choices,
-      #search {
-        min-width: 0;
-        max-width: none;
         width: 100%;
+        padding: 0 1rem;
+        max-width: none;
       }
 
-      .choices__list--dropdown {
-        left: 1rem !important;
-        right: 1rem !important;
-        width: calc(100vw - 2rem) !important;
-        max-width: none !important;
+      .dropdown-center {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .choices {
+        width: 100% !important;
+        max-width: 400px;
+        min-width: 0;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: block;
+      }
+
+      .choices__inner {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+      }
+
+      .choices__list--dropdown,
+      .choices__list[aria-expanded] {
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+      }
+
+      #search {
+        width: 100%;
+        max-width: 400px;
       }
 
       header {
@@ -449,7 +480,6 @@
       gap: 0.2em;
     }
 
-
     .category {
       font-size: 0.75rem;
       color: var(--accent);
@@ -553,10 +583,12 @@
     <h1>👋 Hey there!</h1>
     <p>I'm <strong>MadeInShineA</strong>, a Super Smash Bros. Melee player & CS student from Switzerland.</p>
     <div id="controls">
-
-      <select id="filter" multiple></select>
+      <div class="dropdown-center">
+        <select id="filter" multiple></select>
+      </div>
       <input id="search" placeholder="Search projects..." autocomplete="off" />
     </div>
+
     <div id="results-counter" class="results-counter" style="display: none;"></div>
   </header>
   <section id="projects" class="projects">
@@ -685,7 +717,16 @@
 
           card.innerHTML = `
           <div class="carousel">
-            <img src="${imageUrl}" alt="${repo.name}" onerror="this.onerror=null;this.src='${fallbackImage}'" loading="lazy">
+            <img src="${imageUrl}" alt="${repo.name}" 
+              onerror="
+                if(this.src.indexOf('${fallbackImage}') === -1){
+                  this.src='${fallbackImage}';
+                }else{
+                  this.onerror=null;
+                  this.src='data:image/svg+xml;utf8,<svg width=&quot;300&quot; height=&quot;200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><rect fill=&quot;%23444&quot; width=&quot;300&quot; height=&quot;200&quot;/><text x=&quot;50%25&quot; y=&quot;50%25&quot; fill=&quot;%23fff&quot; dy=&quot;.3em&quot; font-size=&quot;24&quot; text-anchor=&quot;middle&quot; font-family=&quot;Segoe UI,Arial,sans-serif&quot;>No Image</text></svg>';
+                }
+              " loading="lazy">
+
           </div>
           <div class="project-content">
             ${langTags}
