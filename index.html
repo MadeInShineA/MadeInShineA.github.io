@@ -188,7 +188,7 @@
       max-width: 900px;
       margin: 0 auto;
       text-align: center;
-      padding: 5.1rem 1.2rem 2.4rem;
+      padding: 7rem 1.2rem 2.4rem;
       position: relative;
     }
 
@@ -584,6 +584,53 @@
       color: var(--fg) !important;
     }
 
+    /* 1) Hide the native <select> entirely */
+    .dropdown-center select {
+      position: absolute;
+      width: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* 2) Dark-mode dropdown panel: same frosted glass as your inputs */
+    body:not(.light) .choices__list[aria-expanded] {
+      background: var(--glass) !important;
+      backdrop-filter: var(--blur) !important;
+      border: var(--border) !important;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.16) !important;
+      color: var(--fg) !important;
+    }
+
+    /* 3) Dropdown items: bright text + subtle divider + tiny text-shadow */
+    body:not(.light) .choices__item--selectable {
+      color: var(--fg) !important;
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* 4) Hover/highlight state */
+    body:not(.light) .choices__item--selectable.is-highlighted {
+      background: rgba(167, 139, 250, 0.24) !important;
+    }
+
+    /* Always make the remove-pill button bright red */
+    .choices__list--multiple .choices__item .choices__button {
+      background: #ef4444 !important;
+      /* red-500 */
+      border: none !important;
+      color: #fff !important;
+    }
+
+    /* On hover, go a shade darker */
+    .choices__list--multiple .choices__item .choices__button:hover {
+      background: #dc2626 !important;
+      /* red-600 */
+    }
+
+
     /* ─────────────────────────────────────────────────────────────────────────
      Projects & Cards
   ───────────────────────────────────────────────────────────────────────── */
@@ -750,7 +797,6 @@
 
     .project-card:hover .category {
       background: var(--accent2);
-      transform: scale(1.09);
       box-shadow: 0 2px 12px var(--accent2), 0 1px 8px #0002;
     }
 
@@ -1102,7 +1148,7 @@
             }</p>
             <div class="project-metrics">
               <span>⭐ ${repo.stargazerCount}</span>
-              <span>📝 Commits:${repo.commits}</span>
+              <span>Commits:${repo.commits}</span>
               <span>⏱ Updated ${lastUpdate}</span>
             </div>
           </div>
@@ -1199,6 +1245,8 @@
           '<h3>No projects found</h3><p>Try adjusting filters or search terms</p>';
         container.appendChild(msg);
       }
+
+      AOS.refresh();
     }
 
     // ─── DEBOUNCE UTILITY ───────────────────────────────────────────────────────
