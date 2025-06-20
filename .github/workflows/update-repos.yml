@@ -24,9 +24,9 @@ jobs:
         run: |
           gh api graphql \
             -f query='
-            query($owner: String!, $perPage: Int!, $firstLangs: Int!) {
-              user(login: $owner) {
-                repositories(first: $perPage, orderBy: {field: UPDATED_AT, direction: DESC}) {
+            {
+              user(login: "MadeInShineA") {
+                repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {
                   nodes {
                     name
                     description
@@ -42,15 +42,15 @@ jobs:
                         }
                       }
                     }
-                    languages(first: $firstLangs) {
+                    languages(first: 10) {
                       nodes { name }
                     }
                   }
                 }
               }
             }' \
-            -f variables='{"owner":"MadeInShineA","perPage":100,"firstLangs":10}' \
-            --jq '.data.user.repositories.nodes
+            --jq '
+              .data.user.repositories.nodes
               | map({
                   owner: { login: "MadeInShineA" },
                   name,
@@ -60,7 +60,8 @@ jobs:
                   updatedAt,
                   commits: .defaultBranchRef.target.history.totalCount,
                   languages: [.languages.nodes[].name]
-                })' \
+                })
+            ' \
           > repos.json
 
       - name: Commit updated repos.json
