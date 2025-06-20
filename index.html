@@ -936,25 +936,22 @@
 
     // ─── TOUCH SCROLL FIX FOR MOBILE DROPDOWNS ─────────────────────────────────
     let inScrollArea = false;
-    document.body.addEventListener(
-      'touchstart',
-      e => {
-        // Did the touch start inside one of our Choices.js scroll areas?
-        inScrollArea = !!e.target.closest(
-          '.choices__list--dropdown, .choices__inner.has-items'
-        );
-      },
-      {passive: true}
-    );
-    document.body.addEventListener(
-      'touchmove',
-      e => {
-        // If the touch did NOT start inside the dropdown, block page scrolling.
-        if (!inScrollArea) e.preventDefault();
-      },
-      {passive: false}
-    );
 
+    // 1) On touchstart, remember whether it began in our scrollable area:
+    document.body.addEventListener('touchstart', e => {
+      inScrollArea = !!e.target.closest(
+        '.choices__list--dropdown, .choices__inner.has-items'
+      );
+    }, {passive: true});
+
+    // 2) On touchmove, if it did start in the dropdown, stop propagation
+    //    so the page won’t scroll; otherwise do nothing.
+    document.body.addEventListener('touchmove', e => {
+      if (inScrollArea) {
+        e.stopPropagation();
+        // (do NOT e.preventDefault(), so the dropdown itself scrolls)
+      }
+    }, {passive: false});
     // ─── CONFIG ────────────────────────────────────────────────────────────────
     // Specify exactly which languages each project should show:
     // Keys are "owner/name"
