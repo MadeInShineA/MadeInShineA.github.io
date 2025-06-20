@@ -935,8 +935,6 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script>
-    const githubToken = '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';
-
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Theme toggle
@@ -952,7 +950,6 @@
     });
 
     // Data & state
-    const username = 'MadeInShineA';
     const container = document.getElementById('projects');
     const filterEl = document.getElementById('filter');
     const sortEl = document.getElementById('sort');
@@ -961,52 +958,47 @@
     const languageSet = new Set();
     let allCards = [], totalProjects = 0;
 
-    // Choices.js setup (filter + sort)
+    // Initialize Choices.js for filter
     const dummyOption = new Option('', '', false, false);
     dummyOption.hidden = dummyOption.disabled = true;
     filterEl.add(dummyOption.cloneNode(true));
     const filterChoices = new Choices(filterEl, {
-      removeItemButton: true, shouldSort: false,
-      placeholder: true, placeholderValue: 'Filter by languages...',
-      searchEnabled: true, searchPlaceholderValue: 'Search languages...',
+      removeItemButton: true,
+      shouldSort: false,
+      placeholder: true,
+      placeholderValue: 'Filter by languages...',
+      searchEnabled: true,
+      searchPlaceholderValue: 'Search languages...',
       itemSelectText: ''
     });
+
+    // Populate sort dropdown
     const sortOptions = [
       {value: 'updated', label: 'Updated (Newest)'},
       {value: 'stars', label: 'Stars (High → Low)'},
       {value: 'name', label: 'Name (A → Z)'}
     ];
-    sortOptions.forEach(o => sortEl.add(new Option(o.label, o.value)));
-    new Choices(sortEl, {
-      placeholder: true, placeholderValue: 'Sort by...',
-      searchEnabled: false, shouldSort: false, itemSelectText: ''
+    sortOptions.forEach(opt => sortEl.add(new Option(opt.label, opt.value)));
+    const sortChoices = new Choices(sortEl, {
+      placeholder: true,
+      placeholderValue: 'Sort by...',
+      searchEnabled: false,
+      shouldSort: false,
+      itemSelectText: ''
     });
     sortEl.addEventListener('change', sortAndRender);
 
-    // helper to include Authorization header
-    function authedFetch(url) {
-      return fetch(url, {
-        headers: {
-          'Authorization': `Bearer ${githubToken}`,
-          'Accept': 'application/vnd.github.v3+json'
-        }
-      });
-    }
-
-    // Fetch & render
+    // Fetch & render repos from static JSON
     async function fetchRepos() {
       try {
-        const res = await authedFetch(
-          `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
-        );
+        const res = await fetch('/repos.json');
         if (!res.ok) throw new Error(res.status);
         const repos = await res.json();
         container.innerHTML = '';
 
         repos.forEach(repo => {
-          if (repo.full_name === `${username}/${username}`) return;
+          if (repo.full_name === `${repo.owner.login}/${repo.owner.login}`) return;
 
-          // build card
           const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('data-aos', 'fade-up');
@@ -1029,7 +1021,7 @@
           <div class="carousel">
             <img src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
                  alt="${repo.name}" loading="lazy"
-                 onerror="this.src='https://opengraph.githubassets.com/1/${username}/${repo.name}'" />
+                 onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'" />
           </div>
           <div class="project-content">
             ${tags}
@@ -1046,12 +1038,12 @@
           allCards.push(card);
           langs.forEach(l => languageSet.add(l));
 
-          // commits count with auth
-          authedFetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`)
+          // fetch commit count
+          fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=1`)
             .then(r => {
               const link = r.headers.get('link');
               const m = link && link.match(/&page=(\d+)>; rel="last"/);
-              return m ? +m[1] : 1;
+              return m ? parseInt(m[1]) : 1;
             })
             .then(count => {
               card.querySelector('.commits-loading').textContent = count;
@@ -1064,12 +1056,11 @@
         totalProjects = allCards.length;
         populateFilter();
 
-        // init AOS and first render
         AOS.init({duration: 600, once: true});
         sortAndRender();
 
-      } catch (err) {
-        console.error(err);
+      } catch (e) {
+        console.error(e);
         container.innerHTML = '<div class="loading">Failed to load repositories.</div>';
       }
     }
@@ -1139,10 +1130,10 @@
     }
 
     function debounce(fn, delay) {
-      let timeout;
+      let t;
       return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => fn(...args), delay);
+        clearTimeout(t);
+        t = setTimeout(() => fn(...args), delay);
       };
     }
 
