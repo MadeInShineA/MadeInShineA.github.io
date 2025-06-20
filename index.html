@@ -571,10 +571,9 @@
       overflow-y: auto !important;
     }
 
-    /* 2) Inner list grows naturally—no scrolling there */
-    .choices__list--dropdown .choices__list--dropdown {
-      max-height: none;
-      overflow: visible;
+    .choices__list[aria-expanded]>.choices__list {
+      max-height: none !important;
+      overflow: visible !important;
     }
 
     .choices__item--selectable {
