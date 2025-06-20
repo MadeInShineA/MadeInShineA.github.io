@@ -329,15 +329,29 @@
       z-index: 1;
     }
 
+
+    /* make each wrapper a stacking context */
     .dropdown-center {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
       position: relative;
     }
 
-    .dropdown-center .choices.is-open {
+    /* when a Choices instance is open, pull its wrapper above siblings */
+    .dropdown-center:focus-within {
       z-index: 10;
+    }
+
+    /* ensure the open dropdown list itself floats above its wrapper */
+    .dropdown-center .choices.is-open {
+      position: relative;
+      /* now z-index takes effect */
+      z-index: 20;
+    }
+
+    .dropdown-center .choices__list--dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 30;
     }
 
     #filter,
@@ -1014,7 +1028,7 @@
     // ─── FETCH & RENDER REPOSITORIES ────────────────────────────────────────────
     async function fetchRepos() {
       try {
-        const res = await fetch('/repos.json');
+        const res = await fetch('https://raw.githubusercontent.com/MadeInShineA/MadeInShineA.github.io/main/repos.json');
         if (!res.ok) throw new Error(`Failed to load repos.json: ${res.status}`);
         const repos = await res.json();
 
