@@ -330,25 +330,27 @@
     }
 
 
-    /* ensure each wrapper is a stacking context */
+    /* 1) Let each dropdown sit in its own stacking context */
     .dropdown-center {
-      position: relative;
+      position: relative !important;
+      overflow: visible !important;
     }
 
-    /* whenever THIS dropdown is open, pull it above its siblings */
+    /* 2) When Choices.js opens a dropdown, it adds .is-open.
+      Bump that whole widget above its siblings */
     .dropdown-center .choices.is-open {
-      position: relative;
-      /* allow z-index to apply */
-      z-index: 1000;
-      /* higher than the other wrapper */
+      position: relative !important;
+      z-index: 1000 !important;
     }
 
-    /* make sure the popup list itself floats above its wrapper */
+    /* 3) And pull the actual list pane even higher so it never clips */
     .dropdown-center .choices.is-open .choices__list--dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      z-index: 1001;
+      position: absolute !important;
+      top: 100% !important;
+      left: 0 !important;
+      width: 100% !important;
+      /* match the button width */
+      z-index: 1001 !important;
     }
 
     #filter,
@@ -1087,7 +1089,7 @@
           <p class="description">${repo.description || 'No description provided.'}</p>
           <div class="project-metrics">
             <span>⭐ ${repo.stargazerCount}</span>
-            <span>📝 Commits: <span class="commits-loading">...</span></span>
+            <span>📝 Commits:${repo.commits}</span>
             <span>⏱ Updated ${lastUpdate}</span>
           </div>
         </div>
@@ -1100,20 +1102,6 @@
           container.appendChild(card);
           allCards.push(card);
           langs.forEach(l => languageSet.add(l));
-
-          // fetch commit count asynchronously
-          fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=1`)
-            .then(r => {
-              const link = r.headers.get('link');
-              const m = link && link.match(/&page=(\d+)>; rel="last"/);
-              return m ? parseInt(m[1], 10) : 1;
-            })
-            .then(count => {
-              card.querySelector('.commits-loading').textContent = count;
-            })
-            .catch(() => {
-              card.querySelector('.commits-loading').textContent = '—';
-            });
         }
 
         // finalize
