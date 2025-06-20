@@ -921,17 +921,39 @@
     // ─── YEAR & THEME TOGGLE ────────────────────────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // THEME TOGGLE: flip body.light and persist preference
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem(
+        'theme',
+        document.body.classList.contains('light') ? 'light' : 'dark'
+      );
+    });
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
 
-    // mark when touch starts inside dropdown or tag-row
-    document.addEventListener('touchstart', e => {
-      inScrollArea = !!e.target.closest('.choices__list--dropdown, .choices__inner.has-items');
-    }, {passive: true});
-
-    // if our flag is set, block page pans
-    document.body.addEventListener('touchmove', e => {
-      if (inScrollArea) e.stopPropagation();
-    }, {passive: false});
-
+    // ─── TOUCH SCROLL FIX FOR MOBILE DROPDOWNS ─────────────────────────────────
+    let inScrollArea = false;
+    document.body.addEventListener(
+      'touchstart',
+      e => {
+        // Did the touch start inside one of our Choices.js scroll areas?
+        inScrollArea = !!e.target.closest(
+          '.choices__list--dropdown, .choices__inner.has-items'
+        );
+      },
+      {passive: true}
+    );
+    document.body.addEventListener(
+      'touchmove',
+      e => {
+        // If the touch did NOT start inside the dropdown, block page scrolling.
+        if (!inScrollArea) e.preventDefault();
+      },
+      {passive: false}
+    );
 
     // ─── CONFIG ────────────────────────────────────────────────────────────────
     // Specify exactly which languages each project should show:
@@ -948,13 +970,11 @@
       "MadeInShineA/MadeInShineA",
       "MadeInShineA/crochet_design",
       "MadeInShineA/excal-cli"
-      // e.g. 'MadeInShineA/some-repo-to-hide'
     ];
     // If non-empty, only show repos whose languages intersect this list
     const allowedLanguages = [
       // e.g. 'JavaScript','Python','Rust'
     ];
-    // ─────────────────────────────────────────────────────────────────────────────
 
     // ─── STATE & ELEMENTS ──────────────────────────────────────────────────────
     const container = document.getElementById('projects');
@@ -983,27 +1003,6 @@
       itemSelectText: ''
     });
 
-    function getScrollAreas() {
-      return [
-        document.querySelector('.choices__list[aria-expanded]'),
-        document.querySelector('.choices__inner.has-items')
-      ].filter(Boolean);
-    }
-
-    let inScrollArea = false;
-
-    // whenever a touch starts in one of them, mark
-    getScrollAreas().forEach(el => {
-      el.addEventListener('touchstart', () => inScrollArea = true, {passive: true});
-      el.addEventListener('touchend', () => inScrollArea = false, {passive: true});
-    });
-
-    document.body.addEventListener('touchmove', e => {
-      if (inScrollArea) {
-        e.preventDefault();   // capture the scroll in the dropdown/tags only
-      }
-    }, {passive: false});
-
     // ─── INIT SORT DROPDOWN ─────────────────────────────────────────────────────
     const sortOptions = [
       {value: 'updated', label: 'Updated (Newest)'},
@@ -1023,7 +1022,9 @@
     // ─── FETCH & RENDER REPOSITORIES ────────────────────────────────────────────
     async function fetchRepos() {
       try {
-        const res = await fetch('https://raw.githubusercontent.com/MadeInShineA/MadeInShineA.github.io/main/repos.json');
+        const res = await fetch(
+          'https://raw.githubusercontent.com/MadeInShineA/MadeInShineA.github.io/main/repos.json'
+        );
         if (!res.ok) throw new Error(`Failed to load repos.json: ${res.status}`);
         const repos = await res.json();
 
@@ -1066,30 +1067,36 @@
           card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
           // language badges
-          const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
+          const tags = langs
+            .map(l => `<span class="category">${l}</span>`)
+            .join('');
 
           const lastUpdate = new Date(repo.updatedAt).toLocaleDateString();
 
           card.innerHTML = `
-        <div class="carousel">
-          <img
-            src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
-            alt="${repo.name}"
-            loading="lazy"
-            onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'"
-          />
-        </div>
-        <div class="project-content">
-          ${tags}
-          <h3>${repo.name}</h3>
-          <p class="description">${repo.description || 'No description provided.'}</p>
-          <div class="project-metrics">
-            <span>⭐ ${repo.stargazerCount}</span>
-            <span>📝 Commits:${repo.commits}</span>
-            <span>⏱ Updated ${lastUpdate}</span>
+          <div class="carousel">
+            <img
+              src="src/${repo.name
+              .toLowerCase()
+              .replace(/[^a-z0-9]/g, '-')}.png"
+              alt="${repo.name}"
+              loading="lazy"
+              onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login
+            }/${repo.name}'"
+            />
           </div>
-        </div>
-      `;
+          <div class="project-content">
+            ${tags}
+            <h3>${repo.name}</h3>
+            <p class="description">${repo.description || 'No description provided.'
+            }</p>
+            <div class="project-metrics">
+              <span>⭐ ${repo.stargazerCount}</span>
+              <span>📝 Commits:${repo.commits}</span>
+              <span>⏱ Updated ${lastUpdate}</span>
+            </div>
+          </div>
+        `;
 
           // open GitHub page on click
           card.onclick = () => window.open(repo.url, '_blank');
@@ -1105,19 +1112,21 @@
         populateFilter();
         AOS.init({duration: 600, once: true});
         sortAndRender();
-
       } catch (e) {
         console.error(e);
-        container.innerHTML = '<div class="loading">Failed to load repositories.</div>';
+        container.innerHTML =
+          '<div class="loading">Failed to load repositories.</div>';
       }
     }
 
     // ─── FILTER / SEARCH SETUP ─────────────────────────────────────────────────
     function populateFilter() {
       filterChoices.clearStore();
-      [...languageSet].sort().forEach(lang => {
-        filterChoices.setChoices([{value: lang, label: lang}], 'value', 'label', false);
-      });
+      [...languageSet]
+        .sort()
+        .forEach(lang => {
+          filterChoices.setChoices([{value: lang, label: lang}], 'value', 'label', false);
+        });
       filterEl.addEventListener('change', debounce(applyFilters, 150));
       searchEl.addEventListener('input', debounce(applyFilters, 300));
     }
@@ -1147,9 +1156,11 @@
 
       allCards.forEach(card => {
         const langs = card.dataset.lang.split(',');
-        const okLang = !selectedLangs.length ||
+        const okLang =
+          !selectedLangs.length ||
           selectedLangs.some(s => langs.includes(s.toLowerCase()));
-        const okText = !kw ||
+        const okText =
+          !kw ||
           card.dataset.name.includes(kw) ||
           card.dataset.desc.includes(kw) ||
           langs.some(l => l.includes(kw));
@@ -1174,7 +1185,8 @@
       if (!count) {
         const msg = document.createElement('div');
         msg.className = 'no-results';
-        msg.innerHTML = '<h3>No projects found</h3><p>Try adjusting filters or search terms</p>';
+        msg.innerHTML =
+          '<h3>No projects found</h3><p>Try adjusting filters or search terms</p>';
         container.appendChild(msg);
       }
     }
