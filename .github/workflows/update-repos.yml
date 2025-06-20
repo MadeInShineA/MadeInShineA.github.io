@@ -2,41 +2,49 @@
 name: Fetch GitHub Repos for Pages
 
 on:
-  # re-run on every push to main
   push:
     branches: [ main ]
-  # …and also on a schedule (hourly)
   schedule:
     - cron: '0 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Fetch repos JSON with languages inlined
+      - name: Fetch raw repos list
         env:
           GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
-          # 1. Fetch raw list of repos
           curl -s \
             -H "Authorization: token $GITHUB_TOKEN" \
             "https://api.github.com/users/MadeInShineA/repos?per_page=100&sort=updated" \
             > repos-raw.json
 
-          # 2. For each repo, fetch its languages and merge them in
-          jq -c '.[]' repos-raw.json | while read repo; do
+      - name: Validate JSON
+        run: |
+          # abort early if repos-raw.json is not valid JSON
+          jq . repos-raw.json > /dev/null
+
+      - name: Inline languages into repos.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
+        run: |
+          # Read each repo (compact) and merge in its languages keys
+          while IFS= read -r repo; do
+            # fetch that repo's languages breakdown
             langs=$(curl -s \
               -H "Authorization: token $GITHUB_TOKEN" \
               "$(jq -r '.languages_url' <<<"$repo")" \
               | jq 'keys')
+            # add a top-level "languages": [...] array
             echo "$repo" | jq --argjson L "$langs" '. + { languages: $L }'
-          done > repos.json
+          done < <(jq -c '.[]' repos-raw.json) \
+            > repos.json
 
       - name: Commit updated repos.json
         uses: EndBug/add-and-commit@v9

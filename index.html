@@ -1027,7 +1027,7 @@
           const fullName = `${repo.owner.login}/${repo.name}`;
           if (hiddenRepos.includes(fullName)) continue;
 
-          // Use the inlined languages array (fallback to 'Other')
+          // — use inlined languages, defaulting to 'Other'
           const langs = Array.isArray(repo.languages) && repo.languages.length
             ? repo.languages
             : ['Other'];
@@ -1038,7 +1038,7 @@
             !langs.some(l => allowedLanguages.includes(l))
           ) continue;
 
-          // build card
+          // build card (unchanged) …
           const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('data-aos', 'fade-up');
@@ -1048,11 +1048,9 @@
           card.dataset.desc = (repo.description || '').toLowerCase();
           card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
-          // language badges
           const tags = langs
             .map(l => `<span class="category">${l}</span>`)
             .join('');
-
           const lastUpdate = new Date(repo.updated_at).toLocaleDateString();
 
           card.innerHTML = `
@@ -1077,12 +1075,11 @@
       `;
 
           card.onclick = () => window.open(repo.html_url, '_blank');
-
           container.appendChild(card);
           allCards.push(card);
           langs.forEach(l => languageSet.add(l));
 
-          // fetch commit count
+          // fetch commit count (unchanged) …
           fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=1`)
             .then(r => {
               const link = r.headers.get('link');
