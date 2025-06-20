@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MadeInShineA – Portfolio</title>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Fira+Mono:wght@400;600&display=swap"
     rel="stylesheet">
@@ -204,6 +203,23 @@
       z-index: 1;
     }
 
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: var(--profile-shadow);
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 36px #7dd3fc99, 0 0 0 12px #a78bfa13;
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: var(--profile-shadow);
+      }
+    }
+
     .profile-img {
       width: var(--profile-size);
       height: var(--profile-size);
@@ -215,6 +231,7 @@
       justify-content: center;
       position: relative;
       transition: box-shadow 0.27s;
+      animation: pulse 4s ease-in-out infinite;
     }
 
     .profile-img img {
@@ -239,6 +256,49 @@
       font-weight: 600;
       letter-spacing: 0.03em;
       color: var(--accent2);
+    }
+
+    .typing {
+      display: inline-block;
+      /* keep it to text width */
+      overflow: hidden;
+      /* hide the overflowing text */
+      white-space: nowrap;
+      /* prevent wrapping */
+      border-right: 2px solid var(--fg);
+      /* the “cursor” */
+      font-family: monospace;
+      /* for a typewriter look */
+      animation:
+        typing 1.5s steps(10, end) 0s forwards,
+        blink-caret .75s step-end infinite 0.5s;
+    }
+
+    @keyframes typing {
+      0% {
+        width: 0;
+      }
+
+      99% {
+        width: 100%;
+      }
+
+      100% {
+        width: 100%;
+        border-color: transparent;
+      }
+    }
+
+    @keyframes blink-caret {
+
+      0%,
+      100% {
+        border-color: transparent;
+      }
+
+      50% {
+        border-color: var(--accent2);
+      }
     }
 
     header h1 {
@@ -273,18 +333,51 @@
       opacity: 0.8;
     }
 
+    @keyframes fadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     header p {
+      opacity: 0;
+      /* start hidden */
+      animation: fadeSlide 1s ease-out 1.5s forwards;
+      /* play once at 2.7s */
+
       font-size: 1.15rem;
       margin-top: 0.54rem;
       color: var(--fg-muted);
-      opacity: 0.91;
       font-weight: 500;
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
      Filter / Search Controls
   ───────────────────────────────────────────────────────────────────────── */
+    @keyframes slideFadeIn {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+
+
     #controls {
+      opacity: 0;
+      /* start hidden */
+      animation: slideFadeIn 1s ease-out 2.5s forwards;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -293,7 +386,8 @@
       padding: 0 1.1rem;
       flex-wrap: wrap;
       border-radius: 23px;
-      z-index: 1;
+      position: relative;
+      z-index: 2;
     }
 
     #controls>.dropdown-center,
@@ -637,8 +731,9 @@
     /* ─────────────────────────────────────────────────────────────────────────
      Projects & Cards
   ───────────────────────────────────────────────────────────────────────── */
+    /* collapse completely until we add .visible */
     .projects {
-      display: grid;
+      display: none;
       gap: 2.6rem;
       padding: 2.8rem 1.1rem 5.4rem;
       max-width: 1230px;
@@ -646,10 +741,38 @@
       grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
       position: relative;
       z-index: 1;
-      min-height: 400px;
+    }
+
+    /* show as grid once we’re ready */
+    .projects.visible {
+      display: grid;
+    }
+
+    @keyframes cardPop {
+      0% {
+        visibility: visible;
+        /* so it will lay out once the anim starts */
+        opacity: 0;
+        transform: translateY(20px) scale(0);
+      }
+
+      60% {
+        opacity: 1;
+        transform: translateY(0) scale(1.02);
+      }
+
+      100% {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .project-card {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0);
+      transform-origin: center center;
       border: var(--border);
       border-radius: 2.1rem;
       background: var(--glass);
@@ -660,13 +783,17 @@
       z-index: 1;
       cursor: pointer;
       isolation: isolate;
-      opacity: 1;
       background-image: var(--card-overlay);
-      transition:
-        transform 0.28s cubic-bezier(.45, 1.5, .25, 1),
-        box-shadow 0.33s,
-        border-color 0.23s,
-        z-index 0.1s;
+    }
+
+    .projects.hidden {
+      visibility: hidden;
+    }
+
+
+    .pop-in {
+      visibility: visible;
+      animation: cardPop 1s ease-out forwards;
     }
 
     .project-card::before {
@@ -866,7 +993,28 @@
       }
     }
 
+    @keyframes bop {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .results-counter.bop {
+      animation: bop 0.6s ease;
+    }
+
+
     .results-counter {
+      animation: bounce 0.6s ease;
+
       text-align: center;
       margin: 1.22rem 0 0.62rem;
       font-size: 0.98rem;
@@ -951,7 +1099,7 @@
       </div>
       <div class="profile-name">MadeInShineA</div>
     </div>
-    <h1>Hey there!</h1>
+    <h1><span class="typing">Hey there!</span></h1>
     <p>I'm <strong>MadeInShineA</strong>, a Super Smash Bros. Melee player &amp; CS student from Switzerland.</p>
     <div id="controls">
       <div class="dropdown-center">
@@ -977,7 +1125,6 @@
       &copy; <span id="year"></span> MadeInShineA – Built with <span style="color:#a78bfa;">♥</span>
     </div>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script>
     // ─── YEAR & THEME TOGGLE ────────────────────────────────────────────────────
@@ -1042,8 +1189,6 @@
     const searchEl = document.getElementById('search');
     const resultsCounter = document.getElementById('results-counter');
 
-    let allCards = [];
-    let totalProjects = 0;
     const languageSet = new Set();
 
     // ─── INIT FILTER MULTI‐SELECT ───────────────────────────────────────────────
@@ -1078,120 +1223,96 @@
     });
     sortEl.addEventListener('change', sortAndRender);
 
-    // ─── FETCH & RENDER REPOSITORIES ────────────────────────────────────────────
-    async function fetchRepos() {
-      try {
-        const res = await fetch(
-          'https://raw.githubusercontent.com/MadeInShineA/MadeInShineA.github.io/main/repos.json'
-        );
-        if (!res.ok) throw new Error(`Failed to load repos.json: ${res.status}`);
-        const repos = await res.json();
+    const CONTROLS_ANIM_MS = 2500;
+    let allCards = [];
+    let totalProjects = 0;
+    let firstSort = true;
 
-        container.innerHTML = '';
+    // ─── FETCH & BUILD CARDS ────────────────────────────────────────────────────
+    async function fetchRepos() {
+      const container = document.getElementById('projects');
+      container.classList.remove('visible');
+      container.innerHTML = '';
+
+      // Delay showing “Loading…” until after the controls animation
+      const loadingTimer = setTimeout(() => {
+        container.classList.add('visible');
+        container.innerHTML = '<div class="loading">Loading projects</div>';
+      }, CONTROLS_ANIM_MS);
+
+      try {
+        const res = await fetch('https://raw.githubusercontent.com/MadeInShineA/MadeInShineA.github.io/main/repos.json');
+        if (!res.ok) throw new Error(res.status);
+        const repos = await res.json();
+        clearTimeout(loadingTimer);
+
+        // Clear out old state
         allCards = [];
         languageSet.clear();
 
         for (const repo of repos) {
-          const fullName = `${repo.owner.login}/${repo.name}`;
-
-          // skip hidden repos
-          if (hiddenRepos.includes(fullName)) continue;
-
-          // determine languages: use override if present, otherwise use the inlined array
-          let langs;
-          if (projectLanguages[fullName]) {
-            langs = projectLanguages[fullName];
-          } else if (Array.isArray(repo.languages) && repo.languages.length) {
-            langs = repo.languages;
-          } else {
-            langs = ['Other'];
-          }
-
-          // apply allowedLanguages filter (if any)
-          if (
-            allowedLanguages.length > 0 &&
-            !langs.some(l => allowedLanguages.includes(l))
-          ) {
-            continue;
-          }
-
-          // build the card element
           const card = document.createElement('div');
           card.className = 'project-card';
-          card.setAttribute('data-aos', 'fade-up');
+
+          // Determine languages (fallback to "Other")
+          const langs = Array.isArray(repo.languages) && repo.languages.length
+            ? repo.languages
+            : ['Other'];
+
+          // Populate the filter set
+          langs.forEach(l => languageSet.add(l));
+
+          // Data attributes for sorting/filtering
           card.dataset.name = repo.name.toLowerCase();
           card.dataset.stars = repo.stargazerCount;
           card.dataset.updated = new Date(repo.updatedAt).getTime();
           card.dataset.desc = (repo.description || '').toLowerCase();
           card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
-          // language badges
-          const tags = langs
-            .map(l => `<span class="category">${l}</span>`)
-            .join('');
-
+          // Build inner HTML
           const lastUpdate = new Date(repo.updatedAt).toLocaleDateString();
-
+          const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
           card.innerHTML = `
-          <div class="carousel">
-            <img
-              src="src/${repo.name
-              .toLowerCase()
-              .replace(/[^a-z0-9]/g, '-')}.png"
-              alt="${repo.name}"
-              loading="lazy"
-              onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login
-            }/${repo.name}'"
-            />
+        <div class="carousel">
+          <img
+            src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
+            alt="${repo.name}"
+            loading="lazy"
+            onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'"
+          />
+        </div>
+        <div class="project-content">
+          ${tags}
+          <h3>${repo.name}</h3>
+          <p class="description">${repo.description || 'No description provided.'}</p>
+          <div class="project-metrics">
+            <span>⭐ ${repo.stargazerCount}</span>
+            <span>⏱ Updated ${lastUpdate}</span>
           </div>
-          <div class="project-content">
-            ${tags}
-            <h3>${repo.name}</h3>
-            <p class="description">${repo.description || 'No description provided.'
-            }</p>
-            <div class="project-metrics">
-              <span>⭐ ${repo.stargazerCount}</span>
-              <span>Commits:${repo.commits}</span>
-              <span>⏱ Updated ${lastUpdate}</span>
-            </div>
-          </div>
-        `;
-
-          // open GitHub page on click
-          card.onclick = () => window.open(repo.url, '_blank');
-
-          // add to DOM and tracking arrays
-          container.appendChild(card);
+        </div>
+      `;
+          card.onclick = () => window.open(repo.html_url, '_blank');
           allCards.push(card);
-          langs.forEach(l => languageSet.add(l));
         }
 
-        // finalize
         totalProjects = allCards.length;
         populateFilter();
-        AOS.init({duration: 600, once: true});
         sortAndRender();
-      } catch (e) {
-        console.error(e);
-        container.innerHTML =
-          '<div class="loading">Failed to load repositories.</div>';
+
+      } catch (err) {
+        clearTimeout(loadingTimer);
+        container.classList.add('visible');
+        container.innerHTML = '<div class="loading">Failed to load repositories.</div>';
+        console.error(err);
       }
     }
 
-    // ─── FILTER / SEARCH SETUP ─────────────────────────────────────────────────
-    function populateFilter() {
-      filterChoices.clearStore();
-      [...languageSet]
-        .sort()
-        .forEach(lang => {
-          filterChoices.setChoices([{value: lang, label: lang}], 'value', 'label', false);
-        });
-      filterEl.addEventListener('change', debounce(applyFilters, 150));
-      searchEl.addEventListener('input', debounce(applyFilters, 300));
-    }
-
-    // ─── SORT & RE-RENDER ───────────────────────────────────────────────────────
+    // ─── SORT & POP-IN ───────────────────────────────────────────────────────────
     function sortAndRender() {
+      const container = document.getElementById('projects');
+      const delay = firstSort ? CONTROLS_ANIM_MS : 0;
+
+      // 1) sort
       const crit = sortEl.value;
       allCards.sort((a, b) => {
         if (crit === 'stars') return b.dataset.stars - a.dataset.stars;
@@ -1199,30 +1320,43 @@
         if (crit === 'name') return a.dataset.name.localeCompare(b.dataset.name);
         return 0;
       });
+
+      // 2) clear & re-append (cards still hidden via CSS)
       container.innerHTML = '';
-      allCards.forEach(c => container.appendChild(c));
-      applyFilters();
-      AOS.refresh();
+      allCards.forEach(card => {
+        card.classList.remove('pop-in');
+        container.appendChild(card);
+      });
+
+      // 3) show grid + staggered pop-in
+      setTimeout(() => {
+        container.classList.add('visible');
+        allCards.forEach((card, i) => {
+          card.style.animationDelay = `${i * 0.1}s`;
+          void card.offsetWidth;
+          card.classList.add('pop-in');
+        });
+        applyFilters();
+        firstSort = false;
+      }, delay);
     }
 
-    // ─── APPLY FILTERS & SEARCH ────────────────────────────────────────────────
+    // ─── FILTER, COUNTER & FINAL POP-IN ─────────────────────────────────────────
     function applyFilters() {
-      const selectedLangs = filterChoices.getValue(true);
+      const container = document.getElementById('projects');
+      const resultsCounter = document.getElementById('results-counter');
+      const selectedLangs = new Set(filterChoices.getValue(true).map(v => v.toLowerCase()));
       const kw = searchEl.value.toLowerCase().trim();
       let count = 0;
 
+      // remove any previous “no-results”
       container.querySelector('.no-results')?.remove();
 
       allCards.forEach(card => {
         const langs = card.dataset.lang.split(',');
-        const okLang =
-          !selectedLangs.length ||
-          selectedLangs.some(s => langs.includes(s.toLowerCase()));
-        const okText =
-          !kw ||
-          card.dataset.name.includes(kw) ||
-          card.dataset.desc.includes(kw) ||
-          langs.some(l => l.includes(kw));
+        const okLang = !selectedLangs.size || langs.some(l => selectedLangs.has(l));
+        const textBlob = card.dataset.name + card.dataset.desc + langs.join(' ');
+        const okText = !kw || textBlob.includes(kw);
 
         if (okLang && okText) {
           card.classList.remove('filtered-hidden');
@@ -1232,27 +1366,60 @@
           card.classList.remove('filtered-visible');
           card.classList.add('filtered-hidden');
         }
+        card.classList.remove('pop-in');
       });
 
+      // update counter
       if (count === totalProjects) {
         resultsCounter.style.display = 'none';
       } else {
         resultsCounter.style.display = 'block';
         resultsCounter.textContent = `Showing ${count} of ${totalProjects} projects`;
+        resultsCounter.classList.remove('bop');
+        void resultsCounter.offsetWidth;
+        resultsCounter.classList.add('bop');
       }
 
-      if (!count) {
-        const msg = document.createElement('div');
-        msg.className = 'no-results';
-        msg.innerHTML =
-          '<h3>No projects found</h3><p>Try adjusting filters or search terms</p>';
-        container.appendChild(msg);
+      // show “no results” if nothing matched
+      if (count === 0) {
+        container.insertAdjacentHTML('beforeend', `
+      <div class="no-results">
+        <h3>No projects found</h3>
+        <p>Try adjusting filters or search terms</p>
+      </div>
+    `);
       }
 
-      AOS.refresh();
+      // final staggered pop-in for visible cards
+      const visibleCards = allCards.filter(c => c.classList.contains('filtered-visible'));
+      visibleCards.forEach((card, i) => {
+        card.style.animationDelay = `${i * 0.1}s`;
+        void card.offsetWidth;
+        card.classList.add('pop-in');
+      });
+    }
+    // ─── POPULATE FILTER DROPDOWN ────────────────────────────────────────────────
+    function populateFilter() {
+      // Clear out the Choices.js store
+      filterChoices.clearStore();
+
+      // Add one <option> per language in sorted order
+      [...languageSet]
+        .sort()
+        .forEach(lang => {
+          filterChoices.setChoices(
+            [{value: lang, label: lang}],
+            'value',
+            'label',
+            false
+          );
+        });
+
+      // Wire up change listeners (if not already)
+      filterEl.addEventListener('change', debounce(applyFilters, 150));
+      searchEl.addEventListener('input', debounce(applyFilters, 300));
     }
 
-    // ─── DEBOUNCE UTILITY ───────────────────────────────────────────────────────
     function debounce(fn, delay) {
       let t;
       return (...args) => {
