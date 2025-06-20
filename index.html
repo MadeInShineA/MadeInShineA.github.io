@@ -40,13 +40,13 @@
       --fg-muted: #75798e;
       --accent: #5280e8;
       --accent2: #a277ff;
-      --glass: rgba(220, 225, 250, 0.63);
+      --glass: rgba(220, 225, 250, 0.07);
       --shadow: 0 6px 36px rgba(51, 68, 117, 0.09), 0 0.5px 0px #dad7f777;
       --border: 1.5px solid rgba(125, 211, 252, 0.13);
-      --header-glass: rgba(242, 242, 255, 0.85);
-      --footer-glass: rgba(242, 242, 255, 0.92);
+      --header-glass: rgba(242, 242, 255, 0.82);
+      --footer-glass: rgba(242, 242, 255, 0.55);
       --card-overlay: linear-gradient(120deg, rgba(125, 211, 252, 0.09) 40%, rgba(167, 139, 250, 0.09) 100%);
-      --navbar-glass: rgba(230, 235, 255, 0.92);
+      --navbar-glass: rgba(230, 235, 255, 0.5);
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -128,6 +128,8 @@
       right: 0;
       z-index: 1001;
       background: var(--navbar-glass);
+      -webkit-backdrop-filter: blur(9px) !important;
+
       box-shadow: 0 2.5px 24px #7dd3fc17;
       display: flex;
       justify-content: flex-end;
@@ -137,6 +139,7 @@
       backdrop-filter: blur(9px);
       min-height: 56px;
     }
+
 
     #theme-toggle {
       background: var(--glass);
