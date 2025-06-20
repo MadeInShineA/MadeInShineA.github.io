@@ -571,6 +571,12 @@
       overflow-y: auto !important;
     }
 
+    /* 2) Inner list grows naturally—no scrolling there */
+    .choices__list--dropdown .choices__list--dropdown {
+      max-height: none;
+      overflow: visible;
+    }
+
     .choices__item--selectable {
       padding-top: 0.7em;
       transition: background 0.18s !important;
