@@ -970,16 +970,26 @@
       itemSelectText: ''
     });
 
-    const scrollables = [
-      document.querySelector('.choices__list[aria-expanded]'),
-      document.querySelector('.choices__inner.has-items')
-    ].filter(Boolean);
+    function getScrollAreas() {
+      return [
+        document.querySelector('.choices__list[aria-expanded]'),
+        document.querySelector('.choices__inner.has-items')
+      ].filter(Boolean);
+    }
 
-    // for each, prevent touchstart/touchmove from bubbling up
-    scrollables.forEach(el => {
-      el.addEventListener('touchstart', e => e.stopPropagation(), {passive: true});
-      el.addEventListener('touchmove', e => e.stopPropagation(), {passive: true});
+    let inScrollArea = false;
+
+    // whenever a touch starts in one of them, mark
+    getScrollAreas().forEach(el => {
+      el.addEventListener('touchstart', () => inScrollArea = true, {passive: true});
+      el.addEventListener('touchend', () => inScrollArea = false, {passive: true});
     });
+
+    document.body.addEventListener('touchmove', e => {
+      if (inScrollArea) {
+        e.preventDefault();   // capture the scroll in the dropdown/tags only
+      }
+    }, {passive: false});
 
     // ─── INIT SORT DROPDOWN ─────────────────────────────────────────────────────
     const sortOptions = [
