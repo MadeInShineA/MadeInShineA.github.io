@@ -921,16 +921,18 @@
     // ─── YEAR & THEME TOGGLE ────────────────────────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const toggleBtn = document.getElementById('theme-toggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-    });
-    window.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light');
-      }
-    });
+    let inScrollArea = false;
+
+    // mark when touch starts inside dropdown or tag-row
+    document.addEventListener('touchstart', e => {
+      inScrollArea = !!e.target.closest('.choices__list--dropdown, .choices__inner.has-items');
+    }, {passive: true});
+
+    // if our flag is set, block page pans
+    document.body.addEventListener('touchmove', e => {
+      if (inScrollArea) e.preventDefault();
+    }, {passive: false});
+
 
     // ─── CONFIG ────────────────────────────────────────────────────────────────
     // Specify exactly which languages each project should show:
