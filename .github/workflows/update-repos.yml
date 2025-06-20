@@ -5,6 +5,7 @@ on:
   push:
     branches: [ main ]
   schedule:
+    # every hour
     - cron: '0 * * * *'
 
 jobs:
@@ -17,12 +18,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up GitHub CLI
-        uses: actions/setup-gh@v4
-        with:
-          token: ${{ secrets.GH_FETCH_TOKEN }}
-
       - name: Fetch repos with languages via GH CLI
+        env:
+          # allow gh to authenticate
+          GH_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
           gh repo list MadeInShineA \
             --limit 100 \
