@@ -66,8 +66,8 @@
   "releases_url": "https://api.github.com/repos/MadeInShineA/MadeInShineA.github.io/releases{/id}",
   "deployments_url": "https://api.github.com/repos/MadeInShineA/MadeInShineA.github.io/deployments",
   "created_at": "2022-07-19T13:13:33Z",
-  "updated_at": "2025-06-20T15:31:54Z",
-  "pushed_at": "2025-06-20T15:31:50Z",
+  "updated_at": "2025-06-20T15:33:31Z",
+  "pushed_at": "2025-06-20T15:33:28Z",
   "git_url": "git://github.com/MadeInShineA/MadeInShineA.github.io.git",
   "ssh_url": "git@github.com:MadeInShineA/MadeInShineA.github.io.git",
   "clone_url": "https://github.com/MadeInShineA/MadeInShineA.github.io.git",
@@ -105,9 +105,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "HTML"
-  ]
+  "languages": null
 }
 {
   "id": 834792332,
@@ -216,7 +214,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": []
+  "languages": null
 }
 {
   "id": 988188295,
@@ -331,12 +329,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python",
-    "Rust",
-    "Scala",
-    "Shell"
-  ]
+  "languages": null
 }
 {
   "id": 987624732,
@@ -451,10 +444,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python",
-    "Shell"
-  ]
+  "languages": null
 }
 {
   "id": 644460067,
@@ -570,14 +560,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Blade",
-    "CSS",
-    "HTML",
-    "JavaScript",
-    "PHP",
-    "Vue"
-  ]
+  "languages": null
 }
 {
   "id": 913031483,
@@ -686,9 +669,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 966657071,
@@ -797,10 +778,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "CSS",
-    "Rust"
-  ]
+  "languages": null
 }
 {
   "id": 864507915,
@@ -915,9 +893,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Lua"
-  ]
+  "languages": null
 }
 {
   "id": 890843361,
@@ -1026,13 +1002,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Assembly",
-    "Batchfile",
-    "C",
-    "Makefile",
-    "Shell"
-  ]
+  "languages": null
 }
 {
   "id": 915262108,
@@ -1141,9 +1111,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Rust"
-  ]
+  "languages": null
 }
 {
   "id": 948911794,
@@ -1252,9 +1220,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "GDScript"
-  ]
+  "languages": null
 }
 {
   "id": 947296432,
@@ -1363,9 +1329,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 937927027,
@@ -1474,9 +1438,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 904090812,
@@ -1585,13 +1547,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "CSS",
-    "HTML",
-    "JavaScript",
-    "Python",
-    "Vue"
-  ]
+  "languages": null
 }
 {
   "id": 917207826,
@@ -1706,7 +1662,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": []
+  "languages": null
 }
 {
   "id": 895771105,
@@ -1815,10 +1771,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python",
-    "Rust"
-  ]
+  "languages": null
 }
 {
   "id": 908917595,
@@ -1927,7 +1880,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": []
+  "languages": null
 }
 {
   "id": 901235281,
@@ -2036,9 +1989,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Rust"
-  ]
+  "languages": null
 }
 {
   "id": 901905235,
@@ -2147,7 +2098,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": []
+  "languages": null
 }
 {
   "id": 902100055,
@@ -2256,9 +2207,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Rust"
-  ]
+  "languages": null
 }
 {
   "id": 876680708,
@@ -2367,9 +2316,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "C"
-  ]
+  "languages": null
 }
 {
   "id": 858344533,
@@ -2478,9 +2425,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "QML"
-  ]
+  "languages": null
 }
 {
   "id": 871737950,
@@ -2589,10 +2534,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "C",
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 835444596,
@@ -2701,9 +2643,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 803778857,
@@ -2812,9 +2752,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 510164906,
@@ -2923,9 +2861,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 512915159,
@@ -3034,9 +2970,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 516131420,
@@ -3145,9 +3079,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 566721396,
@@ -3262,13 +3194,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "CSS",
-    "Dockerfile",
-    "JavaScript",
-    "Mustache",
-    "SCSS"
-  ]
+  "languages": null
 }
 {
   "id": 596192864,
@@ -3377,9 +3303,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 615024195,
@@ -3488,9 +3412,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 635666903,
@@ -3605,9 +3527,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 726214411,
@@ -3716,9 +3636,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 744389689,
@@ -3827,11 +3745,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Shell",
-    "TeX",
-    "Typst"
-  ]
+  "languages": null
 }
 {
   "id": 724768627,
@@ -3940,10 +3854,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Java",
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 733493245,
@@ -4052,9 +3963,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 732945016,
@@ -4163,9 +4072,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 778268185,
@@ -4274,9 +4181,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
 {
   "id": 762194375,
@@ -4385,9 +4290,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 635033632,
@@ -4496,9 +4399,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 608291300,
@@ -4607,9 +4508,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 600403450,
@@ -4718,10 +4617,7 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "PureBasic",
-    "Python"
-  ]
+  "languages": null
 }
 {
   "id": 731215003,
@@ -4830,7 +4726,5 @@
     "triage": true,
     "pull": true
   },
-  "languages": [
-    "Scala"
-  ]
+  "languages": null
 }
