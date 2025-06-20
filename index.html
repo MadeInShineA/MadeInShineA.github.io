@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE htma>
 <html lang="en">
 
 <head>
@@ -337,7 +337,13 @@
       z-index: 2;
     }
 
-    #filter {
+    #controls .dropdown-center:first-child {
+      z-index: 3;
+      /* higher than the filter’s 2 */
+    }
+
+    #filter,
+    #sort {
       opacity: 0;
       position: absolute;
       pointer-events: none;
@@ -407,6 +413,37 @@
       scrollbar-color: var(--accent2) var(--glass);
       transition: border-color 0.23s, box-shadow 0.23s, height 0.3s ease !important;
     }
+
+    .choices--single .choices__inner {
+      height: 52px !important;
+      /* lock the height */
+      padding: 0 1.2rem !important;
+      /* same left/right inset */
+      display: flex !important;
+      /* vertically center the label */
+      align-items: center !important;
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
+      border-radius: 1.2rem !important;
+      background: var(--glass) !important;
+      backdrop-filter: var(--blur) !important;
+      border: var(--border) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* ─── Remove that default blue focus outline ─── */
+    .choices--single .choices__inner.is-focused {
+      outline: none !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* ─── Match the dropdown-item hover to your accent2 gradient ─── */
+    .choices--single .choices__list--dropdown .choices__item--selectable:hover,
+    .choices--single .choices__list--dropdown .choices__item--selectable.is-highlighted {
+      background: rgba(167, 139, 250, 0.16) !important;
+      /* same purple-tint as your filter */
+    }
+
 
     .choices__inner.has-items {
       height: auto !important;
@@ -503,12 +540,21 @@
       outline: none !important;
     }
 
+    .choices__list--single .choices__item {
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
+      /* same as .choices__inner */
+    }
+
+
     .choices__placeholder {
-      opacity: 0.73 !important;
-      color: var(--fg-muted) !important;
-      font-size: 1rem !important;
-      margin: 0.43rem 0 !important;
-      transition: opacity 0.23s !important;
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
+    }
+
+    .choices__input {
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
     }
 
     .choices__list--dropdown,
@@ -527,7 +573,7 @@
     }
 
     .choices__item--selectable {
-      padding: 0.7rem 1.1rem !important;
+      padding-top: 0.7em;
       transition: background 0.18s !important;
       color: var(--fg) !important;
       white-space: nowrap !important;
@@ -538,7 +584,6 @@
       border-bottom: none !important;
     }
 
-    .choices__item--selectable:hover,
     .choices__item--selectable.is-highlighted {
       background: rgba(74, 144, 226, 0.16) !important;
       color: var(--fg) !important;
@@ -843,7 +888,6 @@
 
     ::-webkit-scrollbar-track {
       background: var(--glass);
-    }
   </style>
 </head>
 
@@ -865,6 +909,9 @@
     <h1>Hey there!</h1>
     <p>I'm <strong>MadeInShineA</strong>, a Super Smash Bros. Melee player &amp; CS student from Switzerland.</p>
     <div id="controls">
+      <div class="dropdown-center">
+        <select id="sort"></select>
+      </div>
       <div class="dropdown-center">
         <select id="filter" multiple></select>
       </div>
@@ -888,7 +935,11 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script>
+    const githubToken = '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';
+
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle
     const toggleBtn = document.getElementById('theme-toggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light');
@@ -900,308 +951,198 @@
       }
     });
 
-    // Portfolio data and configuration
-    const username = "MadeInShineA";
-    const container = document.getElementById("projects");
-    const filter = document.getElementById("filter");
-    const searchInput = document.getElementById("search");
-    const resultsCounter = document.getElementById("results-counter");
+    // Data & state
+    const username = 'MadeInShineA';
+    const container = document.getElementById('projects');
+    const filterEl = document.getElementById('filter');
+    const sortEl = document.getElementById('sort');
+    const searchEl = document.getElementById('search');
+    const resultsCounter = document.getElementById('results-counter');
     const languageSet = new Set();
-    const hiddenRepos = ["MadeInShineA/MadeInShineA"];
-    const manualLanguages = {
-      "smash-map": ["Vue", "PHP", "Laravel"],
-      "melee-resources": ["HTML", "CSS", "JavaScript"],
-      "forest-fire-simulation": ["Scala", "Rust", "Bevy"],
-      "rust-boy": ["Rust"],
-      "manim-animations": ["Python"],
-      "spelling-checker": ["Python"],
-      "SICP-scala-exercises": ["Scala"]
-    };
-    let allCards = [];
-    let choices;
-    let totalProjects = 0;
+    let allCards = [], totalProjects = 0;
 
-    // 1. Immediately initialize Choices.js with dummy option
-    const dummyOption = document.createElement('option');
-    dummyOption.value = '';
-    dummyOption.textContent = '';
-    dummyOption.disabled = true;
-    dummyOption.selected = true;
-    dummyOption.hidden = true;
-    filter.appendChild(dummyOption);
-
-    choices = new Choices(filter, {
-      removeItemButton: true,
-      shouldSort: false,
-      placeholder: true,
-      placeholderValue: 'Filter by languages...',
-      searchEnabled: true,
-      searchPlaceholderValue: 'Search languages...',
-      itemSelectText: '',
-      classNames: {
-        containerOuter: 'choices',
-        containerInner: 'choices__inner',
-        input: 'choices__input',
-        inputCloned: 'choices__input--cloned',
-        list: 'choices__list',
-        listItems: 'choices__list--multiple',
-        listSingle: 'choices__list--single',
-        listDropdown: 'choices__list--dropdown',
-        item: 'choices__item',
-        itemSelectable: 'choices__item--selectable',
-        itemDisabled: 'choices__item--disabled',
-        itemChoice: 'choices__item--choice',
-        placeholder: 'choices__placeholder',
-        group: 'choices__group',
-        groupHeading: 'choices__heading',
-        button: 'choices__button'
-      }
+    // Choices.js setup (filter + sort)
+    const dummyOption = new Option('', '', false, false);
+    dummyOption.hidden = dummyOption.disabled = true;
+    filterEl.add(dummyOption.cloneNode(true));
+    const filterChoices = new Choices(filterEl, {
+      removeItemButton: true, shouldSort: false,
+      placeholder: true, placeholderValue: 'Filter by languages...',
+      searchEnabled: true, searchPlaceholderValue: 'Search languages...',
+      itemSelectText: ''
     });
+    const sortOptions = [
+      {value: 'updated', label: 'Updated (Newest)'},
+      {value: 'stars', label: 'Stars (High → Low)'},
+      {value: 'name', label: 'Name (A → Z)'}
+    ];
+    sortOptions.forEach(o => sortEl.add(new Option(o.label, o.value)));
+    new Choices(sortEl, {
+      placeholder: true, placeholderValue: 'Sort by...',
+      searchEnabled: false, shouldSort: false, itemSelectText: ''
+    });
+    sortEl.addEventListener('change', sortAndRender);
 
-    // 2. Fetch and display repositories
+    // helper to include Authorization header
+    function authedFetch(url) {
+      return fetch(url, {
+        headers: {
+          'Authorization': `Bearer ${githubToken}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+    }
+
+    // Fetch & render
     async function fetchRepos() {
       try {
-        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`);
-        if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+        const res = await authedFetch(
+          `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`
+        );
+        if (!res.ok) throw new Error(res.status);
         const repos = await res.json();
-
-        // Clear loading message
         container.innerHTML = '';
 
-        if (repos.length === 0) {
-          container.innerHTML = '<div class="loading">No repositories found</div>';
-          return;
-        }
+        repos.forEach(repo => {
+          if (repo.full_name === `${username}/${username}`) return;
 
-        let projectIndex = 0;
-        repos.forEach((repo) => {
-          if (hiddenRepos.includes(repo.full_name)) return;
+          // build card
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.setAttribute('data-aos', 'fade-up');
+          card.dataset.name = repo.name.toLowerCase();
+          card.dataset.stars = repo.stargazers_count;
+          card.dataset.updated = new Date(repo.updated_at).getTime();
 
-          const card = document.createElement("div");
-          card.className = "project-card";
-          card.setAttribute("data-aos", "fade-up");
-          card.setAttribute("data-aos-delay", Math.min(projectIndex * 50, 1000));
+          const langs = repo.language ? [repo.language] : ['Other'];
+          card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
-          const languages = manualLanguages[repo.name] || (repo.language ? [repo.language] : ["Other"]);
-          card.dataset.lang = languages.join(',').toLowerCase();
-          card.dataset.name = (repo.name || '').toLowerCase();
-          card.dataset.desc = (repo.description || '').toLowerCase();
+          const desc = repo.description || 'No description provided.';
+          card.dataset.desc = desc.toLowerCase();
+
           card.onclick = () => window.open(repo.html_url, '_blank');
 
-          const imageName = repo.name.toLowerCase().replace(/[^a-z0-9]/g, "-") + ".png";
-          const imageUrl = `src/${imageName}`;
-          const fallbackImage = `https://opengraph.githubassets.com/1/${username}/${repo.name}`;
-          const langTags = languages.map(lang => `<span class="category">${lang}</span>`).join(" ");
-
-          const stars = repo.stargazers_count || 0;
-          const lastUpdated = new Date(repo.updated_at).toLocaleDateString();
-
-          const description = repo.description || "No description provided.";
+          const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
+          const lastUpdate = new Date(repo.updated_at).toLocaleDateString();
 
           card.innerHTML = `
           <div class="carousel">
-            <img src="${imageUrl}" alt="${repo.name}" 
-              onerror="
-                if(this.src.indexOf('${fallbackImage}') === -1){
-                  this.src='${fallbackImage}';
-                }else{
-                  this.onerror=null;
-                  this.src='data:image/svg+xml;utf8,<svg width=&quot;300&quot; height=&quot;200&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><rect fill=&quot;%2336374b&quot; width=&quot;300&quot; height=&quot;200&quot;/><text x=&quot;50%25&quot; y=&quot;50%25&quot; fill=&quot;%23fff&quot; dy=&quot;.3em&quot; font-size=&quot;24&quot; text-anchor=&quot;middle&quot; font-family=&quot;Segoe UI,Arial,sans-serif&quot;>No Image</text></svg>';
-                }
-              " loading="lazy">
+            <img src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
+                 alt="${repo.name}" loading="lazy"
+                 onerror="this.src='https://opengraph.githubassets.com/1/${username}/${repo.name}'" />
           </div>
           <div class="project-content">
-            ${langTags}
-            <h3>${repo.name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h3>
-            <p class="description">${description}</p>
-            <div class="project-metrics" id="metrics-${repo.name}">
-              <span>⭐ ${stars}</span>
+            ${tags}
+            <h3>${repo.name}</h3>
+            <p class="description">${desc}</p>
+            <div class="project-metrics">
+              <span>⭐ ${repo.stargazers_count}</span>
               <span>📝 Commits: <span class="commits-loading">...</span></span>
-              <span>⏱ Updated ${lastUpdated}</span>
+              <span>⏱ Updated ${lastUpdate}</span>
             </div>
           </div>
         `;
-
           container.appendChild(card);
           allCards.push(card);
-          languages.forEach(lang => languageSet.add(lang));
-          projectIndex++;
+          langs.forEach(l => languageSet.add(l));
 
-          // Fetch commit count using pagination trick
-          fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`)
-            .then(res => {
-              if (!res.ok) throw new Error();
-              const link = res.headers.get('link');
-              if (link) {
-                const match = link.match(/&page=(\d+)>; rel="last"/);
-                if (match) return match[1];
-              }
-              return 1;
+          // commits count with auth
+          authedFetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`)
+            .then(r => {
+              const link = r.headers.get('link');
+              const m = link && link.match(/&page=(\d+)>; rel="last"/);
+              return m ? +m[1] : 1;
             })
-            .then(commits => {
-              card.querySelector('.commits-loading').textContent = commits;
+            .then(count => {
+              card.querySelector('.commits-loading').textContent = count;
             })
             .catch(() => {
-              card.querySelector('.commits-loading').textContent = "—";
+              card.querySelector('.commits-loading').textContent = '—';
             });
         });
 
         totalProjects = allCards.length;
         populateFilter();
 
-        setTimeout(() => {
-          AOS.init({duration: 600, once: true, offset: 50});
-        }, 100);
+        // init AOS and first render
+        AOS.init({duration: 600, once: true});
+        sortAndRender();
 
-        updateResultsCounter(totalProjects);
-
-      } catch (error) {
-        console.error('Error fetching repositories:', error);
-        container.innerHTML = '<div class="loading">Failed to load repositories. Please try again later.</div>';
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = '<div class="loading">Failed to load repositories.</div>';
       }
     }
 
-    // 3. Populate language filter after fetch
     function populateFilter() {
-      // Remove all options (including dummy)
-      while (filter.firstChild) filter.removeChild(filter.firstChild);
-
-      const sortedLanguages = [...languageSet].sort();
-      sortedLanguages.forEach(lang => {
-        const opt = document.createElement("option");
-        opt.value = lang;
-        opt.textContent = lang;
-        filter.appendChild(opt);
+      filterChoices.clearStore();
+      [...languageSet].sort().forEach(lang => {
+        filterChoices.setChoices([{value: lang, label: lang}], 'value', 'label', false);
       });
-
-      // Re-init Choices with real languages
-      if (choices) choices.destroy();
-      choices = new Choices(filter, {
-        removeItemButton: true,
-        shouldSort: false,
-        placeholder: true,
-        placeholderValue: 'Filter by languages...',
-        searchEnabled: true,
-        searchPlaceholderValue: 'Search languages...',
-        itemSelectText: '',
-        classNames: {
-          containerOuter: 'choices',
-          containerInner: 'choices__inner',
-          input: 'choices__input',
-          inputCloned: 'choices__input--cloned',
-          list: 'choices__list',
-          listItems: 'choices__list--multiple',
-          listSingle: 'choices__list--single',
-          listDropdown: 'choices__list--dropdown',
-          item: 'choices__item',
-          itemSelectable: 'choices__item--selectable',
-          itemDisabled: 'choices__item--disabled',
-          itemChoice: 'choices__item--choice',
-          placeholder: 'choices__placeholder',
-          group: 'choices__group',
-          groupHeading: 'choices__heading',
-          button: 'choices__button'
-        }
-      });
-
-      choices.passedElement.element.addEventListener('choice', () => {
-        updateChoicesHeight();
-        updatePlaceholderVisibility();
-      });
-
-      choices.passedElement.element.addEventListener('removeItem', () => {
-        setTimeout(() => {
-          updateChoicesHeight();
-          updatePlaceholderVisibility();
-        }, 10);
-      });
-
-      filter.addEventListener('change', debounce(applyFilters, 150));
-      searchInput.addEventListener('input', debounce(applyFilters, 300));
+      filterEl.addEventListener('change', debounce(applyFilters, 150));
+      searchEl.addEventListener('input', debounce(applyFilters, 300));
     }
 
-    function updateChoicesHeight() {
-      const choicesInner = document.querySelector('.choices__inner');
-      const selectedItems = document.querySelectorAll('.choices__list--multiple .choices__item');
-      if (selectedItems.length > 0) {
-        choicesInner.classList.add('has-items');
-      } else {
-        choicesInner.classList.remove('has-items');
-      }
-    }
-
-    function updatePlaceholderVisibility() {
-      const selectedItems = document.querySelectorAll('.choices__list--multiple .choices__item');
-      const placeholder = document.querySelector('.choices__placeholder');
-      const input = document.querySelector('.choices__input');
-      if (selectedItems.length > 0) {
-        if (placeholder) placeholder.classList.add('hidden');
-        if (input) input.placeholder = '';
-      } else {
-        if (placeholder) placeholder.classList.remove('hidden');
-        if (input) input.placeholder = 'Filter by languages...';
-      }
+    function sortAndRender() {
+      const crit = sortEl.value;
+      allCards.sort((a, b) => {
+        if (crit === 'stars') return b.dataset.stars - a.dataset.stars;
+        if (crit === 'updated') return b.dataset.updated - a.dataset.updated;
+        if (crit === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+      });
+      container.innerHTML = '';
+      allCards.forEach(c => container.appendChild(c));
+      applyFilters();
+      AOS.refresh();
     }
 
     function applyFilters() {
-      const selected = choices.getValue(true);
-      const keyword = searchInput.value.toLowerCase().trim();
+      const sel = filterChoices.getValue(true);
+      const kw = searchEl.value.toLowerCase().trim();
+      let count = 0;
 
-      let visibleCount = 0;
-      const existingMessage = container.querySelector('.no-results');
-      if (existingMessage) existingMessage.remove();
+      container.querySelector('.no-results')?.remove();
 
-      allCards.forEach((card, index) => {
+      allCards.forEach(card => {
         const langs = card.dataset.lang.split(',');
-        const matchLang = selected.length === 0 || selected.some(sel => langs.includes(sel.toLowerCase()));
-        const matchSearch = !keyword || (
-          card.dataset.name.includes(keyword) ||
-          card.dataset.desc.includes(keyword) ||
-          langs.some(lang => lang.includes(keyword))
-        );
-        const shouldShow = matchLang && matchSearch;
-        if (shouldShow) {
+        const okLang = !sel.length || sel.some(s => langs.includes(s.toLowerCase()));
+        const okText =
+          !kw ||
+          card.dataset.name.includes(kw) ||
+          card.dataset.desc.includes(kw) ||
+          langs.some(l => l.includes(kw));
+
+        if (okLang && okText) {
           card.classList.remove('filtered-hidden');
           card.classList.add('filtered-visible');
-          card.style.animationDelay = `${index * 50}ms`;
-          visibleCount++;
+          count++;
         } else {
           card.classList.remove('filtered-visible');
           card.classList.add('filtered-hidden');
         }
       });
 
-      updateResultsCounter(visibleCount);
-
-      if (visibleCount === 0) {
-        const message = document.createElement('div');
-        message.className = 'no-results';
-        message.innerHTML = `
-        <h3>No projects found</h3>
-        <p>Try adjusting your filters or search terms</p>
-      `;
-        container.appendChild(message);
-      }
-    }
-
-    function updateResultsCounter(count) {
       if (count === totalProjects) {
         resultsCounter.style.display = 'none';
       } else {
         resultsCounter.style.display = 'block';
         resultsCounter.textContent = `Showing ${count} of ${totalProjects} projects`;
       }
+
+      if (!count) {
+        const msg = document.createElement('div');
+        msg.className = 'no-results';
+        msg.innerHTML = '<h3>No projects found</h3><p>Try adjusting filters or search terms</p>';
+        container.appendChild(msg);
+      }
     }
 
-    function debounce(func, wait) {
+    function debounce(fn, delay) {
       let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
+      return (...args) => {
         clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+        timeout = setTimeout(() => fn(...args), delay);
       };
     }
 
