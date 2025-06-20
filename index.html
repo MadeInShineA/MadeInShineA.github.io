@@ -1017,7 +1017,7 @@
       try {
         const res = await fetch('/repos.json');
         if (!res.ok) throw new Error(`Failed to load repos.json: ${res.status}`);
-        const repos = await res.json();
+        const repos = await res.json();  // array of repo objects
 
         container.innerHTML = '';
         allCards = [];
@@ -1027,31 +1027,28 @@
           const fullName = `${repo.owner.login}/${repo.name}`;
           if (hiddenRepos.includes(fullName)) continue;
 
-          // — use inlined languages, defaulting to 'Other'
+          // map the GH-CLI languages array into a simple string list
           const langs = Array.isArray(repo.languages) && repo.languages.length
-            ? repo.languages
-            : ['Other'];
+            ? repo.languages.map(l => l.name)
+            : (repo.language ? [repo.language] : ['Other']);
 
-          // apply allowedLanguages filter
           if (
             allowedLanguages.length > 0 &&
             !langs.some(l => allowedLanguages.includes(l))
           ) continue;
 
-          // build card (unchanged) …
+          // build your card…
           const card = document.createElement('div');
           card.className = 'project-card';
           card.setAttribute('data-aos', 'fade-up');
           card.dataset.name = repo.name.toLowerCase();
-          card.dataset.stars = repo.stargazers_count;
-          card.dataset.updated = new Date(repo.updated_at).getTime();
+          card.dataset.stars = repo.stargazerCount;
+          card.dataset.updated = new Date(repo.updatedAt).getTime();
           card.dataset.desc = (repo.description || '').toLowerCase();
           card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
-          const tags = langs
-            .map(l => `<span class="category">${l}</span>`)
-            .join('');
-          const lastUpdate = new Date(repo.updated_at).toLocaleDateString();
+          const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
+          const lastUpdate = new Date(repo.updatedAt).toLocaleDateString();
 
           card.innerHTML = `
         <div class="carousel">
@@ -1067,14 +1064,15 @@
           <h3>${repo.name}</h3>
           <p class="description">${repo.description || 'No description provided.'}</p>
           <div class="project-metrics">
-            <span>⭐ ${repo.stargazers_count}</span>
+            <span>⭐ ${repo.stargazerCount}</span>
             <span>📝 Commits: <span class="commits-loading">...</span></span>
             <span>⏱ Updated ${lastUpdate}</span>
           </div>
         </div>
       `;
 
-          card.onclick = () => window.open(repo.html_url, '_blank');
+          card.onclick = () => window.open(repo.htmlUrl, '_blank');
+
           container.appendChild(card);
           allCards.push(card);
           langs.forEach(l => languageSet.add(l));

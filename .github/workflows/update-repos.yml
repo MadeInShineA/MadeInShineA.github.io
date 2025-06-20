@@ -17,49 +17,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Fetch raw repos list
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
+      - name: Set up GitHub CLI
+        uses: actions/setup-gh@v4
+        with:
+          token: ${{ secrets.GH_FETCH_TOKEN }}
+
+      - name: Fetch repos with languages via GH CLI
         run: |
-          curl -s \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            "https://api.github.com/users/MadeInShineA/repos?per_page=100&sort=updated" \
-            > repos-raw.json
-
-      - name: Validate JSON
-        run: |
-          jq . repos-raw.json > /dev/null
-
-      - name: Inline languages into repos.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
-        run: |
-          # Start the array
-          echo '[' > repos.json
-
-          first=true
-          # For each repo object (compact JSON)
-          while IFS= read -r repo; do
-            # fetch that repo's languages breakdown
-            raw=$(curl -s \
-              -H "Authorization: token $GITHUB_TOKEN" \
-              "$(jq -r '.languages_url' <<<"$repo")")
-            # compact array of language names
-            langs=$(jq -c 'keys' <<< "$raw")
-            # comma-prefix all but the first element
-            if [ "$first" = true ]; then
-              first=false
-            else
-              echo ',' >> repos.json
-            fi
-            # merge in and append
-            echo "$repo" \
-              | jq --argjson languages "$langs" '. + { languages }' \
-              >> repos.json
-          done < <(jq -c '.[]' repos-raw.json)
-
-          # Close the array
-          echo ']' >> repos.json
+          gh repo list MadeInShineA \
+            --limit 100 \
+            --json owner,name,description,htmlUrl,stargazerCount,updatedAt,languages \
+            > repos.json
 
       - name: Commit updated repos.json
         uses: EndBug/add-and-commit@v9
