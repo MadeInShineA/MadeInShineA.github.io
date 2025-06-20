@@ -2,8 +2,11 @@
 name: Fetch GitHub Repos for Pages
 
 on:
+  # Trigger on push to main branch
   push:
-    branches: [ main ]
+    branches:
+      - main
+  # Also run on an hourly schedule
   schedule:
     - cron: '0 * * * *'
 
@@ -12,19 +15,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Fetch repos with languages via GH CLI
+      - name: Fetch & flatten repos.json
         env:
+          # GH CLI picks up this token automatically
           GH_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
           gh repo list MadeInShineA \
             --limit 100 \
             --json owner,name,description,url,stargazerCount,updatedAt,languages \
-            > repos.json
+          | jq '[ 
+              .[] 
+              | .languages = ( 
+                  .languages 
+                  | map(
+                      # GraphQL‐style entries have .node.name; CLI‐style entries might have .name
+                      .node?.name // .name
+                    )
+                ) 
+            ]' \
+          > repos.json
 
       - name: Commit updated repos.json
         uses: EndBug/add-and-commit@v9
