@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MadeInShineA – Portfolio</title>
+  <link rel="icon" href="src/avatar.jpg" type="image/png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Fira+Mono:wght@400;600&display=swap"
     rel="stylesheet">
@@ -31,6 +32,7 @@
       --profile-shadow: 0 4px 24px #7dd3fc33, 0 0 0 8px rgba(120, 144, 255, 0.05);
       --navbar-glass: rgba(28, 28, 45, 0.73);
       --profile-size: 88px;
+      --section-gap: 4rem;
     }
 
     body.light {
@@ -187,21 +189,17 @@
      Header & Profile
   ───────────────────────────────────────────────────────────────────────── */
     header {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 7rem 1.2rem 2.4rem;
+      margin: 0;
+      padding: 0;
       position: relative;
     }
 
-    .profile {
-      margin: 0 auto 1.15rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.72rem;
-      z-index: 1;
+    main {
+      /* header is 56px tall, plus 1rem of gap */
+      padding-top: calc(56px + 1rem);
     }
+
+
 
     @keyframes pulse {
       0% {
@@ -301,7 +299,7 @@
       }
     }
 
-    header h1 {
+    .hero h1 {
       font-size: 2.6rem;
       font-weight: 800;
       line-height: 1.2;
@@ -315,7 +313,7 @@
     }
 
 
-    header h1::after {
+    .hero h1::after {
       content: '';
       display: block;
       margin: 0.8rem auto 0;
@@ -328,7 +326,7 @@
       box-shadow: 0 1.5px 7px #7dd3fc55;
     }
 
-    header:hover h1::after {
+    .hero:hover h1::after {
       width: 77%;
       opacity: 0.8;
     }
@@ -345,7 +343,18 @@
       }
     }
 
-    header p {
+    section {
+      margin-block: var(--section-gap);
+      /* same gap above & below */
+      margin-inline: auto;
+      /* center horizontally */
+      max-width: 1230px;
+      /* or whatever your widest section should be */
+      padding-inline: 1rem;
+      /* consistent left/right gutter */
+    }
+
+    .hero p {
       opacity: 0;
       /* start hidden */
       animation: fadeSlide 1s ease-out 1.5s forwards;
@@ -357,27 +366,30 @@
       font-weight: 500;
     }
 
+    .hero {
+      max-width: 900px;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile {
+      margin: 0 auto 1.15rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.72rem;
+      z-index: 1;
+    }
+
     /* ─────────────────────────────────────────────────────────────────────────
      Filter / Search Controls
   ───────────────────────────────────────────────────────────────────────── */
-    @keyframes slideFadeIn {
-      0% {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
 
 
 
     #controls {
-      opacity: 0;
-      /* start hidden */
-      animation: slideFadeIn 1s ease-out 2.5s forwards;
+      margin: 0 auto 1.5rem;
+      max-width: 800px;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -732,6 +744,36 @@
      Projects & Cards
   ───────────────────────────────────────────────────────────────────────── */
     /* collapse completely until we add .visible */
+
+    .projects-section {
+      opacity: 0;
+      animation: fadeSlide 1s ease-out 3.5s forwards;
+      max-width: 1230px;
+    }
+
+    .projects-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .projects-header h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .projects-header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+
     .projects {
       display: none;
       gap: 2.6rem;
@@ -1081,49 +1123,224 @@
     ::-webkit-scrollbar-track {
       background: var(--glass);
     }
+
+    /* ── Skills Section Container ───────────────────────────────────────────────── */
+    .skills-section {
+      opacity: 0;
+      animation: fadeSlide 1s ease-out 2.5s forwards;
+
+      /* never get wider than your controls: */
+      max-width: 800px;
+      /* otherwise be full-width minus the gutters (2×1.1rem) */
+      width: calc(100% - 2.2rem);
+
+      /* vertical gap = 2.5rem top & bottom;
+     horizontal auto → center whatever is left */
+      margin: 2.5rem auto;
+      padding: 0;
+      padding-bottom: 2.5rem;
+
+
+      /* your glass/card styles */
+      background: var(--glass);
+      border: var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: var(--blur);
+      box-shadow: var(--shadow);
+      color: var(--fg);
+    }
+
+    .skills-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .skills-header h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .skills-desc {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      /* respects your line break */
+    }
+
+    /* ── Grid Layout ─────────────────────────────────────────────────────────────── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    /* ── Individual Skill Card ──────────────────────────────────────────────────── */
+    .skill {
+      --size: 130px;
+      --thickness: 14px;
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      transition: transform 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: scale(1.1);
+    }
+
+    /* Radial ring using conic-gradient */
+    .skill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent) 0deg,
+          var(--accent) calc(var(--pct) * 3.6deg),
+          rgba(255, 255, 255, 0.05) calc(var(--pct) * 3.6deg),
+          rgba(255, 255, 255, 0.05) 360deg);
+      transform: rotate(-90deg);
+      box-shadow: var(--profile-shadow);
+      transition: background 1.2s ease-out, box-shadow 0.3s ease;
+    }
+
+    .skill:hover::before {
+      box-shadow:
+        0 0 20px var(--accent),
+        0 0 48px var(--accent2);
+    }
+
+    /* Inner circle to mask center */
+    /* Inside your existing CSS block for .skill .inner: */
+    .skill .inner {
+      position: absolute;
+      inset: var(--thickness);
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      /* stack count and percent */
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+      transition: background 0.3s ease;
+    }
+
+    /* Raw count (big) */
+    .skill .inner .count {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1;
+    }
+
+    /* New precise percent (smaller & muted) */
+    .skill .inner .percent {
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      margin-top: 0.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .skill .label {
+      position: absolute;
+      bottom: -1.9rem;
+      left: 0;
+      /* ensure it starts at the left edge */
+      width: 100%;
+      /* span the full width of the circle container */
+      text-align: center;
+      /* center the text within that width */
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+
+    .skill:hover .label {
+      color: var(--accent2);
+    }
+
+    /* Trigger the draw animation on load */
+    .skills-section.anim .skill::before {
+      /* uses the CSS transition */
+    }
   </style>
 </head>
 
 <body>
-  <nav class="navbar">
-    <button id="theme-toggle" aria-label="Toggle theme">
-      <span class="icon-moon">🌙</span>
-      <span class="icon-sun">☀️</span>
-    </button>
-  </nav>
   <header>
-    <div class="profile">
-      <div class="profile-img">
-        <img src="src/avatar.jpg" alt="Profile photo of MadeInShineA" loading="lazy"
-          onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/64627898?v=4';">
-      </div>
-      <div class="profile-name">MadeInShineA</div>
-    </div>
-    <h1><span class="typing">Hey there!</span></h1>
-    <p>I'm <strong>MadeInShineA</strong>, a Super Smash Bros. Melee player &amp; CS student from Switzerland.</p>
-    <div id="controls">
-      <div class="dropdown-center">
-        <select id="sort"></select>
-      </div>
-      <div class="dropdown-center">
-        <select id="filter" multiple></select>
-      </div>
-      <input id="search" placeholder="Search projects..." autocomplete="off" />
-    </div>
-    <div id="results-counter" class="results-counter" style="display: none;"></div>
+    <nav class="navbar">
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <span class="icon-moon">🌙</span>
+        <span class="icon-sun">☀️</span>
+      </button>
+    </nav>
   </header>
-  <section id="projects" class="projects">
-    <div class="loading">Loading projects</div>
-  </section>
+
+  <main>
+    <section class="hero">
+      <div class="profile">
+        <div class="profile-img">
+          <img src="src/avatar.jpg" alt="Profile photo of MadeInShineA" loading="lazy"
+            onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/64627898?v=4';">
+        </div>
+        <div class="profile-name">MadeInShineA</div>
+      </div>
+      <h1><span class="typing">Hey there!</span></h1>
+      <p>I'm <strong>MadeInShineA</strong>, a Super Smash Bros. Melee player &amp; CS student from Switzerland.</p>
+    </section>
+
+    <section id="skills" class="skills-section">
+      <div class="skills-header">
+        <h2>My Top Languages</h2>
+        <p class="skills-desc">
+          Shows each language’s project count and its share of my portfolio.
+        </p>
+
+
+      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <section class="projects-section">
+      <div class="projects-header">
+        <h2>My Projects</h2>
+        <p>Explore my recent works. Use the controls below to filter, sort, or search!</p>
+      </div>
+      <div id="controls">
+        <div class="dropdown-center">
+          <select id="sort"></select>
+        </div>
+        <div class="dropdown-center">
+          <select id="filter" multiple></select>
+        </div>
+        <input id="search" placeholder="Search projects..." autocomplete="off" />
+      </div>
+      <div id="projects" class="projects">
+        <div class="loading">Loading projects</div>
+      </div>
+      <div id="results-counter" class="results-counter" style="display:none;"></div>
+    </section>
+  </main>
+
   <footer>
     <div class="footer-socials">
-      <a href="https://github.com/MadeInShineA" target="_blank" title="GitHub"><span>🐙</span>GitHub</a>
-      <a href="https://twitter.com/MadeInShineA" target="_blank" title="Twitter"><span>🐦</span>Twitter</a>
-      <a href="mailto:shinea@protonmail.com" title="Email"><span>✉️</span>Email</a>
+      <a href="https://github.com/MadeInShineA" target="_blank" title="GitHub">🐙 GitHub</a>
+      <a href="https://twitter.com/MadeInShineA" target="_blank" title="Twitter">🐦 Twitter</a>
+      <a href="mailto:shinea@protonmail.com" title="Email">✉️ Email</a>
     </div>
-    <div style="margin-top:0.7rem;">
-      &copy; <span id="year"></span> MadeInShineA – Built with <span style="color:#a78bfa;">♥</span>
-    </div>
+    <div>&copy; <span id="year"></span> MadeInShineA – Built with <span style="color:#a78bfa;">♥</span></div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script>
@@ -1223,7 +1440,7 @@
     });
     sortEl.addEventListener('change', sortAndRender);
 
-    const CONTROLS_ANIM_MS = 2500;
+    const CONTROLS_ANIM_MS = 4500;
     let allCards = [];
     let totalProjects = 0;
     let firstSort = true;
@@ -1445,6 +1662,56 @@
     // ─── INITIAL FETCH ─────────────────────────────────────────────────────────
     fetchRepos();
   </script>
+  <script>
+    const languageNumber = 4
+    const excludedLanguages = ['Other', 'HTML', 'Css', 'Markdown'];
+    const excludedSet = new Set(excludedLanguages.map(l => l.toLowerCase()));
+
+    function renderSkills() {
+      const counts = {};
+      allCards.forEach(card => {
+        card.dataset.lang
+          .split(',')
+          .map(l => l.trim().toLowerCase())
+          .filter(lang => !excludedSet.has(lang))
+          .forEach(lang => counts[lang] = (counts[lang] || 0) + 1);
+      });
+
+      const top = Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, languageNumber);
+
+      const total = allCards.length;
+      const container = document.getElementById('skillsGrid');
+      container.innerHTML = '';
+
+      top.forEach(([lang, cnt]) => {
+        const pct = Math.round((cnt / total) * 100);
+        const skill = document.createElement('div');
+        skill.className = 'skill';
+        skill.style.setProperty('--pct', pct);
+
+        // Capitalize language name
+        const label = lang.charAt(0).toUpperCase() + lang.slice(1);
+
+        skill.innerHTML = `
+        <div class="inner">
+          <div class="count">${cnt}</div>
+          <div class="percent">${pct}%</div>
+        </div>
+        <div class="label">${label}</div>
+      `;
+        container.appendChild(skill);
+      });
+
+      requestAnimationFrame(() =>
+        document.getElementById('skills').classList.add('anim')
+      );
+    }
+
+    fetchRepos().then(renderSkills);
+  </script>
+
 </body>
 
 </html>
