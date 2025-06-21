@@ -1274,6 +1274,33 @@
     .skills-section.anim .skill::before {
       /* uses the CSS transition */
     }
+
+    /* 1) Override the native input placeholder on all engines */
+    input::-webkit-input-placeholder,
+    input:-ms-input-placeholder,
+    input::-ms-input-placeholder,
+    input::-moz-placeholder,
+    input::placeholder {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      /* on WebKit you may also need this: */
+      -webkit-text-fill-color: var(--fg) !important;
+    }
+
+    /* 2) Ensure Choices.js’s own placeholder span is equally enforced */
+    .choices__inner .choices__placeholder {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      /* bump specificity if necessary: */
+      background-clip: text;
+      /* dummy property to up specificity */
+    }
+
+    /* 3) If your controls are inside a dark-mode context, force the color-scheme */
+    :root {
+      color-scheme: dark light;
+      /* so mobile Safari knows you support dark placeholders */
+    }
   </style>
 </head>
 
