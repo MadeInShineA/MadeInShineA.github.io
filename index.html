@@ -1334,6 +1334,45 @@
       opacity: 0.68 !important;
       -webkit-text-fill-color: var(--fg) !important;
     }
+
+    /* ─── Improve dropdown text legibility in dark mode ───────────────────────── */
+    body:not(.light) .choices__list--dropdown .choices__item--selectable {
+      /* force full-bright text */
+      color: var(--fg) !important;
+      opacity: 1 !important;
+      /* subtle text shadow to lift letters off the background */
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+    }
+
+    body:not(.light) .choices__list--dropdown {
+      /* brighten the dropdown background slightly */
+      background: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    /* ─── Force custom dropdown UI on mobile ─────────────────────────────────── */
+    select {
+      /* remove the native OS styling so Choices.js can fully control it */
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      appearance: none !important;
+    }
+
+    /* ─── Mobile-specific: same dark-mode contrast boosts ─────────────────────── */
+    @media (max-width: 768px),
+    (pointer: coarse) {
+
+      /* dropdown items */
+      body:not(.light) .choices__list--dropdown .choices__item--selectable {
+        color: var(--fg) !important;
+        opacity: 1 !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+      }
+
+      /* dropdown panel background */
+      body:not(.light) .choices__list--dropdown {
+        background: rgba(255, 255, 255, 0.12) !important;
+      }
+    }
   </style>
 </head>
 
