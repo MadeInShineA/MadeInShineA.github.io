@@ -1357,30 +1357,28 @@
       appearance: none !important;
     }
 
+    /* ─── Mobile-specific: same dark-mode contrast boosts ─────────────────────── */
+    /* ─── Force dropdowns under the field on mobile ───────────────────────────── */
     @media (max-width: 768px),
     (pointer: coarse) {
-
-      /* Targets the dropdown container when it’s open */
-      .choices__list--dropdown[aria-expanded="true"] {
-        position: fixed !important;
-        /* pull it out of the normal flow */
-        top: 56px !important;
-        /* pin under your navbar */
+      .choices__list--dropdown {
+        position: absolute !important;
+        /* back in flow, under its container */
+        top: 100% !important;
+        /* place right below the trigger */
         bottom: auto !important;
-        /* cancel any computed bottom:value */
-        margin: 0 !important;
-        /* remove extra offsets */
-        transform: none !important;
-        /* cancel any flip transform */
         left: 0 !important;
-        /* full width */
-        right: 0 !important;
+        right: auto !important;
         width: 100% !important;
-        /* span the screen */
-        max-height: calc(100vh - 56px) !important;
-        overflow-y: auto !important;
-        border-radius: 0 !important;
-        z-index: 3000 !important;
+        max-height: 200px !important;
+        /* keep your scrolling cap */
+        border-radius: 0.5rem !important;
+        /* or whatever fits your design */
+      }
+
+      /* make sure the parent .dropdown-center is positioned relative */
+      .dropdown-center {
+        position: relative !important;
       }
     }
   </style>
@@ -1541,6 +1539,7 @@
     ];
     sortOptions.forEach(opt => sortEl.add(new Option(opt.label, opt.value)));
     const sortChoices = new Choices(sortEl, {
+      position: 'bottom',
       placeholder: true,
       placeholderValue: 'Sort by...',
       searchEnabled: false,
