@@ -1361,16 +1361,19 @@
     @media (max-width: 768px),
     (pointer: coarse) {
 
-      /* dropdown items */
-      body:not(.light) .choices__list--dropdown .choices__item--selectable {
-        color: var(--fg) !important;
-        opacity: 1 !important;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
-      }
-
-      /* dropdown panel background */
-      body:not(.light) .choices__list--dropdown {
-        background: rgba(255, 255, 255, 0.12) !important;
+      /* Make the dropdown pane sit on top of everything, full-width, scrollable */
+      .choices__list--dropdown {
+        position: fixed !important;
+        top: 56px !important;
+        /* just below your navbar */
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        max-height: calc(100vh - 56px) !important;
+        overflow-y: auto !important;
+        z-index: 3000 !important;
+        border-radius: 0 !important;
       }
     }
   </style>
@@ -1519,7 +1522,8 @@
       placeholderValue: 'Filter by languages...',
       searchEnabled: true,
       searchPlaceholderValue: 'Search languages...',
-      itemSelectText: ''
+      itemSelectText: '',
+      shouldUseNative: false
     });
 
     // ─── INIT SORT DROPDOWN ─────────────────────────────────────────────────────
@@ -1534,7 +1538,8 @@
       placeholderValue: 'Sort by...',
       searchEnabled: false,
       shouldSort: false,
-      itemSelectText: ''
+      itemSelectText: '',
+      shouldUseNative: false
     });
     sortEl.addEventListener('change', sortAndRender);
 
