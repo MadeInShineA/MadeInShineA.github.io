@@ -1357,22 +1357,30 @@
       appearance: none !important;
     }
 
-    /* ─── Mobile-specific: same dark-mode contrast boosts ─────────────────────── */
     @media (max-width: 768px),
     (pointer: coarse) {
-      .choices__list--dropdown {
+
+      /* Targets the dropdown container when it’s open */
+      .choices__list--dropdown[aria-expanded="true"] {
         position: fixed !important;
+        /* pull it out of the normal flow */
         top: 56px !important;
-        /* below your navbar */
+        /* pin under your navbar */
         bottom: auto !important;
-        /* cancel any flip-up */
+        /* cancel any computed bottom:value */
+        margin: 0 !important;
+        /* remove extra offsets */
+        transform: none !important;
+        /* cancel any flip transform */
         left: 0 !important;
+        /* full width */
         right: 0 !important;
         width: 100% !important;
+        /* span the screen */
         max-height: calc(100vh - 56px) !important;
         overflow-y: auto !important;
-        z-index: 3000 !important;
         border-radius: 0 !important;
+        z-index: 3000 !important;
       }
     }
   </style>
