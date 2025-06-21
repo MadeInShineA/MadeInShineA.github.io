@@ -1135,7 +1135,6 @@
       /* vertical gap = 2.5rem top & bottom;
      horizontal auto → center whatever is left */
       margin: 2.5rem auto;
-      padding: 0;
       padding-bottom: 2.5rem;
 
 
@@ -1162,6 +1161,9 @@
     }
 
     .skills-desc {
+      white-space: normal;
+      /* collapse your source indentation */
+      max-width: none;
       margin-top: 0.5rem;
       font-size: 1rem;
       color: var(--fg-muted);
@@ -1169,8 +1171,6 @@
       margin-left: auto;
       margin-right: auto;
       line-height: 1.4;
-      white-space: pre-wrap;
-      /* respects your line break */
     }
 
     /* ── Grid Layout ─────────────────────────────────────────────────────────────── */
