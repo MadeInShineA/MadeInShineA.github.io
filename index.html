@@ -1310,6 +1310,30 @@
     :root {
       color-scheme: dark light;
     }
+
+    /* 1) Override the native placeholder on the Choices.js input */
+    .choices__input::-webkit-input-placeholder,
+    /* Chrome/Safari */
+    .choices__input:-ms-input-placeholder,
+    /* IE10+ */
+    .choices__input::-ms-input-placeholder,
+    /* Edge */
+    .choices__input::-moz-placeholder,
+    /* Firefox */
+    .choices__input::placeholder {
+      /* Standard */
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      -webkit-text-fill-color: var(--fg) !important;
+    }
+
+    /* 2) Boost specificity if there’s any bleed from the UA styles */
+    .dropdown-center .choices__input::-webkit-input-placeholder,
+    .dropdown-center .choices__input::placeholder {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      -webkit-text-fill-color: var(--fg) !important;
+    }
   </style>
 </head>
 
