@@ -1275,31 +1275,40 @@
       /* uses the CSS transition */
     }
 
-    /* 1) Override the native input placeholder on all engines */
+    /* 1) Native <input> placeholders on all engines */
     input::-webkit-input-placeholder,
+    /* Chrome/Safari/Edge */
     input:-ms-input-placeholder,
+    /* IE10+ */
     input::-ms-input-placeholder,
+    /* Edge */
     input::-moz-placeholder,
+    /* Firefox 19+ */
     input::placeholder {
+      /* Standard */
       color: var(--fg) !important;
       opacity: 0.68 !important;
-      /* on WebKit you may also need this: */
+      /* iOS Safari really needs this to repaint text: */
       -webkit-text-fill-color: var(--fg) !important;
     }
 
-    /* 2) Ensure Choices.js’s own placeholder span is equally enforced */
+    /* 2) Disabled/hidden <option> placeholders (Choices.js’s dummyOption) */
+    select option[disabled][hidden] {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+    }
+
+    /* 3) Choices.js’s own placeholder span inside the widget */
     .choices__inner .choices__placeholder {
       color: var(--fg) !important;
       opacity: 0.68 !important;
-      /* bump specificity if necessary: */
-      background-clip: text;
-      /* dummy property to up specificity */
+      /* bump specificity to wrestle control from mobile UA */
+      background-clip: text !important;
     }
 
-    /* 3) If your controls are inside a dark-mode context, force the color-scheme */
+    /* 4) Make sure mobile knows your page supports dark/light tinting */
     :root {
       color-scheme: dark light;
-      /* so mobile Safari knows you support dark placeholders */
     }
   </style>
 </head>
