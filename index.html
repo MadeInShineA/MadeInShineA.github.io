@@ -464,7 +464,7 @@
 
     #search::placeholder {
       opacity: 0.68;
-      color: var(--fg-muted);
+      color: var(--fg);
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -705,7 +705,7 @@
     }
 
     /* 2) Dark-mode dropdown panel: same frosted glass as your inputs */
-    body:not(.light) .choices__list[aria-expanded] {
+    body .choices__list[aria-expanded] {
       background: var(--glass) !important;
       backdrop-filter: var(--blur) !important;
       border: var(--border) !important;
@@ -714,14 +714,12 @@
     }
 
     /* 3) Dropdown items: bright text + subtle divider + tiny text-shadow */
-    body:not(.light) .choices__item--selectable {
+    body .choices__item--selectable {
       color: var(--fg) !important;
-      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.7) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
     /* 4) Hover/highlight state */
-    body:not(.light) .choices__item--selectable.is-highlighted {
+    body .choices__item--selectable.is-highlighted {
       background: rgba(167, 139, 250, 0.24) !important;
     }
 
