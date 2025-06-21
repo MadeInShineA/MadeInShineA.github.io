@@ -1360,15 +1360,14 @@
     /* ─── Mobile-specific: same dark-mode contrast boosts ─────────────────────── */
     @media (max-width: 768px),
     (pointer: coarse) {
-
-      /* Make the dropdown pane sit on top of everything, full-width, scrollable */
       .choices__list--dropdown {
         position: fixed !important;
         top: 56px !important;
-        /* just below your navbar */
+        /* below your navbar */
+        bottom: auto !important;
+        /* cancel any flip-up */
         left: 0 !important;
         right: 0 !important;
-        margin: 0 auto !important;
         width: 100% !important;
         max-height: calc(100vh - 56px) !important;
         overflow-y: auto !important;
