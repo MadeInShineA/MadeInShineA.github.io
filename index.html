@@ -1246,32 +1246,45 @@
         const repos = await res.json();
         clearTimeout(loadingTimer);
 
-        // Clear out old state
         allCards = [];
         languageSet.clear();
 
         for (const repo of repos) {
-          const card = document.createElement('div');
-          card.className = 'project-card';
+          const id = `${repo.owner.login}/${repo.name}`;
 
-          // Determine languages (fallback to "Other")
-          const langs = Array.isArray(repo.languages) && repo.languages.length
-            ? repo.languages
-            : ['Other'];
+          // 1) Skip any hidden repo
+          if (hiddenRepos.includes(id)) {
+            continue;
+          }
 
-          // Populate the filter set
+          // 2) Determine languages, with override from projectLanguages
+          const langs = projectLanguages[id]
+            ? projectLanguages[id]
+            : (Array.isArray(repo.languages) && repo.languages.length
+              ? repo.languages
+              : ['Other']);
+
+          // 3) Optionally enforce allowedLanguages (if non-empty)
+          if (allowedLanguages.length &&
+            !langs.some(l => allowedLanguages.includes(l))) {
+            continue;
+          }
+
+          // Populate filter set
           langs.forEach(l => languageSet.add(l));
 
-          // Data attributes for sorting/filtering
+          // Build card element
+          const card = document.createElement('div');
+          card.className = 'project-card';
           card.dataset.name = repo.name.toLowerCase();
           card.dataset.stars = repo.stargazerCount;
           card.dataset.updated = new Date(repo.updatedAt).getTime();
           card.dataset.desc = (repo.description || '').toLowerCase();
           card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
 
-          // Build inner HTML
           const lastUpdate = new Date(repo.updatedAt).toLocaleDateString();
           const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
+
           card.innerHTML = `
         <div class="carousel">
           <img
@@ -1291,6 +1304,7 @@
           </div>
         </div>
       `;
+
           card.onclick = () => window.open(repo.html_url, '_blank');
           allCards.push(card);
         }
