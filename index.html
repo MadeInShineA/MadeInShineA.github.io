@@ -815,6 +815,25 @@
     /* show as grid once we’re ready */
     .projects.visible {
       display: grid;
+
+      /* Define your card width and let the grid auto‐fit as many as it can */
+      grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+
+      /* Center the tracks when there’s extra space */
+      justify-content: center;
+      /* Optional: center each item in its own cell */
+      justify-items: center;
+
+      gap: 2.6rem;
+      /* your existing gap */
+      padding: 2.8rem 1.1rem;
+      /* your existing padding */
+    }
+
+    /* Prevent cards from becoming too wide */
+    .project-card {
+      width: 100%;
+      max-width: 315px;
     }
 
     @keyframes cardPop {
@@ -967,7 +986,7 @@
       font-size: 1.04rem;
       opacity: 0.84;
       margin: 0.28rem 0 0.85rem;
-      min-height: 2.5em;
+      height: 2.5em;
     }
 
     .project-content .description {
