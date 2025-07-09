@@ -1,0 +1,1771 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO Meta Tags -->
+  <title>MadeInShineA – Portfolio</title>
+  <meta name="description"
+    content="MadeInShineA's professional portfolio showcasing software development expertise, academic achievements, and open-source contributions. Learn more about my background, experience, and areas of interest." />
+  <meta name="keywords"
+    content="MadeInShineA, portfolio, software development, open source, academic projects, technology, Switzerland" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://madeinshinea.github.io/" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="src/avatar.jpg" type="image/png" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://madeinshinea.github.io/" />
+  <meta property="og:title" content="MadeInShineA – Portfolio" />
+  <meta property="og:description"
+    content="Explore MadeInShineA's portfolio: a showcase of professional experience, academic work, and community contributions in software development." />
+  <meta property="og:image" content="https://madeinshinea.github.io/src/avatar.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://madeinshinea.github.io/" />
+  <meta name="twitter:title" content="MadeInShineA – Portfolio" />
+  <meta name="twitter:description"
+    content="Visit MadeInShineA's portfolio to see professional highlights, academic milestones, and open-source involvement in the field of software development." />
+  <meta name="twitter:image" content="https://madeinshinea.github.io/src/avatar.jpg" />
+
+  <!-- Fonts & Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Fira+Mono:wght@400;600&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────────────────────────────────────
+     Variables
+  ───────────────────────────────────────────────────────────────────────── */
+    :root {
+      --bg: #181825;
+      --fg: #eceff4;
+      --fg-muted: #b6bad9;
+      --accent: #7dd3fc;
+      --accent2: #a78bfa;
+      --accent-grad: linear-gradient(90deg, var(--accent), var(--accent2) 80%);
+      --glass: rgba(255, 255, 255, 0.07);
+      --blur: blur(13px);
+      --radius: 19px;
+      --shadow: 0 8px 40px rgba(0, 0, 0, 0.34), 0 1.5px 0px rgba(138, 163, 255, 0.06);
+      --glow: 0 0 16px var(--accent2), 0 0 2px var(--accent);
+      --border: 1.5px solid rgba(125, 211, 252, 0.10);
+      --header-glass: rgba(24, 24, 37, 0.52);
+      --footer-glass: rgba(28, 28, 40, 0.55);
+      --card-overlay: linear-gradient(120deg, rgba(55, 126, 246, 0.11) 40%, rgba(165, 139, 250, 0.08) 100%);
+      --profile-shadow: 0 4px 24px #7dd3fc33, 0 0 0 8px rgba(120, 144, 255, 0.05);
+      --navbar-glass: rgba(28, 28, 45, 0.73);
+      --profile-size: 88px;
+      --section-gap: 4rem;
+    }
+
+    body.light {
+      --bg: #e7ecf3;
+      --fg: #2e3241;
+      --fg-muted: #75798e;
+      --accent: #5280e8;
+      --accent2: #a277ff;
+      --glass: rgba(220, 225, 250, 0.07);
+      --shadow: 0 6px 36px rgba(51, 68, 117, 0.09), 0 0.5px 0px #dad7f777;
+      --border: 1.5px solid rgba(125, 211, 252, 0.13);
+      --header-glass: rgba(242, 242, 255, 0.82);
+      --footer-glass: rgba(242, 242, 255, 0.55);
+      --card-overlay: linear-gradient(120deg, rgba(125, 211, 252, 0.09) 40%, rgba(167, 139, 250, 0.09) 100%);
+      --navbar-glass: rgba(230, 235, 255, 0.5);
+    }
+
+    /* ────────────────────�����������������������────────────────────────────────────────────────────
+     Layout & Body
+  ───────────────────────────────────────────────────────────────────────── */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      overflow-x: hidden;
+      letter-spacing: 0.02em;
+      transition: background 0.4s, color 0.35s;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: -2;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 0, #28324b 30%, #181825 100%);
+      animation: bgmove 19s linear infinite alternate;
+      opacity: 1;
+      transition: background 0.5s;
+    }
+
+    body.light::before {
+      background: radial-gradient(ellipse at 75% 0, #e1e8ff 28%, #e7ecf3 100%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      background: conic-gradient(from 130deg at 85% 10%, #7dd3fc44 6%, transparent 45%),
+        conic-gradient(from 170deg at 16% 80%, #a78bfa33 12%, transparent 60%);
+      opacity: 0.74;
+      pointer-events: none;
+      mix-blend-mode: lighten;
+      filter: blur(36px) brightness(1.13);
+      animation: bgshine 33s linear infinite alternate;
+    }
+
+    @keyframes bgmove {
+      0% {
+        background-position: 80% 30%, 10% 90%;
+      }
+
+      100% {
+        background-position: 50% 0%, 80% 100%;
+      }
+    }
+
+    @keyframes bgshine {
+      0% {
+        filter: blur(28px) brightness(1.07);
+      }
+
+      100% {
+        filter: blur(45px) brightness(1.19);
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Navbar / Theme Toggle
+  ───────────────────────────────────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      background: var(--navbar-glass);
+      -webkit-backdrop-filter: blur(9px) !important;
+      box-shadow: 0 2.5px 24px #7dd3fc17;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.4rem 1.8rem;
+      border-bottom: var(--border);
+      backdrop-filter: blur(9px);
+      min-height: 56px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      transition: all 0.23s ease;
+      position: relative;
+      background: transparent;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      background: var(--glass);
+      border-color: var(--accent2);
+      box-shadow: 0 0 16px rgba(167, 139, 250, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a.active {
+      background: var(--accent-grad);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 2px 12px var(--accent2);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #theme-toggle {
+      background: var(--glass);
+      box-shadow: 0 0.5px 8px #7dd3fc22;
+      border-radius: 999px;
+      border: var(--border);
+      font-size: 1.1rem;
+      color: var(--fg);
+      width: 1.5em;
+      height: 1.5em;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.23s, color 0.2s, box-shadow 0.22s, transform 0.17s;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #theme-toggle .icon-moon,
+    #theme-toggle .icon-sun {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.15em;
+      pointer-events: none;
+      transition: opacity 0.23s;
+      opacity: 0;
+    }
+
+    #theme-toggle .icon-moon {
+      opacity: 1;
+    }
+
+    body.light #theme-toggle .icon-moon {
+      opacity: 0;
+    }
+
+    body.light #theme-toggle .icon-sun {
+      opacity: 1;
+    }
+
+    /* Mobile responsive navigation */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.4rem 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 0.5rem;
+      }
+
+      .nav-links a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Header & Profile
+  ───────────────────────────────────────────────────────────────────────── */
+    header {
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    main {
+      /* header is 56px tall, plus 1rem of gap */
+      padding-top: calc(56px + 1rem);
+    }
+
+    @keyframes fadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      margin-block: var(--section-gap);
+      /* same gap above & below */
+      margin-inline: auto;
+      /* center horizontally */
+      max-width: 1230px;
+      /* or whatever your widest section should be */
+      padding-inline: 1rem;
+      /* consistent left/right gutter */
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Filter / Search Controls
+  ───────────────────────────────────────────────────────────────────────── */
+
+
+
+    #controls {
+      margin: 0 auto 1.5rem;
+      max-width: 800px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 800px;
+      padding: 0 1.1rem;
+      flex-wrap: wrap;
+      border-radius: 23px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #controls>.dropdown-center,
+    #controls>#search {
+      flex: 1;
+      min-width: 200px;
+      max-width: 400px;
+      text-align: left;
+    }
+
+
+    /* 1) Let each dropdown sit in its own stacking context */
+    .dropdown-center {
+      position: relative !important;
+      overflow: visible !important;
+    }
+
+    /* 2) When Choices.js opens a dropdown, it adds .is-open.
+      Bump that whole widget above its siblings */
+    .dropdown-center .choices.is-open {
+      position: relative !important;
+      z-index: 1000 !important;
+    }
+
+    #filter,
+    #sort {
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+      width: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      z-index: -100;
+    }
+
+    .choices--single .choices__inner .choices__placeholder {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+    }
+
+    #search {
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      border-radius: 19px;
+      border: var(--border);
+      padding: 0 1.25rem;
+      color: var(--fg);
+      font-size: 1.09rem;
+      font-family: inherit;
+      height: 52px;
+      box-shadow: 0 2px 16px rgba(36, 70, 156, 0.09);
+      outline: none;
+      transition: border-color 0.23s, box-shadow 0.23s;
+    }
+
+    #search:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 2px 26px rgba(167, 139, 250, 0.13);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    #search::placeholder {
+      color: var(--fg);
+      opacity: 0.68;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Choices.js (MULTISELECT)
+  ──────────���������������������������������������������────────────────────────────────────────────────────────────── */
+    .choices {
+      flex: 1;
+      min-width: 200px;
+      max-width: 400px;
+      z-index: 1001;
+      opacity: 1 !important;
+      position: static !important;
+      pointer-events: all !important;
+    }
+
+    .choices__inner {
+      background: var(--glass) !important;
+      backdrop-filter: var(--blur) !important;
+      border-radius: 1.2rem !important;
+      border: var(--border) !important;
+      box-sizing: border-box;
+      color: var(--fg) !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      font-size: 1.06rem !important;
+      min-height: 52px !important;
+      max-height: none !important;
+      overflow-x: hidden !important;
+      overflow-y: visible !important;
+      padding: 0 1.2rem !important;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent2) var(--glass);
+      transition: border-color 0.23s, box-shadow 0.23s, height 0.3s ease !important;
+    }
+
+    .choices--single .choices__inner {
+      height: 52px !important;
+      /* lock the height */
+      padding: 0 1.2rem !important;
+      /* same left/right inset */
+      display: flex !important;
+      /* vertically center the label */
+      align-items: center !important;
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
+      border-radius: 1.2rem !important;
+      background: var(--glass) !important;
+      backdrop-filter: var(--blur) !important;
+      border: var(--border) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* ─── Remove that default blue focus outline ─── */
+    .choices--single .choices__inner.is-focused {
+      outline: none !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* ─── Match the dropdown-item hover to your accent2 gradient ─── */
+    .choices--single .choices__list--dropdown .choices__item--selectable:hover,
+    .choices--single .choices__list--dropdown .choices__item--selectable.is-highlighted {
+      background: rgba(167, 139, 250, 0.16) !important;
+      /* same purple-tint as your filter */
+    }
+
+    .choices__list--dropdown {
+      max-height: 200px !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior: contain;
+    }
+
+
+    .choices__inner.has-items {
+      height: auto !important;
+      max-height: 120px !important;
+      padding: 0.4rem 1.2rem 0.5rem !important;
+      max-height: 3.5rem;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+      overscroll-behavior: contain;
+    }
+
+    .choices.is-open .choices__inner {
+      border-color: var(--accent2) !important;
+      box-shadow: 0 4px 30px rgba(125, 211, 252, 0.18) !important;
+    }
+
+    .choices__inner::-webkit-scrollbar {
+      width: 7px;
+    }
+
+    .choices__inner::-webkit-scrollbar-thumb {
+      background: var(--accent2);
+      border-radius: 8px;
+    }
+
+    .choices__inner::-webkit-scrollbar-track {
+      background: var(--glass);
+    }
+
+    .choices__list--multiple {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.15em !important;
+      flex-wrap: wrap !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .choices__list--multiple .choices__item {
+      background: var(--accent-grad) !important;
+      border: none !important;
+      border-radius: 999px !important;
+      box-shadow: 0 1px 6px #0002 !important;
+      color: #fff !important;
+      display: inline-flex !important;
+      gap: 0.15em !important;
+      letter-spacing: 0.025em !important;
+      margin: 0.18rem 0.26rem 0.18rem 0 !important;
+      overflow: hidden !important;
+      padding: 0.3rem 0.96rem !important;
+      position: relative !important;
+      text-transform: uppercase !important;
+      transition: background 0.25s, transform 0.18s !important;
+      white-space: nowrap !important;
+    }
+
+    .choices__list--multiple .choices__item:hover {
+      background: var(--accent2) !important;
+      color: #fff !important;
+      transform: scale(1.06) !important;
+    }
+
+    .choices__list--multiple .choices__item .choices__button {
+      background: rgba(255, 255, 255, 0.13) !important;
+      border: none !important;
+      border-radius: 50% !important;
+      color: #fff !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      margin-left: 0.4rem !important;
+      width: 16px !important;
+      height: 16px !important;
+      transition: all 0.23s !important;
+    }
+
+    .choices__list--multiple .choices__item .choices__button:hover {
+      background: #f87171 !important;
+      border-color: #dc2626 !important;
+      color: #fff !important;
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4) !important;
+      transform: scale(1.1) !important;
+    }
+
+    .choices__input {
+      color: var(--fg) !important;
+      background: none !important;
+      padding: 0.19rem 0 !important;
+      margin: 0.16rem 0 !important;
+      font-size: 1rem !important;
+      border: none !important;
+      min-width: 110px !important;
+      flex: 1 !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    .choices__list--single .choices__item {
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
+      /* same as .choices__inner */
+    }
+
+
+    .choices__placeholder {
+      color: var(--fg);
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
+    }
+
+    .choices__input {
+      font-family: inherit !important;
+      font-size: 1.06rem !important;
+    }
+
+    .choices__list[aria-expanded] {
+      z-index: 2000 !important;
+      background: var(--glass) !important;
+      backdrop-filter: var(--blur) !important;
+      border-radius: 1rem !important;
+      border: 2px solid var(--accent2) !important;
+      color: var(--fg) !important;
+      font-size: 1rem !important;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.16) !important;
+      margin-top: 0.5rem !important;
+      max-height: 200px !important;
+      overflow-y: auto !important;
+      overscroll-behavior: contain;
+    }
+
+    .choices__list[aria-expanded]>.choices__list {
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    .choices__item--selectable {
+      padding-top: 0.7em;
+      transition: background 0.18s !important;
+      color: var(--fg) !important;
+      white-space: nowrap !important;
+      border-bottom: 1px solid rgba(125, 211, 252, 0.07) !important;
+    }
+
+    .choices__item--selectable:last-child {
+      border-bottom: none !important;
+    }
+
+    .choices__item--selectable.is-highlighted {
+      background: rgba(74, 144, 226, 0.16) !important;
+      color: var(--fg) !important;
+    }
+
+    /* 1) Hide the native <select> entirely */
+    .dropdown-center select {
+      position: absolute;
+      width: 0;
+      height: 0;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* 2) Dark-mode dropdown panel: same frosted glass as your inputs */
+    body .choices__list[aria-expanded] {
+      background: var(--glass) !important;
+      backdrop-filter: var(--blur) !important;
+      border: var(--border) !important;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.16) !important;
+      color: var(--fg) !important;
+    }
+
+    /* 3) Dropdown items: bright text + subtle divider + tiny text-shadow */
+    body .choices__item--selectable {
+      color: var(--fg) !important;
+    }
+
+    /* 4) Hover/highlight state */
+    body .choices__item--selectable.is-highlighted {
+      background: rgba(167, 139, 250, 0.24) !important;
+    }
+
+    /* Always make the remove-pill button bright red */
+    .choices__list--multiple .choices__item .choices__button {
+      background: #ef4444 !important;
+      /* red-500 */
+      border: none !important;
+      color: #fff !important;
+    }
+
+    /* On hover, go a shade darker */
+    .choices__list--multiple .choices__item .choices__button:hover {
+      background: #dc2626 !important;
+      /* red-600 */
+    }
+
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Projects & Cards
+  ───────────────────────────────────────────────────────────────────────── */
+    /* collapse completely until we add .visible */
+
+    .projects-section {
+      opacity: 0;
+      animation: fadeSlide 1s ease-out 1.5s forwards;
+      max-width: 1230px;
+    }
+
+    .projects-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .projects-header h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .projects-header p {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+
+    .projects {
+      display: none;
+      gap: 2.6rem;
+      padding: 2.8rem 1.1rem 5.4rem;
+      max-width: 1230px;
+      margin: 0 auto 2.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+      position: relative;
+      z-index: 1;
+    }
+
+    /* show as grid once we're ready */
+    .projects.visible {
+      display: grid;
+
+      /* Define your card width and let the grid auto‐fit as many as it can */
+      grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+
+      /* Center the tracks when there's extra space */
+      justify-content: center;
+      /* Optional: center each item in its own cell */
+      justify-items: center;
+
+      gap: 2.6rem;
+      /* your existing gap */
+      padding: 2.8rem 1.1rem;
+      /* your existing padding */
+    }
+
+    /* Prevent cards from becoming too wide */
+    .project-card {
+      width: 100%;
+      max-width: 315px;
+    }
+
+    @keyframes cardPop {
+      0% {
+        visibility: visible;
+        /* so it will lay out once the anim starts */
+        opacity: 0;
+        transform: translateY(20px) scale(0);
+      }
+
+      60% {
+        opacity: 1;
+        transform: translateY(0) scale(1.02);
+      }
+
+      100% {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .project-card {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0);
+      transform-origin: center center;
+      border: var(--border);
+      border-radius: 2.1rem;
+      background: var(--glass);
+      backdrop-filter: var(--blur);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+      isolation: isolate;
+      background-image: var(--card-overlay);
+    }
+
+    .projects.hidden {
+      visibility: hidden;
+    }
+
+
+    .pop-in {
+      visibility: visible;
+      animation: cardPop 1s ease-out forwards;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.4s;
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent2) 80%);
+      filter: blur(16px);
+    }
+
+    .project-card:hover::before {
+      opacity: 0.18;
+      animation: shine 1.7s linear infinite alternate;
+    }
+
+    .project-card:hover,
+    .project-card:focus-visible {
+      z-index: 10;
+      position: relative;
+      outline: none;
+      box-shadow:
+        0 28px 75px 0 rgba(127, 189, 250, 0.22),
+        0 2px 16px 0 var(--accent2),
+        var(--shadow);
+      border-color: var(--accent2);
+    }
+
+    .project-card:active {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow:
+        0 16px 32px 0 rgba(127, 189, 250, 0.10),
+        var(--shadow);
+    }
+
+    @keyframes shine {
+      0% {
+        filter: blur(18px) brightness(0.83);
+      }
+
+      100% {
+        filter: blur(27px) brightness(1.09);
+      }
+    }
+
+    .project-card.filtered-hidden {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 0 !important;
+      max-height: 0 !important;
+      border: 0 !important;
+    }
+
+    .project-card.filtered-visible {
+      display: block !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      height: auto !important;
+      margin: initial !important;
+      padding: initial !important;
+      min-height: initial !important;
+      max-height: initial !important;
+      border: initial !important;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      transition: transform 0.29s, box-shadow 0.33s;
+      background: #36374b;
+      display: block;
+      border-radius: 2.1rem 2.1rem 0 0;
+    }
+
+    .project-card:hover .carousel img {
+      transform: scale(1.039) rotate(-0.4deg);
+      box-shadow: 0 10px 26px var(--accent2), 0 1.5px 15px #0002;
+    }
+
+    .project-content {
+      padding: 1.55rem 1.6rem 1.52rem;
+      position: relative;
+    }
+
+    .project-content h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--fg);
+    }
+
+    .project-content p {
+      font-size: 1.04rem;
+      opacity: 0.84;
+      margin: 0.28rem 0 0.85rem;
+      height: 2.5em;
+    }
+
+    .project-content .description {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .category {
+      font-size: 0.79rem;
+      background: var(--accent-grad);
+      color: #fff;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      padding: 0.3rem 0.96rem;
+      margin: 0 0.33rem 0.75rem 0;
+      display: inline-block;
+      text-transform: uppercase;
+      box-shadow: 0 1px 6px #0002;
+      border: none;
+      transition: background 0.25s, color 0.23s, transform 0.18s;
+    }
+
+    .project-card:hover .category {
+      background: var(--accent2);
+      box-shadow: 0 2px 12px var(--accent2), 0 1px 8px #0002;
+    }
+
+    .project-metrics {
+      border-top: 1px solid rgba(255, 255, 255, 0.11);
+      margin-top: 1.08rem;
+      padding-top: 0.6rem;
+      font-size: 0.98rem;
+      opacity: 0.80;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.15rem;
+      align-items: center;
+      font-family: "Fira Mono", monospace;
+      letter-spacing: 0.01em;
+    }
+
+    .project-metrics span {
+      display: flex;
+      align-items: center;
+      gap: 0.18em;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Loading & Results Counter
+  ───────────────────────────────────────────────────────────────────────── */
+    .loading,
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 1.16rem;
+      opacity: 0.77;
+      background: var(--glass);
+      border-radius: 1.7rem;
+      border: var(--border);
+      padding: 3.2rem 1.5rem;
+      margin-top: 0.6rem;
+      box-shadow: 0 1px 8px #0001;
+    }
+
+    .loading::after {
+      content: "...";
+      animation: dots 1.5s infinite;
+    }
+
+    @keyframes dots {
+
+      0%,
+      20% {
+        content: ".";
+      }
+
+      40% {
+        content: "..";
+      }
+
+      60% {
+        content: "...";
+      }
+
+      80%,
+      100% {
+        content: "";
+      }
+    }
+
+    @keyframes bop {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .results-counter.bop {
+      animation: bop 0.6s ease;
+    }
+
+
+    .results-counter {
+      animation: bounce 0.6s ease;
+
+      text-align: center;
+      margin: 1.22rem 0 0.62rem;
+      font-size: 0.98rem;
+      opacity: 0.74;
+      background: var(--glass);
+      display: inline-block;
+      padding: 0.51rem 1.18rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      box-shadow: 0 2px 14px rgba(125, 211, 252, 0.08);
+      color: var(--accent2);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Footer
+  ───────────────────────────────────────────────────────────────────────── */
+    footer {
+      width: 100vw;
+      padding: 2.1rem 0 1.3rem;
+      background: var(--footer-glass);
+      text-align: center;
+      border-top: var(--border);
+      backdrop-filter: blur(8px);
+      color: var(--fg-muted);
+      font-size: 1.01rem;
+      letter-spacing: 0.01em;
+      box-shadow: 0 -6px 24px #a78bfa0c;
+    }
+
+    .footer-socials {
+      margin-top: 0.18rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.11rem;
+      font-size: 1.36rem;
+    }
+
+    .footer-socials a {
+      color: var(--accent2);
+      text-decoration: none;
+      transition: color 0.19s, transform 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.18em;
+    }
+
+    .footer-socials a:hover {
+      color: var(--accent);
+      transform: scale(1.17) translateY(-2px);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+     Scrollbar
+  ───────────────────────────────────────────────────────────────────────── */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent2);
+      border-radius: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--glass);
+    }
+
+    /* ── Skills Section Container ───────────────────────────────────────────────── */
+    .skills-section {
+      opacity: 0;
+      animation: fadeSlide 1s ease-out 0.5s forwards;
+
+      /* never get wider than your controls: */
+      max-width: 800px;
+      /* otherwise be full-width minus the gutters (2×1.1rem) */
+      width: calc(100% - 2.2rem);
+
+      /* vertical gap = 2.5rem top & bottom;
+     horizontal auto → center whatever is left */
+      margin: 2.5rem auto;
+      padding-bottom: 2.5rem;
+
+
+      /* your glass/card styles */
+      background: var(--glass);
+      border: var(--border);
+      border-radius: var(--radius);
+      backdrop-filter: var(--blur);
+      box-shadow: var(--shadow);
+      color: var(--fg);
+    }
+
+    .skills-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .skills-header h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .skills-desc {
+      white-space: normal;
+      /* collapse your source indentation */
+      max-width: none;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+    }
+
+    /* ── Grid Layout ─────────────────────────────────────────────────────────────── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    /* ── Individual Skill Card ──────────────────────────────────────────────────── */
+    .skill {
+      --size: 130px;
+      --thickness: 14px;
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      transition: transform 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: scale(1.1);
+    }
+
+    /* Radial ring using conic-gradient */
+    .skill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent) 0deg,
+          var(--accent) calc(var(--pct) * 3.6deg),
+          rgba(255, 255, 255, 0.05) calc(var(--pct) * 3.6deg),
+          rgba(255, 255, 255, 0.05) 360deg);
+      transform: rotate(-90deg);
+      box-shadow: var(--profile-shadow);
+      transition: background 1.2s ease-out, box-shadow 0.3s ease;
+    }
+
+    .skill:hover::before {
+      box-shadow:
+        0 0 20px var(--accent),
+        0 0 48px var(--accent2);
+    }
+
+    /* Inner circle to mask center */
+    /* Inside your existing CSS block for .skill .inner: */
+    .skill .inner {
+      position: absolute;
+      inset: var(--thickness);
+      background: var(--bg);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      /* stack count and percent */
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+      transition: background 0.3s ease;
+    }
+
+    /* Raw count (big) */
+    .skill .inner .count {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1;
+    }
+
+    /* New precise percent (smaller & muted) */
+    .skill .inner .percent {
+      font-size: 0.85rem;
+      color: var(--fg-muted);
+      margin-top: 0.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .skill .label {
+      position: absolute;
+      bottom: -1.9rem;
+      left: 0;
+      /* ensure it starts at the left edge */
+      width: 100%;
+      /* span the full width of the circle container */
+      text-align: center;
+      /* center the text within that width */
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--fg-muted);
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+
+    .skill:hover .label {
+      color: var(--accent2);
+    }
+
+    /* Trigger the draw animation on load */
+    .skills-section.anim .skill::before {
+      /* uses the CSS transition */
+    }
+
+    /* 1) Native <input> placeholders on all engines */
+    input::-webkit-input-placeholder,
+    /* Chrome/Safari/Edge */
+    input:-ms-input-placeholder,
+    /* IE10+ */
+    input::-ms-input-placeholder,
+    /* Edge */
+    input::-moz-placeholder,
+    /* Firefox 19+ */
+    input::placeholder {
+      /* Standard */
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      /* iOS Safari really needs this to repaint text: */
+      -webkit-text-fill-color: var(--fg) !important;
+    }
+
+    /* 2) Disabled/hidden <option> placeholders (Choices.js's dummyOption) */
+    select option[disabled][hidden] {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+    }
+
+    /* 3) Choices.js's own placeholder span inside the widget */
+    .choices__inner .choices__placeholder {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      /* bump specificity to wrestle control from mobile UA */
+      background-clip: text !important;
+    }
+
+    /* 4) Make sure mobile knows your page supports dark/light tinting */
+    :root {
+      color-scheme: dark light;
+    }
+
+    /* 1) Override the native placeholder on the Choices.js input */
+    .choices__input::-webkit-input-placeholder,
+    /* Chrome/Safari */
+    .choices__input:-ms-input-placeholder,
+    /* IE10+ */
+    .choices__input::-ms-input-placeholder,
+    /* Edge */
+    .choices__input::-moz-placeholder,
+    /* Firefox */
+    .choices__input::placeholder {
+      /* Standard */
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      -webkit-text-fill-color: var(--fg) !important;
+    }
+
+    /* 2) Boost specificity if there's any bleed from the UA styles */
+    .dropdown-center .choices__input::-webkit-input-placeholder,
+    .dropdown-center .choices__input::placeholder {
+      color: var(--fg) !important;
+      opacity: 0.68 !important;
+      -webkit-text-fill-color: var(--fg) !important;
+    }
+
+    /* ─── Improve dropdown text legibility in dark mode ───────────────────────── */
+    body:not(.light) .choices__list--dropdown .choices__item--selectable {
+      /* force full-bright text */
+      color: var(--fg) !important;
+      opacity: 1 !important;
+      /* subtle text shadow to lift letters off the background */
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+    }
+
+    body:not(.light) .choices__list--dropdown {
+      /* brighten the dropdown background slightly */
+      background: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    /* ─── Force custom dropdown UI on mobile ─────────────────────────────────── */
+    select {
+      /* remove the native OS styling so Choices.js can fully control it */
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      appearance: none !important;
+    }
+
+    /* ─── Mobile-specific: same dark-mode contrast boosts ─────────────────────── */
+    /* ─── Force dropdowns under the field on mobile ───────────────────────────── */
+    @media (max-width: 768px),
+    (pointer: coarse) {
+      .choices__list--dropdown {
+        position: absolute !important;
+        /* back in flow, under its container */
+        top: 100% !important;
+        /* place right below the trigger */
+        bottom: auto !important;
+        left: 0 !important;
+        right: auto !important;
+        width: 100% !important;
+        max-height: 200px !important;
+        /* keep your scrolling cap */
+        border-radius: 0.5rem !important;
+        /* or whatever fits your design */
+      }
+
+      /* make sure the parent .dropdown-center is positioned relative */
+      .dropdown-center {
+        position: relative !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="index.html">Resume</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+      </div>
+      <div class="nav-controls">
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <span class="icon-moon">🌙</span>
+          <span class="icon-sun">☀️</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="skills" class="skills-section">
+      <div class="skills-header">
+        <h2>My Top Languages</h2>
+        <p class="skills-desc">
+          Shows each language's project count and its share of my portfolio.
+        </p>
+
+
+      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <section class="projects-section">
+      <div class="projects-header">
+        <h2>My Projects</h2>
+        <p>Explore my recent works. Use the controls below to filter, sort, or search!</p>
+      </div>
+      <div id="controls">
+        <div class="dropdown-center">
+          <select id="sort"></select>
+        </div>
+        <div class="dropdown-center">
+          <select id="filter" multiple></select>
+        </div>
+        <input id="search" placeholder="Search projects..." autocomplete="off" />
+      </div>
+      <div id="projects" class="projects">
+        <div class="loading">Loading projects</div>
+      </div>
+      <div id="results-counter" class="results-counter" style="display:none;"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-socials">
+      <a href="https://github.com/MadeInShineA" target="_blank" title="GitHub">🐙 GitHub</a>
+      <a href="https://twitter.com/MadeInShineA" target="_blank" title="Twitter">🐦 Twitter</a>
+      <a href="mailto:shinea@protonmail.com" title="Email">✉️ Email</a>
+    </div>
+    <div>&copy; <span id="year"></span> MadeInShineA – Built with <span style="color:#a78bfa;">♥</span></div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script>
+    // ─── YEAR & THEME TOGGLE ────────────────────────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // THEME TOGGLE: flip body.light and persist preference
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      localStorage.setItem(
+        'theme',
+        document.body.classList.contains('light') ? 'light' : 'dark'
+      );
+    });
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light');
+    }
+
+    // ─── TOUCH SCROLL FIX FOR MOBILE DROPDOWNS ─────────────────────────────────
+    let inScrollArea = false;
+
+    // 1) On touchstart, remember whether it began in our scrollable area:
+    document.body.addEventListener('touchstart', e => {
+      inScrollArea = !!e.target.closest(
+        '.choices__list--dropdown, .choices__inner.has-items'
+      );
+    }, {passive: true});
+
+    // 2) On touchmove, if it did start in the dropdown, stop propagation
+    //    so the page won’t scroll; otherwise do nothing.
+    document.body.addEventListener('touchmove', e => {
+      if (inScrollArea) {
+        e.stopPropagation();
+        // (do NOT e.preventDefault(), so the dropdown itself scrolls)
+      }
+    }, {passive: false});
+    // ─── CONFIG ────────────────────────────────────────────────────────────────
+    // Specify exactly which languages each project should show:
+    // Keys are "owner/name"
+    const projectLanguages = {
+      'MadeInShineA/smash-map': ['Vue', 'PHP', 'Laravel'],
+      'MadeInShineA/rust-boy': ['Rust'],
+      'MadeInShineA/spelling-checker': ['Python'],
+      'MadeInShineA/forest-fire-simulation': ['Scala', 'Rust', 'Bevy'],
+      // add more overrides here…
+    };
+    // List of repos you always want to hide, by "owner/name"
+    const hiddenRepos = [
+      "MadeInShineA/MadeInShineA",
+      "MadeInShineA/crochet_design",
+      "MadeInShineA/excal-cli"
+    ];
+    // If non-empty, only show repos whose languages intersect this list
+    const allowedLanguages = [
+      // e.g. 'JavaScript','Python','Rust'
+    ];
+
+    // ─── STATE & ELEMENTS ──────────────────────────────────────────────────────
+    const container = document.getElementById('projects');
+    const filterEl = document.getElementById('filter');
+    const sortEl = document.getElementById('sort');
+    const searchEl = document.getElementById('search');
+    const resultsCounter = document.getElementById('results-counter');
+
+    const languageSet = new Set();
+
+    // ─── INIT FILTER MULTI‐SELECT ───────────────────────────────────────────────
+    const dummyOption = new Option('', '', false, false);
+    dummyOption.hidden = dummyOption.disabled = true;
+    filterEl.add(dummyOption.cloneNode(true));
+
+    const filterChoices = new Choices(filterEl, {
+      position: 'bottom',
+      removeItemButton: true,
+      shouldSort: false,
+      placeholder: true,
+      placeholderValue: 'Filter by languages...',
+      searchEnabled: true,
+      searchPlaceholderValue: 'Search languages...',
+      itemSelectText: '',
+      shouldUseNative: false
+    });
+
+    // ─── INIT SORT DROPDOWN ─────────────────────────────────────────────────────
+    const sortOptions = [
+      {value: 'updated', label: 'Updated (Newest)'},
+      {value: 'stars', label: 'Stars (High → Low)'},
+      {value: 'name', label: 'Name (A → Z)'}
+    ];
+    sortOptions.forEach(opt => sortEl.add(new Option(opt.label, opt.value)));
+    const sortChoices = new Choices(sortEl, {
+      position: 'bottom',
+      placeholder: true,
+      placeholderValue: 'Sort by...',
+      searchEnabled: false,
+      shouldSort: false,
+      itemSelectText: '',
+      shouldUseNative: false
+    });
+    sortEl.addEventListener('change', sortAndRender);
+
+    const CONTROLS_ANIM_MS = 2500;
+    let allCards = [];
+    let totalProjects = 0;
+    let firstSort = true;
+
+    // ─── FETCH & BUILD CARDS ────────────────────────────────────────────────────
+    async function fetchRepos() {
+      const container = document.getElementById('projects');
+      container.classList.remove('visible');
+      container.innerHTML = '';
+
+      // Delay showing “Loading…” until after the controls animation
+      const loadingTimer = setTimeout(() => {
+        container.classList.add('visible');
+        container.innerHTML = '<div class="loading">Loading projects</div>';
+      }, CONTROLS_ANIM_MS);
+
+      try {
+        const res = await fetch('https://raw.githubusercontent.com/MadeInShineA/MadeInShineA.github.io/main/repos.json');
+        if (!res.ok) throw new Error(res.status);
+        const repos = await res.json();
+        clearTimeout(loadingTimer);
+
+        allCards = [];
+        languageSet.clear();
+
+        for (const repo of repos) {
+          const id = `${repo.owner.login}/${repo.name}`;
+
+          // 1) Skip any hidden repo
+          if (hiddenRepos.includes(id)) {
+            continue;
+          }
+
+          // 2) Determine languages, with override from projectLanguages
+          const langs = projectLanguages[id]
+            ? projectLanguages[id]
+            : (Array.isArray(repo.languages) && repo.languages.length
+              ? repo.languages
+              : ['Other']);
+
+          // 3) Optionally enforce allowedLanguages (if non-empty)
+          if (allowedLanguages.length &&
+            !langs.some(l => allowedLanguages.includes(l))) {
+            continue;
+          }
+
+          // Populate filter set
+          langs.forEach(l => languageSet.add(l));
+
+          // Build card element
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.dataset.name = repo.name.toLowerCase();
+          card.dataset.stars = repo.stargazerCount;
+          card.dataset.updated = new Date(repo.updatedAt).getTime();
+          card.dataset.desc = (repo.description || '').toLowerCase();
+          card.dataset.lang = langs.map(l => l.toLowerCase()).join(',');
+
+          const lastUpdate = new Date(repo.updatedAt).toLocaleDateString();
+          const tags = langs.map(l => `<span class="category">${l}</span>`).join('');
+
+          card.innerHTML = `
+        <div class="carousel">
+          <img
+            src="src/${repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}.png"
+            alt="${repo.name}"
+            loading="lazy"
+            onerror="this.src='https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}'"
+          />
+        </div>
+        <div class="project-content">
+          ${tags}
+          <h3>${repo.name}</h3>
+          <p class="description">${repo.description || 'No description provided.'}</p>
+          <div class="project-metrics">
+            <span>⭐ ${repo.stargazerCount}</span>
+            <span>⏱ Updated ${lastUpdate}</span>
+          </div>
+        </div>
+      `;
+
+          card.onclick = () => window.open(repo.url, '_blank');
+          allCards.push(card);
+        }
+
+        totalProjects = allCards.length;
+        populateFilter();
+        sortAndRender();
+
+      } catch (err) {
+        clearTimeout(loadingTimer);
+        container.classList.add('visible');
+        container.innerHTML = '<div class="loading">Failed to load repositories.</div>';
+        console.error(err);
+      }
+    }
+
+    // ─── SORT & POP-IN ───────────────────────────────────────────────────────────
+    function sortAndRender() {
+      const container = document.getElementById('projects');
+      const delay = firstSort ? CONTROLS_ANIM_MS : 0;
+
+      // 1) sort
+      const crit = sortEl.value;
+      allCards.sort((a, b) => {
+        if (crit === 'stars') return b.dataset.stars - a.dataset.stars;
+        if (crit === 'updated') return b.dataset.updated - a.dataset.updated;
+        if (crit === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+        return 0;
+      });
+
+      // 2) clear & re-append (cards still hidden via CSS)
+      container.innerHTML = '';
+      allCards.forEach(card => {
+        card.classList.remove('pop-in');
+        container.appendChild(card);
+      });
+
+      // 3) show grid + staggered pop-in
+      setTimeout(() => {
+        container.classList.add('visible');
+        allCards.forEach((card, i) => {
+          card.style.animationDelay = `${i * 0.1}s`;
+          void card.offsetWidth;
+          card.classList.add('pop-in');
+        });
+        applyFilters();
+        firstSort = false;
+      }, delay);
+    }
+
+    // ─── FILTER, COUNTER & FINAL POP-IN ─────────────────────────────────────────
+    function applyFilters() {
+      const container = document.getElementById('projects');
+      const resultsCounter = document.getElementById('results-counter');
+      const selectedLangs = new Set(filterChoices.getValue(true).map(v => v.toLowerCase()));
+      const kw = searchEl.value.toLowerCase().trim();
+      let count = 0;
+
+      // remove any previous “no-results”
+      container.querySelector('.no-results')?.remove();
+
+      allCards.forEach(card => {
+        const langs = card.dataset.lang.split(',');
+        const okLang = !selectedLangs.size || langs.some(l => selectedLangs.has(l));
+        const textBlob = card.dataset.name + card.dataset.desc + langs.join(' ');
+        const okText = !kw || textBlob.includes(kw);
+
+        if (okLang && okText) {
+          card.classList.remove('filtered-hidden');
+          card.classList.add('filtered-visible');
+          count++;
+        } else {
+          card.classList.remove('filtered-visible');
+          card.classList.add('filtered-hidden');
+        }
+        card.classList.remove('pop-in');
+      });
+
+      // update counter
+      if (count === totalProjects) {
+        resultsCounter.style.display = 'none';
+      } else {
+        resultsCounter.style.display = 'block';
+        resultsCounter.textContent = `Showing ${count} of ${totalProjects} projects`;
+        resultsCounter.classList.remove('bop');
+        void resultsCounter.offsetWidth;
+        resultsCounter.classList.add('bop');
+      }
+
+      // show “no results” if nothing matched
+      if (count === 0) {
+        container.insertAdjacentHTML('beforeend', `
+      <div class="no-results">
+        <h3>No projects found</h3>
+        <p>Try adjusting filters or search terms</p>
+      </div>
+    `);
+      }
+
+      // final staggered pop-in for visible cards
+      const visibleCards = allCards.filter(c => c.classList.contains('filtered-visible'));
+      visibleCards.forEach((card, i) => {
+        card.style.animationDelay = `${i * 0.1}s`;
+        void card.offsetWidth;
+        card.classList.add('pop-in');
+      });
+    }
+    // ─── POPULATE FILTER DROPDOWN ────────────────────────────────────────────────
+    function populateFilter() {
+      // Clear out the Choices.js store
+      filterChoices.clearStore();
+
+      // Add one <option> per language in sorted order
+      [...languageSet]
+        .sort()
+        .forEach(lang => {
+          filterChoices.setChoices(
+            [{value: lang, label: lang}],
+            'value',
+            'label',
+            false
+          );
+        });
+
+      // Wire up change listeners (if not already)
+      filterEl.addEventListener('change', debounce(applyFilters, 150));
+      searchEl.addEventListener('input', debounce(applyFilters, 300));
+    }
+
+    function debounce(fn, delay) {
+      let t;
+      return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(() => fn(...args), delay);
+      };
+    }
+
+    // ─── INITIAL FETCH ─────────────────────────────────────────────────────────
+    fetchRepos();
+  </script>
+  <script>
+    const languageNumber = 4
+    const excludedLanguages = ['Other', 'HTML', 'Css', 'Markdown'];
+    const excludedSet = new Set(excludedLanguages.map(l => l.toLowerCase()));
+
+    function renderSkills() {
+      const counts = {};
+      allCards.forEach(card => {
+        card.dataset.lang
+          .split(',')
+          .map(l => l.trim().toLowerCase())
+          .filter(lang => !excludedSet.has(lang))
+          .forEach(lang => counts[lang] = (counts[lang] || 0) + 1);
+      });
+
+      const top = Object.entries(counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, languageNumber);
+
+      const total = allCards.length;
+      const container = document.getElementById('skillsGrid');
+      container.innerHTML = '';
+
+      top.forEach(([lang, cnt]) => {
+        const pct = Math.round((cnt / total) * 100);
+        const skill = document.createElement('div');
+        skill.className = 'skill';
+        skill.style.setProperty('--pct', pct);
+
+        // Capitalize language name
+        const label = lang.charAt(0).toUpperCase() + lang.slice(1);
+
+        skill.innerHTML = `
+        <div class="inner">
+          <div class="count">${cnt}</div>
+          <div class="percent">${pct}%</div>
+        </div>
+        <div class="label">${label}</div>
+      `;
+        container.appendChild(skill);
+      });
+
+      requestAnimationFrame(() =>
+        document.getElementById('skills').classList.add('anim')
+      );
+    }
+
+    fetchRepos().then(renderSkills);
+  </script>
+
+</body>
+
+</html>
