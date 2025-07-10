@@ -1167,6 +1167,139 @@
     .stagger-container.animate-in .stagger-item:nth-child(10) {
       transition-delay: 0.5s;
     }
+
+    @media (max-width: 768px) {
+      :root {
+        --blur: blur(8px);
+        /* Reduced for performance */
+        --radius: 12px;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        --profile-size: 72px;
+        --section-gap: 2rem;
+      }
+    }
+
+    /* 3. Disable heavy animations on mobile */
+    @media (max-width: 768px) {
+
+      body::before,
+      body::after {
+        animation: none;
+        /* Disable background animations */
+      }
+
+      .cv-section:hover {
+        transform: none;
+        /* Disable hover transforms */
+      }
+
+      .navbar,
+      .cv-section {
+        backdrop-filter: blur(5px);
+        /* Simpler blur */
+      }
+    }
+
+    /* 4. Responsive typography with clamp() */
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 2.6rem);
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 3vw, 1.15rem);
+      padding: 0 1rem;
+    }
+
+    .cv-section h2 {
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+    }
+
+    .item-title {
+      font-size: clamp(1.1rem, 3vw, 1.25rem);
+    }
+
+    /* 5. Better touch targets */
+    #theme-toggle {
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .download-btn {
+      min-height: 44px;
+    }
+
+    .footer-socials a {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem;
+    }
+
+    /* 6. Mobile grid improvements */
+    @media (max-width: 768px) {
+
+      .skills-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    /* 7. Performance optimizations */
+    @media (max-width: 768px) {
+      * {
+        will-change: auto;
+        /* Reduce GPU layers */
+      }
+
+      .cv-section {
+        transition: opacity 0.6s ease;
+        /* Simplified transitions */
+        transform: translateY(30px) scale(0.98);
+      }
+    }
+
+    /* 8. Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* 9. Better focus styles */
+    button:focus,
+    a:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* 10. Small screen optimizations */
+    @media (max-width: 480px) {
+      .cv-section {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      main {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+
+      .navbar {
+        padding: 0.5rem 0.75rem;
+      }
+    }
   </style>
 </head>
 
@@ -1554,6 +1687,7 @@
   </div>
 
   <script>
+
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('light');
@@ -1568,26 +1702,21 @@
       document.body.classList.add('light');
     }
 
-    // Advanced Intersection Observer for scroll animations
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Performance-optimized Intersection Observer
     const observerOptions = {
-      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
-      rootMargin: '-50px 0px -50px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
-
-          // Special handling for staggered animations
-          if (entry.target.classList.contains('stagger-container')) {
-            const items = entry.target.querySelectorAll('.stagger-item');
-            items.forEach((item, index) => {
-              setTimeout(() => {
-                item.classList.add('animate-in');
-              }, index * 100);
-            });
-          }
+          // Unobserve after animation to improve performance
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
@@ -1596,55 +1725,93 @@
     const animateElements = document.querySelectorAll([
       '.hero',
       '.cv-section',
-      'footer',
-      '.fade-up',
-      '.fade-left',
-      '.fade-right',
-      '.scale-in',
-      '.stagger-container'
+      'footer'
     ].join(','));
 
     animateElements.forEach(el => observer.observe(el));
 
-    // Enhanced parallax effect for background
-    let ticking = false;
-
-    function updateParallax() {
-      const scrolled = window.pageYOffset;
-      const parallax = document.querySelector('.parallax-wrapper');
-      const speed = scrolled * 0.5;
-
-      parallax.style.transform = `translateY(${speed}px)`;
-      ticking = false;
-    }
-
-    function requestTick() {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
+    // Scroll progress indicator with throttling
+    function updateScrollProgress() {
+      const scrollProgress = document.querySelector('.scroll-progress');
+      if (scrollProgress) {
+        const scrolled = window.pageYOffset;
+        const maxHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = (scrolled / maxHeight) * 100;
+        scrollProgress.style.width = progress + '%';
       }
     }
 
-    window.addEventListener('scroll', requestTick);
-
-    // Floating particles animation
-    function createFloatingParticles() {
-      const particleContainer = document.createElement('div');
-      particleContainer.className = 'floating-particles';
-      document.body.appendChild(particleContainer);
-
-      for (let i = 0; i < 15; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-        particleContainer.appendChild(particle);
+    // Throttled scroll event for better performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
       }
-    }
+      scrollTimeout = setTimeout(updateScrollProgress, 16); // ~60fps
+    }, {passive: true});
 
-    // Initialize particles after page load
-    window.addEventListener('load', createFloatingParticles);
+    // Mobile performance optimizations
+    const isMobile = window.innerWidth <= 768;
+    const isLowPerformance = navigator.hardwareConcurrency <= 2;
+
+    if (isMobile || isLowPerformance) {
+      // Reduce animation complexity
+      document.documentElement.style.setProperty('--blur', 'blur(5px)');
+
+      // Disable particle effects
+      const particleContainer = document.querySelector('.floating-particles');
+      if (particleContainer) {
+        particleContainer.style.display = 'none';
+      }
+
+      // Disable complex parallax effects
+      document.addEventListener('mousemove', () => { }, {passive: true});
+      document.addEventListener('mouseleave', () => { }, {passive: true});
+    } else {
+      // Desktop-only features
+
+      // Mouse movement parallax effect for cards
+      document.addEventListener('mousemove', (e) => {
+        const cards = document.querySelectorAll('.cv-section.animate-in');
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        cards.forEach((card) => {
+          const intensity = 3; // Reduced intensity
+          const x = (mouseX - 0.5) * intensity;
+          const y = (mouseY - 0.5) * intensity;
+
+          card.style.transform = `translateX(${x}px) translateY(${y}px)`;
+        });
+      });
+
+      // Reset card positions when mouse leaves window
+      document.addEventListener('mouseleave', () => {
+        const cards = document.querySelectorAll('.cv-section.animate-in');
+        cards.forEach(card => {
+          card.style.transform = '';
+        });
+      });
+
+      // Create floating particles (desktop only)
+      function createFloatingParticles() {
+        const particleContainer = document.createElement('div');
+        particleContainer.className = 'floating-particles';
+        document.body.appendChild(particleContainer);
+
+        for (let i = 0; i < 10; i++) { // Reduced from 15 to 10
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 15 + 's';
+          particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+          particleContainer.appendChild(particle);
+        }
+      }
+
+      // Initialize particles after page load (desktop only)
+      window.addEventListener('load', createFloatingParticles);
+    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1660,31 +1827,8 @@
       });
     });
 
-    // Add mouse movement parallax effect to cards
-    document.addEventListener('mousemove', (e) => {
-      const cards = document.querySelectorAll('.cv-section.animate-in');
-      const mouseX = e.clientX / window.innerWidth;
-      const mouseY = e.clientY / window.innerHeight;
-
-      cards.forEach((card, index) => {
-        const intensity = 5;
-        const x = (mouseX - 0.5) * intensity;
-        const y = (mouseY - 0.5) * intensity;
-
-        card.style.transform = `translateX(${x}px) translateY(${y}px)`;
-      });
-    });
-
-    // Reset card positions when mouse leaves window
-    document.addEventListener('mouseleave', () => {
-      const cards = document.querySelectorAll('.cv-section.animate-in');
-      cards.forEach(card => {
-        card.style.transform = '';
-      });
-    });
-
-    // Add dynamic typing effect to hero subtitle
-    function typeWriter(element, text, speed = 50) {
+    // Optimized typing effect (simplified for mobile)
+    function typeWriter(element, text, speed = isMobile ? 20 : 50) {
       let i = 0;
       element.innerHTML = '';
 
@@ -1696,7 +1840,11 @@
         }
       }
 
-      type();
+      if (!isMobile) { // Only run on desktop
+        type();
+      } else {
+        element.innerHTML = text; // Instant on mobile
+      }
     }
 
     // Initialize typing effect when hero becomes visible
@@ -1707,8 +1855,8 @@
           const originalText = subtitle.textContent;
 
           setTimeout(() => {
-            typeWriter(subtitle, originalText, 30);
-          }, 800);
+            typeWriter(subtitle, originalText);
+          }, isMobile ? 100 : 800);
 
           heroObserver.unobserve(entry.target);
         }
@@ -1720,28 +1868,9 @@
       heroObserver.observe(hero);
     }
 
-    // Add scroll-triggered animations for skill tags
-    const skillTagObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const tags = entry.target.querySelectorAll('.skill-tag');
-          tags.forEach((tag, index) => {
-            setTimeout(() => {
-              tag.style.transform = 'scale(1)';
-              tag.style.opacity = '1';
-            }, index * 50);
-          });
-        }
-      });
-    }, {threshold: 0.5});
-
-    document.querySelectorAll('.skill-category').forEach(category => {
-      skillTagObserver.observe(category);
-    });
-
-    // Performance optimization: Reduce animations on low-end devices
-    if (navigator.hardwareConcurrency <= 2) {
-      document.documentElement.style.setProperty('--blur', 'blur(5px)');
+    // Disable heavy animations on low-end devices
+    if (navigator.hardwareConcurrency <= 2 || navigator.connection?.effectiveType === '2g') {
+      document.documentElement.style.setProperty('--blur', 'blur(3px)');
       document.querySelectorAll('.floating-particles').forEach(el => {
         el.style.display = 'none';
       });
