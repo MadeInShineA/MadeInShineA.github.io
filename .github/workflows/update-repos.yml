@@ -27,31 +27,50 @@ jobs:
           OLD_HASH=$(md5sum repos.json 2>/dev/null || echo "")
 
           TEMP=$(mktemp)
-          CURSOR=""
-          gh api graphql \
-            --paginate \
-            -F first=100 \
-            -F cursor=null \
+          NODES=$(gh api graphql \
             -f query='
-              query($first: Int!, $cursor: String) {
+              query {
                 user(login: "MadeInShineA") {
-                  repositories(first: $first, after: $cursor, orderBy: {field: UPDATED_AT, direction: DESC}) {
-                    pageInfo { hasNextPage endCursor }
+                  repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {
                     nodes {
                       name
                       description
                       url
                       stargazerCount
                       updatedAt
-                      languages(first: 10) {
-                        nodes { name }
-                      }
+                      languages(first: 10) { nodes { name } }
                     }
+                    pageInfo { hasNextPage endCursor }
                   }
                 }
               }' \
-            --jq '.data.user.repositories.nodes' \
-            >> "$TEMP"
+            --jq '.data.user.repositories')
+          P1=$(echo "$NODES" | jq '.nodes')
+          END=$(echo "$NODES" | jq -r '.pageInfo.endCursor')
+          if [ "$(echo "$NODES" | jq -r '.pageInfo.hasNextPage')" = "true" ] && [ -n "$END" ] && [ "$END" != "null" ]; then
+            NODES=$(gh api graphql \
+              -f query='
+                query($endCursor: String!) {
+                  user(login: "MadeInShineA") {
+                    repositories(first: 100, after: $endCursor, orderBy: {field: UPDATED_AT, direction: DESC}) {
+                      nodes {
+                        name
+                        description
+                        url
+                        stargazerCount
+                        updatedAt
+                        languages(first: 10) { nodes { name } }
+                      }
+                    }
+                  }
+                }' \
+              -F endCursor="$END" \
+              --jq '.data.user.repositories')
+            P2=$(echo "$NODES" | jq '.nodes')
+            jq -n '[($p1 | .[]) , ($p2 | .[])]' --argjson p1 "$P1" --argjson p2 "$P2" > "$TEMP"
+          else
+            echo "$P1" > "$TEMP"
+          fi
           mv "$TEMP" repos.json
 
           NEW_HASH=$(md5sum repos.json 2>/dev/null || echo "")
