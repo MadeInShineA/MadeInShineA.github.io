@@ -18,11 +18,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Fetch & flatten repos.json (with commits)
+      - name: Fetch repos.json
         env:
-          GH_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
+          # Save hash before fetching
+          OLD_HASH=$(md5sum repos.json 2>/dev/null || echo "")
+
           gh api graphql \
+            --retry 3 \
+            --retry-max-time 30 \
             -f query='
             {
               user(login: "MadeInShineA") {
@@ -33,15 +38,6 @@ jobs:
                     url
                     stargazerCount
                     updatedAt
-                    defaultBranchRef {
-                      target {
-                        ... on Commit {
-                          history {
-                            totalCount
-                          }
-                        }
-                      }
-                    }
                     languages(first: 10) {
                       nodes { name }
                     }
@@ -58,16 +54,22 @@ jobs:
                   url,
                   stargazerCount,
                   updatedAt,
-                  commits: .defaultBranchRef.target.history.totalCount,
                   languages: [.languages.nodes[].name]
                 })
             ' \
           > repos.json
 
+          # Only commit if content actually changed
+          NEW_HASH=$(md5sum repos.json 2>/dev/null || echo "")
+          if [ "$OLD_HASH" != "$NEW_HASH" ]; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Commit updated repos.json
+        if: github.outputs.changes_detected == 'true'
         uses: EndBug/add-and-commit@v9
         with:
           author_name: github-actions
           author_email: actions@github.com
-          message: "chore: update repos.json (include commits)"
+          message: "chore: update repos.json"
           add: repos.json
