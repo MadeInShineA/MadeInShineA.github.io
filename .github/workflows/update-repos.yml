@@ -22,44 +22,38 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
         run: |
-          # Save hash before fetching
+          set -euo pipefail
+
           OLD_HASH=$(md5sum repos.json 2>/dev/null || echo "")
 
+          TEMP=$(mktemp)
+          CURSOR=""
           gh api graphql \
-            --retry 3 \
-            --retry-max-time 30 \
+            --paginate \
+            -F first=100 \
+            -F cursor=null \
             -f query='
-            {
-              user(login: "MadeInShineA") {
-                repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {
-                  nodes {
-                    name
-                    description
-                    url
-                    stargazerCount
-                    updatedAt
-                    languages(first: 10) {
-                      nodes { name }
+              query($first: Int!, $cursor: String) {
+                user(login: "MadeInShineA") {
+                  repositories(first: $first, after: $cursor, orderBy: {field: UPDATED_AT, direction: DESC}) {
+                    pageInfo { hasNextPage endCursor }
+                    nodes {
+                      name
+                      description
+                      url
+                      stargazerCount
+                      updatedAt
+                      languages(first: 10) {
+                        nodes { name }
+                      }
                     }
                   }
                 }
-              }
-            }' \
-            --jq '
-              .data.user.repositories.nodes
-              | map({
-                  owner: { login: "MadeInShineA" },
-                  name,
-                  description,
-                  url,
-                  stargazerCount,
-                  updatedAt,
-                  languages: [.languages.nodes[].name]
-                })
-            ' \
-          > repos.json
+              }' \
+            --jq '.data.user.repositories.nodes' \
+            >> "$TEMP"
+          mv "$TEMP" repos.json
 
-          # Only commit if content actually changed
           NEW_HASH=$(md5sum repos.json 2>/dev/null || echo "")
           if [ "$OLD_HASH" != "$NEW_HASH" ]; then
             echo "changes_detected=true" >> $GITHUB_OUTPUT
