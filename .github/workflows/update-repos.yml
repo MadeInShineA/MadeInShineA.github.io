@@ -31,7 +31,7 @@ jobs:
         env:
           # A personal token avoids rate limits; the built-in token works for public data too.
           GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN || github.token }}
-        run: bash scripts/update-repos.sh assets/repos-data.js
+        run: bash scripts/update-repos.sh assets/repos-data.js assets/stats-data.js
 
       - name: Fetch NASA picture of the day
         # Runs even if fetching repositories failed, so one outage doesn't block the other
@@ -41,13 +41,16 @@ jobs:
       - name: Commit data files if they changed
         if: ${{ !cancelled() }}
         run: |
-          if git diff --quiet -- assets/repos-data.js assets/apod-data.js; then
+          files=(assets/repos-data.js assets/stats-data.js assets/apod-data.js)
+          for f in "${files[@]}"; do
+            [ -e "$f" ] && git add "$f"
+          done
+          if git diff --cached --quiet; then
             echo "Data is up to date"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/repos-data.js assets/apod-data.js
           git commit -m "chore: update site data"
           git pull --rebase
           git push

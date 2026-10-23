@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olivier Amacker – Statistics</title>
+  <meta name="description"
+    content="GitHub statistics of Olivier Amacker: contributions, streaks, languages and repositories, refreshed every hour" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#09090b" />
+  <link rel="icon" href="src/avatar-480.webp" type="image/webp" />
+  <link rel="preconnect" href="https://assets.science.nasa.gov" />
+  <script src="assets/apod-data.js"></script>
+  <script src="assets/apod.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.469.0/font/lucide.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    .photo-hero { height: clamp(260px, 38vh, 380px); }
+    .photo-hero img { object-position: center; }
+
+    /* ─── Intro with the one hero figure ─── */
+    .intro {
+      position: relative;
+      margin-top: -140px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: end;
+    }
+    .intro h1 { font-size: clamp(34px, 5vw, 52px); margin: 10px 0 14px; }
+    .intro p { color: var(--fg-muted); max-width: 52ch; }
+    .intro .updated { margin-top: 14px; font-size: 13px; color: var(--fg-faint); }
+    .hero-figure { padding: 22px 24px; border-radius: 14px; border: 1px solid var(--line); background: var(--glass-soft); }
+    .hero-figure b { display: block; font-size: clamp(48px, 6vw, 64px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+    .hero-figure span { display: block; margin-top: 10px; font-size: 14px; color: var(--fg-muted); }
+
+    /* ─── Stat tiles ─── */
+    .kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+    .kpi { padding: 18px 20px; }
+    .kpi-label { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--fg-muted); }
+    .kpi-label i { font-size: 15px; color: var(--fg-faint); }
+    .kpi b { display: block; margin-top: 10px; font-size: 26px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+    .kpi small { display: block; margin-top: 4px; font-size: 12.5px; color: var(--fg-faint); }
+
+    /* ─── Chart cards ─── */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
+    .viz-card { padding: 24px; min-width: 0; display: flex; flex-direction: column; }
+    .viz-card.full { margin-top: 20px; }
+    .viz-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .viz-head h2 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+    .viz-head p { margin-top: 4px; font-size: 13.5px; color: var(--fg-muted); }
+    .chart { position: relative; min-width: 0; flex: 1; }
+    .viz-note { padding: 40px 0; text-align: center; font-size: 14px; color: var(--fg-faint); }
+
+    .legend { display: flex; align-items: center; gap: 14px; font-size: 12.5px; color: var(--fg-muted); white-space: nowrap; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend .swatch { width: 10px; height: 10px; border-radius: 3px; }
+    .scale { display: flex; align-items: center; gap: 3px; font-size: 12px; color: var(--fg-faint); }
+    .scale i { width: 11px; height: 11px; border-radius: 2.5px; }
+    .scale span:first-child { margin-right: 4px; }
+    .scale span:last-child { margin-left: 4px; }
+
+    /* SVG chrome: recessive hairlines, muted ticks, text in text colours */
+    .viz { display: block; overflow: visible; font-family: var(--font-sans); }
+    .viz .grid { stroke: rgba(255, 255, 255, .06); stroke-width: 1; shape-rendering: crispEdges; }
+    .viz .baseline { stroke: rgba(255, 255, 255, .16); stroke-width: 1; shape-rendering: crispEdges; }
+    .viz .tick { fill: var(--fg-faint); font-size: 11px; }
+    .viz .value { fill: var(--fg); font-size: 11.5px; font-weight: 600; }
+    .viz .mark { outline: none; cursor: default; }
+    .viz .mark:hover path, .viz .mark:focus path { filter: brightness(1.25); }
+    .viz .mark:focus-visible path { stroke: var(--fg); stroke-width: 1.5; }
+    .viz .cell:hover, .viz .cell:focus { stroke: var(--fg); stroke-width: 1.5; outline: none; }
+    .viz-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; padding-bottom: 4px; }
+
+    .hbars { display: grid; gap: 12px; }
+    .hbar { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); align-items: center; gap: 14px; border-radius: 8px; outline: none; }
+    .hbar:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+    .hbar-label { font-size: 13.5px; color: var(--fg-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .hbar-track { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .hbar-fill { height: 12px; border-radius: 0 4px 4px 0; flex: none; transition: filter .2s; }
+    .hbar:hover .hbar-fill, .hbar:focus .hbar-fill { filter: brightness(1.25); }
+    .hbar-value { font-size: 12.5px; font-weight: 600; color: var(--fg); white-space: nowrap; }
+
+    .viz-tip {
+      position: fixed; z-index: 200; pointer-events: none; opacity: 0; transform: translateY(4px);
+      display: grid; gap: 2px; padding: 8px 11px; border-radius: 9px; font-size: 12.5px;
+      background: rgba(20, 20, 24, .92); border: 1px solid var(--line-strong); box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      transition: opacity .12s, transform .12s;
+    }
+    .viz-tip.on { opacity: 1; transform: none; }
+    .viz-tip strong { font-size: 14px; color: var(--fg); }
+    .viz-tip span { color: var(--fg-muted); }
+
+
+    @media (max-width: 1000px) {
+      .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 900px) {
+      .intro { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+      .grid-2 { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .intro { padding: 24px 20px; margin-top: -100px; }
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .kpi { padding: 14px 16px; }
+      .kpi b { font-size: 22px; }
+      .viz-card { padding: 20px 16px; }
+      .viz-head { flex-direction: column; gap: 10px; }
+      .hbar { grid-template-columns: minmax(0, 110px) minmax(0, 1fr); gap: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <nav class="nav glass" aria-label="Main">
+    <a href="index.html" class="nav-brand"><img src="src/avatar-480.webp" alt="" /><span>Olivier Amacker</span></a>
+    <div class="nav-links">
+      <a href="index.html"><i class="icon-file-text" aria-hidden="true"></i><span>Resume</span></a>
+      <a href="portfolio.html"><i class="icon-layers" aria-hidden="true"></i><span>Portfolio</span></a>
+      <a href="stats.html" aria-current="page"><i class="icon-chart-column" aria-hidden="true"></i><span>Statistics</span></a>
+    </div>
+  </nav>
+
+  <header class="photo-hero is-loading">
+    <img alt="" />
+    <div class="hero-loader" role="status">
+      <span class="orbit" aria-hidden="true"><span class="planet"></span></span>
+      <span class="hero-loader-text">Loading NASA's picture of the day</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro glass reveal">
+      <div>
+        <p class="eyebrow accent">Statistics</p>
+        <h1 class="display">My GitHub in numbers</h1>
+        <p>Contributions, streaks, languages and repositories, pulled straight from my GitHub profile and refreshed
+          every hour.</p>
+        <p class="updated">Last updated: <span id="updated">…</span></p>
+      </div>
+      <div class="hero-figure">
+        <b id="hero-total">…</b>
+        <span>contributions in the last 12 months</span>
+      </div>
+    </section>
+
+    <section class="kpis" aria-label="Key numbers">
+      <div class="kpi glass reveal">
+        <span class="kpi-label"><i class="icon-flame" aria-hidden="true"></i>Current streak</span>
+        <b id="kpi-current">…</b><small>consecutive active days</small>
+      </div>
+      <div class="kpi glass reveal">
+        <span class="kpi-label"><i class="icon-activity" aria-hidden="true"></i>Longest streak</span>
+        <b id="kpi-longest">…</b><small>in the last 12 months</small>
+      </div>
+      <div class="kpi glass reveal">
+        <span class="kpi-label"><i class="icon-folder-git-2" aria-hidden="true"></i>Repositories</span>
+        <b id="kpi-repos">…</b><small id="kpi-repos-sub">&nbsp;</small>
+      </div>
+      <div class="kpi glass reveal">
+        <span class="kpi-label"><i class="icon-star" aria-hidden="true"></i>Stars earned</span>
+        <b id="kpi-stars">…</b><small>on my own repositories</small>
+      </div>
+      <div class="kpi glass reveal">
+        <span class="kpi-label"><i class="icon-users" aria-hidden="true"></i>Followers</span>
+        <b id="kpi-followers">…</b><small id="kpi-since-sub">&nbsp;</small>
+      </div>
+    </section>
+
+    <section class="viz-card glass reveal full" id="calendar">
+      <div class="viz-head">
+        <div>
+          <h2>Contribution calendar</h2>
+          <p id="calendar-sub">Every day of the last 12 months</p>
+        </div>
+        <div class="scale" id="calendar-legend" aria-hidden="true"><span>Less</span><span>More</span></div>
+      </div>
+      <div class="chart"></div>
+    </section>
+
+    <div class="grid-2">
+      <section class="viz-card glass reveal" id="per-year">
+        <div class="viz-head">
+          <div>
+            <h2>Contributions per year</h2>
+            <p id="per-year-sub">Since I joined GitHub</p>
+          </div>
+        </div>
+        <div class="chart"></div>
+      </section>
+
+      <section class="viz-card glass reveal" id="weekday">
+        <div class="viz-head">
+          <div>
+            <h2>Activity by weekday</h2>
+            <p id="weekday-sub">Contributions per day of the week</p>
+          </div>
+        </div>
+        <div class="chart"></div>
+      </section>
+
+      <section class="viz-card glass reveal" id="per-month">
+        <div class="viz-head">
+          <div>
+            <h2>Contributions per month</h2>
+            <p>The last 12 months</p>
+          </div>
+        </div>
+        <div class="chart"></div>
+      </section>
+
+      <section class="viz-card glass reveal" id="types">
+        <div class="viz-head">
+          <div>
+            <h2>What I contribute</h2>
+            <p>Contribution types over the last 12 months</p>
+          </div>
+        </div>
+        <div class="chart"></div>
+      </section>
+
+      <section class="viz-card glass reveal" id="languages">
+        <div class="viz-head">
+          <div>
+            <h2>Languages</h2>
+            <p id="languages-sub">Across my own repositories</p>
+          </div>
+        </div>
+        <div class="chart"></div>
+      </section>
+
+      <section class="viz-card glass reveal" id="stars">
+        <div class="viz-head">
+          <div>
+            <h2>Most starred repositories</h2>
+            <p>My own repositories, forks excluded</p>
+          </div>
+        </div>
+        <div class="chart"></div>
+      </section>
+    </div>
+
+    <section class="viz-card glass reveal full" id="created">
+      <div class="viz-head">
+        <div>
+          <h2>Repositories created per year</h2>
+          <p>My own projects and the repositories I forked</p>
+        </div>
+        <div class="legend">
+          <span><i class="swatch" style="background:#3987e5"></i>Own</span>
+          <span><i class="swatch" style="background:#d95926"></i>Forks</span>
+        </div>
+      </div>
+      <div class="chart"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>&copy; <span id="year"></span> Olivier Amacker</div>
+      <div class="footer-links">
+        <a href="https://github.com/MadeInShineA" target="_blank" rel="noopener"><i class="icon-github"
+            aria-hidden="true"></i> GitHub</a>
+        <a href="https://twitter.com/MadeInShineA" target="_blank" rel="noopener"><i class="icon-twitter"
+            aria-hidden="true"></i> Twitter</a>
+        <a href="mailto:olivier.amacker@netplus.ch"><i class="icon-mail" aria-hidden="true"></i> Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+  <script src="assets/repos-data.js"></script>
+  <script src="assets/stats-data.js"></script>
+  <script src="assets/charts.js"></script>
+  <script src="assets/stats.js"></script>
+</body>
+
+</html>

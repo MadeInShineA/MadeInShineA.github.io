@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# Fetches every public repository of a GitHub user through the GraphQL API
-# and writes the flattened list to assets/repos-data.js (window.REPOS = [...]).
-# It is a script rather than JSON so portfolio.html can load it with a <script>
-# tag, which also works when the page is opened straight from disk.
+# Fetches a GitHub user's public repositories and profile statistics through the
+# GraphQL API and writes them as two small scripts:
+#   assets/repos-data.js  -> window.REPOS = [...]          (portfolio + statistics pages)
+#   assets/stats-data.js  -> window.GITHUB_STATS = {...}   (statistics page)
+# They are scripts rather than JSON so the pages can load them with <script> tags,
+# which also works when the pages are opened straight from disk.
 #
-# Usage:   GITHUB_TOKEN=<token> scripts/update-repos.sh [output-file]
+# Usage:   GITHUB_TOKEN=<token> scripts/update-repos.sh [repos-output] [stats-output]
 # Token:   GITHUB_TOKEN or GH_TOKEN; falls back to `gh auth token` if the
 #          GitHub CLI is installed and logged in. A classic token with no
 #          scopes (public data only) is enough.
@@ -14,6 +16,7 @@ set -euo pipefail
 
 GITHUB_USER="${GITHUB_USER:-MadeInShineA}"
 OUTPUT="${1:-$(dirname "$0")/../assets/repos-data.js}"
+STATS_OUTPUT="${2:-$(dirname "$0")/../assets/stats-data.js}"
 
 TOKEN="${GITHUB_TOKEN:-${GH_TOKEN:-}}"
 if [[ -z "$TOKEN" ]] && command -v gh >/dev/null 2>&1; then
@@ -45,9 +48,12 @@ QUERY='query($login: String!, $cursor: String, $size: Int!) {
         description
         url
         stargazerCount
+        forkCount
+        isFork
+        createdAt
         updatedAt
         owner { login }
-        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) { nodes { name } }
+        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name } } }
         defaultBranchRef { target { ... on Commit { history { totalCount } } } }
       }
     }
@@ -110,10 +116,14 @@ jq -s '
         description,
         url,
         stargazerCount,
+        forks: .forkCount,
+        isFork,
+        createdAt,
         updatedAt,
         owner: { login: .owner.login },
         commits: (.defaultBranchRef.target.history.totalCount // 0),
-        languages: [ .languages.nodes[].name ]
+        languages: [ .languages.edges[].node.name ],
+        languageSizes: ([ .languages.edges[] | { (.node.name): .size } ] | add // {})
       }
   ]' "$tmp"/page-*.json > "$tmp/repos.json"
 
@@ -125,3 +135,92 @@ jq -s '
 } > "$tmp/repos-data.js"
 mv "$tmp/repos-data.js" "$OUTPUT"
 echo "Wrote $(jq length "$tmp/repos.json") repositories to $OUTPUT"
+
+# ─── Profile statistics ──────────────────────────────────────────────────────
+# Contribution calendar of the last 12 months plus totals per contribution type.
+# shellcheck disable=SC2016  # $login is a GraphQL variable
+PROFILE_QUERY='query($login: String!) {
+  user(login: $login) {
+    login
+    name
+    createdAt
+    followers { totalCount }
+    following { totalCount }
+    contributionsCollection {
+      totalCommitContributions
+      totalPullRequestContributions
+      totalPullRequestReviewContributions
+      totalIssueContributions
+      totalRepositoryContributions
+      restrictedContributionsCount
+      contributionCalendar {
+        totalContributions
+        weeks { contributionDays { date contributionCount } }
+      }
+    }
+  }
+}'
+graphql "$(jq -n --arg q "$PROFILE_QUERY" --arg login "$GITHUB_USER" '{query: $q, variables: {login: $login}}')" "$tmp/profile.json"
+if jq -e '.errors' "$tmp/profile.json" >/dev/null; then
+  echo "error: profile query failed:" >&2
+  jq '.errors' "$tmp/profile.json" >&2
+  exit 1
+fi
+
+# Totals per calendar year since the account was created. A contributions window can
+# span at most one year, so each year is its own aliased field in a single query.
+first_year="$(jq -r '.data.user.createdAt[0:4]' "$tmp/profile.json")"
+this_year="$(date -u +%Y)"
+now="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+fields=""
+for ((year = first_year; year <= this_year; year++)); do
+  to="$year-12-31T23:59:59Z"
+  [[ $year == "$this_year" ]] && to="$now"  # the window may not end in the future
+  fields+="y$year: contributionsCollection(from: \"$year-01-01T00:00:00Z\", to: \"$to\") {
+    totalCommitContributions
+    contributionCalendar { totalContributions }
+  }
+"
+done
+YEARS_QUERY="query(\$login: String!) { user(login: \$login) { $fields } }"
+graphql "$(jq -n --arg q "$YEARS_QUERY" --arg login "$GITHUB_USER" '{query: $q, variables: {login: $login}}')" "$tmp/years.json"
+if jq -e '.errors' "$tmp/years.json" >/dev/null; then
+  echo "error: yearly contributions query failed:" >&2
+  jq '.errors' "$tmp/years.json" >&2
+  exit 1
+fi
+
+jq -n --slurpfile p "$tmp/profile.json" --slurpfile y "$tmp/years.json" '
+  ($p[0].data.user) as $u
+  | ($u.contributionsCollection) as $c
+  | {
+      generatedAt: (now | todate),
+      login: $u.login,
+      name: $u.name,
+      createdAt: $u.createdAt,
+      followers: $u.followers.totalCount,
+      following: $u.following.totalCount,
+      lastYear: {
+        total: $c.contributionCalendar.totalContributions,
+        commits: $c.totalCommitContributions,
+        pullRequests: $c.totalPullRequestContributions,
+        reviews: $c.totalPullRequestReviewContributions,
+        issues: $c.totalIssueContributions,
+        repositories: $c.totalRepositoryContributions,
+        private: $c.restrictedContributionsCount
+      },
+      calendar: [ $c.contributionCalendar.weeks[].contributionDays[] | [ .date, .contributionCount ] ],
+      years: [ $y[0].data.user | to_entries | sort_by(.key)[]
+               | { year: (.key[1:] | tonumber),
+                   total: .value.contributionCalendar.totalContributions,
+                   commits: .value.totalCommitContributions } ]
+    }' > "$tmp/stats.json"
+
+{
+  echo "// Generated by scripts/update-repos.sh, do not edit by hand."
+  printf 'window.GITHUB_STATS = '
+  jq -c . "$tmp/stats.json"
+  echo ';'
+} > "$tmp/stats-data.js"
+mv "$tmp/stats-data.js" "$STATS_OUTPUT"
+echo "Wrote profile statistics ($(jq '.lastYear.total' "$tmp/stats.json") contributions in the last year) to $STATS_OUTPUT"
