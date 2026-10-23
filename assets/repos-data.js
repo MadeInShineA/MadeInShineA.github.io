@@ -5,24 +5,37 @@ window.REPOS = [
     "description": "Code and images used by my github.io website",
     "url": "https://github.com/MadeInShineA/MadeInShineA.github.io",
     "stargazerCount": 1,
-    "updatedAt": "2026-10-23T15:29:00Z",
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2022-07-19T13:13:33Z",
+    "updatedAt": "2026-10-23T15:47:52Z",
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 5970,
+    "commits": 5973,
     "languages": [
       "HTML",
-      "CSS",
       "JavaScript",
-      "Python",
-      "Shell"
-    ]
+      "CSS",
+      "Shell",
+      "Python"
+    ],
+    "languageSizes": {
+      "HTML": 68907,
+      "JavaScript": 31761,
+      "CSS": 15567,
+      "Shell": 8432,
+      "Python": 3688
+    }
   },
   {
     "name": "remnote-html",
     "description": null,
     "url": "https://github.com/MadeInShineA/remnote-html",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-10-23T13:06:51Z",
     "updatedAt": "2026-10-23T14:28:39Z",
     "owner": {
       "login": "MadeInShineA"
@@ -33,25 +46,38 @@ window.REPOS = [
       "JavaScript",
       "CSS",
       "Nix"
-    ]
+    ],
+    "languageSizes": {
+      "TypeScript": 9759,
+      "JavaScript": 3472,
+      "CSS": 1248,
+      "Nix": 593
+    }
   },
   {
     "name": "data-viz-project",
     "description": null,
     "url": "https://github.com/MadeInShineA/data-viz-project",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-10-09T07:08:16Z",
     "updatedAt": "2026-10-23T07:06:45Z",
     "owner": {
       "login": "MadeInShineA"
     },
     "commits": 3,
-    "languages": []
+    "languages": [],
+    "languageSizes": {}
   },
   {
     "name": "sensor-data-lab-02",
     "description": null,
     "url": "https://github.com/MadeInShineA/sensor-data-lab-02",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-10-21T14:30:18Z",
     "updatedAt": "2026-10-22T20:10:38Z",
     "owner": {
       "login": "MadeInShineA"
@@ -61,13 +87,21 @@ window.REPOS = [
       "Jupyter Notebook",
       "Python",
       "Nix"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 31128,
+      "Python": 22911,
+      "Nix": 743
+    }
   },
   {
     "name": "gpu-ai-robotic",
     "description": null,
     "url": "https://github.com/MadeInShineA/gpu-ai-robotic",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-09-25T09:47:25Z",
     "updatedAt": "2026-10-20T18:07:23Z",
     "owner": {
       "login": "MadeInShineA"
@@ -79,13 +113,23 @@ window.REPOS = [
       "Makefile",
       "Shell",
       "C"
-    ]
+    ],
+    "languageSizes": {
+      "C++": 468994,
+      "Cuda": 204373,
+      "Makefile": 159785,
+      "Shell": 18246,
+      "C": 8555
+    }
   },
   {
     "name": "remnote-typst",
     "description": null,
     "url": "https://github.com/MadeInShineA/remnote-typst",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-10-15T09:36:13Z",
     "updatedAt": "2026-10-20T10:40:24Z",
     "owner": {
       "login": "MadeInShineA"
@@ -96,13 +140,22 @@ window.REPOS = [
       "JavaScript",
       "CSS",
       "Nix"
-    ]
+    ],
+    "languageSizes": {
+      "TypeScript": 4737,
+      "JavaScript": 3473,
+      "CSS": 1499,
+      "Nix": 593
+    }
   },
   {
     "name": "master",
     "description": null,
     "url": "https://github.com/MadeInShineA/master",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-09-24T10:18:44Z",
     "updatedAt": "2026-10-19T21:39:47Z",
     "owner": {
       "login": "MadeInShineA"
@@ -115,13 +168,24 @@ window.REPOS = [
       "Nix",
       "Dockerfile",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 5729184,
+      "HTML": 617434,
+      "Python": 63124,
+      "Nix": 4783,
+      "Dockerfile": 1773,
+      "Shell": 915
+    }
   },
   {
     "name": "nixos",
     "description": null,
     "url": "https://github.com/MadeInShineA/nixos",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-02-13T11:31:29Z",
     "updatedAt": "2026-10-19T21:37:39Z",
     "owner": {
       "login": "MadeInShineA"
@@ -135,13 +199,25 @@ window.REPOS = [
       "CSS",
       "Python",
       "GLSL"
-    ]
+    ],
+    "languageSizes": {
+      "QML": 480405,
+      "Shell": 33693,
+      "Nix": 18185,
+      "JavaScript": 2864,
+      "CSS": 2113,
+      "Python": 2019,
+      "GLSL": 1274
+    }
   },
   {
     "name": "k8s-lab",
     "description": null,
     "url": "https://github.com/MadeInShineA/k8s-lab",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-10-13T08:06:44Z",
     "updatedAt": "2026-10-15T08:58:57Z",
     "owner": {
       "login": "MadeInShineA"
@@ -152,13 +228,22 @@ window.REPOS = [
       "Shell",
       "Dockerfile",
       "Nix"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 10372,
+      "Shell": 7027,
+      "Dockerfile": 2286,
+      "Nix": 550
+    }
   },
   {
     "name": "cloudsys-project",
     "description": null,
     "url": "https://github.com/MadeInShineA/cloudsys-project",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-10-06T08:52:10Z",
     "updatedAt": "2026-10-14T21:37:06Z",
     "owner": {
       "login": "MadeInShineA"
@@ -168,13 +253,21 @@ window.REPOS = [
       "Python",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 27431,
+      "Nix": 1134,
+      "Shell": 10
+    }
   },
   {
     "name": "ACGC-PC-Port",
     "description": "Unofficial PC Port of Animal Crossing Gamecube",
     "url": "https://github.com/MadeInShineA/ACGC-PC-Port",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-10-13T11:21:01Z",
     "updatedAt": "2026-10-13T11:21:01Z",
     "owner": {
       "login": "MadeInShineA"
@@ -190,13 +283,27 @@ window.REPOS = [
       "GLSL",
       "Shell",
       "Smarty"
-    ]
+    ],
+    "languageSizes": {
+      "C": 40203491,
+      "C++": 960398,
+      "Python": 651161,
+      "Pawn": 40510,
+      "CMake": 22755,
+      "Assembly": 22697,
+      "GLSL": 15531,
+      "Shell": 1208,
+      "Smarty": 914
+    }
   },
   {
     "name": "ac-decomp",
     "description": "Decompilation of Animal Crossing for the Nintendo GameCube.",
     "url": "https://github.com/MadeInShineA/ac-decomp",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-10-12T18:51:37Z",
     "updatedAt": "2026-10-12T20:55:26Z",
     "owner": {
       "login": "MadeInShineA"
@@ -210,13 +317,25 @@ window.REPOS = [
       "Assembly",
       "Smarty",
       "Nix"
-    ]
+    ],
+    "languageSizes": {
+      "C": 33692893,
+      "C++": 940042,
+      "Python": 601355,
+      "Pawn": 40510,
+      "Assembly": 22697,
+      "Smarty": 914,
+      "Nix": 686
+    }
   },
   {
     "name": "a-guide-to-mlops",
     "description": null,
     "url": "https://github.com/MadeInShineA/a-guide-to-mlops",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-09-28T06:57:58Z",
     "updatedAt": "2026-10-12T17:23:50Z",
     "owner": {
       "login": "MadeInShineA"
@@ -227,25 +346,38 @@ window.REPOS = [
       "Python",
       "Dockerfile",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 740797,
+      "Python": 13216,
+      "Dockerfile": 1266,
+      "Shell": 855
+    }
   },
   {
     "name": "opencode-config",
     "description": null,
     "url": "https://github.com/MadeInShineA/opencode-config",
     "stargazerCount": 13,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-25T13:33:29Z",
     "updatedAt": "2026-10-09T07:22:26Z",
     "owner": {
       "login": "MadeInShineA"
     },
     "commits": 7,
-    "languages": []
+    "languages": [],
+    "languageSizes": {}
   },
   {
     "name": "crafting-interpreters",
     "description": null,
     "url": "https://github.com/MadeInShineA/crafting-interpreters",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-10-05T10:00:02Z",
     "updatedAt": "2026-10-08T19:16:07Z",
     "owner": {
       "login": "MadeInShineA"
@@ -258,13 +390,24 @@ window.REPOS = [
       "JavaScript",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "HTML": 2431676,
+      "CSS": 27343,
+      "Java": 9656,
+      "JavaScript": 1942,
+      "Nix": 573,
+      "Shell": 10
+    }
   },
   {
     "name": "manim-animations",
     "description": "This repository contains different manim animation files",
     "url": "https://github.com/MadeInShineA/manim-animations",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-01-06T22:25:28Z",
     "updatedAt": "2026-10-08T09:59:29Z",
     "owner": {
       "login": "MadeInShineA"
@@ -274,13 +417,21 @@ window.REPOS = [
       "Python",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 84980,
+      "Nix": 933,
+      "Shell": 10
+    }
   },
   {
     "name": "tiny-renderer",
     "description": null,
     "url": "https://github.com/MadeInShineA/tiny-renderer",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-10-02T20:36:17Z",
     "updatedAt": "2026-10-02T20:37:30Z",
     "owner": {
       "login": "MadeInShineA"
@@ -291,13 +442,22 @@ window.REPOS = [
       "CMake",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "C++": 9137,
+      "CMake": 864,
+      "Nix": 576,
+      "Shell": 10
+    }
   },
   {
     "name": "todo-app",
     "description": null,
     "url": "https://github.com/MadeInShineA/todo-app",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-09-30T07:57:41Z",
     "updatedAt": "2026-09-30T21:34:32Z",
     "owner": {
       "login": "MadeInShineA"
@@ -308,13 +468,22 @@ window.REPOS = [
       "Nix",
       "CSS",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Gleam": 5134,
+      "Nix": 630,
+      "CSS": 278,
+      "Shell": 10
+    }
   },
   {
     "name": "personal-gleam-tour",
     "description": null,
     "url": "https://github.com/MadeInShineA/personal-gleam-tour",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-09-29T09:26:05Z",
     "updatedAt": "2026-09-29T13:45:32Z",
     "owner": {
       "login": "MadeInShineA"
@@ -327,13 +496,24 @@ window.REPOS = [
       "JavaScript",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Gleam": 59433,
+      "HTML": 46198,
+      "CSS": 22902,
+      "JavaScript": 17616,
+      "Nix": 615,
+      "Shell": 347
+    }
   },
   {
     "name": "melee-resources",
     "description": "The Super Smash Bros. Melee hub for playing, learning, and creating.",
     "url": "https://github.com/MadeInShineA/melee-resources",
     "stargazerCount": 27,
+    "forks": 3,
+    "isFork": false,
+    "createdAt": "2020-12-03T19:55:15Z",
     "updatedAt": "2026-09-29T00:52:39Z",
     "owner": {
       "login": "MadeInShineA"
@@ -344,13 +524,22 @@ window.REPOS = [
       "CSS",
       "SCSS",
       "JavaScript"
-    ]
+    ],
+    "languageSizes": {
+      "HTML": 160281,
+      "CSS": 71805,
+      "SCSS": 58214,
+      "JavaScript": 15719
+    }
   },
   {
     "name": "lustre-tutorial",
     "description": null,
     "url": "https://github.com/MadeInShineA/lustre-tutorial",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-09-28T18:01:35Z",
     "updatedAt": "2026-09-28T21:06:02Z",
     "owner": {
       "login": "MadeInShineA"
@@ -361,13 +550,22 @@ window.REPOS = [
       "Nix",
       "HTML",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Gleam": 5024,
+      "Nix": 592,
+      "HTML": 336,
+      "Shell": 10
+    }
   },
   {
     "name": "lustre",
     "description": "A Gleam web framework for building HTML templates, single page applications, and real-time server components.",
     "url": "https://github.com/MadeInShineA/lustre",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-09-28T19:35:45Z",
     "updatedAt": "2026-09-28T19:35:45Z",
     "owner": {
       "login": "MadeInShineA"
@@ -376,13 +574,20 @@ window.REPOS = [
     "languages": [
       "Gleam",
       "JavaScript"
-    ]
+    ],
+    "languageSizes": {
+      "Gleam": 548766,
+      "JavaScript": 146962
+    }
   },
   {
     "name": "exercism",
     "description": null,
     "url": "https://github.com/MadeInShineA/exercism",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-09-26T20:47:17Z",
     "updatedAt": "2026-09-28T14:52:57Z",
     "owner": {
       "login": "MadeInShineA"
@@ -395,13 +600,24 @@ window.REPOS = [
       "Nix",
       "Gleam",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "C++": 1977486,
+      "Haskell": 25184,
+      "CMake": 7249,
+      "Nix": 775,
+      "Gleam": 230,
+      "Shell": 10
+    }
   },
   {
     "name": "learn4haskell",
     "description": "👩‍🏫 👨‍🏫 Learn Haskell basics in 4 pull requests",
     "url": "https://github.com/MadeInShineA/learn4haskell",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-08-05T14:22:32Z",
     "updatedAt": "2026-09-03T13:47:29Z",
     "owner": {
       "login": "MadeInShineA"
@@ -412,13 +628,22 @@ window.REPOS = [
       "Makefile",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Haskell": 118848,
+      "Makefile": 1647,
+      "Nix": 556,
+      "Shell": 10
+    }
   },
   {
     "name": "smash-map",
     "description": "This repository contains the files of the Smash Map website, formerly known as Melee Map",
     "url": "https://github.com/MadeInShineA/smash-map",
     "stargazerCount": 13,
+    "forks": 2,
+    "isFork": false,
+    "createdAt": "2023-05-23T15:01:14Z",
     "updatedAt": "2026-09-01T10:31:01Z",
     "owner": {
       "login": "MadeInShineA"
@@ -433,13 +658,26 @@ window.REPOS = [
       "HTML",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "PHP": 1285230,
+      "CSS": 719727,
+      "Vue": 176162,
+      "JavaScript": 68436,
+      "Blade": 2955,
+      "HTML": 2004,
+      "Nix": 570,
+      "Shell": 10
+    }
   },
   {
     "name": "movie_app",
     "description": null,
     "url": "https://github.com/MadeInShineA/movie_app",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2022-07-04T00:22:03Z",
     "updatedAt": "2026-09-01T10:30:57Z",
     "owner": {
       "login": "MadeInShineA"
@@ -447,13 +685,19 @@ window.REPOS = [
     "commits": 4,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 7094
+    }
   },
   {
     "name": "telegram-bots",
     "description": null,
     "url": "https://github.com/MadeInShineA/telegram-bots",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-05-01T20:20:43Z",
     "updatedAt": "2026-09-01T10:30:56Z",
     "owner": {
       "login": "MadeInShineA"
@@ -461,13 +705,19 @@ window.REPOS = [
     "commits": 20,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 117731
+    }
   },
   {
     "name": "rust-boy",
     "description": "This repository contains the code of a Game Boy emulator written in Rust",
     "url": "https://github.com/MadeInShineA/rust-boy",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-01-11T11:49:50Z",
     "updatedAt": "2026-09-01T10:30:31Z",
     "owner": {
       "login": "MadeInShineA"
@@ -475,13 +725,19 @@ window.REPOS = [
     "commits": 23,
     "languages": [
       "Rust"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 24329
+    }
   },
   {
     "name": "forest-fire-simulation",
     "description": "A scalable, cross-language, probabilistic wildfire simulation engine for research, visualization, and experimentation.",
     "url": "https://github.com/MadeInShineA/forest-fire-simulation",
     "stargazerCount": 23,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-05-22T07:24:00Z",
     "updatedAt": "2026-09-01T10:30:17Z",
     "owner": {
       "login": "MadeInShineA"
@@ -492,13 +748,22 @@ window.REPOS = [
       "Scala",
       "Python",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 58201,
+      "Scala": 23747,
+      "Python": 7499,
+      "Shell": 276
+    }
   },
   {
     "name": "bachelor-thesis",
     "description": null,
     "url": "https://github.com/MadeInShineA/bachelor-thesis",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-05-12T08:11:44Z",
     "updatedAt": "2026-08-27T08:15:14Z",
     "owner": {
       "login": "MadeInShineA"
@@ -511,13 +776,24 @@ window.REPOS = [
       "CSS",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "HTML": 83742,
+      "JavaScript": 38034,
+      "SCSS": 4542,
+      "CSS": 746,
+      "Nix": 582,
+      "Shell": 10
+    }
   },
   {
     "name": "bachelor-thesis-report",
     "description": null,
     "url": "https://github.com/MadeInShineA/bachelor-thesis-report",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-05-14T07:02:16Z",
     "updatedAt": "2026-08-25T12:40:32Z",
     "owner": {
       "login": "MadeInShineA"
@@ -530,13 +806,24 @@ window.REPOS = [
       "Python",
       "Scala",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Typst": 93061,
+      "TeX": 39839,
+      "Nix": 885,
+      "Python": 640,
+      "Scala": 457,
+      "Shell": 10
+    }
   },
   {
     "name": "isc-hei-typst-templates",
     "description": "A typst template for reports in the ISC @ HEI curricula",
     "url": "https://github.com/MadeInShineA/isc-hei-typst-templates",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-06-03T13:01:10Z",
     "updatedAt": "2026-08-17T01:44:01Z",
     "owner": {
       "login": "MadeInShineA"
@@ -550,13 +837,25 @@ window.REPOS = [
       "Nix",
       "Python",
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Typst": 182078,
+      "Shell": 39166,
+      "Just": 11243,
+      "TeX": 5189,
+      "Nix": 920,
+      "Python": 640,
+      "Scala": 457
+    }
   },
   {
     "name": "WeiqiHub",
     "description": "A unified client to multiple Go servers and offline puzzle solving.",
     "url": "https://github.com/MadeInShineA/WeiqiHub",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-08-16T11:19:07Z",
     "updatedAt": "2026-08-16T11:19:07Z",
     "owner": {
       "login": "MadeInShineA"
@@ -573,13 +872,28 @@ window.REPOS = [
       "Kotlin",
       "Shell",
       "Objective-C"
-    ]
+    ],
+    "languageSizes": {
+      "Dart": 1033322,
+      "C++": 25173,
+      "CMake": 19953,
+      "Swift": 2889,
+      "Ruby": 2861,
+      "C": 1425,
+      "Inno Setup": 1129,
+      "Kotlin": 119,
+      "Shell": 44,
+      "Objective-C": 38
+    }
   },
   {
     "name": "bachelor-thesis-project",
     "description": null,
     "url": "https://github.com/MadeInShineA/bachelor-thesis-project",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-05-14T07:09:28Z",
     "updatedAt": "2026-08-13T00:47:01Z",
     "owner": {
       "login": "MadeInShineA"
@@ -591,13 +905,23 @@ window.REPOS = [
       "Dockerfile",
       "Nushell",
       "Nix"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 435375,
+      "Shell": 14144,
+      "Dockerfile": 2468,
+      "Nushell": 1550,
+      "Nix": 774
+    }
   },
   {
     "name": "verificarlo",
     "description": "A tool for debugging and assessing floating point precision and reproducibility.",
     "url": "https://github.com/MadeInShineA/verificarlo",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-08-03T07:40:16Z",
     "updatedAt": "2026-08-03T07:40:16Z",
     "owner": {
       "login": "MadeInShineA"
@@ -614,13 +938,28 @@ window.REPOS = [
       "HTML",
       "JavaScript",
       "Dockerfile"
-    ]
+    ],
+    "languageSizes": {
+      "C": 599033,
+      "Python": 380519,
+      "C++": 121446,
+      "Shell": 103768,
+      "Fortran": 61905,
+      "M4": 32644,
+      "Makefile": 24418,
+      "HTML": 18068,
+      "JavaScript": 6214,
+      "Dockerfile": 3289
+    }
   },
   {
     "name": "matilda",
     "description": "Go/Igo/Wéiqí/Baduk playing software for Linux/BSD/macOS",
     "url": "https://github.com/MadeInShineA/matilda",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-07-24T15:21:33Z",
     "updatedAt": "2026-07-24T15:21:33Z",
     "owner": {
       "login": "MadeInShineA"
@@ -631,13 +970,22 @@ window.REPOS = [
       "Shell",
       "Python",
       "Makefile"
-    ]
+    ],
+    "languageSizes": {
+      "C": 544600,
+      "Shell": 4305,
+      "Python": 2500,
+      "Makefile": 1644
+    }
   },
   {
     "name": "yafl",
     "description": "Yet another functional programming language",
     "url": "https://github.com/MadeInShineA/yafl",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-07-12T06:31:22Z",
     "updatedAt": "2026-07-23T13:53:22Z",
     "owner": {
       "login": "MadeInShineA"
@@ -647,13 +995,21 @@ window.REPOS = [
       "Scala",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 69083,
+      "Nix": 569,
+      "Shell": 10
+    }
   },
   {
     "name": "fuzzy",
     "description": "A fuzzy ecosystem for evaluating the stability of your computational tools.",
     "url": "https://github.com/MadeInShineA/fuzzy",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-07-22T07:56:22Z",
     "updatedAt": "2026-07-22T07:56:22Z",
     "owner": {
       "login": "MadeInShineA"
@@ -667,13 +1023,25 @@ window.REPOS = [
       "Python",
       "Makefile",
       "Java"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 3460816,
+      "C": 54937,
+      "Meson": 29370,
+      "Shell": 22907,
+      "Python": 19443,
+      "Makefile": 3705,
+      "Java": 1801
+    }
   },
   {
     "name": "pca-based-feature-extraction",
     "description": null,
     "url": "https://github.com/MadeInShineA/pca-based-feature-extraction",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-06-15T06:14:43Z",
     "updatedAt": "2026-07-15T02:54:29Z",
     "owner": {
       "login": "MadeInShineA"
@@ -681,13 +1049,19 @@ window.REPOS = [
     "commits": 16,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 21294
+    }
   },
   {
     "name": "Numerical-Variability-of-functional-MRI-Graph-Measures",
     "description": null,
     "url": "https://github.com/MadeInShineA/Numerical-Variability-of-functional-MRI-Graph-Measures",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-07-13T05:20:46Z",
     "updatedAt": "2026-07-13T05:20:46Z",
     "owner": {
       "login": "MadeInShineA"
@@ -696,25 +1070,36 @@ window.REPOS = [
     "languages": [
       "Jupyter Notebook",
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 968881,
+      "Python": 19495
+    }
   },
   {
     "name": "MadeInShineA",
     "description": null,
     "url": "https://github.com/MadeInShineA/MadeInShineA",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-07-28T11:29:49Z",
     "updatedAt": "2026-07-13T02:09:56Z",
     "owner": {
       "login": "MadeInShineA"
     },
     "commits": 25,
-    "languages": []
+    "languages": [],
+    "languageSizes": {}
   },
   {
     "name": "HEStimate",
     "description": null,
     "url": "https://github.com/MadeInShineA/HEStimate",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-08-25T08:14:43Z",
     "updatedAt": "2026-07-07T08:25:45Z",
     "owner": {
       "login": "MadeInShineA"
@@ -730,13 +1115,27 @@ window.REPOS = [
       "HTML",
       "Kotlin",
       "Objective-C"
-    ]
+    ],
+    "languageSizes": {
+      "Dart": 703748,
+      "C++": 26256,
+      "CMake": 19879,
+      "JavaScript": 4229,
+      "Swift": 1665,
+      "C": 1425,
+      "HTML": 1216,
+      "Kotlin": 118,
+      "Objective-C": 38
+    }
   },
   {
     "name": "conveyorbelt",
     "description": "A based web dev workflow; stack-agnostic, hand-coded, 🦀",
     "url": "https://github.com/molybdenumsoftware/conveyorbelt",
     "stargazerCount": 7,
+    "forks": 1,
+    "isFork": false,
+    "createdAt": "2025-12-12T12:42:25Z",
     "updatedAt": "2026-07-05T14:53:14Z",
     "owner": {
       "login": "molybdenumsoftware"
@@ -745,13 +1144,20 @@ window.REPOS = [
     "languages": [
       "Rust",
       "Nix"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 101726,
+      "Nix": 15049
+    }
   },
   {
     "name": "TrainingMode-CommunityEdition",
     "description": "An updated version of UnclePunch's TrainingMode with new features and bugfixes. PRs welcome!",
     "url": "https://github.com/MadeInShineA/TrainingMode-CommunityEdition",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2024-11-19T09:26:53Z",
     "updatedAt": "2026-06-27T05:48:58Z",
     "owner": {
       "login": "MadeInShineA"
@@ -762,13 +1168,22 @@ window.REPOS = [
       "Assembly",
       "Shell",
       "Batchfile"
-    ]
+    ],
+    "languageSizes": {
+      "C": 1476742,
+      "Assembly": 698009,
+      "Shell": 5538,
+      "Batchfile": 1110
+    }
   },
   {
     "name": "305.2-applied-cybersecurity",
     "description": null,
     "url": "https://github.com/MadeInShineA/305.2-applied-cybersecurity",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-04-13T14:05:22Z",
     "updatedAt": "2026-05-05T14:15:41Z",
     "owner": {
       "login": "MadeInShineA"
@@ -781,13 +1196,24 @@ window.REPOS = [
       "Nushell",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 141906,
+      "HTML": 63884,
+      "Typst": 2281,
+      "Nushell": 1057,
+      "Nix": 812,
+      "Shell": 10
+    }
   },
   {
     "name": "305.2-Applied-Cybersecurity-team-encryption",
     "description": null,
     "url": "https://github.com/MadeInShineA/305.2-Applied-Cybersecurity-team-encryption",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-05-05T13:15:46Z",
     "updatedAt": "2026-05-05T13:39:41Z",
     "owner": {
       "login": "MadeInShineA"
@@ -796,13 +1222,20 @@ window.REPOS = [
     "languages": [
       "Shell",
       "Dockerfile"
-    ]
+    ],
+    "languageSizes": {
+      "Shell": 5694,
+      "Dockerfile": 230
+    }
   },
   {
     "name": "305.2-applied-cybersecurity-team-omega",
     "description": null,
     "url": "https://github.com/MadeInShineA/305.2-applied-cybersecurity-team-omega",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-04-22T10:00:55Z",
     "updatedAt": "2026-05-03T18:25:26Z",
     "owner": {
       "login": "MadeInShineA"
@@ -811,13 +1244,20 @@ window.REPOS = [
     "languages": [
       "Python",
       "Dockerfile"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 52183,
+      "Dockerfile": 151
+    }
   },
   {
     "name": "ChronoGrapher",
     "description": "Powerful, developer-experience centric, blazingly fast and extensible job scheduler and workflow orchestration platform",
     "url": "https://github.com/MadeInShineA/ChronoGrapher",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-04-26T10:35:47Z",
     "updatedAt": "2026-04-26T10:35:47Z",
     "owner": {
       "login": "MadeInShineA"
@@ -830,13 +1270,24 @@ window.REPOS = [
       "CSS",
       "JavaScript",
       "Makefile"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 320504,
+      "MDX": 212474,
+      "TypeScript": 114590,
+      "CSS": 3681,
+      "JavaScript": 432,
+      "Makefile": 284
+    }
   },
   {
     "name": "rust",
     "description": "Empowering everyone to build reliable and efficient software.",
     "url": "https://github.com/MadeInShineA/rust",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-04-17T17:23:35Z",
     "updatedAt": "2026-04-17T17:23:35Z",
     "owner": {
       "login": "MadeInShineA"
@@ -853,13 +1304,28 @@ window.REPOS = [
       "TypeScript",
       "C++",
       "CSS"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 139751098,
+      "HTML": 10401456,
+      "Shell": 1238469,
+      "C": 824616,
+      "JavaScript": 801329,
+      "Python": 479148,
+      "PowerShell": 401350,
+      "TypeScript": 255087,
+      "C++": 192741,
+      "CSS": 134114
+    }
   },
   {
     "name": "basic-text-editor",
     "description": null,
     "url": "https://github.com/MadeInShineA/basic-text-editor",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-04-12T14:29:25Z",
     "updatedAt": "2026-04-12T15:29:50Z",
     "owner": {
       "login": "MadeInShineA"
@@ -869,13 +1335,21 @@ window.REPOS = [
       "Nix",
       "Rust",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Nix": 1671,
+      "Rust": 989,
+      "Shell": 10
+    }
   },
   {
     "name": "rxRust",
     "description": "Zero-cost & Type-safe Reactive Extensions for Rust. Supports both high-performance single-threaded (Local) and thread-safe (Shared) contexts. WASM & Tokio ready.",
     "url": "https://github.com/molybdenumsoftware/rxRust",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-04-07T11:36:00Z",
     "updatedAt": "2026-04-07T11:36:00Z",
     "owner": {
       "login": "molybdenumsoftware"
@@ -884,13 +1358,20 @@ window.REPOS = [
     "languages": [
       "Rust",
       "JavaScript"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 791561,
+      "JavaScript": 5348
+    }
   },
   {
     "name": "rflow",
     "description": null,
     "url": "https://github.com/MadeInShineA/rflow",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-03-29T16:05:01Z",
     "updatedAt": "2026-04-05T19:29:12Z",
     "owner": {
       "login": "MadeInShineA"
@@ -900,13 +1381,21 @@ window.REPOS = [
       "Rust",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 2650,
+      "Nix": 602,
+      "Shell": 10
+    }
   },
   {
     "name": "tokio-tutorial",
     "description": null,
     "url": "https://github.com/MadeInShineA/tokio-tutorial",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-03-27T23:02:05Z",
     "updatedAt": "2026-03-29T16:01:22Z",
     "owner": {
       "login": "MadeInShineA"
@@ -916,13 +1405,21 @@ window.REPOS = [
       "Rust",
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 6781,
+      "Nix": 606,
+      "Shell": 10
+    }
   },
   {
     "name": "304-portfolio-template",
     "description": "Typst portfolio template for HES-SO module 304 (Medical Informatics)",
     "url": "https://github.com/MadeInShineA/304-portfolio-template",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-03-21T19:16:29Z",
     "updatedAt": "2026-03-29T11:11:16Z",
     "owner": {
       "login": "MadeInShineA"
@@ -931,13 +1428,20 @@ window.REPOS = [
     "languages": [
       "Typst",
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Typst": 8046,
+      "Python": 7566
+    }
   },
   {
     "name": "digital-garden",
     "description": null,
     "url": "https://github.com/MadeInShineA/digital-garden",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-03-19T18:28:49Z",
     "updatedAt": "2026-03-19T19:04:24Z",
     "owner": {
       "login": "MadeInShineA"
@@ -946,13 +1450,20 @@ window.REPOS = [
     "languages": [
       "Nix",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Nix": 509,
+      "Shell": 10
+    }
   },
   {
     "name": "nixpkgs",
     "description": "Nix Packages collection & NixOS",
     "url": "https://github.com/MadeInShineA/nixpkgs",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-03-07T15:09:59Z",
     "updatedAt": "2026-03-07T15:09:59Z",
     "owner": {
       "login": "MadeInShineA"
@@ -969,13 +1480,28 @@ window.REPOS = [
       "Ruby",
       "Haskell",
       "Elixir"
-    ]
+    ],
+    "languageSizes": {
+      "Nix": 91217467,
+      "Shell": 1871365,
+      "Python": 1599560,
+      "Rust": 213461,
+      "JavaScript": 174553,
+      "Perl": 162982,
+      "C": 136779,
+      "Ruby": 134629,
+      "Haskell": 47193,
+      "Elixir": 32789
+    }
   },
   {
     "name": "nushell",
     "description": "A new type of shell",
     "url": "https://github.com/MadeInShineA/nushell",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2026-03-01T15:39:21Z",
     "updatedAt": "2026-03-01T17:26:21Z",
     "owner": {
       "login": "MadeInShineA"
@@ -991,13 +1517,27 @@ window.REPOS = [
       "Shell",
       "PowerShell",
       "Batchfile"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 11959807,
+      "Nushell": 309623,
+      "Nix": 8554,
+      "Python": 8420,
+      "JavaScript": 5557,
+      "Dockerfile": 4148,
+      "Shell": 3955,
+      "PowerShell": 989,
+      "Batchfile": 765
+    }
   },
   {
     "name": "focus-tui",
     "description": "A minimalist Rust Pomodoro timer in your terminal. Stay focused with distraction-free work sessions, break reminders, and real-time progress tracking—all without leaving the command line.",
     "url": "https://github.com/MadeInShineA/focus-tui",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-01-16T15:33:54Z",
     "updatedAt": "2026-02-07T19:14:42Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1005,13 +1545,19 @@ window.REPOS = [
     "commits": 19,
     "languages": [
       "Rust"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 40651
+    }
   },
   {
     "name": "303.1-semester-project",
     "description": "This repo contains the content of my semester project done in the 303.1 - Semester project course",
     "url": "https://github.com/MadeInShineA/303.1-semester-project",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-11-24T09:54:45Z",
     "updatedAt": "2026-02-03T20:33:00Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1023,13 +1569,23 @@ window.REPOS = [
       "CSS",
       "SCSS",
       "TeX"
-    ]
+    ],
+    "languageSizes": {
+      "HTML": 10731468,
+      "JavaScript": 184529,
+      "CSS": 63164,
+      "SCSS": 4548,
+      "TeX": 2596
+    }
   },
   {
     "name": "rust-leetcode-2026",
     "description": "This repository contains my realized 2026 leetcode daily problems, made in rust",
     "url": "https://github.com/MadeInShineA/rust-leetcode-2026",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-01-10T14:45:55Z",
     "updatedAt": "2026-01-31T18:13:46Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1038,13 +1594,20 @@ window.REPOS = [
     "languages": [
       "Rust",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 101981,
+      "Shell": 6937
+    }
   },
   {
     "name": "sbb-datatui",
     "description": "A terminal user interface (TUI) built with Ratatui for exploring Swiss Federal Railways (SBB) data. The exact features are still in development.",
     "url": "https://github.com/MadeInShineA/sbb-datatui",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2026-01-10T16:12:36Z",
     "updatedAt": "2026-01-10T18:52:36Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1052,13 +1615,19 @@ window.REPOS = [
     "commits": 5,
     "languages": [
       "Rust"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 3416
+    }
   },
   {
     "name": "nvim-config",
     "description": null,
     "url": "https://github.com/MadeInShineA/nvim-config",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-09-28T12:06:16Z",
     "updatedAt": "2025-12-25T22:56:33Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1066,13 +1635,19 @@ window.REPOS = [
     "commits": 22,
     "languages": [
       "Lua"
-    ]
+    ],
+    "languageSizes": {
+      "Lua": 24065
+    }
   },
   {
     "name": "dipy-tutorial",
     "description": null,
     "url": "https://github.com/MadeInShineA/dipy-tutorial",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-11-24T14:03:15Z",
     "updatedAt": "2025-11-25T10:25:35Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1080,13 +1655,19 @@ window.REPOS = [
     "commits": 9,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 14327
+    }
   },
   {
     "name": "dipy",
     "description": "Diffusion MR Imaging in Python",
     "url": "https://github.com/MadeInShineA/dipy",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2025-11-25T10:21:07Z",
     "updatedAt": "2025-11-25T10:21:07Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1102,13 +1683,27 @@ window.REPOS = [
       "Batchfile",
       "Makefile",
       "C"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 4628487,
+      "Cython": 478787,
+      "Meson": 35187,
+      "Shell": 5306,
+      "Smarty": 4117,
+      "PowerShell": 3619,
+      "Batchfile": 3368,
+      "Makefile": 3083,
+      "C": 2966
+    }
   },
   {
     "name": "nipreps-book",
     "description": null,
     "url": "https://github.com/MadeInShineA/nipreps-book",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2025-11-24T08:41:47Z",
     "updatedAt": "2025-11-24T09:34:47Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1118,13 +1713,21 @@ window.REPOS = [
       "Dockerfile",
       "Python",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Dockerfile": 1609,
+      "Python": 1519,
+      "Shell": 323
+    }
   },
   {
     "name": "302.1-data-computation",
     "description": null,
     "url": "https://github.com/MadeInShineA/302.1-data-computation",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-29T11:28:12Z",
     "updatedAt": "2025-11-12T10:46:53Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1133,13 +1736,20 @@ window.REPOS = [
     "languages": [
       "Python",
       "Dockerfile"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 28519,
+      "Dockerfile": 1654
+    }
   },
   {
     "name": "302_HPC_course",
     "description": null,
     "url": "https://github.com/MadeInShineA/302_HPC_course",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2025-10-28T08:22:24Z",
     "updatedAt": "2025-11-01T16:06:34Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1149,13 +1759,21 @@ window.REPOS = [
       "C++",
       "Python",
       "Makefile"
-    ]
+    ],
+    "languageSizes": {
+      "C++": 10100,
+      "Python": 989,
+      "Makefile": 791
+    }
   },
   {
     "name": "ISChess",
     "description": null,
     "url": "https://github.com/MadeInShineA/ISChess",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2024-11-28T21:44:42Z",
     "updatedAt": "2025-10-31T20:52:37Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1164,13 +1782,20 @@ window.REPOS = [
     "languages": [
       "Python",
       "Rust"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 88284,
+      "Rust": 2885
+    }
   },
   {
     "name": "hei-course-summaries",
     "description": "This repository contains different summary of courses in the HEI-SO-VS",
     "url": "https://github.com/MadeInShineA/hei-course-summaries",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-24T11:28:04Z",
     "updatedAt": "2025-10-30T20:38:07Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1180,13 +1805,21 @@ window.REPOS = [
       "Jupyter Notebook",
       "HTML",
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 5282946,
+      "HTML": 1046694,
+      "Python": 239355
+    }
   },
   {
     "name": "RallyRobotPilot_2025",
     "description": null,
     "url": "https://github.com/MadeInShineA/RallyRobotPilot_2025",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2025-10-14T09:31:26Z",
     "updatedAt": "2025-10-27T08:02:03Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1196,13 +1829,21 @@ window.REPOS = [
       "Python",
       "Jupyter Notebook",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 105621,
+      "Jupyter Notebook": 15423,
+      "Shell": 135
+    }
   },
   {
     "name": "EstimEat-frontend",
     "description": "This repository contains the frontend of EstimEat — an interactive interface for exploring restaurant viability scores across Swiss localities through maps, charts, and locality insights.",
     "url": "https://github.com/MadeInShineA/EstimEat-frontend",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-10-20T13:11:48Z",
     "updatedAt": "2025-10-24T14:50:14Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1214,25 +1855,39 @@ window.REPOS = [
       "JavaScript",
       "Python",
       "HTML"
-    ]
+    ],
+    "languageSizes": {
+      "TypeScript": 65022,
+      "CSS": 6848,
+      "JavaScript": 1600,
+      "Python": 532,
+      "HTML": 357
+    }
   },
   {
     "name": "EstimEat",
     "description": "This repository contains the back- and front-end code for the EstimEat application, a data-driven tool that scores Swiss localities for restaurant viability by combining spatial, socio-economic, and urban dynamics data.",
     "url": "https://github.com/MadeInShineA/EstimEat",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-10-20T13:08:43Z",
     "updatedAt": "2025-10-24T08:16:44Z",
     "owner": {
       "login": "MadeInShineA"
     },
     "commits": 3,
-    "languages": []
+    "languages": [],
+    "languageSizes": {}
   },
   {
     "name": "EstimEat-backend",
     "description": "This repository contains the backend of EstimEat — the engine that computes restaurant attractiveness scores for Swiss municipalities using spatial, socio-economic, and urban dynamics data.",
     "url": "https://github.com/MadeInShineA/EstimEat-backend",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-10-20T13:12:21Z",
     "updatedAt": "2025-10-24T08:08:06Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1241,13 +1896,20 @@ window.REPOS = [
     "languages": [
       "Jupyter Notebook",
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 164792,
+      "Python": 14053
+    }
   },
   {
     "name": "301.1-ML",
     "description": "This repo contains the content of the labs done in the 301.1 - Machine learning and AI course",
     "url": "https://github.com/MadeInShineA/301.1-ML",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-19T11:34:06Z",
     "updatedAt": "2025-10-17T14:11:33Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1260,13 +1922,24 @@ window.REPOS = [
       "Python",
       "CSS",
       "SCSS"
-    ]
+    ],
+    "languageSizes": {
+      "Jupyter Notebook": 5282946,
+      "JavaScript": 88955,
+      "HTML": 54423,
+      "Python": 49665,
+      "CSS": 16276,
+      "SCSS": 8198
+    }
   },
   {
     "name": "hei-presentations",
     "description": null,
     "url": "https://github.com/MadeInShineA/hei-presentations",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-25T09:20:20Z",
     "updatedAt": "2025-10-02T08:29:03Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1275,13 +1948,20 @@ window.REPOS = [
     "languages": [
       "Python",
       "SCSS"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 19645,
+      "SCSS": 2657
+    }
   },
   {
     "name": "markdown-preview.nvim",
     "description": "markdown preview plugin for (neo)vim",
     "url": "https://github.com/MadeInShineA/markdown-preview.nvim",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2025-09-26T11:46:47Z",
     "updatedAt": "2025-09-29T21:52:37Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1295,13 +1975,25 @@ window.REPOS = [
       "HTML",
       "Shell",
       "Batchfile"
-    ]
+    ],
+    "languageSizes": {
+      "JavaScript": 73672,
+      "Vim Script": 29505,
+      "CSS": 10093,
+      "TypeScript": 7730,
+      "HTML": 4658,
+      "Shell": 3852,
+      "Batchfile": 1023
+    }
   },
   {
     "name": "evo-tunes-api",
     "description": null,
     "url": "https://github.com/MadeInShineA/evo-tunes-api",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-28T11:15:50Z",
     "updatedAt": "2025-09-28T11:40:37Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1309,13 +2001,19 @@ window.REPOS = [
     "commits": 4,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 123
+    }
   },
   {
     "name": "evo-tunes",
     "description": null,
     "url": "https://github.com/MadeInShineA/evo-tunes",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-28T10:49:31Z",
     "updatedAt": "2025-09-28T11:33:48Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1330,13 +2028,26 @@ window.REPOS = [
       "HTML",
       "Kotlin",
       "Objective-C"
-    ]
+    ],
+    "languageSizes": {
+      "C++": 24692,
+      "CMake": 19720,
+      "Dart": 5971,
+      "Swift": 1812,
+      "C": 1425,
+      "HTML": 1216,
+      "Kotlin": 123,
+      "Objective-C": 38
+    }
   },
   {
     "name": "301-Week1-ML-project",
     "description": "ML Project Template for ISC 301, week 1",
     "url": "https://github.com/MadeInShineA/301-Week1-ML-project",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2025-09-16T13:37:44Z",
     "updatedAt": "2025-09-16T13:37:44Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1346,13 +2057,21 @@ window.REPOS = [
       "SCSS",
       "Jupyter Notebook",
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "SCSS": 7128,
+      "Jupyter Notebook": 1109,
+      "Python": 744
+    }
   },
   {
     "name": "goban-eye",
     "description": null,
     "url": "https://github.com/MadeInShineA/goban-eye",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-09-07T13:09:24Z",
     "updatedAt": "2025-09-07T21:27:17Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1360,13 +2079,19 @@ window.REPOS = [
     "commits": 3,
     "languages": [
       "Kotlin"
-    ]
+    ],
+    "languageSizes": {
+      "Kotlin": 53922
+    }
   },
   {
     "name": "HEStimate-api",
     "description": null,
     "url": "https://github.com/MadeInShineA/HEStimate-api",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-08-26T09:20:33Z",
     "updatedAt": "2025-09-01T10:57:49Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1375,13 +2100,20 @@ window.REPOS = [
     "languages": [
       "Python",
       "Dockerfile"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 42474,
+      "Dockerfile": 433
+    }
   },
   {
     "name": "avalgard",
     "description": null,
     "url": "https://github.com/MadeInShineA/avalgard",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-12-16T08:34:56Z",
     "updatedAt": "2025-08-19T12:54:28Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1393,13 +2125,23 @@ window.REPOS = [
       "Python",
       "HTML",
       "CSS"
-    ]
+    ],
+    "languageSizes": {
+      "Vue": 95473,
+      "JavaScript": 48935,
+      "Python": 3305,
+      "HTML": 223,
+      "CSS": 60
+    }
   },
   {
     "name": "werewolves",
     "description": null,
     "url": "https://github.com/MadeInShineA/werewolves",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-05-21T10:52:14Z",
     "updatedAt": "2025-06-13T19:48:22Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1408,13 +2150,20 @@ window.REPOS = [
     "languages": [
       "Python",
       "Shell"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 93026,
+      "Shell": 2287
+    }
   },
   {
     "name": "hot-dog",
     "description": "This repository contains the code of the hot dog website (dioxus tutorial application)",
     "url": "https://github.com/MadeInShineA/hot-dog",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-04-15T08:57:29Z",
     "updatedAt": "2025-04-15T09:01:04Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1423,13 +2172,20 @@ window.REPOS = [
     "languages": [
       "Rust",
       "CSS"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 4338,
+      "CSS": 2461
+    }
   },
   {
     "name": "Chirp",
     "description": null,
     "url": "https://github.com/GDbateaux/Chirp",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-03-24T12:37:35Z",
     "updatedAt": "2025-03-30T15:09:52Z",
     "owner": {
       "login": "GDbateaux"
@@ -1437,13 +2193,19 @@ window.REPOS = [
     "commits": 9,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 5629
+    }
   },
   {
     "name": "goose-defender",
     "description": null,
     "url": "https://github.com/MadeInShineA/goose-defender",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-03-15T08:36:47Z",
     "updatedAt": "2025-03-16T12:55:12Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1451,13 +2213,19 @@ window.REPOS = [
     "commits": 67,
     "languages": [
       "GDScript"
-    ]
+    ],
+    "languageSizes": {
+      "GDScript": 36813
+    }
   },
   {
     "name": "spelling-checker",
     "description": "This repository contains a small python spelling checker made in the 206.3 - Formal & natural languages class",
     "url": "https://github.com/MadeInShineA/spelling-checker",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-03-12T13:17:27Z",
     "updatedAt": "2025-03-12T14:49:15Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1465,13 +2233,19 @@ window.REPOS = [
     "commits": 2,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 6813
+    }
   },
   {
     "name": "SICP-scala-exercises",
     "description": "This repository contains the code for the exercises of the book called Structure and Interpretation of Computer Programs (SICP)  made in Scala",
     "url": "https://github.com/MadeInShineA/SICP-scala-exercises",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2025-02-24T06:19:33Z",
     "updatedAt": "2025-02-24T14:26:30Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1479,25 +2253,35 @@ window.REPOS = [
     "commits": 3,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 4376
+    }
   },
   {
     "name": "crochet_design",
     "description": "All the crochet amigurumi patterns designed by me. Usually relate to programming.",
     "url": "https://github.com/MadeInShineA/crochet_design",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2024-12-27T09:37:41Z",
     "updatedAt": "2024-12-27T09:37:41Z",
     "owner": {
       "login": "MadeInShineA"
     },
     "commits": 17,
-    "languages": []
+    "languages": [],
+    "languageSizes": {}
   },
   {
     "name": "rust-by-example",
     "description": "This repository contains the different  examples from the book \"Rust By Example\"",
     "url": "https://github.com/MadeInShineA/rust-by-example",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-12-10T09:37:17Z",
     "updatedAt": "2024-12-23T11:20:07Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1505,25 +2289,35 @@ window.REPOS = [
     "commits": 8,
     "languages": [
       "Rust"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 5776
+    }
   },
   {
     "name": "maltiverse",
     "description": "This repository contains a small database made for a project during the course 201.3 BD relationnelles",
     "url": "https://github.com/MadeInShineA/maltiverse",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-12-11T14:34:27Z",
     "updatedAt": "2024-12-22T20:32:07Z",
     "owner": {
       "login": "MadeInShineA"
     },
     "commits": 24,
-    "languages": []
+    "languages": [],
+    "languageSizes": {}
   },
   {
     "name": "the-rust-programming-language",
     "description": "This repository contains the different code examples from the book \"The Rust Programming Language\"",
     "url": "https://github.com/MadeInShineA/the-rust-programming-language",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-12-11T22:51:34Z",
     "updatedAt": "2024-12-14T11:36:31Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1531,13 +2325,19 @@ window.REPOS = [
     "commits": 2,
     "languages": [
       "Rust"
-    ]
+    ],
+    "languageSizes": {
+      "Rust": 884
+    }
   },
   {
     "name": "os-sudoku-validator",
     "description": "Sudoku validator lab for the OS course of ISC-BA3 ",
     "url": "https://github.com/MadeInShineA/os-sudoku-validator",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-10-22T11:37:27Z",
     "updatedAt": "2024-11-05T15:01:26Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1545,13 +2345,19 @@ window.REPOS = [
     "commits": 6,
     "languages": [
       "C"
-    ]
+    ],
+    "languageSizes": {
+      "C": 10555
+    }
   },
   {
     "name": "daily-kanji-plasma-widget",
     "description": "This is a KDE Plasma widget for displaying a daily Kanji with several information",
     "url": "https://github.com/MadeInShineA/daily-kanji-plasma-widget",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-09-16T18:24:34Z",
     "updatedAt": "2024-10-31T11:13:03Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1559,13 +2365,19 @@ window.REPOS = [
     "commits": 11,
     "languages": [
       "QML"
-    ]
+    ],
+    "languageSizes": {
+      "QML": 12203
+    }
   },
   {
     "name": "os-scheduler",
     "description": "Scheduler lab for the OS course of ISC-BA3",
     "url": "https://github.com/MadeInShineA/os-scheduler",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-10-12T19:49:34Z",
     "updatedAt": "2024-10-22T16:06:33Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1574,13 +2386,20 @@ window.REPOS = [
     "languages": [
       "C",
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "C": 14993,
+      "Python": 8644
+    }
   },
   {
     "name": "excal-cli",
     "description": null,
     "url": "https://github.com/MadeInShineA/excal-cli",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-07-29T21:18:10Z",
     "updatedAt": "2024-07-29T21:18:35Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1588,13 +2407,19 @@ window.REPOS = [
     "commits": 1,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 3855
+    }
   },
   {
     "name": "crash-royale-gdx2d",
     "description": null,
     "url": "https://github.com/MadeInShineA/crash-royale-gdx2d",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-05-21T11:22:01Z",
     "updatedAt": "2024-06-13T20:26:22Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1602,13 +2427,19 @@ window.REPOS = [
     "commits": 103,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 39487
+    }
   },
   {
     "name": "Rock_Paper_Scissors",
     "description": "This is a small Rock Paper Scissors Game against a randomized CPU",
     "url": "https://github.com/MadeInShineA/Rock_Paper_Scissors",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2022-07-11T21:36:12Z",
     "updatedAt": "2024-05-06T07:15:48Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1616,13 +2447,19 @@ window.REPOS = [
     "commits": 2,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 9647
+    }
   },
   {
     "name": "weather_application",
     "description": "An application to get weather forcast for an inputed city  For the application to work, you have to copy-paste your GoogleMaps Geocoding API inside the gm_key.txt file  you can get one there https://console.cloud.google.com/apis/library/geocoding-backend.googleapis.com",
     "url": "https://github.com/MadeInShineA/weather_application",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2022-07-20T20:52:38Z",
     "updatedAt": "2024-05-06T07:15:47Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1630,13 +2467,19 @@ window.REPOS = [
     "commits": 3,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 11075
+    }
   },
   {
     "name": "AI-and-ML-for-coders",
     "description": null,
     "url": "https://github.com/MadeInShineA/AI-and-ML-for-coders",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-02-01T17:01:03Z",
     "updatedAt": "2024-05-06T07:15:45Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1644,13 +2487,19 @@ window.REPOS = [
     "commits": 4,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 4099
+    }
   },
   {
     "name": "download_handler",
     "description": "A simple download handler that will move the new files or all files inside the download_folder in the correct folders according to their extension",
     "url": "https://github.com/MadeInShineA/download_handler",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-03-16T19:50:38Z",
     "updatedAt": "2024-05-06T07:15:44Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1658,13 +2507,19 @@ window.REPOS = [
     "commits": 5,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 4444
+    }
   },
   {
     "name": "advent-of-code-2023",
     "description": null,
     "url": "https://github.com/MadeInShineA/advent-of-code-2023",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-12-01T19:30:49Z",
     "updatedAt": "2024-05-06T07:15:41Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1672,13 +2527,19 @@ window.REPOS = [
     "commits": 1,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 2082
+    }
   },
   {
     "name": "byte-to-tetris-pieces",
     "description": "This is a Scala programm meant to convert Byte to Tetris pieces using the FunGraphics library from HES-SO",
     "url": "https://github.com/MadeInShineA/byte-to-tetris-pieces",
     "stargazerCount": 1,
+    "forks": 1,
+    "isFork": false,
+    "createdAt": "2023-11-28T18:55:00Z",
     "updatedAt": "2024-05-06T07:15:39Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1687,13 +2548,20 @@ window.REPOS = [
     "languages": [
       "Java",
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Java": 31309,
+      "Scala": 7190
+    }
   },
   {
     "name": "scala-fg-tron",
     "description": "Tron game made with Scala and the FunGraphic library",
     "url": "https://github.com/MadeInShineA/scala-fg-tron",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-12-19T13:00:30Z",
     "updatedAt": "2024-05-06T07:15:38Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1701,13 +2569,19 @@ window.REPOS = [
     "commits": 3,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 4091
+    }
   },
   {
     "name": "hes-prog-imp-project-1",
     "description": "A Scala grid game using the FunGraphics library ",
     "url": "https://github.com/MadeInShineA/hes-prog-imp-project-1",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-12-18T08:09:45Z",
     "updatedAt": "2024-05-06T07:15:37Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1715,13 +2589,19 @@ window.REPOS = [
     "commits": 3,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 5976
+    }
   },
   {
     "name": "101_Lists_lab",
     "description": null,
     "url": "https://github.com/MadeInShineA/101_Lists_lab",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": true,
+    "createdAt": "2024-03-27T12:02:41Z",
     "updatedAt": "2024-05-06T07:15:36Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1729,13 +2609,19 @@ window.REPOS = [
     "commits": 13,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 17227
+    }
   },
   {
     "name": "cry-sec-chat",
     "description": null,
     "url": "https://github.com/MadeInShineA/cry-sec-chat",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-02-23T09:21:59Z",
     "updatedAt": "2024-05-06T07:15:35Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1743,13 +2629,19 @@ window.REPOS = [
     "commits": 39,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 41629
+    }
   },
   {
     "name": "scratch-neural-networks",
     "description": "This repository contains different neural networks made exclusively with numpy and h5py",
     "url": "https://github.com/MadeInShineA/scratch-neural-networks",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-03-01T18:02:08Z",
     "updatedAt": "2024-05-06T07:14:51Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1757,13 +2649,19 @@ window.REPOS = [
     "commits": 29,
     "languages": [
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "Python": 14707
+    }
   },
   {
     "name": "digits-recognition",
     "description": "Python application to recognize hand written digits in real time!",
     "url": "https://github.com/MadeInShineA/digits-recognition",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-02-11T11:41:24Z",
     "updatedAt": "2024-05-06T07:14:33Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1772,13 +2670,20 @@ window.REPOS = [
     "languages": [
       "PureBasic",
       "Python"
-    ]
+    ],
+    "languageSizes": {
+      "PureBasic": 17785,
+      "Python": 4891
+    }
   },
   {
     "name": "Snake1V1",
     "description": null,
     "url": "https://github.com/l-christen/Snake1V1",
     "stargazerCount": 0,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2024-01-08T13:47:27Z",
     "updatedAt": "2024-01-15T15:06:19Z",
     "owner": {
       "login": "l-christen"
@@ -1786,13 +2691,19 @@ window.REPOS = [
     "commits": 19,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 11358
+    }
   },
   {
     "name": "fg-game-of-life",
     "description": "A Scala game of life made with the FunGraphics library",
     "url": "https://github.com/MadeInShineA/fg-game-of-life",
     "stargazerCount": 1,
+    "forks": 0,
+    "isFork": false,
+    "createdAt": "2023-12-13T15:30:52Z",
     "updatedAt": "2023-12-14T08:36:28Z",
     "owner": {
       "login": "MadeInShineA"
@@ -1800,7 +2711,10 @@ window.REPOS = [
     "commits": 4,
     "languages": [
       "Scala"
-    ]
+    ],
+    "languageSizes": {
+      "Scala": 6726
+    }
   }
 ]
 ;
