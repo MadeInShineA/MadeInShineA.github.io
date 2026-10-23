@@ -34,9 +34,12 @@ jobs:
         run: bash scripts/update-repos.sh assets/repos-data.js
 
       - name: Fetch NASA picture of the day
+        # Runs even if fetching repositories failed, so one outage doesn't block the other
+        if: ${{ !cancelled() }}
         run: python3 scripts/update-apod.py assets/apod-data.js
 
       - name: Commit data files if they changed
+        if: ${{ !cancelled() }}
         run: |
           if git diff --quiet -- assets/repos-data.js assets/apod-data.js; then
             echo "Data is up to date"

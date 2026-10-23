@@ -30,10 +30,15 @@ for bin in curl jq; do
   command -v "$bin" >/dev/null 2>&1 || { echo "error: '$bin' is required" >&2; exit 1; }
 done
 
-# shellcheck disable=SC2016  # $login/$cursor are GraphQL variables, not shell ones
-QUERY='query($login: String!, $cursor: String) {
+# Small pages keep each query fast: counting the commits of big forks (nixpkgs, rust...)
+# is expensive, and GitHub answers 502 when a query runs too long.
+PAGE_SIZE="${PAGE_SIZE:-25}"
+MAX_ATTEMPTS=4
+
+# shellcheck disable=SC2016  # $login/$cursor/$size are GraphQL variables, not shell ones
+QUERY='query($login: String!, $cursor: String, $size: Int!) {
   user(login: $login) {
-    repositories(first: 100, after: $cursor, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: DESC}) {
+    repositories(first: $size, after: $cursor, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: DESC}) {
       pageInfo { hasNextPage endCursor }
       nodes {
         name
@@ -52,19 +57,41 @@ QUERY='query($login: String!, $cursor: String) {
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
+# POST a GraphQL payload, retrying temporary failures (5xx, timeouts, rate limiting)
+graphql() {
+  local payload="$1" out="$2" attempt status
+  for ((attempt = 1; attempt <= MAX_ATTEMPTS; attempt++)); do
+    status="$(curl -sS -o "$out" -w '%{http_code}' --max-time 60 \
+      -H "Authorization: bearer $TOKEN" \
+      -H "Content-Type: application/json" \
+      -d "$payload" \
+      https://api.github.com/graphql)" || true
+    status="${status:-000}"
+
+    if [[ "$status" == 200 ]]; then
+      return 0
+    fi
+    if [[ "$status" =~ ^(000|403|429|5[0-9][0-9])$ && $attempt -lt $MAX_ATTEMPTS ]]; then
+      echo "GitHub answered HTTP $status, retrying in $((attempt * 5))s ($attempt/$((MAX_ATTEMPTS - 1)))" >&2
+      sleep $((attempt * 5))
+      continue
+    fi
+    echo "error: GitHub answered HTTP $status" >&2
+    head -c 500 "$out" >&2 2>/dev/null || true
+    echo >&2
+    return 1
+  done
+}
+
 cursor=null
 page=0
 while :; do
   page=$((page + 1))
   file="$tmp/page-$(printf %03d "$page").json"
   payload="$(jq -n --arg q "$QUERY" --arg login "$GITHUB_USER" --argjson cursor "$cursor" \
-    '{query: $q, variables: {login: $login, cursor: $cursor}}')"
+    --argjson size "$PAGE_SIZE" '{query: $q, variables: {login: $login, cursor: $cursor, size: $size}}')"
 
-  curl -sS --fail-with-body \
-    -H "Authorization: bearer $TOKEN" \
-    -H "Content-Type: application/json" \
-    -d "$payload" \
-    https://api.github.com/graphql > "$file"
+  graphql "$payload" "$file"
 
   if jq -e '.errors' "$file" >/dev/null; then
     echo "error: GraphQL query failed:" >&2
