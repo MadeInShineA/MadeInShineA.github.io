@@ -315,7 +315,7 @@ body::after {
 }
 
 .section { margin-top: 80px; }
-.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 6px 16px; margin-bottom: 24px; }
 .section-head h2 { font-size: clamp(24px, 3vw, 30px); font-weight: 600; line-height: 1.15; }
 .section-head .eyebrow { white-space: nowrap; }
 
@@ -394,12 +394,40 @@ a.chip:hover { color: var(--fg); border-color: var(--line-strong); }
 }
 
 @media (max-width: 640px) {
-  body { font-size: 15px; }
+  body { font-size: 15px; padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
   .container { padding: 0 16px; }
-  .nav { top: 10px; }
-  .nav-brand span { display: none; }
-  .nav-brand { padding-right: 8px; }
-  .nav-links a { padding: 7px 12px; }
   .section { margin-top: 56px; }
-  .photo-caption { top: 64px; right: 12px; }
+
+  /* Phones: the nav becomes a floating bar at the bottom of the screen, like a toast,
+     with an icon above each label so every page fits on the narrowest screens */
+  .nav {
+    top: auto;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    width: calc(100% - 24px);
+    max-width: 420px;
+    padding: 6px;
+    border-radius: 18px;
+    animation: nav-toast-in .45s cubic-bezier(.2, .8, .2, 1) .15s both;
+  }
+  .nav-brand { display: none; }
+  .nav-links { flex: 1; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 4px; }
+  .nav-links a {
+    flex-direction: column;
+    gap: 3px;
+    padding: 8px 4px 7px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .nav-links a i { font-size: 19px; }
+  .nav-links a[aria-current="page"] { color: var(--fg); background: rgba(255, 255, 255, .08); }
+  .nav-links a[aria-current="page"] i { color: var(--accent); }
+
+  .photo-caption { top: 12px; right: 12px; }
+}
+
+@keyframes nav-toast-in {
+  from { opacity: 0; transform: translate(-50%, 24px) scale(.96); }
+  to { opacity: 1; transform: translate(-50%, 0); }
 }

@@ -41,8 +41,11 @@
   addEventListener('scroll', hideTip, { passive: true });
 
   function hoverable(node, value, label) {
-    node.setAttribute('tabindex', '0');
-    node.setAttribute('role', 'img');
+    // Links are already focusable and keep their link role; other marks become focusable images
+    if (node.tagName !== 'A') {
+      node.setAttribute('tabindex', '0');
+      node.setAttribute('role', 'img');
+    }
     node.setAttribute('aria-label', `${label}: ${value}`);
     node.addEventListener('pointermove', e => showTip(node, value, label, e));
     node.addEventListener('pointerleave', hideTip);
@@ -139,8 +142,14 @@
     const list = document.createElement('div');
     list.className = 'hbars';
     data.forEach(d => {
-      const row = document.createElement('div');
+      // A row with an href becomes a link (e.g. a repository opening on GitHub)
+      const row = document.createElement(d.href ? 'a' : 'div');
       row.className = 'hbar mark';
+      if (d.href) {
+        row.href = d.href;
+        row.target = '_blank';
+        row.rel = 'noopener';
+      }
       const name = document.createElement('span');
       name.className = 'hbar-label';
       name.textContent = d.label;
@@ -148,7 +157,9 @@
       track.className = 'hbar-track';
       const fill = document.createElement('span');
       fill.className = 'hbar-fill';
-      fill.style.width = `${Math.max(1.5, (d.value / max) * 100)}%`;
+      // Scale against the track minus room for the value label, so the longest bar's
+      // number always stays inside the card
+      fill.style.width = `max(4px, calc((100% - var(--value-room)) * ${(d.value / max).toFixed(4)}))`;
       fill.style.background = color;
       const value = document.createElement('span');
       value.className = 'hbar-value';
@@ -156,6 +167,12 @@
       track.append(fill, value);
       row.append(name, track);
       hoverable(row, d.tipValue || format(d.value), d.tipLabel || d.label);
+      if (d.href) {
+        const go = document.createElement('i');
+        go.className = 'icon-arrow-up-right hbar-go';
+        go.setAttribute('aria-hidden', 'true');
+        name.appendChild(go);
+      }
       list.appendChild(row);
     });
     container.appendChild(list);

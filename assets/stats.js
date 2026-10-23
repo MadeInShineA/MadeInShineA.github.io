@@ -25,7 +25,6 @@
     card.querySelector('.chart').replaceChildren(Object.assign(document.createElement('p'), { className: 'viz-note', textContent: message }));
     card.querySelectorAll('.legend, .scale').forEach(n => n.remove());
   };
-  const bytes = n => (n >= 1e6 ? `${(n / 1e6).toFixed(1)} MB` : n >= 1e3 ? `${Math.round(n / 1e3)} KB` : `${n} B`);
   const PENDING = 'Contribution statistics appear after the next hourly data update.';
 
   // ─── Streaks from the daily calendar ───────────────────────────────────────
@@ -124,36 +123,19 @@
     bars($('types').querySelector('.chart'), { data: types.sort((a, b) => b.value - a.value), color: BLUE });
   } else unavailable('types', PENDING);
 
-  // ─── Languages ─────────────────────────────────────────────────────────────
-  {
-    const sized = own.some(r => r.languageSizes && Object.keys(r.languageSizes).length);
-    const totals = new Map();
-    own.forEach(r => {
-      if (sized) Object.entries(r.languageSizes || {}).forEach(([l, b]) => totals.set(l, (totals.get(l) || 0) + b));
-      else (r.languages || []).forEach(l => totals.set(l, (totals.get(l) || 0) + 1));
-    });
-    let rows = [...totals].sort((a, b) => b[1] - a[1]);
-    const sum = rows.reduce((s, [, v]) => s + v, 0);
-    if (rows.length > 8) {
-      const rest = rows.slice(7).reduce((s, [, v]) => s + v, 0);
-      rows = [...rows.slice(0, 7), ['Other', rest]];
-    }
-    setText('languages-sub', sized
-      ? `Share of code across my own repositories (${bytes(sum)} in total, forks excluded)`
-      : 'Number of my repositories using each language');
-    bars($('languages').querySelector('.chart'), {
-      color: BLUE,
-      format: v => (sized ? `${Math.round((v / sum) * 100)}%` : fmt(v)),
-      data: rows.map(([l, v]) => ({ label: l, value: v, tipValue: sized ? `${bytes(v)} (${((v / sum) * 100).toFixed(1)}%)` : `${v} repositories` })),
-    });
-  }
 
   // ─── Most starred repositories ─────────────────────────────────────────────
   {
     const top = own.filter(r => r.stargazerCount > 0).sort((a, b) => b.stargazerCount - a.stargazerCount).slice(0, 8);
     bars($('stars').querySelector('.chart'), {
       color: BLUE,
-      data: top.map(r => ({ label: r.name, value: r.stargazerCount, tipValue: `${fmt(r.stargazerCount)} stars` })),
+      data: top.map(r => ({
+        label: r.name,
+        value: r.stargazerCount,
+        href: r.url,
+        tipValue: `${fmt(r.stargazerCount)} stars`,
+        tipLabel: `${r.name} · open on GitHub`,
+      })),
     });
   }
 
