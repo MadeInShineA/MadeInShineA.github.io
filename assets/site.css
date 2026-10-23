@@ -394,12 +394,16 @@ a.chip:hover { color: var(--fg); border-color: var(--line-strong); }
 }
 
 @media (max-width: 640px) {
-  body { font-size: 15px; padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  body { font-size: 15px; }
   .container { padding: 0 16px; }
   .section { margin-top: 56px; }
+}
 
-  /* Phones: the nav becomes a floating bar at the bottom of the screen, like a toast,
-     with an icon above each label so every page fits on the narrowest screens */
+/* Phones and small tablets: the nav becomes a floating bar at the bottom of the screen,
+   like a toast, with an icon above each label so every page fits on the narrowest screens */
+@media (max-width: 820px) {
+  body { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+
   .nav {
     top: auto;
     bottom: calc(12px + env(safe-area-inset-bottom));

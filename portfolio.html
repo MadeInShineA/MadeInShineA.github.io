@@ -202,6 +202,10 @@
     .skeleton { height: 168px; border-radius: 14px; background: linear-gradient(100deg, var(--glass-soft) 30%, var(--glass-hover) 50%, var(--glass-soft) 70%); background-size: 300% 100%; border: 1px solid var(--line); animation: shimmer 1.4s linear infinite; }
     @keyframes shimmer { to { background-position: -150% 0; } }
 
+    @media (max-width: 820px) {
+      .toolbar { top: 10px; }
+    }
+
     @media (max-width: 900px) {
       .intro { grid-template-columns: 1fr; gap: 28px; }
       .featured { grid-template-columns: 1fr; }
@@ -212,7 +216,6 @@
 
     @media (max-width: 640px) {
       .intro { padding: 24px 20px; margin-top: -100px; }
-      .toolbar { top: 10px; }
       .segmented { width: 100%; }
       .segmented button { flex: 1; padding: 0 8px; }
       .repos { grid-template-columns: minmax(0, 1fr); }
