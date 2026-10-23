@@ -1,1826 +1,632 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Primary SEO Meta Tags -->
   <title>Olivier Amacker – CV</title>
   <meta name="description"
-    content="Professional CV of Olivier Amacker - Computer Science student and Software Developer from Switzerland" />
+    content="Professional CV of Olivier Amacker - Data Science master student at HES-SO and Software Developer from Switzerland" />
   <meta name="keywords" content="Olivier Amacker, CV, resume, software development, computer science, Switzerland" />
   <meta name="robots" content="index, follow" />
-  <!-- Favicon -->
-  <link rel="icon" href="src/avatar.webp" type="image/webp" />
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Fira+Mono:wght@400;600&display=swap"
+  <meta name="theme-color" content="#09090b" />
+  <link rel="icon" href="src/avatar-480.webp" type="image/webp" />
+  <link rel="preconnect" href="https://assets.science.nasa.gov" />
+  <script src="assets/apod-data.js"></script>
+  <script src="assets/apod.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.469.0/font/lucide.css" />
+  <link rel="stylesheet" href="assets/site.css" />
   <style>
-    /* ─────────────────────────────────────────────────────────────────────────
- Variables
-───────────────────────────────────────────────────────────────────────── */
-    :root {
-      --bg: #181825;
-      --fg: #eceff4;
-      --fg-active: black;
-      --fg-muted: #b6bad9;
-      --accent: #7dd3fc;
-      --accent2: #a78bfa;
-      --accent-grad: linear-gradient(90deg, var(--accent), var(--accent2) 80%);
-      --glass: rgba(255, 255, 255, 0.07);
-      --blur: blur(13px);
-      --radius: 19px;
-      --shadow: 0 8px 40px rgba(0, 0, 0, 0.34), 0 1.5px 0px rgba(138, 163, 255, 0.06);
-      --glow: 0 0 16px var(--accent2), 0 0 2px var(--accent);
-      --border: 1.5px solid rgba(125, 211, 252, 0.10);
-      --header-glass: rgba(24, 24, 37, 0.52);
-      --footer-glass: rgba(28, 28, 40, 0.55);
-      --card-overlay: linear-gradient(120deg, rgba(55, 126, 246, 0.11) 40%, rgba(165, 139, 250, 0.08) 100%);
-      --profile-shadow: 0 4px 24px #7dd3fc33, 0 0 0 8px rgba(120, 144, 255, 0.05);
-      --navbar-glass: rgba(28, 28, 45, 0.73);
-      --profile-size: 88px;
-      --section-gap: 3rem;
-    }
-    body.light {
-      --bg: #e7ecf3;
-      --fg: #2e3241;
-      --fg-active: white;
-      --fg-muted: #75798e;
-      --accent: #5280e8;
-      --accent2: #a277ff;
-      --glass: rgba(220, 225, 250, 0.07);
-      --shadow: 0 6px 36px rgba(51, 68, 117, 0.09), 0 0.5px 0px #dad7f777;
-      --border: 1.5px solid rgba(125, 211, 252, 0.13);
-      --header-glass: rgba(242, 242, 255, 0.82);
-      --footer-glass: rgba(242, 242, 255, 0.55);
-      --card-overlay: linear-gradient(120deg, rgba(125, 211, 252, 0.09) 40%, rgba(167, 139, 250, 0.09) 100%);
-      --navbar-glass: rgba(230, 235, 255, 0.5);
-    }
-    /* ─────────────────────────────────────────────────────────────────────────
- Layout & Body
-───────────────────────────────────────────────────────────────────────── */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      overflow-x: hidden;
-      letter-spacing: 0.02em;
-      transition: background 0.4s, color 0.35s;
-      position: relative;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      z-index: -2;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 0, #28324b 30%, #181825 100%);
-      animation: bgmove 19s linear infinite alternate;
-      opacity: 1;
-      transition: background 0.5s;
-    }
-    body.light::before {
-      background: radial-gradient(ellipse at 75% 0, #e1e8ff 28%, #e7ecf3 100%);
-    }
-    body::after {
-      content: "";
-      position: fixed;
-      z-index: -1;
-      inset: 0;
-      background: conic-gradient(from 130deg at 85% 10%, #7dd3fc44 6%, transparent 45%),
-        conic-gradient(from 170deg at 16% 80%, #a78bfa33 12%, transparent 60%);
-      opacity: 0.74;
-      pointer-events: none;
-      mix-blend-mode: lighten;
-      filter: blur(36px) brightness(1.13);
-      animation: bgshine 33s linear infinite alternate;
-    }
-    @keyframes bgmove {
-      0% {
-        background-position: 80% 30%, 10% 90%;
-      }
-      100% {
-        background-position: 50% 0%, 80% 100%;
-      }
-    }
-    @keyframes bgshine {
-      0% {
-        filter: blur(28px) brightness(1.07);
-      }
-      100% {
-        filter: blur(45px) brightness(1.19);
-      }
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    /* ─────────────────────────────────────────────────────────────────────────
- Navbar / Theme Toggle
-───────────────────────────────────────────────────────────────────────── */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1001;
-      background: var(--navbar-glass);
-      backdrop-filter: blur(9px);
-      box-shadow: 0 2.5px 24px #7dd3fc17;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.4rem 1.8rem;
-      border-bottom: var(--border);
-      min-height: 56px;
-    }
-    .navbar.visible {
-      transform: translateY(0);
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-    .nav-links a {
-      color: var(--fg);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      transition: all 0.23s ease;
-      position: relative;
-      background: transparent;
-      border: 1px solid transparent;
-    }
-    .nav-links a:hover {
-      color: var(--accent);
-      background: var(--glass);
-      border-color: var(--accent2);
-      box-shadow: 0 0 16px rgba(167, 139, 250, 0.3);
-      transform: translateY(-1px);
-    }
-    .nav-links a.active {
-      background: var(--accent-grad);
-      color: var(--fg-active);
-      border-color: transparent;
-      box-shadow: 0 2px 12px var(--accent2);
-    }
-    .nav-controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    #theme-toggle {
-      background: var(--glass);
-      box-shadow: 0 0.5px 8px #7dd3fc22;
-      border-radius: 999px;
-      border: var(--border);
-      font-size: 1.1rem;
-      color: var(--fg);
-      width: 1.5em;
-      height: 1.5em;
-      padding: 0;
-      cursor: pointer;
-      transition: background 0.23s, color 0.2s, box-shadow 0.22s, transform 0.17s;
-      outline: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
+    .photo-hero { height: clamp(320px, 52vh, 560px); }
+    .photo-hero img { object-position: center; }
 
-    /* ─────────────────────────────────────────────────────────────────────────
- Header & Profile
-───────────────────────────────────────────────────────────────────────── */
-    main {
-      padding-top: calc(56px + 2rem);
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    .hero {
-      text-align: center;
-      margin-bottom: var(--section-gap);
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .hero.animate-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ─── Profile card ─── */
     .profile {
-      margin: 0 auto 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    .profile-img {
-      width: var(--profile-size);
-      height: var(--profile-size);
-      border-radius: 50%;
-      box-shadow: var(--profile-shadow);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
-      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-      transform: scale(0.8);
-    }
-    .hero.animate-in .profile-img {
-      transform: scale(1);
-    }
-    .profile-img img {
-      width: 92%;
-      height: 92%;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: 50% 50%;
-      filter: saturate(1.15) brightness(1.03);
-      display: block;
-      background: #36374b;
-    }
-    .hero h1 {
-      font-size: 2.6rem;
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: 0.02em;
-      background: var(--accent-grad);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-      margin-bottom: 0.5rem;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
-    }
-    .hero.animate-in h1 {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--fg-muted);
-      font-weight: 500;
-      max-width: 600px;
-      margin: 0 auto;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
-    }
-    .hero.animate-in p {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    /* ─────────────────────────────────────────────────────────────────────────
- CV Sections
-───────────────────────────────────────────────────────────────────────── */
-    .cv-section {
-      background: var(--glass);
-      backdrop-filter: var(--blur);
-      border-radius: var(--radius);
-      border: var(--border);
-      box-shadow: var(--shadow);
-      margin-bottom: var(--section-gap);
-      padding: 2.5rem;
-      position: relative;
-      background-image: var(--card-overlay);
-      opacity: 0;
-      transform: translateY(60px) scale(0.95);
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .cv-section.animate-in {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .cv-section:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4), 0 2px 0px rgba(138, 163, 255, 0.08);
-    }
-    .cv-section h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin: 0 0 1.5rem 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
-    }
-    .cv-section.animate-in h2 {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .cv-section h2::before {
-      content: '';
-      width: 4px;
-      height: 2rem;
-      background: var(--accent-grad);
-      border-radius: 2px;
-      transform: scaleY(0);
-      transform-origin: bottom;
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
-    }
-    .cv-section.animate-in h2::before {
-      transform: scaleY(1);
-    }
-    /* ─── Experience & Education Items ─── */
-    .experience-item,
-    .education-item {
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(125, 211, 252, 0.1);
-      opacity: 0;
-      transform: translateX(-40px);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .cv-section.animate-in .experience-item,
-    .cv-section.animate-in .education-item {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .cv-section.animate-in .experience-item:nth-child(2) {
-      transition-delay: 0.1s;
-    }
-    .cv-section.animate-in .experience-item:nth-child(3) {
-      transition-delay: 0.2s;
-    }
-    .cv-section.animate-in .experience-item:nth-child(4) {
-      transition-delay: 0.3s;
-    }
-    .cv-section.animate-in .experience-item:nth-child(5) {
-      transition-delay: 0.4s;
-    }
-    .cv-section.animate-in .experience-item:nth-child(6) {
-      transition-delay: 0.5s;
-    }
-    .cv-section.animate-in .experience-item:nth-child(7) {
-      transition-delay: 0.6s;
-    }
-    .cv-section.animate-in .education-item:nth-child(2) {
-      transition-delay: 0.1s;
-    }
-    .cv-section.animate-in .education-item:nth-child(3) {
-      transition-delay: 0.2s;
-    }
-    .cv-section.animate-in .education-item:nth-child(4) {
-      transition-delay: 0.3s;
-    }
-    .cv-section.animate-in .education-item:nth-child(5) {
-      transition-delay: 0.4s;
-    }
-    .experience-item:last-child,
-    .education-item:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .item-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--fg);
-      margin: 0;
-    }
-    .item-company {
-      font-size: 1.1rem;
-      color: var(--accent);
-      font-weight: 500;
-      margin: 0.2rem 0;
-    }
-    .item-date {
-      font-size: 0.9rem;
-      color: var(--fg-muted);
-      background: rgba(125, 211, 252, 0.1);
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      font-family: 'Fira Mono', monospace;
-      white-space: nowrap;
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-    }
-    .experience-item:hover .item-date,
-    .education-item:hover .item-date {
-      transform: scale(1);
-      background: rgba(125, 211, 252, 0.2);
-    }
-    .item-description {
-      color: var(--fg-muted);
-      line-height: 1.6;
-      margin-top: 1rem;
-    }
-    .item-description ul {
-      margin: 0.5rem 0;
-      padding-left: 1.5rem;
-    }
-    .item-description li {
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .cv-section.animate-in .item-description li {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .cv-section.animate-in .item-description li:nth-child(1) {
-      transition-delay: 0.3s;
-    }
-    .cv-section.animate-in .item-description li:nth-child(2) {
-      transition-delay: 0.4s;
-    }
-    .cv-section.animate-in .item-description li:nth-child(3) {
-      transition-delay: 0.5s;
-    }
-    /* ─── Skills Grid ─── */
-    .skills-grid {
+      margin-top: -150px;
+      padding: 32px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .skill-category {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      border: 1px solid rgba(125, 211, 252, 0.08);
-      opacity: 0;
-      transform: translateY(30px) scale(0.9);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .cv-section.animate-in .skill-category {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .cv-section.animate-in .skill-category:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    .cv-section.animate-in .skill-category:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-    .cv-section.animate-in .skill-category:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-    .cv-section.animate-in .skill-category:nth-child(4) {
-      transition-delay: 0.4s;
-    }
-    .skill-category:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-5px) scale(1.02);
-      border-color: rgba(125, 211, 252, 0.15);
-    }
-    .skill-category h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--accent2);
-      margin: 0 0 1rem 0;
-      display: flex;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
       align-items: center;
-      gap: 0.5rem;
-    }
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .skill-tag {
-      background: var(--accent-grad);
-      color: var(--fg);
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    .cv-section.animate-in .skill-tag {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .skill-tag:hover {
-      transform: scale(1.1) translateY(-2px);
-      box-shadow: 0 4px 12px rgba(125, 211, 252, 0.3);
-    }
-    /* ─── Contact Info ─── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 1rem;
-      border: 1px solid rgba(125, 211, 252, 0.08);
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .cv-section.animate-in .contact-item {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .cv-section.animate-in .contact-item:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    .cv-section.animate-in .contact-item:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-    .cv-section.animate-in .contact-item:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-    .contact-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-5px) scale(1.02);
-    }
-    .contact-icon {
-      font-size: 1.5rem;
-      width: 2.5rem;
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      color: var(--fg);
-      transition: transform 0.3s ease;
-    }
-    .contact-item:hover .contact-icon {
-      transform: rotate(10deg) scale(1.1);
-    }
-    .contact-info h4 {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--fg);
-    }
-    .contact-info p {
-      margin: 0.2rem 0 0 0;
-      color: var(--fg-muted);
-      font-size: 0.9rem;
-    }
-    .contact-info a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-info a:hover {
-      color: var(--accent2);
-    }
-    /* ─── Download Button ─── */
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent-grad);
-      color: var(--fg);
-      padding: 1rem 2rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 4px 20px rgba(125, 211, 252, 0.3);
-      margin-top: 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .hero.animate-in .download-btn {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.6s;
-    }
-    .download-btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 12px 40px rgba(125, 211, 252, 0.5);
-    }
-    /* ─── Languages Progress Bars ─── */
-    .language-item {
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .cv-section.animate-in .language-item {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .cv-section.animate-in .language-item:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    .cv-section.animate-in .language-item:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-    .cv-section.animate-in .language-item:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-    .language-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-    .language-name {
-      font-weight: 600;
-      color: var(--fg);
-    }
-    .language-level {
-      font-size: 0.9rem;
-      color: var(--fg-muted);
-    }
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      background: rgba(125, 211, 252, 0.1);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent-grad);
-      border-radius: 3px;
-      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-      width: 0;
-    }
-    .cv-section.animate-in .progress-fill.native {
-      width: 100%;
-      transition-delay: 0.3s;
-    }
-    .cv-section.animate-in .progress-fill.advanced {
-      width: 75%;
-      transition-delay: 0.4s;
-    }
-    .cv-section.animate-in .progress-fill.intermediate {
-      width: 50%;
-      transition-delay: 0.5s;
-    }
-    .cv-section.animate-in .progress-fill.basic {
-      width: 25%;
-      transition-delay: 0.6s;
-    }
-    /* ─────────────────────────────────────────────────────────────────────────
- Responsive Design
-───────────────────────────────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .cv-section {
-        padding: 1.5rem;
-      }
-      .item-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav-links {
-        display: none;
-      }
-      main {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-    }
-    /* Print Styles – Corrected */
-    @media print {
-      @page {
-        size: A4;
-        padding: 0;
-      }
-      html, body {
-        width: 210mm;
-        height: 297mm;
-        margin: 10mm;
-        padding: 10px;
-        -webkit-print-color-adjust: exact !important;
-        color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-      /* Hide header, footer, and print button */
-      .navbar,
-      .download-btn,
-      footer,
-      .mobile-menu-toggle,
-      .mobile-nav-overlay,
-      .mobile-nav-menu,
-      .scroll-progress,
-      .floating-particles {
-        display: none !important;
-      }
-      /* Reset main for print */
-      main {
-        width: 210mm;
-        padding: 15mm;
-        box-sizing: border-box;
-        margin: 0;
-      }
-      /* Force all elements visible */
-      .hero,
-      .cv-section,
-      .experience-item,
-      .education-item,
-      .skill-category,
-      .contact-item,
-      .language-item,
-      .item-description li,
-      .hero h1,
-      .hero p,
-      .cv-section h2 {
-        opacity: 1 !important;
-        transform: none !important;
-        animation: none !important;
-      }
-       /* Keep hero and contact on same page */
-       .hero {
-         break-after: avoid;
-         margin-bottom: 2rem;
-       }
-       #contact {
-         break-before: avoid;
-         break-after: page;
-       }
-       /* All CV sections start on new page, page break after except last */
-       .cv-section {
-         break-before: page;
-       }
-       .cv-section:not(:last-child) {
-         break-after: page;
-       }
-      /* Fix progress bars and skill tags */
-      .progress-fill {
-        transition: none !important;
-      }
-      .skill-tag,
-      .language-item,
-      .contact-item,
-      .skill-category {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      /* Links */
-      a {
-        color: inherit !important;
-        text-decoration: none !important;
-      }
-    }
-    /* ─────────────────────────────────────────────────────────────────────────
- Footer
-───────────────────────────────────────────────────────────────────────── */
-    footer {
-      width: 100vw;
-      padding: 2.1rem 0 1.3rem;
-      background: var(--footer-glass);
-      text-align: center;
-      border-top: var(--border);
-      backdrop-filter: blur(8px);
-      color: var(--fg-muted);
-      font-size: 1.01rem;
-      letter-spacing: 0.01em;
-      box-shadow: 0 -6px 24px #a78bfa0c;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    footer.animate-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .footer-socials {
-      margin-top: 0.18rem;
-      display: flex;
-      justify-content: center;
-      gap: 1.11rem;
-      font-size: 1.36rem;
-    }
-    .footer-socials a {
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.18em;
-      opacity: 0;
-      transform: translateY(20px);
-      min-height: 44px;
-      min-width: 44px;
-      padding: 0.5rem;
-    }
-    footer.animate-in .footer-socials a {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    footer.animate-in .footer-socials a:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    footer.animate-in .footer-socials a:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-    footer.animate-in .footer-socials a:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-    .footer-socials a:hover {
-      color: var(--accent);
-      transform: scale(1.17) translateY(-2px);
-    }
-    /* ─────────────────────────────────────────────────────────────────────────
- Remaining styles (animations, mobile, parallax, etc.) – kept for screen
-───────────────────────────────────────────────────────────────────────── */
-    /* Scroll Progress Indicator */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 3px;
-      background: var(--accent-grad);
-      z-index: 1002;
-      transition: width 0.1s ease-out;
-      box-shadow: 0 0 10px var(--accent);
-    }
-    /* Floating particles animation */
-    .floating-particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: float 15s infinite linear;
-    }
-    .particle:nth-child(2n) {
-      background: var(--accent2);
-      animation-duration: 20s;
-      animation-delay: -5s;
-    }
-    .particle:nth-child(3n) {
-      animation-duration: 25s;
-      animation-delay: -10s;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.3;
-      }
-      90% {
-        opacity: 0.3;
-      }
-      100% {
-        transform: translateY(-100px) translateX(100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-    /* Enhanced hover effects */
-    .cv-section.animate-in:hover {
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .experience-item:hover,
-    .education-item:hover {
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    /* Glow effect */
-    .cv-section.animate-in h2 {
-      text-shadow: 0 0 20px rgba(125, 211, 252, 0.3);
-    }
-    .hero.animate-in h1 {
-      text-shadow: 0 0 30px rgba(125, 211, 252, 0.2);
-    }
-    /* Responsive and mobile styles... */
-    @media (max-width: 768px) {
-      :root {
-        --blur: blur(8px);
-        --radius: 12px;
-        --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        --profile-size: 72px;
-        --section-gap: 2rem;
-      }
-    }
-    @media (max-width: 768px) {
-      body::before,
-      body::after {
-        animation: none;
-      }
-      .cv-section:hover {
-        transform: none;
-      }
-      .navbar,
-      .cv-section {
-        backdrop-filter: blur(5px);
-      }
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 2.6rem);
-    }
-    .hero p {
-      font-size: clamp(1rem, 3vw, 1.15rem);
-      padding: 0 1rem;
-    }
-    .cv-section h2 {
-      font-size: clamp(1.4rem, 4vw, 1.8rem);
-    }
-    .item-title {
-      font-size: clamp(1.1rem, 3vw, 1.25rem);
-    }
-    .download-btn {
-      min-height: 44px;
-    }
-    @media (max-width: 768px) {
-      .skills-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      .item-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-    }
-    @media (max-width: 768px) {
-      * {
-        will-change: auto;
-      }
-      .cv-section {
-        transition: opacity 0.6s ease;
-        transform: translateY(30px) scale(0.98);
-      }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-    button:focus,
-    a:focus {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-    @media (max-width: 480px) {
-      .cv-section {
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-      }
-      main {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-      .navbar {
-        padding: 0.5rem 0.75rem;
-      }
-    }
-    /* Mobile Navigation Hamburger Menu */
-    .mobile-menu-toggle {
-      display: none;
-      background: var(--glass);
-      border: var(--border);
-      border-radius: 8px;
-      padding: 8px;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 4px;
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      order: 2;
-    }
-    .mobile-menu-toggle:hover {
-      background: rgba(125, 211, 252, 0.1);
-      transform: scale(1.05);
-    }
-    .hamburger-line {
-      width: 20px;
-      height: 2px;
-      background: var(--fg);
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      border-radius: 1px;
-    }
-    .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-    .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -6px);
-    }
-    .mobile-nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    .mobile-nav-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-    .mobile-nav-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 280px;
-      height: 100vh;
-      background: var(--navbar-glass);
-      backdrop-filter: blur(20px);
-      border-left: var(--border);
-      z-index: 1000;
-      padding: 80px 2rem 2rem;
-      transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
-      transform: translateX(100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-    .mobile-nav-menu.active {
-      right: 0;
-      transform: translateX(0);
-    }
-    .mobile-nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      width: 100%;
-    }
-    .mobile-nav-links a {
-      color: var(--fg);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      background: transparent;
-      border: 1px solid transparent;
-      text-align: center;
-      opacity: 0;
-      transform: translateX(30px);
-      animation: slideInMobile 0.4s ease forwards;
-    }
-    .mobile-nav-links a:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-    .mobile-nav-links a:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    .mobile-nav-links a:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-    @keyframes slideInMobile {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    .mobile-nav-links a:hover {
-      color: var(--accent);
-      background: var(--glass);
-      border-color: var(--accent2);
-      box-shadow: 0 4px 20px rgba(167, 139, 250, 0.2);
-      transform: translateY(-2px);
-    }
-    .mobile-nav-links a.active {
-      background: var(--accent-grad);
-      color: var(--fg-active);
-      border-color: transparent;
-      box-shadow: 0 4px 20px var(--accent2);
-    }
-    #mobile-theme-toggle {
-      background: var(--glass);
-      box-shadow: 0 0.5px 8px #7dd3fc22;
-      border-radius: 999px;
-      border: var(--border);
-      font-size: 1.1rem;
-      color: var(--fg);
-      width: 1.5em;
-      height: 1.5em;
-      padding: 0;
-      cursor: pointer;
-      transition: background 0.23s, color 0.2s, box-shadow 0.22s, transform 0.17s;
-      outline: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    #mobile-theme-toggle:hover {
-      background: rgba(125, 211, 252, 0.1);
-      transform: scale(1.05);
-    }
-    .mobile-theme-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideInMobile 0.4s ease forwards;
-      animation-delay: 0.4s;
-      width: 100%;
-    }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      .navbar {
-        padding: 0.5rem 1rem;
-      }
-      .nav-controls {
-        gap: 0.5rem;
-      }
-      .nav-controls>#theme-toggle {
-        display: none;
-      }
-    }
-    @media (max-width: 480px) {
-      .mobile-nav-menu {
-        width: 100%;
-        right: -100%;
-        transform: translateX(100%);
-      }
-      .mobile-nav-menu.active {
-        right: 0;
-        transform: translateX(0);
-        padding: 80px 0rem 2rem;
-      }
-      .mobile-nav-links a {
-        font-size: 1.2rem;
-        padding: 1.2rem 2rem;
-      }
     }
 
+    .avatar {
+      width: 148px;
+      height: 148px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .5);
+    }
+
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+
+    .profile h1 { font-size: clamp(36px, 5vw, 52px); margin: 10px 0 8px; }
+    .profile .role { font-size: 17px; color: var(--fg-muted); }
+
+    .profile-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .profile-meta .chip i { font-size: 13px; color: var(--fg-faint); }
+    .profile-meta a.chip:hover { color: var(--fg); border-color: var(--line-strong); }
+
+    .profile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+    /* ─── Layout ─── */
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+      margin-top: 24px;
+      align-items: stretch;
+    }
+
+    /* Both columns end at the same height: the last card of each column fills the gap */
+    .stack { display: flex; flex-direction: column; gap: 24px; }
+    .stack > .card:last-child { flex: 1; }
+
+    .card { padding: 28px; }
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card-title h2 { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 600; line-height: 1.2; }
+    .card-title h2 i {
+      display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px;
+      font-size: 15px; color: var(--accent); background: var(--accent-soft); border: 1px solid rgba(138, 180, 255, .18);
+    }
+    .card-title .count { margin-left: auto; }
+
+    .side .card { padding: 24px; }
+    .side .card-title h2 { font-size: 17px; }
+
+    /* ─── Sidebar ─── */
+    .about { color: var(--fg-muted); font-size: 14.5px; }
+
+    .kv { display: grid; gap: 14px; margin-top: 20px; }
+    .kv li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; font-size: 14px; }
+    .kv i { color: var(--fg-faint); margin-top: 3px; font-size: 15px; text-align: center; }
+    .kv span { display: block; font-size: 11.5px; color: var(--fg-faint); }
+    .kv a:hover { color: var(--accent-strong); }
+
+    .langs { display: grid; gap: 14px; }
+    .lang { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; }
+    .lang small { display: block; color: var(--fg-faint); font-size: 12px; }
+    .level { display: flex; gap: 4px; }
+    .level i { width: 18px; height: 4px; border-radius: 2px; background: var(--line-strong); }
+    .level i.on { background: var(--fg-muted); }
+
+    .skill-group + .skill-group { margin-top: 20px; }
+    .skill-group h3 { font-size: 12.5px; font-weight: 500; color: var(--fg-faint); margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    /* ─── Timeline ─── */
+    .timeline { position: relative; list-style: none; margin: 0; padding: 0; }
+
+    .tl-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 24px;
+    }
+
+    /* Vertical rail with a dot per entry; ongoing entries get an accent dot */
+    .tl-item > div:last-child { position: relative; padding: 0 0 26px 24px; border-left: 1px solid var(--line); }
+    .tl-item:last-child > div:last-child { padding-bottom: 0; border-left-color: transparent; }
+    .tl-item > div:last-child::before {
+      content: ""; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px; border-radius: 50%;
+      background: var(--bg); border: 1.5px solid var(--fg-faint);
+    }
+    .tl-item:last-child > div:last-child::after {
+      content: ""; position: absolute; left: -1px; top: 0; height: 8px; border-left: 1px solid var(--line);
+    }
+    .tl-item.current > div:last-child::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    .tl-item.current .tl-date { color: var(--accent); }
+
+    .tl-date { font-family: var(--font-mono); font-size: 12.5px; color: var(--fg-faint); padding-top: 3px; }
+    .tl-item h3 { font-size: 16.5px; font-weight: 600; letter-spacing: -.005em; }
+    .tl-org { color: var(--fg-muted); font-size: 14.5px; margin-top: 2px; }
+    .tl-item p.desc { color: var(--fg-muted); font-size: 14.5px; margin-top: 8px; }
+
+    .bullets { margin-top: 10px; display: grid; gap: 6px; }
+    .bullets li { position: relative; padding-left: 18px; color: var(--fg-muted); font-size: 14.5px; }
+    .bullets li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 6px; height: 1px; background: var(--fg-faint); }
+
+    /* ─── Full-width sections below the two columns ─── */
+    .wide-section { margin-top: 24px; }
+
+    /* ─── Projects ─── */
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--glass-soft);
+      transition: border-color .25s, background-color .25s, transform .25s;
+    }
+
+    .project:hover { border-color: var(--line-strong); background: var(--glass-hover); transform: translateY(-2px); }
+
+    .thumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--bg-elev); border-bottom: 1px solid var(--line); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .6s ease; }
+    .project:hover .thumb img { transform: scale(1.03); }
+
+    .project-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .project-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .project h3 { font-size: 15.5px; font-weight: 600; }
+    .project h3 i { font-size: 13px; color: var(--fg-faint); margin-left: 4px; }
+    .card-title .count i { font-size: 13px; }
+    .project .tl-date { padding: 0; font-size: 11.5px; white-space: nowrap; }
+    .project p { color: var(--fg-muted); font-size: 14px; }
+    .project p a { text-decoration: underline; text-underline-offset: 2px; }
+    .project .kind { margin-top: auto; padding-top: 6px; font-size: 12px; color: var(--fg-faint); }
+    .project code { font-family: var(--font-mono); font-size: .88em; }
+
+    .project.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+    .project.wide .thumb { aspect-ratio: auto; min-height: 260px; border-bottom: 0; border-right: 1px solid var(--line); }
+    .project.wide .project-body { padding: 24px 26px; justify-content: center; gap: 10px; }
+    .project.wide h3 { font-size: 21px; font-weight: 600; line-height: 1.25; }
+    .project.wide p { font-size: 14.5px; }
+
+    /* ─── Certifications: two columns of compact rows ─── */
+    .certs { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 32px; }
+    .certs li { border-top: 1px solid var(--line); }
+    .certs li:nth-child(-n+2) { border-top: 0; }
+
+    .certs a {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 16px;
+      padding: 14px 0;
+      height: 100%;
+      transition: color .2s;
+    }
+
+    .certs a:hover strong { color: var(--accent-strong); }
+    .certs strong { font-weight: 500; font-size: 14.5px; transition: color .2s; }
+    .certs span { color: var(--fg-faint); font-size: 13px; }
+    .certs .tl-date { padding: 0; grid-row: span 2; align-self: center; }
+
+    @media (max-width: 900px) {
+      .projects { grid-template-columns: repeat(2, 1fr); }
+      .cv-grid { grid-template-columns: 1fr; }
+      .side { grid-row: 2; }
+      .side { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .profile { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; margin-top: -110px; }
+      .avatar { width: 104px; height: 104px; border-radius: 20px; }
+      .card, .side .card { padding: 22px 18px; }
+      .tl-item { grid-template-columns: 1fr; gap: 4px; }
+      .tl-item .tl-date { padding-left: 24px; }
+      .tl-item > div:last-child { border-left-color: var(--line); }
+      .projects { grid-template-columns: 1fr; }
+      .certs { grid-template-columns: 1fr; }
+      .certs li:nth-child(2) { border-top: 1px solid var(--line); }
+      .wide-section { margin-top: 16px; }
+      .project.wide h3 { font-size: 19px; }
+      .project.wide { grid-template-columns: 1fr; }
+      .project.wide .thumb { aspect-ratio: 16 / 10; min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .cv-grid, .stack { gap: 16px; }
+    }
+
+    /* ─── Print: plain, single column A4 ─── */
+    @media print {
+      @page { size: A4; margin: 14mm; }
+
+      :root {
+        --bg: #fff; --fg: #111; --fg-muted: #333; --fg-faint: #666;
+        --line: #ddd; --line-strong: #ccc; --accent-strong: #111;
+      }
+
+      body { background: #fff; font-size: 11pt; }
+      .nav, .backdrop, .photo-hero, .profile-actions, .footer, .thumb { display: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .glass { background: none !important; backdrop-filter: none !important; box-shadow: none !important; border: 0 !important; }
+      body { overflow: visible; }
+      .container { max-width: none; padding: 0 2px; }
+      .card-title .count { display: none; }
+      .profile { margin: 0; padding: 0 0 12px; border-bottom: 1px solid #ddd !important; border-radius: 0; }
+      .avatar { width: 96px; height: 96px; box-shadow: none; }
+      .profile h1 { font-size: 34pt; }
+      .chip { border: 0; background: none; padding: 0 12px 0 0; }
+      .cv-grid { display: block; margin-top: 0; }
+      .stack { display: block; }
+      .card, .side .card { padding: 14px 0; }
+      .card-title { break-after: avoid; }
+      .card-title { margin-bottom: 10px; }
+      .side { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .projects { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .project.wide { grid-template-columns: 1fr; }
+      .project.wide h3 { font-size: 12pt; }
+      .wide-section { margin-top: 0; }
+      .photo-caption { display: none !important; }
+      .project { border: 1px solid #ddd; transform: none !important; break-inside: avoid; }
+      .tl-item { break-inside: avoid; }
+      a { color: inherit !important; }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="nav-links">
-        <a href="index.html" class="active"><i class="fas fa-file-alt"></i> Resume</a>
-        <a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
-      </div>
-      <div class="nav-controls">
-        <!-- Desktop theme toggle -->
-        <button id="theme-toggle" aria-label="Toggle theme">
-          <i class="fas fa-moon"></i>
-        </button>
-        <!-- Mobile menu toggle -->
-        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- Mobile Navigation Overlay -->
-    <div class="mobile-nav-overlay"></div>
-    <!-- Mobile Navigation Menu -->
-    <div class="mobile-nav-menu">
-      <div class="mobile-nav-links">
-        <a href="index.html" class="active"><i class="fas fa-file-alt"></i> Resume</a>
-        <a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
-      </div>
-      <div class="mobile-theme-toggle">
-        <button id="mobile-theme-toggle" aria-label="Toggle theme">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <nav class="nav glass" aria-label="Main">
+    <a href="index.html" class="nav-brand"><img src="src/avatar-480.webp" alt="" /><span>Olivier Amacker</span></a>
+    <div class="nav-links">
+      <a href="index.html" aria-current="page"><i class="icon-file-text" aria-hidden="true"></i><span>Resume</span></a>
+      <a href="portfolio.html"><i class="icon-layers" aria-hidden="true"></i><span>Portfolio</span></a>
+    </div>
+  </nav>
+
+  <header class="photo-hero is-loading">
+    <img alt="" />
+    <div class="hero-loader" role="status">
+      <span class="orbit" aria-hidden="true"><span class="planet"></span></span>
+      <span class="hero-loader-text">Loading NASA's picture of the day</span>
     </div>
   </header>
-  <div class="parallax-wrapper">
-    <main>
-      <section class="hero">
-        <div class="profile">
-          <div class="profile-img">
-            <img src="src/avatar.webp" alt="Profile photo of Olivier Amacker" loading="lazy"
-              onerror="this.style.display='none';">
-          </div>
-        </div>
-        <h1>Olivier Amacker</h1>
-        <p>Computer Science Student & Software Developer</p>
-        <a href="#" class="download-btn" onclick="window.print()">
-          <i class="fas fa-download"></i> Download PDF
-        </a>
-      </section>
-      <section id="contact" class="cv-section">
-        <h2><i class="fas fa-address-book"></i> Contact Information</h2>
-        <div class="contact-grid">
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div class="contact-info">
-              <h4>Email</h4>
-              <p><a href="mailto:olivier.amacker@netplus.ch">olivier.amacker@netplus.ch</a></p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="contact-info">
-              <h4>Location</h4>
-              <p>Sion, Switzerland</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="experience" class="cv-section">
-        <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">Junior Web Developer</h3>
-              <p class="item-company">Valdez Informatique Sàrl</p>
-            </div>
-            <span class="item-date">09/2023 - 04/2024</span>
-          </div>
-          <div class="item-description">
-            <p>Conthey, Switzerland</p>
-            <ul>
-              <li>Developed web applications using Laravel, Vue, CSS and HTML</li>
-              <li>Collaborated with team members on various projects</li>
-              <li>Maintained and improved existing systems</li>
-            </ul>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">Web Development Intern</h3>
-              <p class="item-company">Valdez Informatique Sàrl</p>
-            </div>
-            <span class="item-date">04/2023 - 08/2023</span>
-          </div>
-          <div class="item-description">
-            <p>Conthey, Switzerland</p>
-            <ul>
-              <li>Learned web development fundamentals</li>
-              <li>Participated in team projects</li>
-              <li>Gained experience with professional development workflows</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section id="education" class="cv-section">
-        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-        <div class="education-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">Bachelor's degree, ISC</h3>
-              <p class="item-company">HES-SO Valais-Wallis</p>
-            </div>
-            <span class="item-date">09/2023 - Today</span>
-          </div>
-          <div class="item-description">
-            <p>Information Systems and Communications at HES-SO Valais-Wallis</p>
-          </div>
-        </div>
-        <div class="education-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">Bachelor's degree, Computer Science</h3>
-              <p class="item-company">EPFL</p>
-            </div>
-            <span class="item-date">09/2022 - 02/2023</span>
-          </div>
-          <div class="item-description">
-            <p>Computer Science studies at École Polytechnique Fédérale de Lausanne</p>
-          </div>
-        </div>
-        <div class="education-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">Bachelor's degree, Criminal Science</h3>
-              <p class="item-company">University of Lausanne - UNIL</p>
-            </div>
-            <span class="item-date">09/2021 - 06/2022</span>
-          </div>
-          <div class="item-description">
-            <p>Criminal Science studies at University of Lausanne</p>
-          </div>
-        </div>
-        <div class="education-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">High School Diploma, Economics and Law</h3>
-              <p class="item-company">Lycée collège des creusets</p>
-            </div>
-            <span class="item-date">08/2016 - 06/2021</span>
-          </div>
-          <div class="item-description">
-            <p>Focused on Economics and Law studies with strong academic performance</p>
-          </div>
-        </div>
-      </section>
-      <section id="skills" class="cv-section">
-        <h2><i class="fas fa-tools"></i> Technical Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-category">
-            <h3><i class="fas fa-laptop-code"></i> Programming & Development</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Rust</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Cuda</span>
-              <span class="skill-tag">Scala</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">PHP</span>
-              <span class="skill-tag">Javascript</span>
-              <span class="skill-tag">Multithreading</span>
-              <span class="skill-tag">Full-stack Development</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-globe"></i> Web Technologies</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Vue</span>
-              <span class="skill-tag">Laravel</span>
-              <span class="skill-tag">Meteor</span>
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">WordPress</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-database"></i> Data & AI</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Databases</span>
-              <span class="skill-tag">Machine Learning</span>
-              <span class="skill-tag">Computer Vision</span>
-              <span class="skill-tag">Deep Neural Networks</span>
-              <span class="skill-tag">Artificial Neural Networks</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <h3><i class="fas fa-rocket"></i> Business & Leadership</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Innovation Management</span>
-              <span class="skill-tag">Entrepreneurship</span>
-              <span class="skill-tag">Startup Development</span>
-              <span class="skill-tag">Startup Management</span>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="languages" class="cv-section">
-        <h2><i class="fas fa-globe-europe"></i> Languages</h2>
-        <div class="language-item">
-          <div class="language-header">
-            <span class="language-name">French</span>
-            <span class="language-level">Native</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill native"></div>
-          </div>
-        </div>
-        <div class="language-item">
-          <div class="language-header">
-            <span class="language-name">English</span>
-            <span class="language-level">Advanced</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill advanced"></div>
-          </div>
-        </div>
-        <div class="language-item">
-          <div class="language-header">
-            <span class="language-name">German</span>
-            <span class="language-level">Intermediate</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill intermediate"></div>
-          </div>
-        </div>
-      </section>
-       <section id="projects" class="cv-section">
-         <h2><i class="fas fa-trophy"></i> Projects</h2>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://melee.tv" target="_blank">Melee TV <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Personal Project</p>
-            </div>
-            <span class="item-date">02/2021 - Today</span>
-          </div>
-          <div class="item-description">
-            <p>The Super Smash Bros. Melee hub for playing, learning, and creating.</p>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://github.com/isc-hei-classrooms/w8-cuda-implementation-of-ray-tracer-cud-tr4c3r/tree/main" target="_blank">Cuda ray tracer <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Personal Project</p>
-            </div>
-            <span class="item-date">11/2025</span>
-          </div>
-          <div class="item-description">
-            <p>Cpp ray tracer from <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html" target="_blank">Ray tracing in one weekend series</a> adapted to Cuda</p>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://estimeat.amacker.dev" target="_blank">EstimEat <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Academic Project</p>
-            </div>
-            <span class="item-date">10/2025</span>
-          </div>
-          <div class="item-description">
-            <p>Data-driven platform designed to help restaurant entrepreneurs and investors find the best locations to open new restaurants across Swiss municipalities</p>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://github.com/MadeInShineA/forest-fire-simulation" target="_blank">Forest Fire
-                  Simulation <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Academic Project</p>
-            </div>
-            <span class="item-date">04/2025 - 09/2025</span>
-          </div>
-          <div class="item-description">
-            <p>A scalable, cross-platform probabilistic wildfire simulation engine for research, visualization, and
-              fire prevention</p>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://smash-map.com" target="_blank">Smash Map <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Personal Project</p>
-            </div>
-            <span class="item-date">09/2022 - 04/2023</span>
-          </div>
-          <div class="item-description">
-            <p>Self-designed website to reference Super Smash Bros. players and tournaments around the world</p>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://github.com/MadeInShineA/digits-recognition" target="_blank">Digits Recognition App <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Personal Project</p>
-            </div>
-            <span class="item-date">02/2023</span>
-          </div>
-          <div class="item-description">
-            <p>Python application to recognize hand written digits in real time!</p>
-          </div>
-        </div>
-      </section>
-       <section id="certifications" class="cv-section">
-         <h2><i class="fas fa-certificate"></i> Certifications</h2>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://learn.nvidia.com/certificates?id=fuj4s35cREuWlfLCVO77TQ"
-                  target="_blank">Fundamentals of Deep Learning<i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Nvidia</p>
-            </div>
-            <span class="item-date">Dec 2025</span>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://innosuisse.venturelab.ch/trainings?CredentialID=0AE6C061A34E9AA4"
-                  target="_blank">Business Concept Sion <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Venturekick</p>
-            </div>
-            <span class="item-date">Mar 2025</span>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://www.coursera.org/account/accomplishments/certificate/UWXTD5QHZZ4W"
-                  target="_blank">Structuring Machine Learning Projects <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Coursera</p>
-            </div>
-            <span class="item-date">Jun 2023</span>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://www.coursera.org/account/accomplishments/certificate/VM98AU27DFRS"
-                  target="_blank">Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and
-                  Optimization <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Coursera</p>
-            </div>
-            <span class="item-date">Apr 2023</span>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://www.coursera.org/account/accomplishments/certificate/E3HKBFT94WE5"
-                  target="_blank">Neural Networks and Deep Learning <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">Coursera</p>
-            </div>
-            <span class="item-date">Mar 2023</span>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://certificates.cs50.io/afec4d03-72fc-4f95-922b-a2fba5f3b0a3.png?size=letter"
-                  target="_blank">CS50's Introduction to Artificial Intelligence with Python <i class="fas fa-external-link-alt"></i></a>
-              </h3>
-              <p class="item-company">CS50</p>
-            </div>
-            <span class="item-date">Feb 2023</span>
-          </div>
-        </div>
-        <div class="experience-item">
-          <div class="item-header">
-            <div>
-              <h3 class="item-title">
-                <a href="https://certificates.cs50.io/8da7df34-78fb-4b28-8c4d-9e1d6fee9737.png?size=letter"
-                  target="_blank">CS50's Web Programming with Python and JavaScript <i class="fas fa-external-link-alt"></i></a>
-                <p class="item-company">CS50</p>
-            </div>
-            <span class="item-date">Sep 2022</span>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer>
-      <div class="footer-socials">
-        <a href="https://github.com/MadeInShineA" target="_blank" title="GitHub"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://twitter.com/MadeInShineA" target="_blank" title="Twitter"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="mailto:olivier.amacker@netplus.ch" title="Email"><i class="fas fa-envelope"></i> Email</a>
-      </div>
-      <div>&copy; <span id="year"></span> Amacker Olivier – Built with <i class="fas fa-heart" style="color:#a78bfa;"></i></div>
-    </footer>
-  </div>
-  <script>
-    // Mobile Navigation Functionality
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-    const mobileNavMenu = document.querySelector('.mobile-nav-menu');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-    // Toggle mobile menu
-    function toggleMobileMenu() {
-      mobileMenuToggle.classList.toggle('active');
-      mobileNavOverlay.classList.toggle('active');
-      mobileNavMenu.classList.toggle('active');
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = mobileNavMenu.classList.contains('active') ? 'hidden' : '';
-    }
-    // Close mobile menu
-    function closeMobileMenu() {
-      mobileMenuToggle.classList.remove('active');
-      mobileNavOverlay.classList.remove('active');
-      mobileNavMenu.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    // Event listeners for mobile menu
-    if (mobileMenuToggle) {
-      mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-    }
-    if (mobileNavOverlay) {
-      mobileNavOverlay.addEventListener('click', closeMobileMenu);
-    }
-    // Close menu when clicking on nav links
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', closeMobileMenu);
-    });
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileNavMenu && mobileNavMenu.classList.contains('active')) {
-        closeMobileMenu();
-      }
-    });
-    // Theme toggle functionality
-    function updateTheme() {
-      document.body.classList.toggle('light');
-      localStorage.setItem(
-        'theme',
-        document.body.classList.contains('light') ? 'light' : 'dark'
-      );
-      syncThemeIcons();
-    }
-    // Sync theme toggle icons
-    function syncThemeIcons() {
-      const isLight = document.body.classList.contains('light');
-      // Update desktop icons
-      const themeToggle = document.getElementById('theme-toggle');
-      const desktopIcon = themeToggle?.querySelector('i');
-      if (desktopIcon) {
-        desktopIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
-      }
-      // Update mobile icons
-      const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-      const mobileIcon = mobileThemeToggle?.querySelector('i');
-      if (mobileIcon) {
-        mobileIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
-      }
-    }
-    // Desktop theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', updateTheme);
-    }
-    // Mobile theme toggle
-    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
-    if (mobileThemeToggle) {
-      mobileThemeToggle.addEventListener('click', updateTheme);
-    }
-    // Load saved theme preference
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light');
-    }
-    // Initialize theme icons on load
-    window.addEventListener('load', syncThemeIcons);
-    // Set current year
-    const yearElement = document.getElementById('year');
-    if (yearElement) {
-      yearElement.textContent = new Date().getFullYear();
-    }
-    // Performance-optimized Intersection Observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          // Unobserve after animation to improve performance
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-    // Observe all animatable elements
-    const animateElements = document.querySelectorAll([
-      '.hero',
-      '.cv-section',
-      'footer'
-    ].join(','));
-    animateElements.forEach(el => observer.observe(el));
-    // Scroll progress indicator with throttling
-    function updateScrollProgress() {
-      const scrollProgress = document.querySelector('.scroll-progress');
-      if (scrollProgress) {
-        const scrolled = window.pageYOffset;
-        const maxHeight = document.body.scrollHeight - window.innerHeight;
-        const progress = (scrolled / maxHeight) * 100;
-        scrollProgress.style.width = progress + '%';
-      }
-    }
-    // Throttled scroll event for better performance
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      scrollTimeout = setTimeout(updateScrollProgress, 16); // ~60fps
-    }, {passive: true});
-    // Mobile performance optimizations
-    const isMobile = window.innerWidth <= 768;
-    const isLowPerformance = navigator.hardwareConcurrency <= 2;
-    if (isMobile || isLowPerformance) {
-      // Reduce animation complexity
-      document.documentElement.style.setProperty('--blur', 'blur(5px)');
-      // Disable particle effects
-      const particleContainer = document.querySelector('.floating-particles');
-      if (particleContainer) {
-        particleContainer.style.display = 'none';
-      }
-      // Disable complex parallax effects
-      document.addEventListener('mousemove', () => { }, {passive: true});
-      document.addEventListener('mouseleave', () => { }, {passive: true});
-    } else {
-      // Desktop-only features
-      // Mouse movement parallax effect for cards
-      document.addEventListener('mousemove', (e) => {
-        const cards = document.querySelectorAll('.cv-section.animate-in');
-        const mouseX = e.clientX / window.innerWidth;
-        const mouseY = e.clientY / window.innerHeight;
-        cards.forEach((card) => {
-          const intensity = 3; // Reduced intensity
-          const x = (mouseX - 0.5) * intensity;
-          const y = (mouseY - 0.5) * intensity;
-          card.style.transform = `translateX(${x}px) translateY(${y}px)`;
-        });
-      });
-      // Reset card positions when mouse leaves window
-      document.addEventListener('mouseleave', () => {
-        const cards = document.querySelectorAll('.cv-section.animate-in');
-        cards.forEach(card => {
-          card.style.transform = '';
-        });
-      });
-      // Create floating particles (desktop only)
-      function createFloatingParticles() {
-        const particleContainer = document.createElement('div');
-        particleContainer.className = 'floating-particles';
-        document.body.appendChild(particleContainer);
-        for (let i = 0; i < 10; i++) { // Reduced from 15 to 10
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          particle.style.left = Math.random() * 100 + '%';
-          particle.style.animationDelay = Math.random() * 15 + 's';
-          particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-          particleContainer.appendChild(particle);
-        }
-      }
-      // Initialize particles after page load (desktop only)
-      window.addEventListener('load', createFloatingParticles);
-    }
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-    // Disable heavy animations on low-end devices
-    if (navigator.hardwareConcurrency <= 2 || navigator.connection?.effectiveType === '2g') {
-      document.documentElement.style.setProperty('--blur', 'blur(3px)');
-      document.querySelectorAll('.floating-particles').forEach(el => {
-        el.style.display = 'none';
-      });
-    }
-  </script>
-</body>
-</html>
 
+  <main class="container">
+    <section class="profile glass reveal">
+      <div class="avatar"><img src="src/avatar-480.webp" alt="Portrait of Olivier Amacker" /></div>
+      <div>
+        <p class="eyebrow accent">Master's student at HES-SO</p>
+        <h1 class="display">Olivier Amacker</h1>
+        <p class="role">Data science master's student and software developer</p>
+        <div class="profile-meta">
+          <span class="chip"><i class="icon-map-pin" aria-hidden="true"></i> Sion, Switzerland</span>
+          <a class="chip" href="mailto:olivier.amacker@netplus.ch"><i class="icon-mail" aria-hidden="true"></i>
+            olivier.amacker@netplus.ch</a>
+          <a class="chip" href="https://github.com/MadeInShineA" target="_blank" rel="noopener"><i
+              class="icon-github" aria-hidden="true"></i> MadeInShineA</a>
+        </div>
+        <div class="profile-actions">
+          <a class="btn btn-primary" href="portfolio.html"><i class="icon-layers" aria-hidden="true"></i> View portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="cv-grid">
+      <aside class="stack side">
+        <section class="card glass reveal" id="contact">
+          <div class="card-title">
+            <h2><i class="icon-user" aria-hidden="true"></i>About</h2>
+          </div>
+          <p class="about">I'm studying for a master's in data science at HES-SO, after finishing my bachelor's in
+            Information Systems and Communications with an average of 5.5 out of 6. I wrote my bachelor thesis as a
+            traveling researcher at ATR in Kyoto, looking at how numerical noise affects brain imaging results.
+            Before that, I spent a year building web applications.</p>
+          <ul class="kv">
+            <li><i class="icon-mail" aria-hidden="true"></i>
+              <div><span>Email</span><a href="mailto:olivier.amacker@netplus.ch">olivier.amacker@netplus.ch</a></div>
+            </li>
+            <li><i class="icon-map-pin" aria-hidden="true"></i>
+              <div><span>Location</span>Sion, Switzerland</div>
+            </li>
+            <li><i class="icon-github" aria-hidden="true"></i>
+              <div><span>GitHub</span><a href="https://github.com/MadeInShineA" target="_blank"
+                  rel="noopener">github.com/MadeInShineA</a></div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="card glass reveal" id="languages">
+          <div class="card-title">
+            <h2><i class="icon-languages" aria-hidden="true"></i>Languages</h2>
+          </div>
+          <ul class="langs">
+            <li class="lang">
+              <div>French<small>Native</small></div>
+              <span class="level" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i
+                  class="on"></i><i class="on"></i></span>
+            </li>
+            <li class="lang">
+              <div>English<small>Advanced</small></div>
+              <span class="level" aria-label="4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i
+                  class="on"></i><i></i></span>
+            </li>
+            <li class="lang">
+              <div>German<small>Intermediate</small></div>
+              <span class="level" aria-label="3 of 5"><i class="on"></i><i class="on"></i><i
+                  class="on"></i><i></i><i></i></span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="card glass reveal" id="skills">
+          <div class="card-title">
+            <h2><i class="icon-wrench" aria-hidden="true"></i>Skills</h2>
+          </div>
+          <div class="skill-group">
+            <h3>Programming</h3>
+            <div class="chips">
+              <span class="chip">Rust</span><span class="chip">Python</span><span class="chip">CUDA</span>
+              <span class="chip">Scala</span><span class="chip">Java</span><span class="chip">PHP</span>
+              <span class="chip">JavaScript</span><span class="chip">Multithreading</span>
+              <span class="chip">Full-stack development</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Web</h3>
+            <div class="chips">
+              <span class="chip">Vue</span><span class="chip">Laravel</span><span class="chip">Meteor</span>
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">WordPress</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Data and AI</h3>
+            <div class="chips">
+              <span class="chip">Databases</span><span class="chip">Machine learning</span>
+              <span class="chip">Computer vision</span><span class="chip">Deep neural networks</span>
+              <span class="chip">Neuroimaging (fMRI, dMRI)</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Business</h3>
+            <div class="chips">
+              <span class="chip">Innovation management</span><span class="chip">Entrepreneurship</span>
+              <span class="chip">Startup development</span><span class="chip">Startup management</span>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <div class="stack">
+        <section class="card glass reveal" id="experience">
+          <div class="card-title">
+            <h2><i class="icon-briefcase" aria-hidden="true"></i>Experience</h2>
+          </div>
+          <ol class="timeline">
+            <li class="tl-item">
+              <div class="tl-date">05/2026 – 08/2026</div>
+              <div>
+                <h3>Traveling Researcher</h3>
+                <p class="tl-org">ATR (Advanced Telecommunications Research Institute International), Kyoto, Japan</p>
+                <ul class="bullets">
+                  <li>Wrote my bachelor thesis on how numerical noise affects functional MRI connectivity biomarkers</li>
+                  <li>Ran perturbed fMRIPrep pipelines and analysed connectivity matrices, graph metrics and PCA-based
+                    depression biomarkers on the SRPB and BMB datasets</li>
+                  <li>Presented my findings to the lab and in my final thesis presentation</li>
+                </ul>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-date">09/2023 – 04/2024</div>
+              <div>
+                <h3>Junior Web Developer</h3>
+                <p class="tl-org">Valdez Informatique Sàrl, Conthey, Switzerland</p>
+                <ul class="bullets">
+                  <li>Built web applications with Laravel, Vue, HTML and CSS</li>
+                  <li>Worked with the team on a range of projects</li>
+                  <li>Maintained and improved existing systems</li>
+                </ul>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-date">04/2023 – 08/2023</div>
+              <div>
+                <h3>Web Development Intern</h3>
+                <p class="tl-org">Valdez Informatique Sàrl, Conthey, Switzerland</p>
+                <ul class="bullets">
+                  <li>Learned the fundamentals of professional web development</li>
+                  <li>Took part in team projects</li>
+                  <li>Got familiar with professional development workflows</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="card glass reveal" id="education">
+          <div class="card-title">
+            <h2><i class="icon-graduation-cap" aria-hidden="true"></i>Education</h2>
+          </div>
+          <ol class="timeline">
+            <li class="tl-item current">
+              <div class="tl-date">09/2026 – Today</div>
+              <div>
+                <h3>Master's degree in Data Science</h3>
+                <p class="tl-org">HES-SO Master</p>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-date">09/2023 – 08/2026</div>
+              <div>
+                <h3>Bachelor's degree in Information Systems and Communications</h3>
+                <p class="tl-org">HES-SO Valais-Wallis</p>
+                <p class="desc">Graduated with an average of 5.5 out of 6. My thesis studied the numerical stability of
+                  functional MRI connectivity biomarkers.</p>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-date">09/2022 – 02/2023</div>
+              <div>
+                <h3>Bachelor's studies in Computer Science</h3>
+                <p class="tl-org">EPFL</p>
+                <p class="desc">One semester of computer science at the École Polytechnique Fédérale de Lausanne.</p>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-date">09/2021 – 06/2022</div>
+              <div>
+                <h3>Bachelor's studies in Criminal Science</h3>
+                <p class="tl-org">University of Lausanne (UNIL)</p>
+                <p class="desc">One year of criminal science at the University of Lausanne.</p>
+              </div>
+            </li>
+            <li class="tl-item">
+              <div class="tl-date">08/2016 – 06/2021</div>
+              <div>
+                <h3>High School Diploma in Economics and Law</h3>
+                <p class="tl-org">Lycée-Collège des Creusets</p>
+                <p class="desc">Specialised in economics and law, with strong academic results.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </div>
+
+    <section class="card glass reveal wide-section" id="projects">
+      <div class="card-title">
+        <h2><i class="icon-folder-git-2" aria-hidden="true"></i>Projects</h2>
+        <a class="count chip" href="portfolio.html">All repositories <i class="icon-arrow-right"
+            aria-hidden="true"></i></a>
+      </div>
+      <div class="projects">
+        <a class="project wide" href="https://olivier.amacker.dev/bachelor-thesis/site/index.html" target="_blank"
+          rel="noopener">
+          <div class="thumb"><img src="src/bachelor-thesis.webp"
+              alt="Brain connectivity views of the PCA biomarker consensus from the thesis" loading="lazy"
+              style="object-position:center;background:#fff" /></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Numerical Stability of fMRI Connectivity Biomarkers<i class="icon-arrow-up-right"
+                  aria-hidden="true"></i></h3><span class="tl-date">05 – 08/2026</span>
+            </div>
+            <p>How much do tiny floating-point differences change the results of a brain imaging study? I reproduced
+              the NPVR analysis by perturbing the entire fMRIPrep pipeline, then extended it to individual connectivity
+              edges and to PCA-based depression biomarkers.</p>
+            <span class="kind">Bachelor thesis at ATR Kyoto, supervised by Prof. Oscar Esteban and Dr Okito
+              Yamashita</span>
+          </div>
+        </a>
+        <a class="project" href="https://olivier.amacker.dev/303.1-semester-project/src/index.html" target="_blank"
+          rel="noopener">
+          <div class="thumb"><img src="src/semester-project.webp"
+              alt="Diffusion MRI slice and reconstructed GQI orientation distribution functions" loading="lazy"
+              style="object-position:center" /></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>DIPY GQI Prediction<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
+                class="tl-date">11 – 12/2025</span>
+            </div>
+            <p>I added a <code>predict()</code> function to DIPY's Generalized Q-ball Imaging model, along with tests,
+              documentation and a pull request to the project.</p>
+            <span class="kind">Semester project</span>
+          </div>
+        </a>
+        <a class="project"
+          href="https://github.com/isc-hei-classrooms/w8-cuda-implementation-of-ray-tracer-cud-tr4c3r/tree/main"
+          target="_blank" rel="noopener">
+          <div class="thumb"><img src="src/ray-tracer.webp" alt="Ray-traced spheres rendered with the CUDA ray tracer"
+              loading="lazy" style="object-position:center" /></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>CUDA Ray Tracer<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
+                class="tl-date">11/2025</span>
+            </div>
+            <p>The C++ ray tracer from the <em>Ray Tracing in One Weekend</em> series, ported to CUDA so it renders on
+              the GPU.</p>
+            <span class="kind">Academic project</span>
+          </div>
+        </a>
+        <a class="project" href="https://github.com/MadeInShineA/forest-fire-simulation" target="_blank"
+          rel="noopener">
+          <div class="thumb"><img src="src/forest-fire-simulation.webp" alt="Rendering of the forest fire simulation"
+              loading="lazy" style="object-position:center" /></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Forest Fire Simulation<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
+                class="tl-date">04 – 09/2025</span>
+            </div>
+            <p>A scalable, probabilistic wildfire simulator built for research, visualisation and fire prevention.</p>
+            <span class="kind">Academic project</span>
+          </div>
+        </a>
+        <a class="project" href="https://estimeat.amacker.dev" target="_blank" rel="noopener">
+          <div class="thumb"><img src="src/estimeat.webp" alt="Screenshot of EstimEat" loading="lazy" /></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>EstimEat<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
+                class="tl-date">10/2025</span>
+            </div>
+            <p>A data platform that helps restaurant owners and investors find the best place to open, municipality by
+              municipality across Switzerland.</p>
+            <span class="kind">Academic project</span>
+          </div>
+        </a>
+        <a class="project" href="https://melee.tv" target="_blank" rel="noopener">
+          <div class="thumb"><img src="src/melee-tv.webp" alt="Screenshot of melee.tv" loading="lazy" /></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Melee TV<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span class="tl-date">02/2021 –
+                Today</span>
+            </div>
+            <p>The Super Smash Bros. Melee hub for playing, learning and creating, which I now maintain.</p>
+            <span class="kind">Personal project</span>
+          </div>
+        </a>
+        <a class="project" href="https://smash-map.com" target="_blank" rel="noopener">
+          <div class="thumb"><img src="src/smash-map.webp" alt="Screenshot of Smash Map" loading="lazy" /></div>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Smash Map<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span class="tl-date">09/2022 –
+                04/2023</span>
+            </div>
+            <p>A world map of Super Smash Bros. players and tournaments that I designed and built myself.</p>
+            <span class="kind">Personal project</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="card glass reveal wide-section" id="certifications">
+      <div class="card-title">
+        <h2><i class="icon-award" aria-hidden="true"></i>Certifications</h2>
+      </div>
+      <ul class="certs">
+        <li><a href="https://learn.nvidia.com/certificates?id=fuj4s35cREuWlfLCVO77TQ" target="_blank"
+            rel="noopener"><strong>Fundamentals of Deep Learning</strong><span class="tl-date">Dec
+              2025</span><span>NVIDIA</span></a></li>
+        <li><a href="https://innosuisse.venturelab.ch/trainings?CredentialID=0AE6C061A34E9AA4" target="_blank"
+            rel="noopener"><strong>Business Concept Sion</strong><span class="tl-date">Mar
+              2025</span><span>Venturekick</span></a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/certificate/UWXTD5QHZZ4W" target="_blank"
+            rel="noopener"><strong>Structuring Machine Learning Projects</strong><span class="tl-date">Jun
+              2023</span><span>Coursera</span></a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/certificate/VM98AU27DFRS" target="_blank"
+            rel="noopener"><strong>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and
+              Optimization</strong><span class="tl-date">Apr 2023</span><span>Coursera</span></a></li>
+        <li><a href="https://www.coursera.org/account/accomplishments/certificate/E3HKBFT94WE5" target="_blank"
+            rel="noopener"><strong>Neural Networks and Deep Learning</strong><span class="tl-date">Mar
+              2023</span><span>Coursera</span></a></li>
+        <li><a href="https://certificates.cs50.io/afec4d03-72fc-4f95-922b-a2fba5f3b0a3.png?size=letter"
+            target="_blank" rel="noopener"><strong>CS50's Introduction to Artificial Intelligence with
+              Python</strong><span class="tl-date">Feb 2023</span><span>Harvard CS50</span></a></li>
+        <li><a href="https://certificates.cs50.io/8da7df34-78fb-4b28-8c4d-9e1d6fee9737.png?size=letter"
+            target="_blank" rel="noopener"><strong>CS50's Web Programming with Python and
+              JavaScript</strong><span class="tl-date">Sep 2022</span><span>Harvard CS50</span></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>&copy; <span id="year"></span> Olivier Amacker</div>
+      <div class="footer-links">
+        <a href="https://github.com/MadeInShineA" target="_blank" rel="noopener"><i class="icon-github"
+            aria-hidden="true"></i> GitHub</a>
+        <a href="https://twitter.com/MadeInShineA" target="_blank" rel="noopener"><i class="icon-twitter"
+            aria-hidden="true"></i> Twitter</a>
+        <a href="mailto:olivier.amacker@netplus.ch"><i class="icon-mail" aria-hidden="true"></i> Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+
+</html>

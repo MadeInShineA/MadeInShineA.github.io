@@ -1,88 +1,50 @@
-# .github/workflows/fetch-repos.yml
-name: Fetch GitHub Repos for Pages
+name: Update site data
 
 on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 * * * *'
+    paths:
+      - scripts/update-repos.sh
+      - scripts/update-apod.py
+      - .github/workflows/update-repos.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-site-data
+  cancel-in-progress: false
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v4
 
-      - name: Fetch repos.json
+      - name: Fetch repositories
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN }}
+          # A personal token avoids rate limits; the built-in token works for public data too.
+          GITHUB_TOKEN: ${{ secrets.GH_FETCH_TOKEN || github.token }}
+        run: bash scripts/update-repos.sh assets/repos-data.js
+
+      - name: Fetch NASA picture of the day
+        run: python3 scripts/update-apod.py assets/apod-data.js
+
+      - name: Commit data files if they changed
         run: |
-          set -euo pipefail
-
-          OLD_HASH=$(md5sum repos.json 2>/dev/null || echo "")
-
-          TEMP=$(mktemp)
-          NODES=$(gh api graphql \
-            -f query='
-              query {
-                user(login: "MadeInShineA") {
-                  repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {
-                    nodes {
-                      name
-                      description
-                      url
-                      stargazerCount
-                      updatedAt
-                      languages(first: 10) { nodes { name } }
-                    }
-                    pageInfo { hasNextPage endCursor }
-                  }
-                }
-              }' \
-            --jq '.data.user.repositories')
-          P1=$(echo "$NODES" | jq '.nodes')
-          END=$(echo "$NODES" | jq -r '.pageInfo.endCursor')
-          if [ "$(echo "$NODES" | jq -r '.pageInfo.hasNextPage')" = "true" ] && [ -n "$END" ] && [ "$END" != "null" ]; then
-            NODES=$(gh api graphql \
-              -f query='
-                query($endCursor: String!) {
-                  user(login: "MadeInShineA") {
-                    repositories(first: 100, after: $endCursor, orderBy: {field: UPDATED_AT, direction: DESC}) {
-                      nodes {
-                        name
-                        description
-                        url
-                        stargazerCount
-                        updatedAt
-                        languages(first: 10) { nodes { name } }
-                      }
-                    }
-                  }
-                }' \
-              -F endCursor="$END" \
-              --jq '.data.user.repositories')
-            P2=$(echo "$NODES" | jq '.nodes')
-            jq -n '[($p1 | .[]) , ($p2 | .[])]' --argjson p1 "$P1" --argjson p2 "$P2" > "$TEMP"
-          else
-            echo "$P1" > "$TEMP"
+          if git diff --quiet -- assets/repos-data.js assets/apod-data.js; then
+            echo "Data is up to date"
+            exit 0
           fi
-          mv "$TEMP" repos.json
-
-          NEW_HASH=$(md5sum repos.json 2>/dev/null || echo "")
-          if [ "$OLD_HASH" != "$NEW_HASH" ]; then
-            echo "changes_detected=true" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Commit updated repos.json
-        if: github.outputs.changes_detected == 'true'
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: github-actions
-          author_email: actions@github.com
-          message: "chore: update repos.json"
-          add: repos.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/repos-data.js assets/apod-data.js
+          git commit -m "chore: update site data"
+          git pull --rebase
+          git push
