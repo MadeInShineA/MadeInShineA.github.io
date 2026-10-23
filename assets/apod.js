@@ -32,7 +32,7 @@
     hero.classList.add('is-apod');
 
     const backdrop = document.querySelector('.backdrop');
-    if (backdrop) backdrop.style.backgroundImage = `url("${apod.image}?w=900&fit=clip")`;
+    if (backdrop) backdrop.style.setProperty('--backdrop-image', `url("${apod.image}?w=900&fit=clip")`);
 
     const caption = document.createElement('a');
     caption.className = 'photo-caption';
