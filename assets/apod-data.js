@@ -4,7 +4,7 @@ window.APOD = {
   "title": "M42: The Great Nebula in Orion",
   "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/OrionSword_Palaia_2000.jpg",
   "alt": "A starfield features a large and colorful nebula in its center, filled with dark dust and glowing gas in red and blue.",
-  "link": "https://science.nasa.gov/image-article/2026-october-26-m42-the-great-nebula-in-orion/",
+  "link": "https://science.nasa.gov/image-article/apod/2026-october-26-m42-the-great-nebula-in-orion/",
   "credit": "Roberto Palaia",
   "copyright": true
 };
