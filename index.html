@@ -1,633 +1,1583 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Olivier Amacker – CV</title>
+        <meta
+            name="description"
+            content="Professional CV of Olivier Amacker - Data Science master student at HES-SO and Software Developer from Switzerland"
+        />
+        <meta
+            name="keywords"
+            content="Olivier Amacker, CV, resume, software development, computer science, Switzerland"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#09090b" />
+        <link rel="icon" href="src/avatar-480.webp" type="image/webp" />
+        <link rel="preconnect" href="https://assets.science.nasa.gov" />
+        <script src="assets/apod-data.js"></script>
+        <script src="assets/apod.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/lucide-static@0.469.0/font/lucide.css"
+        />
+        <link rel="stylesheet" href="assets/site.css" />
+        <style>
+            .photo-hero {
+                height: clamp(320px, 52vh, 560px);
+            }
+            .photo-hero img {
+                object-position: center;
+            }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Olivier Amacker – CV</title>
-  <meta name="description"
-    content="Professional CV of Olivier Amacker - Data Science master student at HES-SO and Software Developer from Switzerland" />
-  <meta name="keywords" content="Olivier Amacker, CV, resume, software development, computer science, Switzerland" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#09090b" />
-  <link rel="icon" href="src/avatar-480.webp" type="image/webp" />
-  <link rel="preconnect" href="https://assets.science.nasa.gov" />
-  <script src="assets/apod-data.js"></script>
-  <script src="assets/apod.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.469.0/font/lucide.css" />
-  <link rel="stylesheet" href="assets/site.css" />
-  <style>
-    .photo-hero { height: clamp(320px, 52vh, 560px); }
-    .photo-hero img { object-position: center; }
+            /* ─── Profile card ─── */
+            .profile {
+                position: relative;
+                margin-top: -150px;
+                padding: 32px;
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 32px;
+                align-items: center;
+            }
 
-    /* ─── Profile card ─── */
-    .profile {
-      position: relative;
-      margin-top: -150px;
-      padding: 32px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 32px;
-      align-items: center;
-    }
+            .avatar {
+                width: 148px;
+                height: 148px;
+                border-radius: 24px;
+                overflow: hidden;
+                border: 1px solid var(--line-strong);
+                box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.5);
+            }
 
-    .avatar {
-      width: 148px;
-      height: 148px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--line-strong);
-      box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .5);
-    }
+            .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 50% 40%;
+            }
 
-    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+            .profile h1 {
+                font-size: clamp(36px, 5vw, 52px);
+                margin: 10px 0 8px;
+            }
+            .profile .role {
+                font-size: 17px;
+                color: var(--fg-muted);
+            }
 
-    .profile h1 { font-size: clamp(36px, 5vw, 52px); margin: 10px 0 8px; }
-    .profile .role { font-size: 17px; color: var(--fg-muted); }
+            .profile-meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-top: 18px;
+            }
+            .profile-meta .chip i {
+                font-size: 13px;
+                color: var(--fg-faint);
+            }
+            .profile-meta a.chip:hover {
+                color: var(--fg);
+                border-color: var(--line-strong);
+            }
 
-    .profile-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-    .profile-meta .chip i { font-size: 13px; color: var(--fg-faint); }
-    .profile-meta a.chip:hover { color: var(--fg); border-color: var(--line-strong); }
+            .profile-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 22px;
+            }
 
-    .profile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+            /* ─── Layout ─── */
+            .cv-grid {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                gap: 24px;
+                margin-top: 24px;
+                align-items: stretch;
+            }
 
-    /* ─── Layout ─── */
-    .cv-grid {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 24px;
-      margin-top: 24px;
-      align-items: stretch;
-    }
+            /* Both columns end at the same height: the last card of each column fills the gap */
+            .stack {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
+            .stack > .card:last-child {
+                flex: 1;
+            }
 
-    /* Both columns end at the same height: the last card of each column fills the gap */
-    .stack { display: flex; flex-direction: column; gap: 24px; }
-    .stack > .card:last-child { flex: 1; }
+            .card {
+                padding: 28px;
+            }
+            .card-title {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
 
-    .card { padding: 28px; }
-    .card-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+            .card-title h2 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.2;
+            }
+            .card-title h2 i {
+                display: grid;
+                place-items: center;
+                width: 30px;
+                height: 30px;
+                border-radius: 8px;
+                font-size: 15px;
+                color: var(--accent);
+                background: var(--accent-soft);
+                border: 1px solid rgba(138, 180, 255, 0.18);
+            }
+            .card-title .count {
+                margin-left: auto;
+            }
 
-    .card-title h2 { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 600; line-height: 1.2; }
-    .card-title h2 i {
-      display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px;
-      font-size: 15px; color: var(--accent); background: var(--accent-soft); border: 1px solid rgba(138, 180, 255, .18);
-    }
-    .card-title .count { margin-left: auto; }
+            .side .card {
+                padding: 24px;
+            }
+            .side .card-title h2 {
+                font-size: 17px;
+            }
 
-    .side .card { padding: 24px; }
-    .side .card-title h2 { font-size: 17px; }
+            /* ─── Sidebar ─── */
+            .about {
+                color: var(--fg-muted);
+                font-size: 14.5px;
+            }
 
-    /* ─── Sidebar ─── */
-    .about { color: var(--fg-muted); font-size: 14.5px; }
+            .kv {
+                display: grid;
+                gap: 14px;
+                margin-top: 20px;
+            }
+            .kv li {
+                display: grid;
+                grid-template-columns: 20px 1fr;
+                gap: 12px;
+                align-items: start;
+                font-size: 14px;
+            }
+            .kv i {
+                color: var(--fg-faint);
+                margin-top: 3px;
+                font-size: 15px;
+                text-align: center;
+            }
+            .kv span {
+                display: block;
+                font-size: 11.5px;
+                color: var(--fg-faint);
+            }
+            .kv a:hover {
+                color: var(--accent-strong);
+            }
 
-    .kv { display: grid; gap: 14px; margin-top: 20px; }
-    .kv li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; font-size: 14px; }
-    .kv i { color: var(--fg-faint); margin-top: 3px; font-size: 15px; text-align: center; }
-    .kv span { display: block; font-size: 11.5px; color: var(--fg-faint); }
-    .kv a:hover { color: var(--accent-strong); }
+            .langs {
+                display: grid;
+                gap: 14px;
+            }
+            .lang {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                font-size: 14px;
+            }
+            .lang small {
+                display: block;
+                color: var(--fg-faint);
+                font-size: 12px;
+            }
+            .level {
+                display: flex;
+                gap: 4px;
+            }
+            .level i {
+                width: 18px;
+                height: 4px;
+                border-radius: 2px;
+                background: var(--line-strong);
+            }
+            .level i.on {
+                background: var(--fg-muted);
+            }
 
-    .langs { display: grid; gap: 14px; }
-    .lang { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; }
-    .lang small { display: block; color: var(--fg-faint); font-size: 12px; }
-    .level { display: flex; gap: 4px; }
-    .level i { width: 18px; height: 4px; border-radius: 2px; background: var(--line-strong); }
-    .level i.on { background: var(--fg-muted); }
+            .skill-group + .skill-group {
+                margin-top: 20px;
+            }
+            .skill-group h3 {
+                font-size: 12.5px;
+                font-weight: 500;
+                color: var(--fg-faint);
+                margin-bottom: 10px;
+            }
+            .chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
 
-    .skill-group + .skill-group { margin-top: 20px; }
-    .skill-group h3 { font-size: 12.5px; font-weight: 500; color: var(--fg-faint); margin-bottom: 10px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+            /* ─── Timeline ─── */
+            .timeline {
+                position: relative;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
 
-    /* ─── Timeline ─── */
-    .timeline { position: relative; list-style: none; margin: 0; padding: 0; }
+            .tl-item {
+                position: relative;
+                display: grid;
+                grid-template-columns: 140px 1fr;
+                gap: 24px;
+            }
 
-    .tl-item {
-      position: relative;
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 24px;
-    }
+            /* Vertical rail with a dot per entry; ongoing entries get an accent dot */
+            .tl-item > div:last-child {
+                position: relative;
+                padding: 0 0 26px 24px;
+                border-left: 1px solid var(--line);
+            }
+            .tl-item:last-child > div:last-child {
+                padding-bottom: 0;
+                border-left-color: transparent;
+            }
+            .tl-item > div:last-child::before {
+                content: "";
+                position: absolute;
+                left: -5px;
+                top: 6px;
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                background: var(--bg);
+                border: 1.5px solid var(--fg-faint);
+            }
+            .tl-item:last-child > div:last-child::after {
+                content: "";
+                position: absolute;
+                left: -1px;
+                top: 0;
+                height: 8px;
+                border-left: 1px solid var(--line);
+            }
+            .tl-item.current > div:last-child::before {
+                background: var(--accent);
+                border-color: var(--accent);
+                box-shadow: 0 0 0 4px var(--accent-soft);
+            }
+            .tl-item.current .tl-date {
+                color: var(--accent);
+            }
 
-    /* Vertical rail with a dot per entry; ongoing entries get an accent dot */
-    .tl-item > div:last-child { position: relative; padding: 0 0 26px 24px; border-left: 1px solid var(--line); }
-    .tl-item:last-child > div:last-child { padding-bottom: 0; border-left-color: transparent; }
-    .tl-item > div:last-child::before {
-      content: ""; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px; border-radius: 50%;
-      background: var(--bg); border: 1.5px solid var(--fg-faint);
-    }
-    .tl-item:last-child > div:last-child::after {
-      content: ""; position: absolute; left: -1px; top: 0; height: 8px; border-left: 1px solid var(--line);
-    }
-    .tl-item.current > div:last-child::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-    .tl-item.current .tl-date { color: var(--accent); }
+            .tl-date {
+                font-family: var(--font-mono);
+                font-size: 12.5px;
+                color: var(--fg-faint);
+                padding-top: 3px;
+            }
+            .tl-item h3 {
+                font-size: 16.5px;
+                font-weight: 600;
+                letter-spacing: -0.005em;
+            }
+            .tl-org {
+                color: var(--fg-muted);
+                font-size: 14.5px;
+                margin-top: 2px;
+            }
+            .tl-item p.desc {
+                color: var(--fg-muted);
+                font-size: 14.5px;
+                margin-top: 8px;
+            }
 
-    .tl-date { font-family: var(--font-mono); font-size: 12.5px; color: var(--fg-faint); padding-top: 3px; }
-    .tl-item h3 { font-size: 16.5px; font-weight: 600; letter-spacing: -.005em; }
-    .tl-org { color: var(--fg-muted); font-size: 14.5px; margin-top: 2px; }
-    .tl-item p.desc { color: var(--fg-muted); font-size: 14.5px; margin-top: 8px; }
+            .bullets {
+                margin-top: 10px;
+                display: grid;
+                gap: 6px;
+            }
+            .bullets li {
+                position: relative;
+                padding-left: 18px;
+                color: var(--fg-muted);
+                font-size: 14.5px;
+            }
+            .bullets li::before {
+                content: "";
+                position: absolute;
+                left: 2px;
+                top: 0.7em;
+                width: 6px;
+                height: 1px;
+                background: var(--fg-faint);
+            }
 
-    .bullets { margin-top: 10px; display: grid; gap: 6px; }
-    .bullets li { position: relative; padding-left: 18px; color: var(--fg-muted); font-size: 14.5px; }
-    .bullets li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 6px; height: 1px; background: var(--fg-faint); }
+            /* ─── Full-width sections below the two columns ─── */
+            .wide-section {
+                margin-top: 24px;
+            }
 
-    /* ─── Full-width sections below the two columns ─── */
-    .wide-section { margin-top: 24px; }
+            /* ─── Projects ─── */
+            .projects {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 14px;
+            }
 
-    /* ─── Projects ─── */
-    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+            .project {
+                display: flex;
+                flex-direction: column;
+                border-radius: 14px;
+                overflow: hidden;
+                border: 1px solid var(--line);
+                background: var(--glass-soft);
+                transition:
+                    border-color 0.25s,
+                    background-color 0.25s,
+                    transform 0.25s;
+            }
 
-    .project {
-      display: flex;
-      flex-direction: column;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--glass-soft);
-      transition: border-color .25s, background-color .25s, transform .25s;
-    }
+            .project:hover {
+                border-color: var(--line-strong);
+                background: var(--glass-hover);
+                transform: translateY(-2px);
+            }
 
-    .project:hover { border-color: var(--line-strong); background: var(--glass-hover); transform: translateY(-2px); }
+            .thumb {
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                background: var(--bg-elev);
+                border-bottom: 1px solid var(--line);
+            }
+            .thumb img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top center;
+                transition: transform 0.6s ease;
+            }
+            .project:hover .thumb img {
+                transform: scale(1.03);
+            }
 
-    .thumb { aspect-ratio: 16 / 9; overflow: hidden; background: var(--bg-elev); border-bottom: 1px solid var(--line); }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .6s ease; }
-    .project:hover .thumb img { transform: scale(1.03); }
+            .project-body {
+                padding: 16px 18px 18px;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                flex: 1;
+            }
+            .project-top {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 10px;
+            }
+            .project h3 {
+                font-size: 15.5px;
+                font-weight: 600;
+            }
+            .project h3 i {
+                font-size: 13px;
+                color: var(--fg-faint);
+                margin-left: 4px;
+            }
+            .card-title .count i {
+                font-size: 13px;
+            }
+            .project .tl-date {
+                padding: 0;
+                font-size: 11.5px;
+                white-space: nowrap;
+            }
+            .project p {
+                color: var(--fg-muted);
+                font-size: 14px;
+            }
+            .project p a {
+                text-decoration: underline;
+                text-underline-offset: 2px;
+            }
+            .project .kind {
+                margin-top: auto;
+                padding-top: 6px;
+                font-size: 12px;
+                color: var(--fg-faint);
+            }
+            .project code {
+                font-family: var(--font-mono);
+                font-size: 0.88em;
+            }
 
-    .project-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-    .project-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-    .project h3 { font-size: 15.5px; font-weight: 600; }
-    .project h3 i { font-size: 13px; color: var(--fg-faint); margin-left: 4px; }
-    .card-title .count i { font-size: 13px; }
-    .project .tl-date { padding: 0; font-size: 11.5px; white-space: nowrap; }
-    .project p { color: var(--fg-muted); font-size: 14px; }
-    .project p a { text-decoration: underline; text-underline-offset: 2px; }
-    .project .kind { margin-top: auto; padding-top: 6px; font-size: 12px; color: var(--fg-faint); }
-    .project code { font-family: var(--font-mono); font-size: .88em; }
+            .project.wide {
+                grid-column: 1 / -1;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .project.wide .thumb {
+                aspect-ratio: auto;
+                min-height: 260px;
+                border-bottom: 0;
+                border-right: 1px solid var(--line);
+            }
+            .project.wide .project-body {
+                padding: 24px 26px;
+                justify-content: center;
+                gap: 10px;
+            }
+            .project.wide h3 {
+                font-size: 21px;
+                font-weight: 600;
+                line-height: 1.25;
+            }
+            .project.wide p {
+                font-size: 14.5px;
+            }
 
-    .project.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
-    .project.wide .thumb { aspect-ratio: auto; min-height: 260px; border-bottom: 0; border-right: 1px solid var(--line); }
-    .project.wide .project-body { padding: 24px 26px; justify-content: center; gap: 10px; }
-    .project.wide h3 { font-size: 21px; font-weight: 600; line-height: 1.25; }
-    .project.wide p { font-size: 14.5px; }
+            /* ─── Certifications: two columns of compact rows ─── */
+            .certs {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 32px;
+            }
+            .certs li {
+                border-top: 1px solid var(--line);
+            }
+            .certs li:nth-child(-n + 2) {
+                border-top: 0;
+            }
 
-    /* ─── Certifications: two columns of compact rows ─── */
-    .certs { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 32px; }
-    .certs li { border-top: 1px solid var(--line); }
-    .certs li:nth-child(-n+2) { border-top: 0; }
+            .certs a {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                gap: 4px 16px;
+                padding: 14px 0;
+                height: 100%;
+                transition: color 0.2s;
+            }
 
-    .certs a {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4px 16px;
-      padding: 14px 0;
-      height: 100%;
-      transition: color .2s;
-    }
+            .certs a:hover strong {
+                color: var(--accent-strong);
+            }
+            .certs strong {
+                font-weight: 500;
+                font-size: 14.5px;
+                transition: color 0.2s;
+            }
+            .certs span {
+                color: var(--fg-faint);
+                font-size: 13px;
+            }
+            .certs .tl-date {
+                padding: 0;
+                grid-row: span 2;
+                align-self: center;
+            }
 
-    .certs a:hover strong { color: var(--accent-strong); }
-    .certs strong { font-weight: 500; font-size: 14.5px; transition: color .2s; }
-    .certs span { color: var(--fg-faint); font-size: 13px; }
-    .certs .tl-date { padding: 0; grid-row: span 2; align-self: center; }
+            /* ─── Footer: copyright | webring (centered) | links ─── */
+            .footer .container {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+            }
+            .footer .container > :last-child {
+                justify-self: end;
+            }
+            .webring a {
+                padding: 7px 10px;
+            }
+            .webring-logo {
+                width: 16px;
+                height: 16px;
+            }
 
-    @media (max-width: 900px) {
-      .projects { grid-template-columns: repeat(2, 1fr); }
-      .cv-grid { grid-template-columns: 1fr; }
-      .side { grid-row: 2; }
-      .side { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    }
+            @media (max-width: 900px) {
+                .footer .container {
+                    grid-template-columns: 1fr;
+                    justify-items: center;
+                }
+                .footer .container > :last-child {
+                    justify-self: center;
+                }
+                .projects {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .cv-grid {
+                    grid-template-columns: 1fr;
+                }
+                .side {
+                    grid-row: 2;
+                }
+                .side {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                }
+            }
 
-    @media (max-width: 640px) {
-      .profile { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; margin-top: -110px; }
-      .avatar { width: 104px; height: 104px; border-radius: 20px; }
-      .card, .side .card { padding: 22px 18px; }
-      .tl-item { grid-template-columns: 1fr; gap: 4px; }
-      .tl-item .tl-date { padding-left: 24px; }
-      .tl-item > div:last-child { border-left-color: var(--line); }
-      .projects { grid-template-columns: 1fr; }
-      .certs { grid-template-columns: 1fr; }
-      .certs li:nth-child(2) { border-top: 1px solid var(--line); }
-      .wide-section { margin-top: 16px; }
-      .project.wide h3 { font-size: 19px; }
-      .project.wide { grid-template-columns: 1fr; }
-      .project.wide .thumb { aspect-ratio: 16 / 10; min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
-      .cv-grid, .stack { gap: 16px; }
-    }
+            @media (max-width: 640px) {
+                .profile {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 24px 20px;
+                    margin-top: -110px;
+                }
+                .avatar {
+                    width: 104px;
+                    height: 104px;
+                    border-radius: 20px;
+                }
+                .card,
+                .side .card {
+                    padding: 22px 18px;
+                }
+                .tl-item {
+                    grid-template-columns: 1fr;
+                    gap: 4px;
+                }
+                .tl-item .tl-date {
+                    padding-left: 24px;
+                }
+                .tl-item > div:last-child {
+                    border-left-color: var(--line);
+                }
+                .projects {
+                    grid-template-columns: 1fr;
+                }
+                .certs {
+                    grid-template-columns: 1fr;
+                }
+                .certs li:nth-child(2) {
+                    border-top: 1px solid var(--line);
+                }
+                .wide-section {
+                    margin-top: 16px;
+                }
+                .project.wide h3 {
+                    font-size: 19px;
+                }
+                .project.wide {
+                    grid-template-columns: 1fr;
+                }
+                .project.wide .thumb {
+                    aspect-ratio: 16 / 10;
+                    min-height: 0;
+                    border-right: 0;
+                    border-bottom: 1px solid var(--line);
+                }
+                .cv-grid,
+                .stack {
+                    gap: 16px;
+                }
+            }
 
-    /* ─── Print: plain, single column A4 ─── */
-    @media print {
-      @page { size: A4; margin: 14mm; }
+            /* ─── Print: plain, single column A4 ─── */
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 14mm;
+                }
 
-      :root {
-        --bg: #fff; --fg: #111; --fg-muted: #333; --fg-faint: #666;
-        --line: #ddd; --line-strong: #ccc; --accent-strong: #111;
-      }
+                :root {
+                    --bg: #fff;
+                    --fg: #111;
+                    --fg-muted: #333;
+                    --fg-faint: #666;
+                    --line: #ddd;
+                    --line-strong: #ccc;
+                    --accent-strong: #111;
+                }
 
-      body { background: #fff; font-size: 11pt; }
-      .nav, .backdrop, .photo-hero, .profile-actions, .footer, .thumb { display: none !important; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-      .glass { background: none !important; backdrop-filter: none !important; box-shadow: none !important; border: 0 !important; }
-      body { overflow: visible; }
-      .container { max-width: none; padding: 0 2px; }
-      .card-title .count { display: none; }
-      .profile { margin: 0; padding: 0 0 12px; border-bottom: 1px solid #ddd !important; border-radius: 0; }
-      .avatar { width: 96px; height: 96px; box-shadow: none; }
-      .profile h1 { font-size: 34pt; }
-      .chip { border: 0; background: none; padding: 0 12px 0 0; }
-      .cv-grid { display: block; margin-top: 0; }
-      .stack { display: block; }
-      .card, .side .card { padding: 14px 0; }
-      .card-title { break-after: avoid; }
-      .card-title { margin-bottom: 10px; }
-      .side { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-      .projects { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .project.wide { grid-template-columns: 1fr; }
-      .project.wide h3 { font-size: 12pt; }
-      .wide-section { margin-top: 0; }
-      .photo-caption { display: none !important; }
-      .project { border: 1px solid #ddd; transform: none !important; break-inside: avoid; }
-      .tl-item { break-inside: avoid; }
-      a { color: inherit !important; }
-    }
-  </style>
-</head>
+                body {
+                    background: #fff;
+                    font-size: 11pt;
+                }
+                .nav,
+                .backdrop,
+                .photo-hero,
+                .profile-actions,
+                .footer,
+                .thumb {
+                    display: none !important;
+                }
+                .reveal {
+                    opacity: 1 !important;
+                    transform: none !important;
+                }
+                .glass {
+                    background: none !important;
+                    backdrop-filter: none !important;
+                    box-shadow: none !important;
+                    border: 0 !important;
+                }
+                body {
+                    overflow: visible;
+                }
+                .container {
+                    max-width: none;
+                    padding: 0 2px;
+                }
+                .card-title .count {
+                    display: none;
+                }
+                .profile {
+                    margin: 0;
+                    padding: 0 0 12px;
+                    border-bottom: 1px solid #ddd !important;
+                    border-radius: 0;
+                }
+                .avatar {
+                    width: 96px;
+                    height: 96px;
+                    box-shadow: none;
+                }
+                .profile h1 {
+                    font-size: 34pt;
+                }
+                .chip {
+                    border: 0;
+                    background: none;
+                    padding: 0 12px 0 0;
+                }
+                .cv-grid {
+                    display: block;
+                    margin-top: 0;
+                }
+                .stack {
+                    display: block;
+                }
+                .card,
+                .side .card {
+                    padding: 14px 0;
+                }
+                .card-title {
+                    break-after: avoid;
+                }
+                .card-title {
+                    margin-bottom: 10px;
+                }
+                .side {
+                    display: grid !important;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 20px;
+                }
+                .projects {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                }
+                .project.wide {
+                    grid-template-columns: 1fr;
+                }
+                .project.wide h3 {
+                    font-size: 12pt;
+                }
+                .wide-section {
+                    margin-top: 0;
+                }
+                .photo-caption {
+                    display: none !important;
+                }
+                .project {
+                    border: 1px solid #ddd;
+                    transform: none !important;
+                    break-inside: avoid;
+                }
+                .tl-item {
+                    break-inside: avoid;
+                }
+                a {
+                    color: inherit !important;
+                }
+            }
+        </style>
+    </head>
 
-<body>
-  <div class="backdrop" aria-hidden="true"></div>
+    <body>
+        <div class="backdrop" aria-hidden="true"></div>
 
-  <nav class="nav glass" aria-label="Main">
-    <a href="index.html" class="nav-brand"><img src="src/avatar-480.webp" alt="" /><span>Olivier Amacker</span></a>
-    <div class="nav-links">
-      <a href="index.html" aria-current="page"><i class="icon-file-text" aria-hidden="true"></i><span>Resume</span></a>
-      <a href="portfolio.html"><i class="icon-layers" aria-hidden="true"></i><span>Portfolio</span></a>
-      <a href="stats.html"><i class="icon-chart-column" aria-hidden="true"></i><span>Statistics</span></a>
-    </div>
-  </nav>
-
-  <header class="photo-hero is-loading">
-    <img alt="" />
-    <div class="hero-loader" role="status">
-      <span class="orbit" aria-hidden="true"><span class="planet"></span></span>
-      <span class="hero-loader-text">Loading NASA's picture of the day</span>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="profile glass reveal">
-      <div class="avatar"><img src="src/avatar-480.webp" alt="Portrait of Olivier Amacker" /></div>
-      <div>
-        <p class="eyebrow accent">Master's student at HES-SO</p>
-        <h1 class="display">Olivier Amacker</h1>
-        <p class="role">Data science master's student and software developer</p>
-        <div class="profile-meta">
-          <span class="chip"><i class="icon-map-pin" aria-hidden="true"></i> Sion, Switzerland</span>
-          <a class="chip" href="mailto:olivier.amacker@netplus.ch"><i class="icon-mail" aria-hidden="true"></i>
-            olivier.amacker@netplus.ch</a>
-          <a class="chip" href="https://github.com/MadeInShineA" target="_blank" rel="noopener"><i
-              class="icon-github" aria-hidden="true"></i> MadeInShineA</a>
-        </div>
-        <div class="profile-actions">
-          <a class="btn btn-primary" href="portfolio.html"><i class="icon-layers" aria-hidden="true"></i> View portfolio</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="cv-grid">
-      <aside class="stack side">
-        <section class="card glass reveal" id="contact">
-          <div class="card-title">
-            <h2><i class="icon-user" aria-hidden="true"></i>About</h2>
-          </div>
-          <p class="about">I'm studying for a master's in data science at HES-SO, after finishing my bachelor's in
-            Information Systems and Communications with an average of 5.5 out of 6. I wrote my bachelor thesis as a
-            traveling researcher at ATR in Kyoto, looking at how numerical noise affects brain imaging results.
-            Before that, I spent a year building web applications.</p>
-          <ul class="kv">
-            <li><i class="icon-mail" aria-hidden="true"></i>
-              <div><span>Email</span><a href="mailto:olivier.amacker@netplus.ch">olivier.amacker@netplus.ch</a></div>
-            </li>
-            <li><i class="icon-map-pin" aria-hidden="true"></i>
-              <div><span>Location</span>Sion, Switzerland</div>
-            </li>
-            <li><i class="icon-github" aria-hidden="true"></i>
-              <div><span>GitHub</span><a href="https://github.com/MadeInShineA" target="_blank"
-                  rel="noopener">github.com/MadeInShineA</a></div>
-            </li>
-          </ul>
-        </section>
-
-        <section class="card glass reveal" id="languages">
-          <div class="card-title">
-            <h2><i class="icon-languages" aria-hidden="true"></i>Languages</h2>
-          </div>
-          <ul class="langs">
-            <li class="lang">
-              <div>French<small>Native</small></div>
-              <span class="level" aria-label="5 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i
-                  class="on"></i><i class="on"></i></span>
-            </li>
-            <li class="lang">
-              <div>English<small>Advanced</small></div>
-              <span class="level" aria-label="4 of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i
-                  class="on"></i><i></i></span>
-            </li>
-            <li class="lang">
-              <div>German<small>Intermediate</small></div>
-              <span class="level" aria-label="3 of 5"><i class="on"></i><i class="on"></i><i
-                  class="on"></i><i></i><i></i></span>
-            </li>
-          </ul>
-        </section>
-
-        <section class="card glass reveal" id="skills">
-          <div class="card-title">
-            <h2><i class="icon-wrench" aria-hidden="true"></i>Skills</h2>
-          </div>
-          <div class="skill-group">
-            <h3>Programming</h3>
-            <div class="chips">
-              <span class="chip">Rust</span><span class="chip">Python</span><span class="chip">CUDA</span>
-              <span class="chip">Scala</span><span class="chip">Java</span><span class="chip">PHP</span>
-              <span class="chip">JavaScript</span><span class="chip">Multithreading</span>
-              <span class="chip">Full-stack development</span>
+        <nav class="nav glass" aria-label="Main">
+            <a href="index.html" class="nav-brand"
+                ><img src="src/avatar-480.webp" alt="" /><span
+                    >Olivier Amacker</span
+                ></a
+            >
+            <div class="nav-links">
+                <a href="index.html" aria-current="page"
+                    ><i class="icon-file-text" aria-hidden="true"></i
+                    ><span>Resume</span></a
+                >
+                <a href="portfolio.html"
+                    ><i class="icon-layers" aria-hidden="true"></i
+                    ><span>Portfolio</span></a
+                >
+                <a href="stats.html"
+                    ><i class="icon-chart-column" aria-hidden="true"></i
+                    ><span>Statistics</span></a
+                >
             </div>
-          </div>
-          <div class="skill-group">
-            <h3>Web</h3>
-            <div class="chips">
-              <span class="chip">Vue</span><span class="chip">Laravel</span><span class="chip">Meteor</span>
-              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">WordPress</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3>Data and AI</h3>
-            <div class="chips">
-              <span class="chip">Databases</span><span class="chip">Machine learning</span>
-              <span class="chip">Computer vision</span><span class="chip">Deep neural networks</span>
-              <span class="chip">Neuroimaging (fMRI, dMRI)</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3>Business</h3>
-            <div class="chips">
-              <span class="chip">Innovation management</span><span class="chip">Entrepreneurship</span>
-              <span class="chip">Startup development</span><span class="chip">Startup management</span>
-            </div>
-          </div>
-        </section>
-      </aside>
+        </nav>
 
-      <div class="stack">
-        <section class="card glass reveal" id="experience">
-          <div class="card-title">
-            <h2><i class="icon-briefcase" aria-hidden="true"></i>Experience</h2>
-          </div>
-          <ol class="timeline">
-            <li class="tl-item">
-              <div class="tl-date">05/2026 – 08/2026</div>
-              <div>
-                <h3>Traveling Researcher</h3>
-                <p class="tl-org">ATR (Advanced Telecommunications Research Institute International), Kyoto, Japan</p>
-                <ul class="bullets">
-                  <li>Wrote my bachelor thesis on how numerical noise affects functional MRI connectivity biomarkers</li>
-                  <li>Ran perturbed fMRIPrep pipelines and analysed connectivity matrices, graph metrics and PCA-based
-                    depression biomarkers on the SRPB and BMB datasets</li>
-                  <li>Presented my findings to the lab and in my final thesis presentation</li>
+        <header class="photo-hero is-loading">
+            <img alt="" />
+            <div class="hero-loader" role="status">
+                <span class="orbit" aria-hidden="true"
+                    ><span class="planet"></span
+                ></span>
+                <span class="hero-loader-text"
+                    >Loading NASA's picture of the day</span
+                >
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="profile glass reveal">
+                <div class="avatar">
+                    <img
+                        src="src/avatar-480.webp"
+                        alt="Portrait of Olivier Amacker"
+                    />
+                </div>
+                <div>
+                    <p class="eyebrow accent">Master's student at HES-SO</p>
+                    <h1 class="display">Olivier Amacker</h1>
+                    <p class="role">
+                        Data science master's student and software developer
+                    </p>
+                    <div class="profile-meta">
+                        <span class="chip"
+                            ><i class="icon-map-pin" aria-hidden="true"></i>
+                            Sion, Switzerland</span
+                        >
+                        <a class="chip" href="mailto:olivier.amacker@netplus.ch"
+                            ><i class="icon-mail" aria-hidden="true"></i>
+                            olivier.amacker@netplus.ch</a
+                        >
+                        <a
+                            class="chip"
+                            href="https://github.com/MadeInShineA"
+                            target="_blank"
+                            rel="noopener"
+                            ><i class="icon-github" aria-hidden="true"></i>
+                            MadeInShineA</a
+                        >
+                    </div>
+                    <div class="profile-actions">
+                        <a class="btn btn-primary" href="portfolio.html"
+                            ><i class="icon-layers" aria-hidden="true"></i> View
+                            portfolio</a
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <div class="cv-grid">
+                <aside class="stack side">
+                    <section class="card glass reveal" id="contact">
+                        <div class="card-title">
+                            <h2>
+                                <i class="icon-user" aria-hidden="true"></i
+                                >About
+                            </h2>
+                        </div>
+                        <p class="about">
+                            I'm studying for a master's in data science at
+                            HES-SO, after finishing my bachelor's in Information
+                            Systems and Communications with an average of 5.5
+                            out of 6. I wrote my bachelor thesis as a traveling
+                            researcher at ATR in Kyoto, looking at how numerical
+                            noise affects brain imaging results. Before that, I
+                            spent a year building web applications.
+                        </p>
+                        <ul class="kv">
+                            <li>
+                                <i class="icon-mail" aria-hidden="true"></i>
+                                <div>
+                                    <span>Email</span
+                                    ><a href="mailto:olivier.amacker@netplus.ch"
+                                        >olivier.amacker@netplus.ch</a
+                                    >
+                                </div>
+                            </li>
+                            <li>
+                                <i class="icon-map-pin" aria-hidden="true"></i>
+                                <div>
+                                    <span>Location</span>Sion, Switzerland
+                                </div>
+                            </li>
+                            <li>
+                                <i class="icon-github" aria-hidden="true"></i>
+                                <div>
+                                    <span>GitHub</span
+                                    ><a
+                                        href="https://github.com/MadeInShineA"
+                                        target="_blank"
+                                        rel="noopener"
+                                        >github.com/MadeInShineA</a
+                                    >
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="card glass reveal" id="languages">
+                        <div class="card-title">
+                            <h2>
+                                <i class="icon-languages" aria-hidden="true"></i
+                                >Languages
+                            </h2>
+                        </div>
+                        <ul class="langs">
+                            <li class="lang">
+                                <div>French<small>Native</small></div>
+                                <span class="level" aria-label="5 of 5"
+                                    ><i class="on"></i><i class="on"></i
+                                    ><i class="on"></i><i class="on"></i
+                                    ><i class="on"></i
+                                ></span>
+                            </li>
+                            <li class="lang">
+                                <div>English<small>Advanced</small></div>
+                                <span class="level" aria-label="4 of 5"
+                                    ><i class="on"></i><i class="on"></i
+                                    ><i class="on"></i><i class="on"></i><i></i
+                                ></span>
+                            </li>
+                            <li class="lang">
+                                <div>German<small>Intermediate</small></div>
+                                <span class="level" aria-label="3 of 5"
+                                    ><i class="on"></i><i class="on"></i
+                                    ><i class="on"></i><i></i><i></i
+                                ></span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="card glass reveal" id="skills">
+                        <div class="card-title">
+                            <h2>
+                                <i class="icon-wrench" aria-hidden="true"></i
+                                >Skills
+                            </h2>
+                        </div>
+                        <div class="skill-group">
+                            <h3>Programming</h3>
+                            <div class="chips">
+                                <span class="chip">Rust</span
+                                ><span class="chip">Python</span
+                                ><span class="chip">CUDA</span>
+                                <span class="chip">Scala</span
+                                ><span class="chip">Java</span
+                                ><span class="chip">PHP</span>
+                                <span class="chip">JavaScript</span
+                                ><span class="chip">Multithreading</span>
+                                <span class="chip">Full-stack development</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h3>Web</h3>
+                            <div class="chips">
+                                <span class="chip">Vue</span
+                                ><span class="chip">Laravel</span
+                                ><span class="chip">Meteor</span>
+                                <span class="chip">HTML</span
+                                ><span class="chip">CSS</span
+                                ><span class="chip">WordPress</span>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h3>Data and AI</h3>
+                            <div class="chips">
+                                <span class="chip">Databases</span
+                                ><span class="chip">Machine learning</span>
+                                <span class="chip">Computer vision</span
+                                ><span class="chip">Deep neural networks</span>
+                                <span class="chip"
+                                    >Neuroimaging (fMRI, dMRI)</span
+                                >
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <h3>Business</h3>
+                            <div class="chips">
+                                <span class="chip">Innovation management</span
+                                ><span class="chip">Entrepreneurship</span>
+                                <span class="chip">Startup development</span
+                                ><span class="chip">Startup management</span>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+
+                <div class="stack">
+                    <section class="card glass reveal" id="experience">
+                        <div class="card-title">
+                            <h2>
+                                <i class="icon-briefcase" aria-hidden="true"></i
+                                >Experience
+                            </h2>
+                        </div>
+                        <ol class="timeline">
+                            <li class="tl-item">
+                                <div class="tl-date">05/2026 – 08/2026</div>
+                                <div>
+                                    <h3>Traveling Researcher</h3>
+                                    <p class="tl-org">
+                                        ATR (Advanced Telecommunications
+                                        Research Institute International),
+                                        Kyoto, Japan
+                                    </p>
+                                    <ul class="bullets">
+                                        <li>
+                                            Wrote my bachelor thesis on how
+                                            numerical noise affects functional
+                                            MRI connectivity biomarkers
+                                        </li>
+                                        <li>
+                                            Ran perturbed fMRIPrep pipelines and
+                                            analysed connectivity matrices,
+                                            graph metrics and PCA-based
+                                            depression biomarkers on the SRPB
+                                            and BMB datasets
+                                        </li>
+                                        <li>
+                                            Presented my findings to the lab and
+                                            in my final thesis presentation
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="tl-item">
+                                <div class="tl-date">09/2023 – 04/2024</div>
+                                <div>
+                                    <h3>Junior Web Developer</h3>
+                                    <p class="tl-org">
+                                        Valdez Informatique Sàrl, Conthey,
+                                        Switzerland
+                                    </p>
+                                    <ul class="bullets">
+                                        <li>
+                                            Built web applications with Laravel,
+                                            Vue, HTML and CSS
+                                        </li>
+                                        <li>
+                                            Worked with the team on a range of
+                                            projects
+                                        </li>
+                                        <li>
+                                            Maintained and improved existing
+                                            systems
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="tl-item">
+                                <div class="tl-date">04/2023 – 08/2023</div>
+                                <div>
+                                    <h3>Web Development Intern</h3>
+                                    <p class="tl-org">
+                                        Valdez Informatique Sàrl, Conthey,
+                                        Switzerland
+                                    </p>
+                                    <ul class="bullets">
+                                        <li>
+                                            Learned the fundamentals of
+                                            professional web development
+                                        </li>
+                                        <li>Took part in team projects</li>
+                                        <li>
+                                            Got familiar with professional
+                                            development workflows
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <section class="card glass reveal" id="education">
+                        <div class="card-title">
+                            <h2>
+                                <i
+                                    class="icon-graduation-cap"
+                                    aria-hidden="true"
+                                ></i
+                                >Education
+                            </h2>
+                        </div>
+                        <ol class="timeline">
+                            <li class="tl-item current">
+                                <div class="tl-date">09/2026 – Today</div>
+                                <div>
+                                    <h3>Master's degree in Data Science</h3>
+                                    <p class="tl-org">HES-SO Master</p>
+                                </div>
+                            </li>
+                            <li class="tl-item">
+                                <div class="tl-date">09/2023 – 08/2026</div>
+                                <div>
+                                    <h3>
+                                        Bachelor's degree in Information Systems
+                                        and Communications
+                                    </h3>
+                                    <p class="tl-org">HES-SO Valais-Wallis</p>
+                                    <p class="desc">
+                                        Graduated with an average of 5.5 out of
+                                        6. My thesis studied the numerical
+                                        stability of functional MRI connectivity
+                                        biomarkers.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="tl-item">
+                                <div class="tl-date">09/2022 – 02/2023</div>
+                                <div>
+                                    <h3>
+                                        Bachelor's studies in Computer Science
+                                    </h3>
+                                    <p class="tl-org">EPFL</p>
+                                    <p class="desc">
+                                        One semester of computer science at the
+                                        École Polytechnique Fédérale de
+                                        Lausanne.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="tl-item">
+                                <div class="tl-date">09/2021 – 06/2022</div>
+                                <div>
+                                    <h3>
+                                        Bachelor's studies in Criminal Science
+                                    </h3>
+                                    <p class="tl-org">
+                                        University of Lausanne (UNIL)
+                                    </p>
+                                    <p class="desc">
+                                        One year of criminal science at the
+                                        University of Lausanne.
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="tl-item">
+                                <div class="tl-date">08/2016 – 06/2021</div>
+                                <div>
+                                    <h3>
+                                        High School Diploma in Economics and Law
+                                    </h3>
+                                    <p class="tl-org">
+                                        Lycée-Collège des Creusets
+                                    </p>
+                                    <p class="desc">
+                                        Specialised in economics and law, with
+                                        strong academic results.
+                                    </p>
+                                </div>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+            </div>
+
+            <section class="card glass reveal wide-section" id="projects">
+                <div class="card-title">
+                    <h2>
+                        <i class="icon-folder-git-2" aria-hidden="true"></i
+                        >Projects
+                    </h2>
+                    <a class="count chip" href="portfolio.html"
+                        >All repositories
+                        <i class="icon-arrow-right" aria-hidden="true"></i
+                    ></a>
+                </div>
+                <div class="projects">
+                    <a
+                        class="project wide"
+                        href="https://olivier.amacker.dev/bachelor-thesis/site/index.html"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="thumb">
+                            <img
+                                src="src/bachelor-thesis.webp"
+                                alt="Brain connectivity views of the PCA biomarker consensus from the thesis"
+                                loading="lazy"
+                                style="
+                                    object-position: center;
+                                    background: #fff;
+                                "
+                            />
+                        </div>
+                        <div class="project-body">
+                            <div class="project-top">
+                                <h3>
+                                    Numerical Stability of fMRI Connectivity
+                                    Biomarkers<i
+                                        class="icon-arrow-up-right"
+                                        aria-hidden="true"
+                                    ></i>
+                                </h3>
+                                <span class="tl-date">05 – 08/2026</span>
+                            </div>
+                            <p>
+                                How much do tiny floating-point differences
+                                change the results of a brain imaging study? I
+                                reproduced the NPVR analysis by perturbing the
+                                entire fMRIPrep pipeline, then extended it to
+                                individual connectivity edges and to PCA-based
+                                depression biomarkers.
+                            </p>
+                            <span class="kind"
+                                >Bachelor thesis at ATR Kyoto, supervised by
+                                Prof. Oscar Esteban and Dr Okito Yamashita</span
+                            >
+                        </div>
+                    </a>
+                    <a
+                        class="project"
+                        href="https://olivier.amacker.dev/303.1-semester-project/src/index.html"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="thumb">
+                            <img
+                                src="src/semester-project.webp"
+                                alt="Diffusion MRI slice and reconstructed GQI orientation distribution functions"
+                                loading="lazy"
+                                style="object-position: center"
+                            />
+                        </div>
+                        <div class="project-body">
+                            <div class="project-top">
+                                <h3>
+                                    DIPY GQI Prediction<i
+                                        class="icon-arrow-up-right"
+                                        aria-hidden="true"
+                                    ></i>
+                                </h3>
+                                <span class="tl-date">11 – 12/2025</span>
+                            </div>
+                            <p>
+                                I added a <code>predict()</code> function to
+                                DIPY's Generalized Q-ball Imaging model, along
+                                with tests, documentation and a pull request to
+                                the project.
+                            </p>
+                            <span class="kind">Semester project</span>
+                        </div>
+                    </a>
+                    <a
+                        class="project"
+                        href="https://github.com/isc-hei-classrooms/w8-cuda-implementation-of-ray-tracer-cud-tr4c3r/tree/main"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="thumb">
+                            <img
+                                src="src/ray-tracer.webp"
+                                alt="Ray-traced spheres rendered with the CUDA ray tracer"
+                                loading="lazy"
+                                style="object-position: center"
+                            />
+                        </div>
+                        <div class="project-body">
+                            <div class="project-top">
+                                <h3>
+                                    CUDA Ray Tracer<i
+                                        class="icon-arrow-up-right"
+                                        aria-hidden="true"
+                                    ></i>
+                                </h3>
+                                <span class="tl-date">11/2025</span>
+                            </div>
+                            <p>
+                                The C++ ray tracer from the
+                                <em>Ray Tracing in One Weekend</em> series,
+                                ported to CUDA so it renders on the GPU.
+                            </p>
+                            <span class="kind">Academic project</span>
+                        </div>
+                    </a>
+                    <a
+                        class="project"
+                        href="https://github.com/MadeInShineA/forest-fire-simulation"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="thumb">
+                            <img
+                                src="src/forest-fire-simulation.webp"
+                                alt="Rendering of the forest fire simulation"
+                                loading="lazy"
+                                style="object-position: center"
+                            />
+                        </div>
+                        <div class="project-body">
+                            <div class="project-top">
+                                <h3>
+                                    Forest Fire Simulation<i
+                                        class="icon-arrow-up-right"
+                                        aria-hidden="true"
+                                    ></i>
+                                </h3>
+                                <span class="tl-date">04 – 09/2025</span>
+                            </div>
+                            <p>
+                                A scalable, probabilistic wildfire simulator
+                                built for research, visualisation and fire
+                                prevention.
+                            </p>
+                            <span class="kind">Academic project</span>
+                        </div>
+                    </a>
+                    <a
+                        class="project"
+                        href="https://estimeat.amacker.dev"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="thumb">
+                            <img
+                                src="src/estimeat.webp"
+                                alt="Screenshot of EstimEat"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="project-body">
+                            <div class="project-top">
+                                <h3>
+                                    EstimEat<i
+                                        class="icon-arrow-up-right"
+                                        aria-hidden="true"
+                                    ></i>
+                                </h3>
+                                <span class="tl-date">10/2025</span>
+                            </div>
+                            <p>
+                                A data platform that helps restaurant owners and
+                                investors find the best place to open,
+                                municipality by municipality across Switzerland.
+                            </p>
+                            <span class="kind">Academic project</span>
+                        </div>
+                    </a>
+                    <a
+                        class="project"
+                        href="https://melee.tv"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="thumb">
+                            <img
+                                src="src/melee-tv.webp"
+                                alt="Screenshot of melee.tv"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="project-body">
+                            <div class="project-top">
+                                <h3>
+                                    Melee TV<i
+                                        class="icon-arrow-up-right"
+                                        aria-hidden="true"
+                                    ></i>
+                                </h3>
+                                <span class="tl-date">02/2021 – Today</span>
+                            </div>
+                            <p>
+                                The Super Smash Bros. Melee hub for playing,
+                                learning and creating, which I now maintain.
+                            </p>
+                            <span class="kind">Personal project</span>
+                        </div>
+                    </a>
+                    <a
+                        class="project"
+                        href="https://smash-map.com"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="thumb">
+                            <img
+                                src="src/smash-map.webp"
+                                alt="Screenshot of Smash Map"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="project-body">
+                            <div class="project-top">
+                                <h3>
+                                    Smash Map<i
+                                        class="icon-arrow-up-right"
+                                        aria-hidden="true"
+                                    ></i>
+                                </h3>
+                                <span class="tl-date">09/2022 – 04/2023</span>
+                            </div>
+                            <p>
+                                A world map of Super Smash Bros. players and
+                                tournaments that I designed and built myself.
+                            </p>
+                            <span class="kind">Personal project</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="card glass reveal wide-section" id="certifications">
+                <div class="card-title">
+                    <h2>
+                        <i class="icon-award" aria-hidden="true"></i
+                        >Certifications
+                    </h2>
+                </div>
+                <ul class="certs">
+                    <li>
+                        <a
+                            href="https://learn.nvidia.com/certificates?id=fuj4s35cREuWlfLCVO77TQ"
+                            target="_blank"
+                            rel="noopener"
+                            ><strong>Fundamentals of Deep Learning</strong
+                            ><span class="tl-date">Dec 2025</span
+                            ><span>NVIDIA</span></a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://innosuisse.venturelab.ch/trainings?CredentialID=0AE6C061A34E9AA4"
+                            target="_blank"
+                            rel="noopener"
+                            ><strong>Business Concept Sion</strong
+                            ><span class="tl-date">Mar 2025</span
+                            ><span>Venturekick</span></a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.coursera.org/account/accomplishments/certificate/UWXTD5QHZZ4W"
+                            target="_blank"
+                            rel="noopener"
+                            ><strong
+                                >Structuring Machine Learning Projects</strong
+                            ><span class="tl-date">Jun 2023</span
+                            ><span>Coursera</span></a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.coursera.org/account/accomplishments/certificate/VM98AU27DFRS"
+                            target="_blank"
+                            rel="noopener"
+                            ><strong
+                                >Improving Deep Neural Networks: Hyperparameter
+                                Tuning, Regularization and Optimization</strong
+                            ><span class="tl-date">Apr 2023</span
+                            ><span>Coursera</span></a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.coursera.org/account/accomplishments/certificate/E3HKBFT94WE5"
+                            target="_blank"
+                            rel="noopener"
+                            ><strong>Neural Networks and Deep Learning</strong
+                            ><span class="tl-date">Mar 2023</span
+                            ><span>Coursera</span></a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://certificates.cs50.io/afec4d03-72fc-4f95-922b-a2fba5f3b0a3.png?size=letter"
+                            target="_blank"
+                            rel="noopener"
+                            ><strong
+                                >CS50's Introduction to Artificial Intelligence
+                                with Python</strong
+                            ><span class="tl-date">Feb 2023</span
+                            ><span>Harvard CS50</span></a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://certificates.cs50.io/8da7df34-78fb-4b28-8c4d-9e1d6fee9737.png?size=letter"
+                            target="_blank"
+                            rel="noopener"
+                            ><strong
+                                >CS50's Web Programming with Python and
+                                JavaScript</strong
+                            ><span class="tl-date">Sep 2022</span
+                            ><span>Harvard CS50</span></a
+                        >
+                    </li>
                 </ul>
-              </div>
-            </li>
-            <li class="tl-item">
-              <div class="tl-date">09/2023 – 04/2024</div>
-              <div>
-                <h3>Junior Web Developer</h3>
-                <p class="tl-org">Valdez Informatique Sàrl, Conthey, Switzerland</p>
-                <ul class="bullets">
-                  <li>Built web applications with Laravel, Vue, HTML and CSS</li>
-                  <li>Worked with the team on a range of projects</li>
-                  <li>Maintained and improved existing systems</li>
-                </ul>
-              </div>
-            </li>
-            <li class="tl-item">
-              <div class="tl-date">04/2023 – 08/2023</div>
-              <div>
-                <h3>Web Development Intern</h3>
-                <p class="tl-org">Valdez Informatique Sàrl, Conthey, Switzerland</p>
-                <ul class="bullets">
-                  <li>Learned the fundamentals of professional web development</li>
-                  <li>Took part in team projects</li>
-                  <li>Got familiar with professional development workflows</li>
-                </ul>
-              </div>
-            </li>
-          </ol>
-        </section>
+            </section>
+        </main>
 
-        <section class="card glass reveal" id="education">
-          <div class="card-title">
-            <h2><i class="icon-graduation-cap" aria-hidden="true"></i>Education</h2>
-          </div>
-          <ol class="timeline">
-            <li class="tl-item current">
-              <div class="tl-date">09/2026 – Today</div>
-              <div>
-                <h3>Master's degree in Data Science</h3>
-                <p class="tl-org">HES-SO Master</p>
-              </div>
-            </li>
-            <li class="tl-item">
-              <div class="tl-date">09/2023 – 08/2026</div>
-              <div>
-                <h3>Bachelor's degree in Information Systems and Communications</h3>
-                <p class="tl-org">HES-SO Valais-Wallis</p>
-                <p class="desc">Graduated with an average of 5.5 out of 6. My thesis studied the numerical stability of
-                  functional MRI connectivity biomarkers.</p>
-              </div>
-            </li>
-            <li class="tl-item">
-              <div class="tl-date">09/2022 – 02/2023</div>
-              <div>
-                <h3>Bachelor's studies in Computer Science</h3>
-                <p class="tl-org">EPFL</p>
-                <p class="desc">One semester of computer science at the École Polytechnique Fédérale de Lausanne.</p>
-              </div>
-            </li>
-            <li class="tl-item">
-              <div class="tl-date">09/2021 – 06/2022</div>
-              <div>
-                <h3>Bachelor's studies in Criminal Science</h3>
-                <p class="tl-org">University of Lausanne (UNIL)</p>
-                <p class="desc">One year of criminal science at the University of Lausanne.</p>
-              </div>
-            </li>
-            <li class="tl-item">
-              <div class="tl-date">08/2016 – 06/2021</div>
-              <div>
-                <h3>High School Diploma in Economics and Law</h3>
-                <p class="tl-org">Lycée-Collège des Creusets</p>
-                <p class="desc">Specialised in economics and law, with strong academic results.</p>
-              </div>
-            </li>
-          </ol>
-        </section>
-      </div>
-    </div>
+        <footer class="footer">
+            <div class="container">
+                <div>&copy; <span id="year"></span> Olivier Amacker</div>
+                <nav class="footer-links webring" aria-label="Nix webring">
+                    <a
+                        href="https://nixwebr.ing/prev/MadeInShineA"
+                        title="Previous site in the Nix webring"
+                        aria-label="Previous site in the Nix webring"
+                        ><i class="icon-chevron-left" aria-hidden="true"></i
+                    ></a>
+                    <a
+                        href="https://nixwebr.ing/rand"
+                        title="Visit a random site in the Nix webring"
+                        aria-label="Visit a random site in the Nix webring"
+                        ><svg
+                            class="webring-logo"
+                            viewBox="0 0 501.563 501.562"
+                            aria-hidden="true"
+                        >
+                            <defs>
+                                <linearGradient id="nix-b">
+                                    <stop offset="0" stop-color="#699ad7" />
+                                    <stop offset=".243" stop-color="#7eb1dd" />
+                                    <stop offset="1" stop-color="#7ebae4" />
+                                </linearGradient>
+                                <linearGradient id="nix-a">
+                                    <stop offset="0" stop-color="#415e9a" />
+                                    <stop offset=".232" stop-color="#4a6baf" />
+                                    <stop offset="1" stop-color="#5277c3" />
+                                </linearGradient>
+                                <linearGradient
+                                    id="nix-c"
+                                    x1="200.597"
+                                    x2="290.087"
+                                    y1="351.411"
+                                    y2="506.188"
+                                    gradientTransform="rotate(60 1285.574 -127.027)"
+                                    gradientUnits="userSpaceOnUse"
+                                    href="#nix-b"
+                                />
+                                <linearGradient
+                                    id="nix-d"
+                                    x1="200.597"
+                                    x2="290.087"
+                                    y1="351.411"
+                                    y2="506.188"
+                                    gradientTransform="rotate(-60 -541.801 -249.31)"
+                                    gradientUnits="userSpaceOnUse"
+                                    href="#nix-b"
+                                />
+                                <linearGradient
+                                    id="nix-e"
+                                    x1="200.597"
+                                    x2="290.087"
+                                    y1="351.411"
+                                    y2="506.188"
+                                    gradientTransform="rotate(180 372.094 -188.18)"
+                                    gradientUnits="userSpaceOnUse"
+                                    href="#nix-b"
+                                />
+                                <linearGradient
+                                    id="nix-f"
+                                    x1="-584.199"
+                                    x2="-496.297"
+                                    y1="782.336"
+                                    y2="937.714"
+                                    gradientTransform="translate(864.696 -1491.34)"
+                                    gradientUnits="userSpaceOnUse"
+                                    href="#nix-a"
+                                />
+                                <linearGradient
+                                    id="nix-g"
+                                    x1="-584.199"
+                                    x2="-496.297"
+                                    y1="782.336"
+                                    y2="937.714"
+                                    gradientTransform="rotate(120 405.504 279.203)"
+                                    gradientUnits="userSpaceOnUse"
+                                    href="#nix-a"
+                                />
+                                <linearGradient
+                                    id="nix-h"
+                                    x1="-584.199"
+                                    x2="-496.297"
+                                    y1="782.336"
+                                    y2="937.714"
+                                    gradientTransform="rotate(-120 -455.573 -219.816)"
+                                    gradientUnits="userSpaceOnUse"
+                                    href="#nix-a"
+                                />
+                            </defs>
+                            <g
+                                fill-rule="evenodd"
+                                transform="translate(-397.715 1390.619) scale(1.59226)"
+                            >
+                                <path
+                                    fill="url(#nix-c)"
+                                    d="m353.655-797.58-75.34 131.034-28.535-48.37 14.052-24.826 33.464-57.69z"
+                                />
+                                <path
+                                    fill="url(#nix-d)"
+                                    d="m363.03-628.38 150.66.013-27.623 48.897-28.037-.039-66.693-.135z"
+                                />
+                                <path
+                                    fill="url(#nix-e)"
+                                    d="m505.288-721.125-75.881-131.232 56.157-.527 14.547 25.052 33.23 57.826z"
+                                />
+                                <path
+                                    fill="url(#nix-f)"
+                                    d="m309.549-710.388 75.6 130.67-56.157.527-14.266-24.49-33.23-57.826z"
+                                />
+                                <path
+                                    fill="url(#nix-g)"
+                                    d="m451.302-803.62-150.659-.012 27.622-48.897 28.037.039 66.693.135z"
+                                />
+                                <path
+                                    fill="url(#nix-h)"
+                                    d="M460.905-633.966 536.245-765l28.535 48.37-14.052 24.826-33.464 57.69z"
+                                />
+                            </g></svg
+                    ></a>
+                    <a href="https://nixwebr.ing" target="_blank" rel="noopener"
+                        >Nix webring</a
+                    >
+                    <a
+                        href="https://nixwebr.ing/next/MadeInShineA"
+                        title="Next site in the Nix webring"
+                        aria-label="Next site in the Nix webring"
+                        ><i class="icon-chevron-right" aria-hidden="true"></i
+                    ></a>
+                </nav>
+                <div class="footer-links">
+                    <a
+                        href="https://github.com/MadeInShineA"
+                        target="_blank"
+                        rel="noopener"
+                        ><i class="icon-github" aria-hidden="true"></i>
+                        GitHub</a
+                    >
+                    <a
+                        href="https://twitter.com/MadeInShineA"
+                        target="_blank"
+                        rel="noopener"
+                        ><i class="icon-twitter" aria-hidden="true"></i>
+                        Twitter</a
+                    >
+                    <a href="mailto:olivier.amacker@netplus.ch"
+                        ><i class="icon-mail" aria-hidden="true"></i> Email</a
+                    >
+                </div>
+            </div>
+        </footer>
 
-    <section class="card glass reveal wide-section" id="projects">
-      <div class="card-title">
-        <h2><i class="icon-folder-git-2" aria-hidden="true"></i>Projects</h2>
-        <a class="count chip" href="portfolio.html">All repositories <i class="icon-arrow-right"
-            aria-hidden="true"></i></a>
-      </div>
-      <div class="projects">
-        <a class="project wide" href="https://olivier.amacker.dev/bachelor-thesis/site/index.html" target="_blank"
-          rel="noopener">
-          <div class="thumb"><img src="src/bachelor-thesis.webp"
-              alt="Brain connectivity views of the PCA biomarker consensus from the thesis" loading="lazy"
-              style="object-position:center;background:#fff" /></div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Numerical Stability of fMRI Connectivity Biomarkers<i class="icon-arrow-up-right"
-                  aria-hidden="true"></i></h3><span class="tl-date">05 – 08/2026</span>
-            </div>
-            <p>How much do tiny floating-point differences change the results of a brain imaging study? I reproduced
-              the NPVR analysis by perturbing the entire fMRIPrep pipeline, then extended it to individual connectivity
-              edges and to PCA-based depression biomarkers.</p>
-            <span class="kind">Bachelor thesis at ATR Kyoto, supervised by Prof. Oscar Esteban and Dr Okito
-              Yamashita</span>
-          </div>
-        </a>
-        <a class="project" href="https://olivier.amacker.dev/303.1-semester-project/src/index.html" target="_blank"
-          rel="noopener">
-          <div class="thumb"><img src="src/semester-project.webp"
-              alt="Diffusion MRI slice and reconstructed GQI orientation distribution functions" loading="lazy"
-              style="object-position:center" /></div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>DIPY GQI Prediction<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
-                class="tl-date">11 – 12/2025</span>
-            </div>
-            <p>I added a <code>predict()</code> function to DIPY's Generalized Q-ball Imaging model, along with tests,
-              documentation and a pull request to the project.</p>
-            <span class="kind">Semester project</span>
-          </div>
-        </a>
-        <a class="project"
-          href="https://github.com/isc-hei-classrooms/w8-cuda-implementation-of-ray-tracer-cud-tr4c3r/tree/main"
-          target="_blank" rel="noopener">
-          <div class="thumb"><img src="src/ray-tracer.webp" alt="Ray-traced spheres rendered with the CUDA ray tracer"
-              loading="lazy" style="object-position:center" /></div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>CUDA Ray Tracer<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
-                class="tl-date">11/2025</span>
-            </div>
-            <p>The C++ ray tracer from the <em>Ray Tracing in One Weekend</em> series, ported to CUDA so it renders on
-              the GPU.</p>
-            <span class="kind">Academic project</span>
-          </div>
-        </a>
-        <a class="project" href="https://github.com/MadeInShineA/forest-fire-simulation" target="_blank"
-          rel="noopener">
-          <div class="thumb"><img src="src/forest-fire-simulation.webp" alt="Rendering of the forest fire simulation"
-              loading="lazy" style="object-position:center" /></div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Forest Fire Simulation<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
-                class="tl-date">04 – 09/2025</span>
-            </div>
-            <p>A scalable, probabilistic wildfire simulator built for research, visualisation and fire prevention.</p>
-            <span class="kind">Academic project</span>
-          </div>
-        </a>
-        <a class="project" href="https://estimeat.amacker.dev" target="_blank" rel="noopener">
-          <div class="thumb"><img src="src/estimeat.webp" alt="Screenshot of EstimEat" loading="lazy" /></div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>EstimEat<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span
-                class="tl-date">10/2025</span>
-            </div>
-            <p>A data platform that helps restaurant owners and investors find the best place to open, municipality by
-              municipality across Switzerland.</p>
-            <span class="kind">Academic project</span>
-          </div>
-        </a>
-        <a class="project" href="https://melee.tv" target="_blank" rel="noopener">
-          <div class="thumb"><img src="src/melee-tv.webp" alt="Screenshot of melee.tv" loading="lazy" /></div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Melee TV<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span class="tl-date">02/2021 –
-                Today</span>
-            </div>
-            <p>The Super Smash Bros. Melee hub for playing, learning and creating, which I now maintain.</p>
-            <span class="kind">Personal project</span>
-          </div>
-        </a>
-        <a class="project" href="https://smash-map.com" target="_blank" rel="noopener">
-          <div class="thumb"><img src="src/smash-map.webp" alt="Screenshot of Smash Map" loading="lazy" /></div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Smash Map<i class="icon-arrow-up-right" aria-hidden="true"></i></h3><span class="tl-date">09/2022 –
-                04/2023</span>
-            </div>
-            <p>A world map of Super Smash Bros. players and tournaments that I designed and built myself.</p>
-            <span class="kind">Personal project</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="card glass reveal wide-section" id="certifications">
-      <div class="card-title">
-        <h2><i class="icon-award" aria-hidden="true"></i>Certifications</h2>
-      </div>
-      <ul class="certs">
-        <li><a href="https://learn.nvidia.com/certificates?id=fuj4s35cREuWlfLCVO77TQ" target="_blank"
-            rel="noopener"><strong>Fundamentals of Deep Learning</strong><span class="tl-date">Dec
-              2025</span><span>NVIDIA</span></a></li>
-        <li><a href="https://innosuisse.venturelab.ch/trainings?CredentialID=0AE6C061A34E9AA4" target="_blank"
-            rel="noopener"><strong>Business Concept Sion</strong><span class="tl-date">Mar
-              2025</span><span>Venturekick</span></a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/certificate/UWXTD5QHZZ4W" target="_blank"
-            rel="noopener"><strong>Structuring Machine Learning Projects</strong><span class="tl-date">Jun
-              2023</span><span>Coursera</span></a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/certificate/VM98AU27DFRS" target="_blank"
-            rel="noopener"><strong>Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and
-              Optimization</strong><span class="tl-date">Apr 2023</span><span>Coursera</span></a></li>
-        <li><a href="https://www.coursera.org/account/accomplishments/certificate/E3HKBFT94WE5" target="_blank"
-            rel="noopener"><strong>Neural Networks and Deep Learning</strong><span class="tl-date">Mar
-              2023</span><span>Coursera</span></a></li>
-        <li><a href="https://certificates.cs50.io/afec4d03-72fc-4f95-922b-a2fba5f3b0a3.png?size=letter"
-            target="_blank" rel="noopener"><strong>CS50's Introduction to Artificial Intelligence with
-              Python</strong><span class="tl-date">Feb 2023</span><span>Harvard CS50</span></a></li>
-        <li><a href="https://certificates.cs50.io/8da7df34-78fb-4b28-8c4d-9e1d6fee9737.png?size=letter"
-            target="_blank" rel="noopener"><strong>CS50's Web Programming with Python and
-              JavaScript</strong><span class="tl-date">Sep 2022</span><span>Harvard CS50</span></a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div>&copy; <span id="year"></span> Olivier Amacker</div>
-      <div class="footer-links">
-        <a href="https://github.com/MadeInShineA" target="_blank" rel="noopener"><i class="icon-github"
-            aria-hidden="true"></i> GitHub</a>
-        <a href="https://twitter.com/MadeInShineA" target="_blank" rel="noopener"><i class="icon-twitter"
-            aria-hidden="true"></i> Twitter</a>
-        <a href="mailto:olivier.amacker@netplus.ch"><i class="icon-mail" aria-hidden="true"></i> Email</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="assets/site.js"></script>
-</body>
-
+        <script src="assets/site.js"></script>
+    </body>
 </html>
