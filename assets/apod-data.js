@@ -2,7 +2,7 @@
 window.APOD = {
   "date": "2026-11-12",
   "title": "Moon, Venus and Spica Meet",
-  "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/conjunction-bubak.jpg",
+  "image": "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/conjunction-bubak.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
   "alt": "A crescent moon and bright Venus appear beyond a mountain in a rural area at dusk.",
   "link": "https://science.nasa.gov/image-article/apod-2026-november-12-moon-venus-and-spica-meet/",
   "credit": "Włodzimierz Bubak",
