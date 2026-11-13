@@ -12,7 +12,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6064,
+    "commits": 6065,
     "languages": [
       "HTML",
       "JavaScript",
@@ -64,7 +64,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 152,
+    "commits": 153,
     "languages": [
       "QML",
       "Luau",
@@ -78,7 +78,7 @@ window.REPOS = [
       "QML": 265789,
       "Luau": 57788,
       "Nix": 41245,
-      "Lua": 17657,
+      "Lua": 17731,
       "Shell": 10429,
       "CSS": 2113,
       "JavaScript": 1208

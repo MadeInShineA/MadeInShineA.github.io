@@ -2,7 +2,7 @@
 window.APOD = {
   "date": "2026-11-13",
   "title": "NGC 206 and the Star Clouds of Andromeda",
-  "image": "https://assets.science.nasa.gov/content/dam/science/cds/apod/apod/2026/november/Andromeda_closeupCruz4096.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
+  "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/Andromeda_closeupCruz4096.jpg",
   "alt": "Close up of NGC 206 in the Andromeda galaxy.",
   "link": "https://science.nasa.gov/image-article/apod-2026-november-13-ngc-206-and-the-star-clouds-of-andromeda/",
   "credit": "David Cruz",
