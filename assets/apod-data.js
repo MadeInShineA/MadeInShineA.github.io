@@ -4,7 +4,7 @@ window.APOD = {
   "title": "Leonid Meteors Through Orion",
   "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/Leonids2022_Hongyang_2880.jpg",
   "alt": "A composite showing many meteors trails streaking across a sky featuring the familiar constellation of Orion. In the foreground two people sit in adjoining chairs facing away from the camera, one holding a wand with a glowing star at the end. Please see the explanation for more detailed information.",
-  "link": "https://science.nasa.gov/image-article/apod-1998-december-08-leonids-from-leo/",
+  "link": "https://apod.nasa.gov/apod/ap261115.html",
   "credit": "Luo Hongyang",
   "copyright": true
 };

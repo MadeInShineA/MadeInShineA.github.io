@@ -59,14 +59,23 @@ def parse(page: str) -> dict | None:
     image = html.unescape(img.group(1)).split("?")[0]
     if "nasa-logo" in image:
         return None
-    link = re.search(r'<a href="(https://science\.nasa\.gov/image-article/[^"]+)"', block)
     alt = re.search(r'\salt="([^"]*)"', tag)
 
     date_text = meta_row(page, "Date")
     try:
-        date = datetime.strptime(date_text, "%B %d, %Y").date().isoformat() if date_text else None
+        day = datetime.strptime(date_text, "%B %d, %Y").date() if date_text else None
     except ValueError:
-        date = None
+        day = None
+    date = day.isoformat() if day else None
+
+    # The explanation text often links to older APODs, so only accept an image-article
+    # link for this exact date. Otherwise use the permanent apod.nasa.gov page for the day
+    # (science.nasa.gov/apod/ changes every day, so it is only a last resort).
+    link = None
+    if day:
+        slug = f"apod-{day.year}-{day.strftime('%B').lower()}-0?{day.day}-"  # day is sometimes zero-padded
+        own = re.search(rf'https://science\.nasa\.gov/image-article/{slug}[^"]*', page)
+        link = own.group(0) if own else f"https://apod.nasa.gov/apod/ap{day.strftime('%y%m%d')}.html"
 
     credit = meta_row(page, "Credit") or meta_row(page, "Image Credit")
     return {
@@ -74,7 +83,7 @@ def parse(page: str) -> dict | None:
         "title": text(title.group(1)),
         "image": image,
         "alt": html.unescape(alt.group(1)) if alt else "",
-        "link": link.group(1) if link else PAGE,
+        "link": link or PAGE,
         "credit": credit,
         "copyright": meta_row(page, "Credit & Copyright") is not None,
     }
