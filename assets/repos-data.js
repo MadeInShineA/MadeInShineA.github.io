@@ -36,7 +36,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6077,
+    "commits": 6078,
     "languages": [
       "HTML",
       "JavaScript",
@@ -64,14 +64,14 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 13,
+    "commits": 15,
     "languages": [
       "Python",
       "Jupyter Notebook",
       "Nix"
     ],
     "languageSizes": {
-      "Python": 87580,
+      "Python": 124834,
       "Jupyter Notebook": 50430,
       "Nix": 743
     }
