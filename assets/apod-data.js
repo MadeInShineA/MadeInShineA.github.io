@@ -2,7 +2,7 @@
 window.APOD = {
   "date": "2026-11-16",
   "title": "NGC 7129: Star Formation with Jets from Webb",
-  "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2026/10/weic2620a.jpg",
+  "image": "https://assets.science.nasa.gov/content/dam/science/missions/webb/science/2026/10/weic2620a.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg",
   "alt": "A young star cluster filled with many stars that display Webb’s unique eight-pronged diffraction pattern. At its center is a yellow star that sports the largest diffraction pattern. To its left, there is a region filled with yellow dust and gas that extends from the star to the left and the bottom, covering about two-thirds of the frame. The yellow region has several embedded blue stars of different sizes. The top third, which lies outside the yellow region, has a few bright protostars, within dense gray gas. These stars illuminate the gas, making it appear blue. A few red outflows from other protostars are visible above this grayish-blue region. To the right of the central star, there is a clumpy, flame-like plume of red dust and gas with protostars that emit a soft white light within. The plume is surrounded by more dense gray gas and dust. It is about one third the size of the yellow region. There are several background galaxies strewn throughout.",
   "link": "https://science.nasa.gov/image-article/apod-2026-november-16-ngc-7129-star-formation-with-jets-from-webb/",
   "credit": "NASA, ESA, CSA, STScI, JWST; Processing: A. Pagan (STScI)",
