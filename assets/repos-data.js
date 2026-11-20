@@ -104,7 +104,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6090,
+    "commits": 6091,
     "languages": [
       "HTML",
       "JavaScript",
@@ -156,11 +156,11 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 169,
+    "commits": 177,
     "languages": [
       "QML",
-      "Luau",
       "Nix",
+      "Luau",
       "Lua",
       "Shell",
       "CSS",
@@ -168,8 +168,8 @@ window.REPOS = [
     ],
     "languageSizes": {
       "QML": 265789,
+      "Nix": 62964,
       "Luau": 57788,
-      "Nix": 57714,
       "Lua": 10826,
       "Shell": 10429,
       "CSS": 2113,
@@ -188,7 +188,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 46,
+    "commits": 48,
     "languages": [
       "Rust",
       "Nix",
@@ -212,7 +212,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 32,
+    "commits": 33,
     "languages": [
       "Jupyter Notebook",
       "HTML",
@@ -1706,7 +1706,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 29,
+    "commits": 30,
     "languages": [
       "Rust",
       "Nix",
