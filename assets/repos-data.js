@@ -104,7 +104,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6089,
+    "commits": 6090,
     "languages": [
       "HTML",
       "JavaScript",
@@ -440,7 +440,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 7,
+    "commits": 8,
     "languages": [
       "C++",
       "Cuda",
@@ -449,8 +449,8 @@ window.REPOS = [
       "C"
     ],
     "languageSizes": {
-      "C++": 468994,
-      "Cuda": 204373,
+      "C++": 471096,
+      "Cuda": 209110,
       "Makefile": 159785,
       "Shell": 18246,
       "C": 8555
