@@ -104,7 +104,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6096,
+    "commits": 6097,
     "languages": [
       "HTML",
       "JavaScript",
@@ -212,7 +212,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 33,
+    "commits": 35,
     "languages": [
       "Jupyter Notebook",
       "HTML",
