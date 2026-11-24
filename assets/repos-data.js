@@ -44,7 +44,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 46,
+    "commits": 50,
     "languages": [
       "Java",
       "Vue",
@@ -54,11 +54,11 @@ window.REPOS = [
       "JavaScript"
     ],
     "languageSizes": {
-      "Java": 373341,
-      "Vue": 122916,
-      "TypeScript": 103925,
+      "Java": 398743,
+      "Vue": 123642,
+      "TypeScript": 104935,
       "CSS": 5359,
-      "Dockerfile": 2682,
+      "Dockerfile": 2967,
       "JavaScript": 121
     }
   },
@@ -136,7 +136,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6101,
+    "commits": 6102,
     "languages": [
       "HTML",
       "JavaScript",
@@ -188,7 +188,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 184,
+    "commits": 186,
     "languages": [
       "QML",
       "Nix",
@@ -200,7 +200,7 @@ window.REPOS = [
     ],
     "languageSizes": {
       "QML": 265789,
-      "Nix": 67360,
+      "Nix": 67968,
       "Luau": 57788,
       "Lua": 10826,
       "Shell": 10429,
@@ -1374,14 +1374,14 @@ window.REPOS = [
     "owner": {
       "login": "molybdenumsoftware"
     },
-    "commits": 31,
+    "commits": 35,
     "languages": [
       "Rust",
       "Nix"
     ],
     "languageSizes": {
-      "Rust": 101726,
-      "Nix": 15049
+      "Rust": 67740,
+      "Nix": 9046
     }
   },
   {
