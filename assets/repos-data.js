@@ -8,19 +8,23 @@ window.REPOS = [
     "forks": 0,
     "isFork": false,
     "createdAt": "2026-11-25T14:50:19Z",
-    "updatedAt": "2026-11-25T16:32:29Z",
+    "updatedAt": "2026-11-26T20:52:16Z",
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 4,
+    "commits": 6,
     "languages": [
+      "HTML",
       "Python",
+      "SCSS",
       "Nix",
       "Shell"
     ],
     "languageSizes": {
-      "Python": 1480,
-      "Nix": 1104,
+      "HTML": 91740,
+      "Python": 9218,
+      "SCSS": 4215,
+      "Nix": 1123,
       "Shell": 10
     }
   },
@@ -182,7 +186,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6107,
+    "commits": 6108,
     "languages": [
       "HTML",
       "JavaScript",
