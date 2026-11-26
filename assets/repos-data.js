@@ -12,15 +12,15 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 3,
+    "commits": 4,
     "languages": [
       "Python",
       "Nix",
       "Shell"
     ],
     "languageSizes": {
-      "Python": 1359,
-      "Nix": 743,
+      "Python": 1480,
+      "Nix": 1104,
       "Shell": 10
     }
   },
@@ -182,7 +182,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6106,
+    "commits": 6107,
     "languages": [
       "HTML",
       "JavaScript",
@@ -290,7 +290,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 35,
+    "commits": 37,
     "languages": [
       "Jupyter Notebook",
       "HTML",
@@ -1406,28 +1406,6 @@ window.REPOS = [
       "HTML": 1216,
       "Kotlin": 118,
       "Objective-C": 38
-    }
-  },
-  {
-    "name": "conveyorbelt",
-    "description": "A based web dev workflow; stack-agnostic, hand-coded, 🦀",
-    "url": "https://github.com/molybdenumsoftware/conveyorbelt",
-    "stargazerCount": 7,
-    "forks": 1,
-    "isFork": false,
-    "createdAt": "2025-12-12T12:42:25Z",
-    "updatedAt": "2026-07-05T14:53:14Z",
-    "owner": {
-      "login": "molybdenumsoftware"
-    },
-    "commits": 41,
-    "languages": [
-      "Rust",
-      "Nix"
-    ],
-    "languageSizes": {
-      "Rust": 70232,
-      "Nix": 9447
     }
   },
   {
