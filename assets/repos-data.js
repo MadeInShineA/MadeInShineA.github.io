@@ -94,22 +94,26 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 50,
+    "commits": 51,
     "languages": [
       "Java",
       "Vue",
       "TypeScript",
       "CSS",
       "Dockerfile",
-      "JavaScript"
+      "Nix",
+      "JavaScript",
+      "Shell"
     ],
     "languageSizes": {
-      "Java": 398743,
-      "Vue": 123642,
-      "TypeScript": 104935,
+      "Java": 413129,
+      "Vue": 158168,
+      "TypeScript": 100748,
       "CSS": 5359,
       "Dockerfile": 2967,
-      "JavaScript": 121
+      "Nix": 1252,
+      "JavaScript": 121,
+      "Shell": 10
     }
   },
   {
@@ -186,7 +190,7 @@ window.REPOS = [
     "owner": {
       "login": "MadeInShineA"
     },
-    "commits": 6109,
+    "commits": 6110,
     "languages": [
       "HTML",
       "JavaScript",
